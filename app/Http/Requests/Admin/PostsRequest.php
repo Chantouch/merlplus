@@ -25,7 +25,7 @@ class PostsRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        $author = User::with('posts')->find($this->author_id);
+        $author = User::with('posts')->find($this->user_id);
         $canBeAuthor = $author ? $author->canBeAuthor() : false;
 
         $this->merge([

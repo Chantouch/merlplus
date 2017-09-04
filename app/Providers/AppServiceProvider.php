@@ -21,9 +21,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        //Post::observe(PostObserver::class);
+        Post::observe(PostObserver::class);
         //User::observe(UserObserver::class);
-        //Comment::observe(CommentObserver::class);
+        Comment::observe(CommentObserver::class);
     }
 
     /**

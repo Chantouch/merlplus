@@ -2,11 +2,14 @@
 
 namespace App\Model;
 
+use App\Http\Controllers\Blog\Traits\SlugUtf8;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
 
 class Tag extends Model
 {
+
+    use SlugUtf8;
 	protected $guarded = [];
 	protected $fillable = ['name', 'slug', 'status'];
 

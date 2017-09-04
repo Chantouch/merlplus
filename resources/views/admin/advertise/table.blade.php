@@ -19,7 +19,7 @@
                     <td>{!! $advertise->provider_name !!}</td>
                     <td>{!! $advertise->ads_type->name !!}</td>
                     <td>
-                        {!! status($advertise->active) !!}
+                        {!! $advertise->active !!}
                     </td>
                     <td>
                         <div class="btn-group">

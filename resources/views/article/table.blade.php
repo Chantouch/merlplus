@@ -6,6 +6,7 @@
                 <th>#</th>
                 <th width="120">Thumbnail</th>
                 <th>Name</th>
+                <th>Category</th>
                 <th>Description</th>
                 <th>Tags</th>
                 <th>Status</th>
@@ -26,6 +27,15 @@
                         @endif
                     </td>
                     <td>{!! str_limit($article->title, 100) !!}</td>
+                    <td>
+                        @if($article->categories->count())
+                            @foreach($article->categories as $category)
+                                <span class="label label-primary">
+                                    {!! $category->name !!}
+                                </span>
+                            @endforeach
+                        @endif
+                    </td>
                     <td>{!! $article->excerpt(100) !!}</td>
                     <td>
                         @foreach($article->tags as $tag)
@@ -33,7 +43,7 @@
                         @endforeach
                     </td>
                     <td>
-                        {!! status($article->active) !!}
+                        {!! $article->active !!}
                     </td>
                     <td>
                         <div class="btn-group" style="white-space: nowrap">

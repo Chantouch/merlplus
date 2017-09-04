@@ -21,10 +21,8 @@
                         @endif
                         <h3 class="cat-label cat-label1">
                             @if(count($post->categories))
-                                @foreach($post->categories->take(1) as $category)
-                                    <a href="{!! route('blog.topics.show',[$category->getRouteKey()]) !!}"
-                                       class="font-uppercase">{!! $post->categories->first()->name !!}</a>
-                                @endforeach
+                                <a href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}"
+                                   class="font-uppercase">{!! $post->categories->first()->name !!}</a>
                             @endif
                         </h3>
                         <div class="hm-sldr-caption">

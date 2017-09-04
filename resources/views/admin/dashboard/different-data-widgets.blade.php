@@ -13,7 +13,9 @@
                 <div class="col-lg-3 col-sm-6 row-in-br">
                     <ul class="col-in">
                         <li>
-                            <span class="circle circle-md bg-danger"><i class="ti-clipboard"></i></span>
+                            <span class="circle circle-md bg-danger">
+                                <i class="ti-clipboard"></i>
+                            </span>
                         </li>
                         <li class="col-last">
                             <h3 class="counter text-right m-t-15">{!! $postsLastWeek->count() !!}</h3>
@@ -33,13 +35,15 @@
                 <div class="col-lg-3 col-sm-6 row-in-br  b-r-none">
                     <ul class="col-in">
                         <li>
-                            <span class="circle circle-md bg-info"><i class="ti-wallet"></i></span>
+                            <span class="circle circle-md bg-info">
+                                <i class="ti-wallet"></i>
+                            </span>
                         </li>
                         <li class="col-last">
-                            <h3 class="counter text-right m-t-15">76</h3>
+                            <h3 class="counter text-right m-t-15">{!! $comments->count() !!}</h3>
                         </li>
                         <li class="col-middle">
-                            <h4>Total Earnings</h4>
+                            <h4>Total Comments</h4>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-info" role="progressbar"
                                      aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
@@ -53,7 +57,9 @@
                 <div class="col-lg-3 col-sm-6 row-in-br">
                     <ul class="col-in">
                         <li>
-                            <span class="circle circle-md bg-success"><i class=" ti-shopping-cart"></i></span>
+                            <span class="circle circle-md bg-success">
+                                <i class="ti-shopping-cart"></i>
+                            </span>
                         </li>
                         <li class="col-last">
                             <h3 class="counter text-right m-t-15">93</h3>
@@ -73,7 +79,9 @@
                 <div class="col-lg-3 col-sm-6  b-0">
                     <ul class="col-in">
                         <li>
-                            <span class="circle circle-md bg-warning"><i class="fa fa-dollar"></i></span>
+                            <span class="circle circle-md bg-warning">
+                                <i class="fa fa-dollar"></i>
+                            </span>
                         </li>
                         <li class="col-last">
                             <h3 class="counter text-right m-t-15">83</h3>

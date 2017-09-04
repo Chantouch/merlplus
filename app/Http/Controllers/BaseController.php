@@ -25,9 +25,17 @@ class BaseController extends Controller
 	    MetaTag::set('description', 'Blog Wes Anderson bicycle rights, occupy Shoreditch gentrify keffiyeh.');
 	    MetaTag::set('image', asset('images/default-share-image.png'));
         $top_ads = Advertise::with(['ads_type', 'media'])
-            ->where('advertise_type_id', 1)->get()->random(1);
+            ->where('advertise_type_id', 1)->get();
+        if (!$top_ads->isEmpty())
+        {
+            $top_ads = $top_ads->random(1);
+        }
         $top_right_ads = Advertise::with(['ads_type', 'media'])
-            ->where('advertise_type_id', 3)->get()->random(2);
+            ->where('advertise_type_id', 3)->get();
+        if (!$top_right_ads->isEmpty())
+        {
+            $top_right_ads = $top_right_ads->random(2);
+        }
         $home_top_news_slider = Advertise::with(['ads_type', 'media'])
             ->where('advertise_type_id', 10)->get();
         view()->share([

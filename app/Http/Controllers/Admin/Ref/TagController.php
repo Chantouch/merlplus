@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Ref;
 
+use App\Http\Controllers\Blog\Traits\SlugUtf8;
 use App\Http\Controllers\Controller;
 use App\Model\Tag;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -11,131 +12,126 @@ use Illuminate\Support\Facades\Validator;
 
 class TagController extends Controller
 {
-	public $route = 'admin.ref.tag.';
-	public $view = 'ref.tag.';
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function index()
-	{
-		$tags = Tag::with('posts')->paginate(25);
-		return view($this->view . 'index', compact('tags'));
-	}
+    use SlugUtf8;
+    public $route = 'admin.ref.tag.';
+    public $view = 'ref.tag.';
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-		return view($this->view . 'create');
-	}
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $tags = Tag::with('posts')->paginate(25);
+        return view($this->view . 'index', compact('tags'));
+    }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
-	public function store(Request $request)
-	{
-		try {
-			DB::beginTransaction();
-			$data = $request->all();
-			$validator = Validator::make($data, Tag::rules(), Tag::messages());
-			if ($validator->fails()) {
-				return back()->withInput()->withErrors($validator);
-			}
-			$create = Tag::with('posts')->create($data);
-			if (!$create) {
-				DB::rollback();
-				return back()->with('error', 'Your category can not add to our system right now. Plz try again later.');
-			}
-			DB::commit();
-			return redirect()->route($this->route . 'index')->with('success', 'Tag added successfully.');
-		} catch (ModelNotFoundException $exception) {
-			DB::rollback();
-			return back()->with('error', 'Your category can not add to our system right now. Plz try again later.');
-		}
-	}
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view($this->view . 'create');
+    }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Model\ $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		$tag = Tag::with('posts')->find($id);
-		return view($this->view . 'show', compact('tag'));
-	}
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            $data = $request->all();
+            $validator = Validator::make($data, Tag::rules(), Tag::messages());
+            if ($validator->fails()) {
+                return back()->withInput()->withErrors($validator);
+            }
+            $data['slug'] = $this->slug_utf8($request->name);
+            Tag::with('posts')->create($data);
+            DB::commit();
+            return redirect()->route($this->route . 'index')->with('success', 'Tag added successfully.');
+        } catch (ModelNotFoundException $exception) {
+            DB::rollback();
+            return back()->with('error', 'Your category can not add to our system right now. Plz try again later.');
+        }
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  \App\Model\ $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id)
-	{
-		if ($id === null) {
-			return redirect()->route($this->route . 'index')->with('error', 'We can not find category with that id, please try the other');
-		}
-		$tag = Tag::with('posts')->find($id);
-		return view($this->view . 'edit', compact('tag'));
-	}
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Model\ $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $tag = Tag::with('posts')->find($id);
+        return view($this->view . 'show', compact('tag'));
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  \App\Model\ $id
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
-	public function update(Request $request, $id)
-	{
-		try {
-			DB::beginTransaction();
-			$data = $request->all();
-			if ($id === null) {
-				return redirect()->route($this->route . 'index')->with('error', 'We can not find category with that id, please try the other');
-			}
-			$tag = Tag::with('posts')->find($id);
-			$validator = Validator::make($data, Tag::rules($id), Tag::messages());
-			if ($validator->fails()) {
-				return back()->withInput()->withErrors($validator);
-			}
-			$update = $tag->update($data);
-			if (!$update) {
-				DB::rollBack();
-				return back()->with('error', 'Your category can not add to your system right now. Plz try again later.');
-			}
-			DB::commit();
-			return redirect()->route($this->route . 'index')->with('success', 'Tag added successfully.');
-		} catch (ModelNotFoundException $exception) {
-			return back()->with('error', 'Your category can not add to your system right now. Plz try again later.');
-		}
-	}
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Model\ $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        if ($id === null) {
+            return redirect()->route($this->route . 'index')->with('error', 'We can not find category with that id, please try the other');
+        }
+        $tag = Tag::with('posts')->find($id);
+        return view($this->view . 'edit', compact('tag'));
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Model\ $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy($id)
-	{
-		$tag = Tag::with('posts')->find($id);
-		$delete = $tag->delete();
-		if (!$delete) {
-			return back()->with('error', 'Your category can not delete from your system right now. Plz try again later.');
-		}
-		return redirect()->route($this->route . 'index')->with('success', 'Tag deleted successfully');
-	}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Model\ $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, $id)
+    {
+        try {
+            DB::beginTransaction();
+            $data = $request->all();
+            if ($id === null) {
+                return redirect()->route($this->route . 'index')->with('error', 'We can not find category with that id, please try the other');
+            }
+            $tag = Tag::with('posts')->find($id);
+            $validator = Validator::make($data, Tag::rules($id), Tag::messages());
+            if ($validator->fails()) {
+                return back()->withInput()->withErrors($validator);
+            }
+            $tag->update($data);
+            DB::commit();
+            return redirect()->route($this->route . 'index')->with('success', 'Tag added successfully.');
+        } catch (ModelNotFoundException $exception) {
+            return back()->with('error', 'Your category can not add to your system right now. Plz try again later.');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Model\ $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $tag = Tag::with('posts')->find($id);
+        $delete = $tag->delete();
+        if (!$delete) {
+            return back()->with('error', 'Your category can not delete from your system right now. Plz try again later.');
+        }
+        return redirect()->route($this->route . 'index')->with('success', 'Tag deleted successfully');
+    }
 
 }

@@ -18,17 +18,21 @@
                     <td>{!! $tag->slug !!}</td>
                     <td>{!! $tag->status !!}</td>
                     <td>
-                        {!! Form::open(['route' => ['admin.ref.tag.destroy', $tag->id], 'method' => 'delete']) !!}
-                        <a href="{!! route('admin.ref.tag.show', [$tag->id]) !!}"
-                           class='btn btn-default btn-xs'>
-                            <i class="material-icons">remove_red_eye</i>
-                        </a>
-                        <a href="{!! route('admin.ref.tag.edit', [$tag->id]) !!}"
-                           class='btn btn-default btn-xs'>
-                            <i class="material-icons">mode_edit</i>
-                        </a>
-                        {!! Form::button('<i class="material-icons">delete</i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                        {!! Form::close() !!}
+
+                        <div class="btn-group">
+                            {!! Form::open(['route' => ['admin.ref.tag.destroy', $tag->id], 'method' => 'delete']) !!}
+                            <a href="{!! route('admin.ref.tag.show', [$tag->id]) !!}"
+                               class='btn btn-info btn-outline btn-1b waves-effect btn-xs'>
+                                View
+                            </a>
+                            <a href="{!! route('admin.ref.tag.edit', [$tag->id]) !!}"
+                               class='btn btn-primary btn-outline waves-effect btn-xs'>
+                                Edit
+                            </a>
+                            {!! Form::button('Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-outline waves-effect btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            {!! Form::close() !!}
+                        </div>
+
                     </td>
                 </tr>
             @endforeach
