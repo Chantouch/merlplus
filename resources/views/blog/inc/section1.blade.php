@@ -22,7 +22,7 @@
                                 @if($post->hasThumbnail())
                                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                                         <img alt="{!! $post->title !!}" class="blocky"
-                                             src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                             data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                                     </a>
                                 @endif
                                 <div class="sec-1-big-text lefty">
@@ -56,7 +56,7 @@
                                 @if($post->hasThumbnail())
                                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                                         <img alt="" class="blocky"
-                                             src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                             data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                                     </a>
                                 @endif
                                 <div class="sec-1-sm-text blocky">

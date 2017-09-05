@@ -53,8 +53,8 @@ Template version: 1.1
 
    ========================================================================== */
 /* 0 - General layout CSS styles starts */
-@import url(http://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700);
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,900,700,700italic,400italic);
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,900,700,700italic,400italic);
 
 @font-face {
     font-family: 'entypo';

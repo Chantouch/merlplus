@@ -53,7 +53,27 @@
             position: relative;
         }
 
+        .title {
+            font-size: 18px;
+            font-weight: 900;
+            margin: 0 0 10px;
+        }
+
     </style>
+@stop
+@section('post-background')
+    <div class="fix-bg">
+        @if($post->hasThumbnail())
+            <div class="img"
+                 style="background-image:url({!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!});">
+            </div>
+        @else
+            <div class="img"
+                 style="background-image:url({!! asset('images/space_stars_nebulae_aurora_85533_1280x720.jpg') !!});">
+            </div>
+        @endif
+        <div class="inside"></div>
+    </div>
 @stop
 @section('content')
     <!-- HTML -->
@@ -80,7 +100,7 @@
             <h2>{!! $post->excerptTitle(300) !!}</h2>
             <h5>
                 <span><i class="fa fa-user"></i>{!! $post->checkAuthor() !!}</span>
-                <span><i class="fa fa-clock-o"></i>{!! humanize_date($post->posted_at) !!}</span>
+                <span><i class="fa fa-clock-o"></i>{!! $post->posted_at !!}</span>
                 <span><i class="fa fa-comment-o"></i>{!! count($post->comments) !!} comments</span>
             </h5>
             <article class="float-width articl-data">
@@ -317,18 +337,18 @@
 @section('scripts')
     <script !src="">
         $().fancybox({
-            selector : '[data-fancybox="images"]',
-            thumbs   : false,
-            hash     : false,
+            selector: '[data-fancybox="images"]',
+            thumbs: false,
+            hash: false,
         });
 
         $(".main-slider").slick({
-            slidesToShow   : 3,
-            slidesToScroll : 3,
-            infinite   : true,
-            dots       : false,
-            arrows     : false,
-            responsive : [
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: false,
+            arrows: false,
+            responsive: [
                 {
                     breakpoint: 960,
                     settings: {

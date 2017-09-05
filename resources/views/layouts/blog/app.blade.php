@@ -19,15 +19,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ MetaTag::get('title') }} | {{ config('app.name', 'Laravel') }}</title>
     {!! MetaTag::tag('description') !!}
+    {!! MetaTag::tag('keywords') !!}
     {!! MetaTag::tag('image') !!}
     {!! MetaTag::openGraph() !!}
     {!! MetaTag::twitterCard() !!}
-    <!--Set default share picture after custom section pictures--!>
     {!! MetaTag::tag('image', asset('images/default-logo.png')) !!}
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{!! asset('blog/css/css8b0d.css?file=bootstrap.min') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/css97f7.css?file=bootstrap-theme') !!}">
@@ -37,7 +34,7 @@
     <link rel="stylesheet" href="{!! asset('blog/css/css35ad.css?file=main') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/css9a38.css?file=responsive') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/cssf83a.css?file=calendar') !!}">
-    <script src="{!! asset('blog/js/jsde43.css?file=vendor/modernizr-2.6.2-respond-1.1.0.min') !!}"></script>
+    <script src="{!! asset('blog/js/modernizr.min.js') !!}"></script>
     @yield('css')
 </head>
 <body>
@@ -67,11 +64,7 @@
     @endif
 
     <div class="container-position">
-        <div class="fix-bg">
-            <div class="img" style="background-image:url('http://media.sabay.com/media/sabay-news/Social-International/General/man.jpg');"></div>
-            <div class="inside"></div>
-        </div>
-        <!-- Main Body -->
+        @yield('post-background')
         <div class="container">
             <!-- Main Left side -->
             <div class="main-left-side">
@@ -124,10 +117,31 @@
 <script src="{!! asset('blog/js/js35ad.js?file=main') !!}"></script>
 
 <script src="{!! asset('blog/js/slick.min.js') !!}"></script>
+<script src="{!! asset('blog/js/jquery.lazyload.min.js') !!}"></script>
+<script src="{!! asset('blog/js/echo.min.js') !!}"></script>
 
 @yield('plugins')
 
 @yield('scripts')
+<script !src="">
+    $(function () {
+        $("img").lazyload({
+            effect: "fadeIn"
+        });
+        echo.init({
+            offset: 100,
+            throttle: 250,
+            unload: false,
+            callback: function (element, op) {
+                if (op === 'load') {
+                    element.classList.add('loaded');
+                } else {
+                    element.classList.remove('loaded');
+                }
+            }
+        });
+    })
 
+</script>
 </body>
 </html>

@@ -22,7 +22,8 @@
                         <h3 class="cat-label cat-label1">
                             @if(count($post->categories))
                                 <a href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}"
-                                   class="font-uppercase">{!! $post->categories->first()->name !!}</a>
+                                   class="font-uppercase">{!! $post->categories->first()->name !!}
+                                </a>
                             @endif
                         </h3>
                         <div class="hm-sldr-caption">
@@ -43,14 +44,14 @@
 </div>
 
 <div class="mid-block-ads-468x60 boxgrid caption">
-    <img alt="Dolorem temporibus omnis voluptas repudiandae ipsa..." src="blog/img/ads-468x60.png">
+    <img alt="Dolorem temporibus omnis voluptas repudiandae ipsa..." data-echo="blog/img/ads-468x60.png">
     <h4 class="cat-label cat-label2">
         <a href="#" class="font-uppercase">Sport</a>
     </h4>
 </div>
 
 <div class="mid-block-ads-468x60 boxgrid caption">
-    <img alt="Dolorem temporibus omnis voluptas repudiandae ipsa..." src="blog/img/ads-468x60-1.png">
+    <img alt="Dolorem temporibus omnis voluptas repudiandae ipsa..." data-echo="blog/img/ads-468x60-1.png">
     <h4 class="cat-label cat-label2">
         <a href="#" class="font-uppercase">Sport</a>
     </h4>

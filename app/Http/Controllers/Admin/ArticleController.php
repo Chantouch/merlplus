@@ -68,6 +68,7 @@ class ArticleController extends Controller
             //First check need to clean the description for html tag
             //$data['description'] = clean($request->description);
             $dom = new DOMDocument();
+	        libxml_use_internal_errors(true);
             $dom->loadHtml(mb_convert_encoding($data['description'], 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
             $images = $dom->getElementsByTagName('img');
             // foreach <img> in the submitted message
@@ -93,6 +94,7 @@ class ArticleController extends Controller
                     $img->setAttribute('src', $new_src);
                 } // <!--endif -->
             } // <!--Check-->
+	        libxml_clear_errors();
             //<!--Save the description content to db-->
             $data['description'] = $dom->saveHTML();
             switch ($request->submit) {

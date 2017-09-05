@@ -61,7 +61,6 @@ class CategoryController extends Controller
             if ($validator->fails()) {
                 return back()->withInput()->withErrors($validator);
             }
-            dd($request->has('tags'));
             if (empty($request->slug)) {
                 $data['slug'] = str_slug($request->name);
             }

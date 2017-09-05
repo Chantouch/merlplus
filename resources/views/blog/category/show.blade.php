@@ -19,10 +19,10 @@
                         <div class="big-two-{!! $index+1 !!} blocky boxgrid3 caption">
                             @if($post->hasThumbnail())
                                 <img alt="{!! $post->excerptTitle(60) !!}"
-                                     src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                     data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                             @else
                                 <img alt="{!! $post->excerptTitle(60) !!}"
-                                     src="{!! asset('blog/img/samples/z1'.$index.'.jpg') !!}"/>
+                                     data-echo="{!! asset('blog/img/samples/z1'.$index.'.jpg') !!}"/>
                             @endif
                             <div class="cover boxcaption3">
                                 <h3>
@@ -31,7 +31,7 @@
                                     </a>
                                 </h3>
                                 <p class="artcl-time-1">
-                                    <span><i class="fa fa-clock-o"></i>{!! humanize_date($post->posted_at) !!}</span>
+                                    <span><i class="fa fa-clock-o"></i>{!! $post->posted_at !!}</span>
                                     <span><i class="fa fa-comment-o"></i>21 comments</span>
                                 </p>
                                 <p>Curabitur fringilla porttitor porta. Vivamus vel nulla ullamcorper, fringilla ligula
@@ -50,10 +50,10 @@
                     <a href="#">
                         @if($post->hasThumbnail())
                             <img alt="{!! $post->excerptTitle(60) !!}" class="lefty img-responsive" width="107"
-                                 src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                 data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                         @else
                             <img class="lefty" alt="{!! $post->excerptTitle(60) !!}"
-                                 src="{!! asset('blog/img/samples/e1.jpg') !!}"/>
+                                 data-echo="{!! asset('blog/img/samples/e1.jpg') !!}"/>
                         @endif
                     </a>
                     <h4 class="lefty">{!! $post->excerptTitle(40) !!}</h4>
@@ -75,17 +75,17 @@
                     <div class="sec-1-big float-width">
                         @if($post->hasThumbnail())
                             <img alt="{!! $post->excerptTitle(60) !!}" class="lefty img-responsive" width="271"
-                                 src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                 data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                         @else
                             <img class="lefty" alt="{!! $post->excerptTitle(60) !!}"
-                                 src="{!! asset('blog/img/samples/z'.$index.'.jpg') !!}"/>
+                                 data-echo="{!! asset('blog/img/samples/z'.$index.'.jpg') !!}"/>
                         @endif
                         <div class="sec-1-big-text lefty">
                             <h3>{!! $post->excerptTitle(30) !!}</h3>
                             <h6>
                             <span>
                             <i class="fa fa-user"></i>John Doe</span><span>
-                            <i class="fa fa-clock-o"></i>{!! humanize_date($post->posted_at) !!}</span>
+                            <i class="fa fa-clock-o"></i>{!! $post->posted_at !!}</span>
                                 <span>
                                 <i class="fa fa-comment-o"></i>21 comments
                             </span>

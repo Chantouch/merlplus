@@ -14,7 +14,7 @@
                 <div class="big-two-{!! $index + 1 !!} blocky boxgrid3 caption">
                     @if($post->hasThumbnail())
                         <img class="img-responsive" alt="{!! $post->excerptTitle() !!}"
-                             src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                             data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                     @endif
                     <div class="cover boxcaption3">
                         <h3>
@@ -44,7 +44,7 @@
                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                         @if($post->hasThumbnail())
                             <img alt="{!! $post->title !!}" class="lefty img-responsive" width="107"
-                                 src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                 data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                         @endif
                     </a>
                     <h4 class="lefty">

@@ -13,10 +13,10 @@
             <div class="mid-block-1 boxgrid caption">
                 @if($post->hasThumbnail())
                     <img alt="{!! $post->excerptTitle(60) !!}"
-                         src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"
+                         data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"
                          class="img-responsive"/>
                 @else
-                    <img alt="{!! $post->excerptTitle(50) !!}" src="blog/img/samples/sample1.jpg"/>
+                    <img alt="{!! $post->excerptTitle(50) !!}" data-echo="blog/img/samples/sample1.jpg"/>
                 @endif
                 <h4 class="cat-label cat-label2">
                     @if(count($post->categories))
@@ -50,7 +50,7 @@
 
                 <a href="{!! $ads->url !!}" target="_blank">
                     <div class="rt-block mid-block-1 boxgrid2 caption">
-                        {{ Html::image($ads->banner()->media_url, $ads->banner()->original_filename) }}
+                        <img data-echo="{!! $ads->banner()->media_url !!}" alt="{!! $ads->banner()->original_filename !!}">
                         <h4 class="cat-label cat-label4">
                             <a href="#">{!! $ads->provider_name !!}</a>
                         </h4>
@@ -70,8 +70,3 @@
         @endforeach
     @endif
 </div>
-@section('scripts')
-    <script !src="">
-
-    </script>
-@stop

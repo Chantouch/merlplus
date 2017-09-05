@@ -14,13 +14,12 @@
                 @if(count($home_top_news_slider))
                     @foreach($home_top_news_slider->random(1) as $ads)
                         <li>
-                            {{--<img alt="{!! $ads->provider_name !!}" src="{!! asset('blog/img/samples/z2.jpg') !!}"/>--}}
-                            {{ Html::image($ads->banner()->media_url, $ads->banner()->original_filename) }}
+                            <img alt="{!! $ads->banner()->original_filename !!}" data-echo="{!! asset($ads->banner()->media_url) !!}"/>
                         </li>
                     @endforeach
                 @else
                     <li>
-                        <img alt="" src="{!! asset('blog/img/samples/z2.jpg') !!}"/>
+                        <img alt="No image" data-echo="{!! asset('blog/img/samples/z2.jpg') !!}"/>
                     </li>
                 @endif
             @endif
@@ -31,37 +30,37 @@
 <div class="smedia lefty">
     <div class="w50 blocky">
         <a href="#">
-            <img alt="" class="lefty" src="{!! asset('blog/img/fb.png') !!}"/>
+            <img alt="" class="lefty" data-echo="{!! asset('blog/img/fb.png') !!}"/>
             <span>6423</span>
         </a>
     </div>
     <div class="w50 blocky">
         <a href="#">
-            <img alt="" class="lefty" src="{!! asset('blog/img/tw.png') !!}"/>
+            <img alt="" class="lefty" data-echo="{!! asset('blog/img/tw.png') !!}"/>
             <span>12344</span>
         </a>
     </div>
     <div class="w50 blocky">
         <a href="#">
-            <img alt="" class="lefty" src="{!! asset('blog/img/gplus.png') !!}"/>
+            <img alt="" class="lefty" data-echo="{!! asset('blog/img/gplus.png') !!}"/>
             <span>1846</span>
         </a>
     </div>
     <div class="w50 blocky">
         <a href="#">
-            <img alt="" class="lefty" src="{!! asset('blog/img/drp.png') !!}"/>
+            <img alt="" class="lefty" data-echo="{!! asset('blog/img/drp.png') !!}"/>
             <span>416</span>
         </a>
     </div>
     <div class="w50 blocky">
         <a href="#">
-            <img alt="" class="lefty" src="{!! asset('blog/img/flkr.png') !!}"/>
+            <img alt="" class="lefty" data-echo="{!! asset('blog/img/flkr.png') !!}"/>
             <span>91</span>
         </a>
     </div>
     <div class="w50 blocky">
         <a href="#">
-            <img alt="" class="lefty" src="{!! asset('blog/img/ig.png') !!}"/>
+            <img alt="" class="lefty" data-echo="{!! asset('blog/img/ig.png') !!}"/>
             <span>3487</span>
         </a>
     </div>
@@ -70,7 +69,7 @@
 <div class="trending lefty">
     <h3 class="sec-title">TRENDING</h3>
     <div class="trend-1">
-        <a href="#"><img alt="" src="{!! asset('blog/img/samples/z3.jpg') !!}"/></a>
+        <a href="#"><img alt="" data-echo="{!! asset('blog/img/samples/z3.jpg') !!}"/></a>
         <a class="lefty cat-a cat-label2" href="#">GAMES</a>
         <div class="trend-2">
             <h3><a href="#">Watch Dogs - First gameplay this year</a></h3>
@@ -84,19 +83,19 @@
     </div>
     <div class="float-width">
         <div class="trend-sm float-width">
-            <a href="#"><img alt="" class="lefty" src="{!! asset('blog/img/samples/e2.jpg') !!}"/></a>
+            <a href="#"><img alt="" class="lefty" data-echo="{!! asset('blog/img/samples/e2.jpg') !!}"/></a>
             <h4 class="lefty">USA Games Studio will release sandbox new game</h4>
             <a class="lefty cat-a cat-label2" href="#">GAMES</a>
             <p class="righty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span></p>
         </div>
         <div class="trend-sm float-width">
-            <a href="#"><img alt="" class="lefty" src="{!! asset('blog/img/samples/e1.jpg') !!}"/></a>
+            <a href="#"><img alt="" class="lefty" data-echo="{!! asset('blog/img/samples/e1.jpg') !!}"/></a>
             <h4 class="lefty">After party of Blondi Concert will begin tomorrow</h4>
             <a class="lefty cat-a cat-label4" href="#">MUSIC</a>
             <p class="righty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span></p>
         </div>
         <div class="trend-sm float-width">
-            <a href="#"><img alt="" class="lefty" src="{!! asset('blog/img/samples/e3.jpg') !!}"/></a>
+            <a href="#"><img alt="" class="lefty" data-echo="{!! asset('blog/img/samples/e3.jpg') !!}"/></a>
             <h4 class="lefty">The best place to see in Winter season this year</h4>
             <a class="lefty cat-a cat-label3" href="#">TOURISM</a>
             <p class="righty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span></p>
@@ -122,7 +121,7 @@
 <!-- Featured Video -->
 <div class="ftrd-vd float-width">
     <h3 class="sec-title">FEATURED VIDEO</h3>
-    <iframe src="http://player.vimeo.com/video/8170203?color=b3a07d" width="100%" height="300"
+    <iframe src="https://player.vimeo.com/video/8170203?color=b3a07d" width="100%" height="300"
             frameborder="0"
             webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </div>
@@ -201,5 +200,5 @@
 </div>
 <!-- Ad banner right -->
 <div class="lefty ad-rt">
-    <a href="#"><img alt="" src="{!! asset('blog/img/samples/u1.jpg') !!}"/></a>
+    <a href="#"><img alt="" data-echo="{!! asset('blog/img/samples/u1.jpg') !!}"/></a>
 </div>
