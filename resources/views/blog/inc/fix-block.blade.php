@@ -10,13 +10,13 @@
 <div class="mid-blks-cont">
     @if(count($posts))
         @foreach($posts->random(2) as $index => $post)
-            <div class="mid-block-1 boxgrid caption">
+            <div class="mid-block-1 boxgrid caption item">
                 @if($post->hasThumbnail())
-                    <img alt="{!! $post->excerptTitle(60) !!}"
-                         data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"
-                         class="img-responsive"/>
+                    <div class="img"
+                         style="background-image:url({!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!});">
+                    </div>
                 @else
-                    <img alt="{!! $post->excerptTitle(50) !!}" data-echo="blog/img/samples/sample1.jpg"/>
+                    <div class="img" style="background-image:url({!! asset('blog/img/samples/sample1.jpg') !!});"></div>
                 @endif
                 <h4 class="cat-label cat-label2">
                     @if(count($post->categories))
@@ -31,7 +31,7 @@
                         <span class="topic-icn">81</span>
                     </h3>
                     <p>
-                        {!! $post->excerpt(100) !!}
+                        {!! $post->excerpt(1000) !!}
                     </p>
                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">MORE
                         <i class="fa fa-angle-double-right"></i>
@@ -47,25 +47,21 @@
     @if(count($top_right_ads))
         @foreach($top_right_ads as $ads)
             @if($ads->hasBanner())
-
                 <a href="{!! $ads->url !!}" target="_blank">
-                    <div class="rt-block mid-block-1 boxgrid2 caption">
-                        <img data-echo="{!! $ads->banner()->media_url !!}" alt="{!! $ads->banner()->original_filename !!}">
+                    <div class="rt-block mid-block-1 boxgrid2 caption item">
+                        <div class="img" style="background-image:url({!! $ads->banner()->media_url !!});"></div>
                         <h4 class="cat-label cat-label4">
                             <a href="#">{!! $ads->provider_name !!}</a>
                         </h4>
                     </div>
                 </a>
-
             @else
-
-                <div class="rt-block mid-block-1 boxgrid2 caption">
+                <div class="rt-block mid-block-1 boxgrid2 caption item">
                     {!! $ads->url !!}
                     <h4 class="cat-label cat-label4">
                         <a href="#">{!! $ads->provider_name !!}</a>
                     </h4>
                 </div>
-
             @endif
         @endforeach
     @endif

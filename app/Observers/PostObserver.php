@@ -30,6 +30,6 @@ class PostObserver
      */
     public function saving(Post $post)
     {
-        $post->slug = $post->slug_utf8($post->title);
+        $post->user_id = auth()->id();
     }
 }

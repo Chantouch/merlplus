@@ -75,7 +75,7 @@ class CategoryController extends Controller
                 if ($request->hasFile('file')) {
                     $this->uploadImage($request, 'uploads/category/', $category, 'file');
                 }
-                if ($request->has('tags')) {
+                if (!empty($request->tags)) {
                     $this->attachTag($category, 'App\Model\Category', $request->tags);
                 }
             }

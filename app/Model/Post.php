@@ -209,9 +209,9 @@ class Post extends Model
     public function storeAndSetThumbnail(UploadedFile $thumbnail, Post $post)
     {
         //$thumbnail_name = $thumbnail->store('uploads/posts');
-        $image_large = Image::make($thumbnail)->resize(1280, 720);
-        $image_medium = Image::make($thumbnail)->crop(648, 720);
-        $image_small = Image::make($thumbnail)->crop(856, 680);
+        $image_large = Image::make($thumbnail)->resize(1100, 619);
+        $image_medium = Image::make($thumbnail)->resize(970, 546);
+        $image_small = Image::make($thumbnail)->resize(510, 287);
         $ext = $thumbnail->getClientOriginalExtension();
         $path = storage_path('app/public/uploads/posts/' . $post->id . '/');
         $file_name = str_random(50) . '.' . $ext;

@@ -11,10 +11,11 @@
     <div class="top-big-two">
         @if(count($posts))
             @foreach($posts->random(2) as $index => $post)
-                <div class="big-two-{!! $index + 1 !!} blocky boxgrid3 caption">
+                <div class="big-two-{!! $index + 1 !!} blocky boxgrid3 caption item">
                     @if($post->hasThumbnail())
-                        <img class="img-responsive" alt="{!! $post->excerptTitle() !!}"
-                             data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                        <div class="img"
+                             style="background-image:url({!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!});">
+                        </div>
                     @endif
                     <div class="cover boxcaption3">
                         <h3>

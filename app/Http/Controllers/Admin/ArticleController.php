@@ -105,12 +105,11 @@ class ArticleController extends Controller
                     $data['active'] = 2;
             }
             $post = Post::with('images')->create($data);
-            $post->storeAndSetAuthor();
             if ($post) {
                 if ($request->hasFile('thumbnail')) {
                     $post->storeAndSetThumbnail($request->file('thumbnail'), $post);
                 }
-                if ($request->has('tags')) {
+                if (!empty($request->tags)) {
                     $this->attachTag($post, 'App\Model\Post', $request->tags);
                 }
                 $this->attachRelation($post->categories(), explode(',', $request->categories));
@@ -170,6 +169,7 @@ class ArticleController extends Controller
             $post->storeAndSetAuthor();
             //$data['description'] = clean($request->description);
             $dom = new DOMDocument();
+            libxml_use_internal_errors(true);
             $dom->loadHtml(mb_convert_encoding($data['description'], 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
             $images = $dom->getElementsByTagName('img');
             // foreach <img> in the submitted message
@@ -196,6 +196,7 @@ class ArticleController extends Controller
                 } // <!--endif -->
             } // <!--Check-->
             //<!--Save the description content to db-->
+            libxml_clear_errors();
             $data['description'] = $dom->saveHTML();
             switch ($request->submit) {
                 case 'publish':

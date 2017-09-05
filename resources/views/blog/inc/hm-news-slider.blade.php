@@ -29,11 +29,11 @@
                         <div class="hm-sldr-caption">
                             <h3>
                                 <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                    {!! $post->excerptTitle(60) !!}<span class="topic-icn">17</span>
+                                    {!! $post->excerptTitle(100) !!}<span class="topic-icn">17</span>
                                 </a>
                             </h3>
                             <p>
-                                {!! $post->excerpt(250) !!}
+                                {!! $post->excerpt(1200) !!}
                             </p>
                         </div>
                     </li>

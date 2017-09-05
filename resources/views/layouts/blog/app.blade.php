@@ -34,7 +34,13 @@
     <link rel="stylesheet" href="{!! asset('blog/css/css35ad.css?file=main') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/css9a38.css?file=responsive') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/cssf83a.css?file=calendar') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
     <script src="{!! asset('blog/js/modernizr.min.js') !!}"></script>
+    <style>
+        .hm-slider .slides {
+            background-image: url({!! asset('images/loading.gif') !!});
+        }
+    </style>
     @yield('css')
 </head>
 <body>
