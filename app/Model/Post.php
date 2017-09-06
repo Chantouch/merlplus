@@ -179,6 +179,20 @@ class Post extends Model
             ->latest();
     }
 
+
+    /**
+     * Scope a query to only include posts posted count all.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return int
+     */
+    public function scopeTotalActive($query)
+    {
+        return $query->where('active', 1)->count();
+    }
+
+
+
     /**
      * Check if the post has a valid thumbnail
      *

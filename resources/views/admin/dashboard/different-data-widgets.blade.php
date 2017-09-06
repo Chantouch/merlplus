@@ -58,14 +58,14 @@
                     <ul class="col-in">
                         <li>
                             <span class="circle circle-md bg-success">
-                                <i class="ti-shopping-cart"></i>
+                                <i class="ti-clipboard"></i>
                             </span>
                         </li>
                         <li class="col-last">
-                            <h3 class="counter text-right m-t-15">93</h3>
+                            <h3 class="counter text-right m-t-15">{!! $postsTotal !!}</h3>
                         </li>
                         <li class="col-middle">
-                            <h4>Total Projects</h4>
+                            <h4>Total Active Posts</h4>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-success" role="progressbar"
                                      aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
