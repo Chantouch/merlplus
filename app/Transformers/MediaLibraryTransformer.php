@@ -21,11 +21,13 @@ class MediaLibraryTransformer extends TransformerAbstract
             'alt_text' => $mediaLibrary->alt_text,
             'description' => $mediaLibrary->description,
             'created_at' => $mediaLibrary->created_at->toIso8601String(),
+            'uploaded_at' => $mediaLibrary->created_at->format('M d,Y'),
             'filename' => $mediaLibrary->filename,
             'original_filename' => $mediaLibrary->original_filename,
             'mime_type' => $mediaLibrary->mime_type,
             'url' => $mediaLibrary->url,
             'caption' => $mediaLibrary->caption,
+            'limit_name' => $mediaLibrary->limit_name,
         ];
     }
 }

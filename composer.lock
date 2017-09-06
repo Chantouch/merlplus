@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "cocur/slugify",
-            "version": "v2.5",
+            "version": "v3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "e8167e9a3236044afebd6e8ab13ebeb3ec9ca145"
+                "reference": "122998753e980d0223eea0bb957102a457a13bc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/e8167e9a3236044afebd6e8ab13ebeb3ec9ca145",
-                "reference": "e8167e9a3236044afebd6e8ab13ebeb3ec9ca145",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/122998753e980d0223eea0bb957102a457a13bc1",
+                "reference": "122998753e980d0223eea0bb957102a457a13bc1",
                 "shasum": ""
             },
             "require": {
@@ -68,7 +68,7 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2017-03-23T21:52:55+00:00"
+            "time": "2017-08-11T20:28:15+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -131,30 +131,30 @@
         },
         {
             "name": "cviebrock/eloquent-sluggable",
-            "version": "4.2.4",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "ae888987b7ee72366b44caf579861de99e3e8d42"
+                "reference": "2407515c00bd4148c6ce8156f5f82e1a6349cac3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/ae888987b7ee72366b44caf579861de99e3e8d42",
-                "reference": "ae888987b7ee72366b44caf579861de99e3e8d42",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/2407515c00bd4148c6ce8156f5f82e1a6349cac3",
+                "reference": "2407515c00bd4148c6ce8156f5f82e1a6349cac3",
                 "shasum": ""
             },
             "require": {
-                "cocur/slugify": "^2.3",
-                "illuminate/config": "^5.4",
-                "illuminate/database": "^5.4",
-                "illuminate/support": "^5.4",
-                "php": ">=5.6.4 || ^7.0"
+                "cocur/slugify": "^3.0",
+                "illuminate/config": "~5.5.0",
+                "illuminate/database": "~5.5.0",
+                "illuminate/support": "~5.5.0",
+                "php": "^7.0"
             },
             "require-dev": {
                 "mockery/mockery": "^0.9.4",
-                "orchestra/database": "~3.4",
-                "orchestra/testbench": "^3.4",
-                "phpunit/phpunit": "~5.7"
+                "orchestra/database": "~3.5.0",
+                "orchestra/testbench": "~3.5.0",
+                "phpunit/phpunit": "^6.2"
             },
             "type": "library",
             "extra": {
@@ -183,10 +183,13 @@
             "homepage": "https://github.com/cviebrock/eloquent-sluggable",
             "keywords": [
                 "eloquent",
+                "eloquent-sluggable",
                 "laravel",
-                "slug"
+                "lumen",
+                "slug",
+                "sluggable"
             ],
-            "time": "2017-07-04T14:15:50+00:00"
+            "time": "2017-08-31T18:16:01+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -2839,7 +2842,7 @@
         },
         {
             "name": "pragmarx/support",
-            "version": "v0.7.4",
+            "version": "v0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/support.git",
@@ -2893,16 +2896,16 @@
         },
         {
             "name": "pragmarx/tracker",
-            "version": "v3.1.8",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/tracker.git",
-                "reference": "3031619a34552b3d16f1d231e45daf09c2758380"
+                "reference": "e13877dca9a563841e5fbeadf1473a9c8c143a9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/tracker/zipball/3031619a34552b3d16f1d231e45daf09c2758380",
-                "reference": "3031619a34552b3d16f1d231e45daf09c2758380",
+                "url": "https://api.github.com/repos/antonioribeiro/tracker/zipball/e13877dca9a563841e5fbeadf1473a9c8c143a9d",
+                "reference": "e13877dca9a563841e5fbeadf1473a9c8c143a9d",
                 "shasum": ""
             },
             "require": {
@@ -2911,7 +2914,7 @@
                 "laravel/framework": "~4|~5",
                 "php": ">=5.3.7",
                 "pragmarx/datatables": "1.4.11",
-                "pragmarx/support": "~0.6",
+                "pragmarx/support": "~0.6|~0.7",
                 "ramsey/uuid": "~3",
                 "snowplow/referer-parser": "~0.1",
                 "ua-parser/uap-php": "~3.4"
@@ -2964,7 +2967,7 @@
                 "user agent",
                 "visitor"
             ],
-            "time": "2017-07-31T15:02:38+00:00"
+            "time": "2017-09-05T21:04:50+00:00"
         },
         {
             "name": "psr/container",
@@ -3317,16 +3320,16 @@
         },
         {
             "name": "santigarcor/laratrust",
-            "version": "4.0.3",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/santigarcor/laratrust.git",
-                "reference": "5a029a4f4a5c3a4171a8ee1a8b06e466a3cf6d0b"
+                "reference": "6f1a0ce6fff56c3724ca3a3e79e0e5ea89a39ef1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/5a029a4f4a5c3a4171a8ee1a8b06e466a3cf6d0b",
-                "reference": "5a029a4f4a5c3a4171a8ee1a8b06e466a3cf6d0b",
+                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/6f1a0ce6fff56c3724ca3a3e79e0e5ea89a39ef1",
+                "reference": "6f1a0ce6fff56c3724ca3a3e79e0e5ea89a39ef1",
                 "shasum": ""
             },
             "require": {
@@ -3381,7 +3384,7 @@
                 "rbac",
                 "roles"
             ],
-            "time": "2017-07-26T16:52:20+00:00"
+            "time": "2017-09-05T19:23:51+00:00"
         },
         {
             "name": "snowplow/referer-parser",

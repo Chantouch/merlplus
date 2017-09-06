@@ -22,6 +22,7 @@
     <script type="text/javascript" src="{!! asset('plugins/sweetalert/sweetalert.min.js') !!}"></script>
     <script type="text/javascript" src="{!! asset('plugins/sweetalert/jquery.sweet-alert.custom.js') !!}"></script>
     <script type="text/javascript" src="{!! asset('js/post.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('js/dropZone.js') !!}"></script>
 @stop
 
 @section('scripts')

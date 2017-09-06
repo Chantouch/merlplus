@@ -166,6 +166,12 @@
                             <span class="hide-menu">Advertise Type</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{!! route('admin.media-library.index') !!}">
+                            <i class="fa-fw">M</i>
+                            <span class="hide-menu">Media</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="{!! Request::is('admin/manage/*')? 'active' : '' !!}">
