@@ -33,8 +33,10 @@ class HomeController extends Controller
         $postsLastWeek = Post::lastWeek()->get();
         $postsTotal = Post::totalActive();
         $users = User::lastWeek()->get();
+        $yearlyPosts = Post::yearlyPost();
+        dd($yearlyPosts);
         $visitor = Tracker::currentSession();
-        return view('admin.dashboard.index', compact('comments', 'postsLastWeek', 'users', 'postsTotal'));
+        return view('admin.dashboard.index', compact('comments', 'postsLastWeek', 'users', 'postsTotal', 'year'));
     }
 
     /**

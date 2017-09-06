@@ -192,6 +192,17 @@ class Post extends Model
     }
 
 
+    /**
+     * Scope a query to only include posts posted yearly.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|int
+     */
+    public function scopeYearlyPost($query)
+    {
+        return $query->selectRaw('year(created_at)')->groupBy('year(created_at)')->orderByDesc('year(created_at)');
+    }
+
 
     /**
      * Check if the post has a valid thumbnail

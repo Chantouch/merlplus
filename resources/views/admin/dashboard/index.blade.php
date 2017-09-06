@@ -21,6 +21,7 @@
                             <h5><i class="fa fa-circle m-r-5 text-danger"></i>Windows</h5>
                         </li>
                     </ul>
+                    {!! $year !!}
                     <div id="ct-visits" style="height: 285px;"></div>
                 </div>
             </div>
@@ -97,6 +98,30 @@
         (function () {
             [].slice.call(document.querySelectorAll('.sttabs')).forEach(function (el) {
                 new CBPFWTabs(el);
+            });
+            //ct-visits
+            new Chartist.Line('#ct-visits', {
+                labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'],
+                series: [
+                    [5, 2, 7, 4, 5, 3, 5, 4],
+                    [6, 7, 1, 65, 2, 56, 2, 44],
+                    [2, 5, 82, 26, 62, 35, 92, 54],
+                    [42, 15, 2, 6, 2, 55, 20, 24]
+                ]
+            }, {
+                top: 0,
+                low: 1,
+                showPoint: true,
+                fullWidth: true,
+                plugins: [
+                    Chartist.plugins.tooltip()
+                ],
+                axisY: {
+                    labelInterpolationFnc: function (value) {
+                        return (value / 1) + 'k';
+                    }
+                },
+                showArea: true
             });
         })();
     </script>
