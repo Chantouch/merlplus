@@ -22,7 +22,12 @@ class CreateMediaLibrariesTable extends Migration
             $table->string('title',255)->nullable();
             $table->string('caption',255)->nullable();
             $table->string('alt_text',200)->nullable();
+            $table->string('size',100)->nullable();
+            $table->string('width',100)->nullable();
+            $table->string('height',100)->nullable();
             $table->longText('description')->nullable();
+            $table->unsignedInteger('user_id', false)->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

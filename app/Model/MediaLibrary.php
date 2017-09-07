@@ -13,7 +13,7 @@ class MediaLibrary extends Model
 		'filename',
 		'original_filename',
 		'mime_type',
-		'url',
+		'url', 'user_id',
 		'title',
 		'caption',
 		'alt_text',
@@ -136,5 +136,13 @@ class MediaLibrary extends Model
 	public function getUploadedAtAttribute()
 	{
 		return $this->attributes['created_at'] = Carbon::parse($this->attributes['created_at'])->format('M, d, Y H:s:i');
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function owner()
+	{
+		return $this->belongsTo(User::class, 'user_id');
 	}
 }

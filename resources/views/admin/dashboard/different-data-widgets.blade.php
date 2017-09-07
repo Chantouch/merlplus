@@ -84,7 +84,7 @@
                             </span>
                         </li>
                         <li class="col-last">
-                            <h3 class="counter text-right m-t-15">83</h3>
+                            <h3 class="counter text-right m-t-15">{!! empty($visitors) ? 1 : count($visitors) !!}</h3>
                         </li>
                         <li class="col-middle">
                             <h4>Net Earnings</h4>

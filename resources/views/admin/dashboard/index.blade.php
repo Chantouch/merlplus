@@ -21,7 +21,6 @@
                             <h5><i class="fa fa-circle m-r-5 text-danger"></i>Windows</h5>
                         </li>
                     </ul>
-                    {!! $year !!}
                     <div id="ct-visits" style="height: 285px;"></div>
                 </div>
             </div>

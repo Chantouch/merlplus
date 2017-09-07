@@ -51,7 +51,8 @@
                 </ul>
             </li>
             <li>
-                <a href="{!! route('admin.dashboard') !!}" class="waves-effect{!! Request::is('admin/dashboard') ? ' active': '' !!}">
+                <a href="{!! route('admin.dashboard') !!}"
+                   class="waves-effect{!! Request::is('admin/dashboard') ? ' active': '' !!}">
                     <i class="mdi mdi-av-timer fa-fw" data-icon="v"></i>
                     <span class="hide-menu"> Dashboard
                         <span class="label label-rouded label-inverse pull-right">1</span>
@@ -254,14 +255,16 @@
                 </ul>
             </li>
             <li class="devider"></li>
-            <li>
-                <a href="{{ route('logout') }}" class="waves-effect" onclick="event.preventDefault();
+            @if (Auth::check())
+                <li>
+                    <a href="{{ route('logout') }}" class="waves-effect" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                    <i class="mdi mdi-logout fa-fw"></i>
-                    <span class="hide-menu">Log out</span>
-                </a>
-            </li>
-            <li class="devider"></li>
+                        <i class="mdi mdi-logout fa-fw"></i>
+                        <span class="hide-menu">Log out</span>
+                    </a>
+                </li>
+                <li class="devider"></li>
+            @endif
         </ul>
     </div>
 </div>

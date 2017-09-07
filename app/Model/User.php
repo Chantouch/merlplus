@@ -96,6 +96,16 @@ class User extends Authenticatable
     /**
      * Check if the user has a role
      *
+     * @return boolean
+     */
+    public function checkHasRole(): bool
+    {
+        return $this->roles->isNotEmpty();
+    }
+
+    /**
+     * Check if the user has a role
+     *
      * @param string $role
      * @return boolean
      */
@@ -143,6 +153,14 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class, 'user_id');
+    }
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function mediasLibrary()
+	{
+		return $this->hasMany(MediaLibrary::class);
     }
 
 }
