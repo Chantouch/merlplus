@@ -8,73 +8,73 @@
 ?>
 <h3 class="sec-title">TOURISM - GALLERY</h3>
 <div class="sm-gal-bg">
-    <a href="#"><img alt="" data-echo="blog/img/samples/z5.jpg"/></a>
+    <a href="#"><img alt="Image blog default page" src="blog/img/samples/z5.jpg"/></a>
 </div>
 <div class="flexslider img-sm-gal righty">
     <ul class="slides">
         <li>
-            <img alt="" data-echo="blog/img/samples/r1.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r5.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r1.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r5.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r2.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r6.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r2.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r6.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r3.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r7.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r3.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r7.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r4.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r8.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r4.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r8.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r1.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r5.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r1.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r5.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r2.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r6.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r2.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r6.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r3.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r7.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r3.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r7.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r4.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r8.jpg">
+            <img alt="Image blog default page" src="blog/img/samples/r4.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r8.jpg">
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r1.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r5.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r1.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r5.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r2.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r6.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r2.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r6.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r3.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r7.jpg">
+            <img alt="Image blog default page" src="blog/img/samples/r3.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r7.jpg">
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r4.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r8.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r4.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r8.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r1.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r5.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r1.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r5.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r2.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r6.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r2.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r6.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r3.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r7.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r3.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r7.jpg"/>
         </li>
         <li>
-            <img alt="" data-echo="blog/img/samples/r4.jpg"/>
-            <img alt="" data-echo="blog/img/samples/r8.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r4.jpg"/>
+            <img alt="Image blog default page" src="blog/img/samples/r8.jpg"/>
         </li>
     </ul>
 </div>

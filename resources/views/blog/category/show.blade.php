@@ -19,10 +19,10 @@
                         <div class="big-two-{!! $index+1 !!} blocky boxgrid3 caption">
                             @if($post->hasThumbnail())
                                 <img alt="{!! $post->excerptTitle(60) !!}"
-                                     data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                     src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                             @else
                                 <img alt="{!! $post->excerptTitle(60) !!}"
-                                     data-echo="{!! asset('blog/img/samples/z1'.$index.'.jpg') !!}"/>
+                                     src="{!! asset('blog/img/samples/z1'.$index.'.jpg') !!}"/>
                             @endif
                             <div class="cover boxcaption3">
                                 <h3>
@@ -50,10 +50,10 @@
                     <a href="#">
                         @if($post->hasThumbnail())
                             <img alt="{!! $post->excerptTitle(60) !!}" class="lefty img-responsive" width="107"
-                                 data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                 src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                         @else
                             <img class="lefty" alt="{!! $post->excerptTitle(60) !!}"
-                                 data-echo="{!! asset('blog/img/samples/e1.jpg') !!}"/>
+                                 src="{!! asset('blog/img/samples/e1.jpg') !!}"/>
                         @endif
                     </a>
                     <h4 class="lefty">{!! $post->excerptTitle(40) !!}</h4>
@@ -75,10 +75,10 @@
                     <div class="sec-1-big float-width">
                         @if($post->hasThumbnail())
                             <img alt="{!! $post->excerptTitle(60) !!}" class="lefty img-responsive" width="271"
-                                 data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                 src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                         @else
                             <img class="lefty" alt="{!! $post->excerptTitle(60) !!}"
-                                 data-echo="{!! asset('blog/img/samples/z'.$index.'.jpg') !!}"/>
+                                 src="{!! asset('blog/img/samples/z'.$index.'.jpg') !!}"/>
                         @endif
                         <div class="sec-1-big-text lefty">
                             <h3>{!! $post->excerptTitle(30) !!}</h3>

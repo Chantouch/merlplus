@@ -34,7 +34,7 @@
                         <li>
                             <h3 class="sec-title">MUSIC NEWS</h3>
                             <div class="sec-1-sm">
-                                <img alt="" class="blocky" src="blog/img/samples/e5.jpg"/>
+                                <img alt="Image blog default page" class="blocky" src="blog/img/samples/e5.jpg"/>
                                 <div class="sec-1-sm-text blocky">
                                     <h3>TOP 10 Pop track list past year</h3>
                                     <h6><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                             <div class="sec-1-sm">
-                                <img alt="" class="blocky" src="blog/img/samples/e6.jpg"/>
+                                <img alt="Image blog default page" class="blocky" src="blog/img/samples/e6.jpg"/>
                                 <div class="sec-1-sm-text blocky">
                                     <h3>Another Hip-Hop rising star</h3>
                                     <h6><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="sec-1-sm">
-                                <img alt="" class="blocky" src="blog/img/samples/e7.jpg"/>
+                                <img alt="Image blog default page" class="blocky" src="blog/img/samples/e7.jpg"/>
                                 <div class="sec-1-sm-text blocky">
                                     <h3>New MP3 tracks are coming </h3>
                                     <h6><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i
@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                             <div class="sec-1-sm">
-                                <img alt="" class="blocky" src="blog/img/samples/e8.jpg"/>
+                                <img alt="Image blog default page" class="blocky" src="blog/img/samples/e8.jpg"/>
                                 <div class="sec-1-sm-text blocky">
                                     <h3>DJ Open Music Festival 2014</h3>
                                     <h6><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i

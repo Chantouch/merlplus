@@ -24,12 +24,12 @@
                     @endif
                 </h4>
                 <div class="cover boxcaption">
-                    <h3>
+                    <h1>
                         <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                             {!! $post->excerptTitle(45) !!}
                         </a>
                         <span class="topic-icn">81</span>
-                    </h3>
+                    </h1>
                     <p>
                         {!! $post->excerpt(1000) !!}
                     </p>

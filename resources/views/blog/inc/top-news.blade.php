@@ -45,7 +45,7 @@
                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                         @if($post->hasThumbnail())
                             <img alt="{!! $post->title !!}" class="lefty img-responsive" width="107"
-                                 data-echo="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                 src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                         @endif
                     </a>
                     <h4 class="lefty">

@@ -13,7 +13,7 @@
                 <li>
                     <div class="trans2 slide-sngl">
                         <a class="text-center" href="#">
-                            <img alt="" data-echo="{!! asset('blog/img/samples/s1.jpg') !!}"/>
+                            <img alt="Image blog default page" src="{!! asset('blog/img/samples/s1.jpg') !!}"/>
                         </a>
                         <h4><a href="#">Listen during running</a></h4>
                         <p>

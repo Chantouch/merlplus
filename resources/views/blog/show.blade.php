@@ -158,7 +158,7 @@
         @if($post->author)
             <h3 class="float-width">{!! $post->checkAuthor() !!}</h3>
             <div class="author-info">
-                <img alt="" src="{!! asset('blog/img/samples/a2.jpg') !!}"/>
+                <img alt="Image blog default page" src="{!! asset('blog/img/samples/a2.jpg') !!}"/>
                 <p>
                     Aliquam tristique vehicula nulla sit amet facilisis. Nulla ultrices vitae eros at semper. Donec
                     sapien
@@ -181,7 +181,7 @@
         <h3 class="sec-title">COMMENTS</h3>
         <div class="comments-section float-width">
             <div class="single-comment">
-                <img alt="" class="blocky" src="{!! asset('blog/img/samples/t1.jpg') !!}"/>
+                <img alt="Image blog default page" class="blocky" src="{!! asset('blog/img/samples/t1.jpg') !!}"/>
                 <div class="the-comment lefty">
                     <h4>
                         <span class="comntr-nm lefty">Eiad Ashraf </span>
@@ -195,7 +195,7 @@
             </div>
             <div class="cmnt-dvdr"></div>
             <div class="single-comment reply-1">
-                <img alt="" class="blocky" src="{!! asset('blog/img/samples/t2.jpg') !!}"/>
+                <img alt="Image blog default page" class="blocky" src="{!! asset('blog/img/samples/t2.jpg') !!}"/>
                 <div class="the-comment lefty">
                     <h4>
                         <span class="comntr-nm lefty">Soza </span>
@@ -209,7 +209,7 @@
             </div>
             <div class="cmnt-dvdr"></div>
             <div class="single-comment reply-1">
-                <img alt="" class="blocky" src="{!! asset('blog/img/samples/t3.jpg') !!}"/>
+                <img alt="Image blog default page" class="blocky" src="{!! asset('blog/img/samples/t3.jpg') !!}"/>
                 <div class="the-comment lefty">
                     <h4>
                         <span class="comntr-nm lefty">Zoom </span>
@@ -223,7 +223,7 @@
             </div>
             <div class="cmnt-dvdr"></div>
             <div class="single-comment reply-2">
-                <img alt="" class="blocky" src="{!! asset('blog/img/samples/t4.jpg') !!}">
+                <img alt="Image blog default page" class="blocky" src="{!! asset('blog/img/samples/t4.jpg') !!}">
                 <div class="the-comment lefty">
                     <h4>
                         <span class="comntr-nm lefty">Ali Dawood </span>
@@ -237,7 +237,7 @@
             </div>
             <div class="cmnt-dvdr"></div>
             <div class="single-comment">
-                <img alt="" class="blocky" src="{!! asset('blog/img/samples/t5.jpg') !!}"/>
+                <img alt="Image blog default page" class="blocky" src="{!! asset('blog/img/samples/t5.jpg') !!}"/>
                 <div class="the-comment lefty">
                     <h4>
                         <span class="comntr-nm lefty">Miri Drik </span>
@@ -272,28 +272,28 @@
     <div class="artcl-reltd float-width">
         <h3 class="sec-title">RELATED POSTS</h3>
         <div class="reltd-sngl">
-            <img alt="" src="{!! asset('blog/img/samples/e1.jpg') !!}">
+            <img alt="Image blog default page" src="{!! asset('blog/img/samples/e1.jpg') !!}">
             <div class="reltd-sngl-txt">
                 <h3>After party of Blondi Concert will begin tomorrow </h3>
                 <p><i class="fa fa-clock-o"></i>20 Jan 2014</p>
             </div>
         </div>
         <div class="reltd-sngl">
-            <img alt="" src="{!! asset('blog/img/samples/e2.jpg') !!}">
+            <img alt="Image blog default page" src="{!! asset('blog/img/samples/e2.jpg') !!}">
             <div class="reltd-sngl-txt">
                 <h3>After party of Blondi Concert will begin tomorrow </h3>
                 <p><i class="fa fa-clock-o"></i>20 Jan 2014</p>
             </div>
         </div>
         <div class="reltd-sngl">
-            <img alt="" src="{!! asset('blog/img/samples/e3.jpg') !!}">
+            <img alt="Image blog default page" src="{!! asset('blog/img/samples/e3.jpg') !!}">
             <div class="reltd-sngl-txt">
                 <h3>After party of Blondi Concert will begin tomorrow </h3>
                 <p><i class="fa fa-clock-o"></i>20 Jan 2014</p>
             </div>
         </div>
         <div class="reltd-sngl">
-            <img alt="" src="{!! asset('blog/img/samples/e4.jpg') !!}">
+            <img alt="Image blog default page" src="{!! asset('blog/img/samples/e4.jpg') !!}">
             <div class="reltd-sngl-txt">
                 <h3>After party of Blondi Concert will begin tomorrow </h3>
                 <p><i class="fa fa-clock-o"></i>20 Jan 2014</p>

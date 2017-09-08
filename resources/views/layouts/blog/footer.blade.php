@@ -68,7 +68,7 @@
 <!-- Info footer -->
 <div class="info-ftr float-width">
     <div class="mag-info lefty">
-        <a class="ftr-logo" href="#"><img alt="" src="{!! asset('blog/img/barbri.png') !!}" width="250"/></a>
+        <a class="ftr-logo" href="#"><img alt="Image blog default page" src="{!! asset('blog/img/barbri.png') !!}" width="250"/></a>
         <p>Suspendisse dapibus blandit auctor. Aenean nisl felis, fermentum in ante sit amet, lobortis
             hendrerit
             nunc. Curabitur pharetra in velit at ornare... <a href="#">READ ABOUT US</a></p>
@@ -93,25 +93,25 @@
     <div class="post-ftr lefty">
         <h3>LATEST POSTS</h3>
         <div class="pst-ftr-sngl float-width">
-            <a href="#" class="lefty pst-ftr-img"><img alt="" src="blog/img/samples/y1.jpg"/></a>
+            <a href="#" class="lefty pst-ftr-img"><img alt="Image blog default page" src="blog/img/samples/y1.jpg"/></a>
             <h5>Pizza will be delivered by Drons</h5>
             <h6 class="lefty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i
                             class="fa fa-comment-o"></i>21 comments</span></h6>
-            <a href="#" class="lefty stars"><img alt="" src="blog/img/4-stars.png"></a>
+            <a href="#" class="lefty stars"><img alt="Image blog default page" src="blog/img/4-stars.png"></a>
         </div>
         <div class="pst-ftr-sngl float-width">
-            <a href="#" class="lefty pst-ftr-img"><img alt="" src="blog/img/samples/y2.jpg"/></a>
+            <a href="#" class="lefty pst-ftr-img"><img alt="Image blog default page" src="blog/img/samples/y2.jpg"/></a>
             <h5>YouTube as a real Television?</h5>
             <h6 class="lefty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i
                             class="fa fa-comment-o"></i>21 comments</span></h6>
-            <a href="#" class="lefty stars"><img alt="" src="blog/img/4-stars.png"/></a>
+            <a href="#" class="lefty stars"><img alt="Image blog default page" src="blog/img/4-stars.png"/></a>
         </div>
         <div class="pst-ftr-sngl float-width">
-            <a href="#" class="lefty pst-ftr-img"><img alt="" src="blog/img/samples/y3.jpg"/></a>
+            <a href="#" class="lefty pst-ftr-img"><img alt="Image blog default page" src="blog/img/samples/y3.jpg"/></a>
             <h5>Flying Mouse to your PC</h5>
             <h6 class="lefty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i
                             class="fa fa-comment-o"></i>21 comments</span></h6>
-            <a href="#" class="lefty stars"><img alt="" src="blog/img/4-stars.png"/></a>
+            <a href="#" class="lefty stars"><img alt="Image blog default page" src="blog/img/4-stars.png"/></a>
         </div>
     </div>
     <div class="twts-ftr lefty">

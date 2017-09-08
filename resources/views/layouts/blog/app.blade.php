@@ -120,7 +120,7 @@
 
 <script src="{!! asset('blog/js/jsf83a.css?file=calendar') !!}"></script>
 
-<script src="{!! asset('blog/js/js35ad.js?file=main') !!}"></script>
+<script src="{!! asset('blog/js/main.min.js') !!}"></script>
 
 <script src="{!! asset('blog/js/slick.min.js') !!}"></script>
 <script src="{!! asset('blog/js/jquery.lazyload.min.js') !!}"></script>

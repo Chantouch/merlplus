@@ -13,9 +13,9 @@
 </div>
 <div class="vid-thmb">
     <ul class="float-width">
-        <li><img alt="" data-echo="blog/img/samples/b1.jpg"/></li>
-        <li><img alt="" data-echo="blog/img/samples/b2.jpg"/></li>
-        <li><img alt="" data-echo="blog/img/samples/b3.jpg"/></li>
-        <li><img alt="" data-echo="blog/img/samples/b4.jpg"/></li>
+        <li><img alt="Image blog default page" src="blog/img/samples/b1.jpg"/></li>
+        <li><img alt="Image blog default page" src="blog/img/samples/b2.jpg"/></li>
+        <li><img alt="Image blog default page" src="blog/img/samples/b3.jpg"/></li>
+        <li><img alt="Image blog default page" src="blog/img/samples/b4.jpg"/></li>
     </ul>
 </div>

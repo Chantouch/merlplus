@@ -1,19 +1,19 @@
-let hidemenu;
+var hidemenu;
 
 /* set Cookie to hide menu */
 function setCookie(cname, cvalue, exdays) {
-    let d = new Date();
+    var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    let expires = "expires=" + d.toGMTString();
+    var expires = "expires=" + d.toGMTString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
 }
 
 /* get Cookie to check hide menu */
 function getCookie(cname) {
-    let name = cname + "=";
-    let ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i].trim();
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
         if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
     }
     return "";
@@ -41,7 +41,7 @@ jQuery(document).ready(function() {
     });
     /* Toggle scroll menu */
     $('#hidemenu').bind('click', function() {
-        let nav = $('.main-menu');
+        var nav = $('.main-menu');
         nav.removeClass("f-nav");
         $(this).hide();
         hidemenu = true;
@@ -49,7 +49,7 @@ jQuery(document).ready(function() {
     });
 
     $('#showmenu').bind('click', function() {
-        let nav = $('.main-menu');
+        var nav = $('.main-menu');
         nav.addClass("f-nav");
         $(this).show();
         hidemenu = false;
@@ -129,7 +129,7 @@ jQuery(document).ready(function() {
     });
 
     /* Right Side Calender */
-    let cal = CALENDAR();
+    var cal = CALENDAR();
 
     cal.init();
 
@@ -208,10 +208,10 @@ $(window).on('load', function() {
 
 
 /* This is for the Fixed Menu on scroll */
-let nav = $('.main-menu');
+var nav = $('.main-menu');
 
 $(window).scroll(function() {
-    let hidecookie = getCookie('hidemenu');
+    var hidecookie = getCookie('hidemenu');
     if ($(this).scrollTop() > 160 && hidemenu !== true && hidecookie !== 'hide') {
         nav.addClass("f-nav");
         $('#hidemenu').show();
