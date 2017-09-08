@@ -21,8 +21,9 @@ class BaseController extends Controller
     public function __construct()
 
     {
-	    MetaTag::set('title', 'You are at home');
-	    MetaTag::set('description', 'Blog Wes Anderson bicycle rights, occupy Shoreditch gentrify keffiyeh.');
+	    MetaTag::set('title', 'Merlplus is a leading news in Cambodia');
+	    MetaTag::set('keywords', 'health, cooking, breaking news, entertainment, technology, life, sport, cambodia');
+	    MetaTag::set('description', 'Merlplus proudly is the most visited and popular Khmer website, with more than 20 million page views and almost 2 millions unique visitors per month!');
 	    MetaTag::set('image', asset('images/default-share-image.png'));
         $top_ads = Advertise::with(['ads_type', 'media'])
             ->where('advertise_type_id', 1)->get();

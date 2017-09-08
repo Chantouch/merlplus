@@ -6,53 +6,36 @@
  * Time: 12:43 PM
  */
 ?>
-<!-- News slider -->
-<div class="flex-container">
-    <div class="flexslider hm-slider">
-        <ul class="slides">
-            @if(count($posts))
-                @foreach($posts->take(5) as $post)
-                    <li>
-                        @if($post->hasThumbnail())
-                            <img alt="{!! $post->excerptTitle(60) !!}"
-                                 src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
-                        @else
-                            <img alt="{!! $post->excerptTitle(60) !!}" src="blog/img/samples/sample.jpg"/>
-                        @endif
-                        <h3 class="cat-label cat-label1">
-                            @if(count($post->categories))
-                                <a href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}"
-                                   class="font-uppercase">{!! $post->categories->first()->name !!}
-                                </a>
-                            @endif
-                        </h3>
-                        <div class="hm-sldr-caption">
-                            <h3>
-                                <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                    {!! $post->excerptTitle(100) !!}<span class="topic-icn">17</span>
-                                </a>
-                            </h3>
-                            <p>
-                                {!! $post->excerpt(1200) !!}
-                            </p>
-                        </div>
-                    </li>
-                @endforeach
+
+@if(count($posts))
+    @foreach($posts->random(2) as $index => $post)
+        <div class="mid-block-1 boxgrid caption item">
+            @if($post->hasThumbnail())
+                <img alt="{!! $post->excerptTitle(60) !!}" class="img"
+                     src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+            @else
+                <img alt="{!! $post->excerptTitle(60) !!}"
+                     src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
             @endif
-        </ul>
-    </div>
-</div>
-
-<div class="mid-block-ads-468x60 boxgrid caption">
-    <img alt="Dolorem temporibus omnis voluptas repudiandae ipsa..." src="blog/img/ads-468x60.png">
-    <h4 class="cat-label cat-label2">
-        <a href="#" class="font-uppercase">Sport</a>
-    </h4>
-</div>
-
-<div class="mid-block-ads-468x60 boxgrid caption">
-    <img alt="Dolorem temporibus omnis voluptas repudiandae ipsa..." src="blog/img/ads-468x60-1.png">
-    <h4 class="cat-label cat-label2">
-        <a href="#" class="font-uppercase">Sport</a>
-    </h4>
-</div>
+            <h4 class="cat-label cat-label2">
+                @if(count($post->categories))
+                    <a href="#" class="font-uppercase">{!! $post->categories->first()->name !!}</a>
+                @endif
+            </h4>
+            <div class="cover boxcaption">
+                <h1>
+                    <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
+                        {!! $post->excerptTitle(45) !!}
+                    </a>
+                    <span class="topic-icn">81</span>
+                </h1>
+                <p>
+                    {!! $post->excerpt(1000) !!}
+                </p>
+                <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">MORE
+                    <i class="fa fa-angle-double-right"></i>
+                </a>
+            </div>
+        </div>
+    @endforeach
+@endif

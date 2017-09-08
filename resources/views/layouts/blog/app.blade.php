@@ -25,15 +25,7 @@
     {!! MetaTag::twitterCard() !!}
     {!! MetaTag::tag('image', asset('images/default-logo.png')) !!}
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{!! asset('blog/css/css8b0d.css?file=bootstrap.min') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/css97f7.css?file=bootstrap-theme') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/css4610.css?file=normalize') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/csse1a8.css?file=elements') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/css35ad.css?file=main') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/css9a38.css?file=responsive') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/cssf83a.css?file=calendar') !!}">
+    <link href="{{ asset('blog/css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
     <script src="{!! asset('blog/js/modernizr.min.js') !!}"></script>
     <style>
@@ -99,55 +91,34 @@
 </div>
 
 <!-- Scripts -->
-{{--<script src="{{ asset('js/app.js') }}"></script>--}}
+<script src="{{ asset('blog/js/app.js') }}"></script>
 
-<script src="{!! asset('blog/js/jquery-3.2.1.min.js') !!}"></script>
-{{--<script src="{!! asset('blog/js/js5a10.js?file=vendor/jquery-3.2.1.min') !!}"></script>--}}
-
-<script src="{!! asset('bootstrap/dist/js/bootstrap.min.js') !!}"></script>
-
-<script src="{!! asset('blog/js/jsec26.css?file=jquery.smartmenus.min') !!}"></script>
-
-<script src="{!! asset('blog/js/js047d.css?file=jquery.flexslider-min') !!}"></script>
-
-<script src="{!! asset('blog/js/js288f.css?file=newsTicker') !!}"></script>
-
-<script src="{!! asset('blog/js/js6a7f.css?file=jquery.customSelect.min') !!}"></script>
-
-<script src="{!! asset('blog/js/jse3a4.css?file=retina-1.1.0.min') !!}"></script>
-
-<script src="{!! asset('blog/js/jsf0b3.css?file=jflickrfeed.min') !!}"></script>
-
-<script src="{!! asset('blog/js/jsf83a.css?file=calendar') !!}"></script>
-
-<script src="{!! asset('blog/js/main.min.js') !!}"></script>
-
-<script src="{!! asset('blog/js/slick.min.js') !!}"></script>
-<script src="{!! asset('blog/js/jquery.lazyload.min.js') !!}"></script>
-<script src="{!! asset('blog/js/echo.min.js') !!}"></script>
+{{--<script src="{!! asset('blog/js/slick.min.js') !!}"></script>--}}
+{{--<script src="{!! asset('blog/js/jquery.lazyload.min.js') !!}"></script>--}}
+{{--<script src="{!! asset('blog/js/echo.min.js') !!}"></script>--}}
 
 @yield('plugins')
 
 @yield('scripts')
-<script !src="">
-    $(function () {
-        $("img").lazyload({
-            effect: "fadeIn"
-        });
-        echo.init({
-            offset: 100,
-            throttle: 250,
-            unload: false,
-            callback: function (element, op) {
-                if (op === 'load') {
-                    element.classList.add('loaded');
-                } else {
-                    element.classList.remove('loaded');
-                }
-            }
-        });
-    })
+{{--<script !src="">--}}
+    {{--$(function () {--}}
+        {{--$("img").lazyload({--}}
+            {{--effect: "fadeIn"--}}
+        {{--});--}}
+        {{--echo.init({--}}
+            {{--offset: 100,--}}
+            {{--throttle: 250,--}}
+            {{--unload: false,--}}
+            {{--callback: function (element, op) {--}}
+                {{--if (op === 'load') {--}}
+                    {{--element.classList.add('loaded');--}}
+                {{--} else {--}}
+                    {{--element.classList.remove('loaded');--}}
+                {{--}--}}
+            {{--}--}}
+        {{--});--}}
+    {{--})--}}
 
-</script>
+{{--</script>--}}
 </body>
 </html>

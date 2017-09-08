@@ -13,21 +13,6 @@
                 @endif
             </div>
         </div>
-
-        <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
-            <label for="basic-url" class="col-md-12">SEO (Slug)</label>
-            <div class="col-sm-12">
-                <div class="input-group">
-                    <span class="input-group-addon" id="article-slug">https://example.com/article/</span>
-                    {!! Form::text('slug', null, ['class' => 'form-control', 'aria-describedby' => 'slug']) !!}
-                </div>
-                @if ($errors->has('slug'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('slug') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
         <div class="form-group">
             <div class="col-md-12">
                 <button type="button" class="btn btn-primary" @click.prevent="addMedia">

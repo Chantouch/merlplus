@@ -64,13 +64,11 @@
 @section('post-background')
     <div class="fix-bg">
         @if($post->hasThumbnail())
-            <div class="img"
-                 style="background-image:url({!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!});">
-            </div>
+            <img alt="{!! $post->excerptTitle(60) !!}" class="img"
+                 src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
         @else
-            <div class="img"
-                 style="background-image:url({!! asset('images/space_stars_nebulae_aurora_85533_1280x720.jpg') !!});">
-            </div>
+            <img alt="{!! $post->excerptTitle(60) !!}" class="img"
+                 src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
         @endif
         <div class="inside"></div>
     </div>

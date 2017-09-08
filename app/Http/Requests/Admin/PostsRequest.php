@@ -32,9 +32,9 @@ class PostsRequest extends FormRequest
             'can_be_author' => $canBeAuthor
         ]);
 
-        $this->merge([
-            'slug' => str_slug($this->input('title'))
-        ]);
+        //$this->merge([
+        //   'slug' => str_slug($this->input('title'))
+        //]);
     }
 
     /**
@@ -44,12 +44,12 @@ class PostsRequest extends FormRequest
      */
     public function rules()
     {
-        $article = $this->route()->parameter('article');
+        //$article = $this->route()->parameter('article');
         return [
             'title' => 'required',
             'description' => 'required',
             //'can_be_author' => 'required|accepted',
-            'slug' => 'unique:posts,slug,' . ($article ? $article : null),
+            //'slug' => 'unique:posts,slug,' . ($article ? $article : null),
             'background' => 'dimensions:min_width=1280,min_height=720',
             'thumb_nail' => 'dimensions:min_width=510,min_height=287',
             'categories' => 'required'

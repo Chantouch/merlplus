@@ -13,9 +13,8 @@
             @foreach($posts->random(2) as $index => $post)
                 <div class="big-two-{!! $index + 1 !!} blocky boxgrid3 caption item">
                     @if($post->hasThumbnail())
-                        <div class="img"
-                             style="background-image:url({!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!});">
-                        </div>
+                        <img alt="{!! $post->excerptTitle(60) !!}" class="img"
+                             src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                     @endif
                     <div class="cover boxcaption3">
                         <h3>

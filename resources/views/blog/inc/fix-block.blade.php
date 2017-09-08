@@ -12,17 +12,17 @@
         @foreach($posts->random(2) as $index => $post)
             <div class="mid-block-1 boxgrid caption item">
                 @if($post->hasThumbnail())
-                    <div class="img"
-                         style="background-image:url({!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!});">
-                    </div>
+                    <img alt="{!! $post->excerptTitle(60) !!}" class="img"
+                         src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                 @else
-                    <div class="img" style="background-image:url({!! asset('blog/img/samples/sample1.jpg') !!});"></div>
+                    <img alt="{!! $post->excerptTitle(60) !!}"
+                         src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
                 @endif
-                <h4 class="cat-label cat-label2">
+                <h2 class="cat-label cat-label2">
                     @if(count($post->categories))
                         <a href="#" class="font-uppercase">{!! $post->categories->first()->name !!}</a>
                     @endif
-                </h4>
+                </h2>
                 <div class="cover boxcaption">
                     <h1>
                         <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
@@ -49,7 +49,8 @@
             @if($ads->hasBanner())
                 <a href="{!! $ads->url !!}" target="_blank">
                     <div class="rt-block mid-block-1 boxgrid2 caption item">
-                        <div class="img" style="background-image:url({!! $ads->banner()->media_url !!});"></div>
+                        <img alt="{!! $ads->provider_name !!}" class="img"
+                             src="{!! asset($ads->banner()->media_url) !!}"/>
                         <h4 class="cat-label cat-label4">
                             <a href="#">{!! $ads->provider_name !!}</a>
                         </h4>
