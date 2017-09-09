@@ -65,7 +65,7 @@
                             <h3 class="counter text-right m-t-15">{!! $postsTotal !!}</h3>
                         </li>
                         <li class="col-middle">
-                            <h4>Total Active Posts</h4>
+                            <h4>Total Active</h4>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-success" role="progressbar"
                                      aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"

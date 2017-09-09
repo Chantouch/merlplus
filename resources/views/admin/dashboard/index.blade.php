@@ -10,15 +10,15 @@
     <div class="col-md-12">
         @include('admin.dashboard.different-data-widgets')
         <div class="row">
-            <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                 <div class="white-box">
                     <h3 class="box-title">Products Yearly Sales</h3>
                     <ul class="list-inline text-right">
                         <li>
-                            <h5><i class="fa fa-circle m-r-5 text-info"></i>Mac</h5>
+                            <h5><i class="fa fa-circle m-r-5 text-danger"></i>Active</h5>
                         </li>
                         <li>
-                            <h5><i class="fa fa-circle m-r-5 text-danger"></i>Windows</h5>
+                            <h5><i class="fa fa-circle m-r-5 text-info"></i>InActive</h5>
                         </li>
                     </ul>
                     <div id="ct-visits" style="height: 285px;"></div>
@@ -98,16 +98,16 @@
             [].slice.call(document.querySelectorAll('.sttabs')).forEach(function (el) {
                 new CBPFWTabs(el);
             });
-            //ct-visits
-            new Chartist.Line('#ct-visits', {
-                labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'],
+
+            var data = {
+                labels: {!! $labels !!},
                 series: [
-                    [5, 2, 7, 4, 5, 3, 5, 4],
-                    [6, 7, 1, 65, 2, 56, 2, 44],
-                    [2, 5, 82, 26, 62, 35, 92, 54],
-                    [42, 15, 2, 6, 2, 55, 20, 24]
+                    {!! $series !!}
                 ]
-            }, {
+            };
+
+            /* Set some base options (settings will override the default settings in Chartist.js *see default settings*). We are adding a basic label interpolation function for the xAxis labels. */
+            var options = {
                 top: 0,
                 low: 1,
                 showPoint: true,
@@ -117,11 +117,37 @@
                 ],
                 axisY: {
                     labelInterpolationFnc: function (value) {
-                        return (value / 1) + 'k';
+                        return (value / 1);
                     }
                 },
-                showArea: true
-            });
+                chartPadding: {
+                    right: 10
+                }
+            };
+
+            /* Now we can specify multiple responsive settings that will override the base settings based on order and if the media queries match. In this example we are changing the visibility of dots and lines as well as use different label interpolations for space reasons. */
+            var responsiveOptions = [
+                ['screen and (min-width: 641px) and (max-width: 1024px)', {
+                    showPoint: false,
+                    axisX: {
+                        labelInterpolationFnc: function (value) {
+                            return 'Week ' + value;
+                        }
+                    }
+                }],
+                ['screen and (max-width: 640px)', {
+                    showLine: false,
+                    axisX: {
+                        labelInterpolationFnc: function (value) {
+                            return 'W' + value;
+                        }
+                    }
+                }]
+            ];
+
+            /* Initialize the chart with the above settings */
+            new Chartist.Line('#ct-visits', data, options, responsiveOptions);
+
         })();
     </script>
 @stop
