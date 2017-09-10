@@ -43,6 +43,8 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
     Route::resource('advertise-type', 'AdvertiseTypeController');
     Route::resource('media-library', 'MediaLibraryController');
     Route::get('draft/article', 'ArticleController@draft')->name('article.draft');
+
+    Route::get('/insert-db', 'HomeController@insertPostCategory');
 });
 
 //-------------Blog Front Route-------------//
@@ -53,4 +55,3 @@ Route::name('blog.')->namespace('Blog')->group(function () {
     Route::resource('article', 'PostsController', ['only' => 'show']);
     Route::resource('topics', 'CategoryController', ['only' => 'show']);
 });
-Route::get('/insert-db', 'HomeController@insertPostCategory');

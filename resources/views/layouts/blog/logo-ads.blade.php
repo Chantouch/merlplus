@@ -11,7 +11,7 @@
         <!-- Website Logo -->
         <div class="logo col-lg-4">
             <a href="/">
-                <img alt="Image blog default page" src="{!! asset('blog/img/barbri.png') !!}" width="270"/>
+                <img alt="Image blog default page" src="{!! asset('blog/img/logo.png') !!}" width="270"/>
             </a>
         </div>
         <div class="top-banner col-lg-8">

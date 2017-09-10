@@ -8,7 +8,7 @@
 ?>
 
 @if(count($posts))
-    @foreach($posts->random(2) as $index => $post)
+    @foreach($posts['news_sliders'] as $index => $post)
         <div class="mid-block-1 boxgrid caption item">
             @if($post->hasThumbnail())
                 <img alt="{!! $post->excerptTitle(60) !!}" class="img"

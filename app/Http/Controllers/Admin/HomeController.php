@@ -8,7 +8,6 @@ use App\Model\Post;
 use App\Model\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use Tracker;
 
 class HomeController extends Controller
 {
@@ -33,36 +32,49 @@ class HomeController extends Controller
         $postsLastWeek = Post::lastWeek()->get();
         $postsTotal = Post::totalActive();
         $users = User::lastWeek()->get();
-        $chartDatas = Post::monthDailyPost()
+        $chartDataActive = Post::monthDailyPost()
             ->get()
             ->toArray();
-        $chartDataByDay = [];
-        foreach ($chartDatas as $data) {
-            $chartDataByDay[$data['date']] = $data['count'];
+
+        $week = [];
+        $active = [];
+        $inactive = [];
+        $draft = [];
+        foreach ($chartDataActive as $data) {
+            $week[$data['date']] = $data['date'];
+            $active[$data['date']] = $data['CountActive'];
+            $inactive[$data['date']] = $data['CountInActive'];
+            $draft[$data['date']] = $data['CountDraft'];
         }
         $date = new Carbon();
+        $date_count = [];
+        $act_count = [];
+        $inact_count = [];
+        $draft_count = [];
         for ($i = 0; $i < 7; $i++) {
             $dateString = $date->format('Y-m-d');
-            if (!isset($chartDataByDay[$dateString])) {
-                $chartDataByDay[$dateString] = 0;
+            if (isset($week[$dateString])) {
+                $date_count[] = $week[$dateString];
+                $act_count[] = $active[$dateString];
+                $inact_count[] = $inactive[$dateString];
+                $draft_count[] = $draft[$dateString];
+            } else {
+                $date_count[] = $dateString;
+                $act_count[] = 0;
+                $inact_count[] = 0;
+                $draft_count[] = 0;
             }
             $date->subDay();
         }
-
-        $labels = [];
-        $series = [];
-        foreach ($chartDataByDay as $key => $val) {
-            array_push($labels, $key);
-            array_push($series, $val);
-        }
         $profile = auth()->user();
         $userLists = User::with('roles')->latest()->get();
-        $visitors = Tracker::currentSession();
         return view('admin.dashboard.index', compact(
-            'comments', 'postsLastWeek', 'users', 'postsTotal', 'profile', 'userLists', 'visitors'
+            'comments', 'postsLastWeek', 'users', 'postsTotal', 'profile', 'userLists'
         ))
-            ->with('labels', json_encode($labels, true))
-            ->with('series', json_encode($series, true));
+            ->with('labels', json_encode($date_count, true))
+            ->with('active', json_encode($act_count, true))
+            ->with('inactive', json_encode($inact_count, true))
+            ->with('draft', json_encode($draft_count, true));
     }
 
     /**

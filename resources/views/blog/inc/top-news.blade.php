@@ -18,7 +18,7 @@
                     @endif
                     <div class="cover boxcaption3">
                         <h3>
-                            <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
+                            <a href="{!! route('blog.article.show', [$post->id]) !!}">
                                 {!! str_limit($post->title, 35) !!}
                             </a>
                         </h3>

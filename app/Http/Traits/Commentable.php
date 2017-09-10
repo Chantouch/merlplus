@@ -14,7 +14,7 @@ use App\Model\Comment;
 trait Commentable
 {
     /**
-     * Check if the resource has a media
+     * Check if the resource has a comment
      *
      * @param integer $comment_id
      * @return boolean
@@ -25,7 +25,7 @@ trait Commentable
     }
 
     /**
-     * Get all of the resource's media.
+     * Get all of the resource's comment.
      */
     public function comments()
     {

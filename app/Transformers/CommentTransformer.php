@@ -18,9 +18,8 @@ class CommentTransformer extends TransformerAbstract
         return [
             'id' => $comment->id,
             'body' => $comment->body,
-            'posted_at' => $comment->posted_at->toIso8601String(),
+            'posted_at' => $comment->posted_at,
             'user_id' => $comment->user_id,
-            'post_id' => $comment->post_id
         ];
     }
 }

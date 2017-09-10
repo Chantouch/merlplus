@@ -178,73 +178,18 @@
     <div class="artcl-comments float-width">
         <h3 class="sec-title">COMMENTS</h3>
         <div class="comments-section float-width">
-            <div class="single-comment">
-                <img alt="Image blog default page" class="blocky" src="{!! asset('blog/img/samples/t1.jpg') !!}"/>
-                <div class="the-comment lefty">
-                    <h4>
-                        <span class="comntr-nm lefty">Eiad Ashraf </span>
-                        <span class="cmnt-dt lefty"> at 14 July 2013</span>
-                        <a class="righty" href="#"><span class="cmnt-reply">Reply</span></a>
-                    </h4>
-                    <p>Praesent nec risus non tellus scelerisque congue eu eu purus. Aliquam id porta lacus. Morbi
-                        eleifend ultricies placerat. Nullam luctus lectus a risus congue scelerisque. In in fermentum
-                        nunc.</p>
-                </div>
-            </div>
-            <div class="cmnt-dvdr"></div>
-            <div class="single-comment reply-1">
-                <img alt="Image blog default page" class="blocky" src="{!! asset('blog/img/samples/t2.jpg') !!}"/>
-                <div class="the-comment lefty">
-                    <h4>
-                        <span class="comntr-nm lefty">Soza </span>
-                        <span class="cmnt-dt lefty"> at 14 July 2013</span>
-                        <a class="righty" href="#"><span class="cmnt-reply">Reply</span></a>
-                    </h4>
-                    <p>Praesent nec risus non tellus scelerisque congue eu eu purus. Aliquam id porta lacus. Morbi
-                        eleifend ultricies placerat. Nullam luctus lectus a risus congue scelerisque. In in fermentum
-                        nunc.</p>
-                </div>
-            </div>
-            <div class="cmnt-dvdr"></div>
-            <div class="single-comment reply-1">
-                <img alt="Image blog default page" class="blocky" src="{!! asset('blog/img/samples/t3.jpg') !!}"/>
-                <div class="the-comment lefty">
-                    <h4>
-                        <span class="comntr-nm lefty">Zoom </span>
-                        <span class="cmnt-dt lefty"> at 14 July 2013</span>
-                        <a class="righty" href="#"><span class="cmnt-reply">Reply</span></a>
-                    </h4>
-                    <p>Praesent nec risus non tellus scelerisque congue eu eu purus. Aliquam id porta lacus. Morbi
-                        eleifend ultricies placerat. Nullam luctus lectus a risus congue scelerisque. In in fermentum
-                        nunc.</p>
-                </div>
-            </div>
-            <div class="cmnt-dvdr"></div>
-            <div class="single-comment reply-2">
-                <img alt="Image blog default page" class="blocky" src="{!! asset('blog/img/samples/t4.jpg') !!}">
-                <div class="the-comment lefty">
-                    <h4>
-                        <span class="comntr-nm lefty">Ali Dawood </span>
-                        <span class="cmnt-dt lefty"> at 14 July 2013</span>
-                        <a class="righty" href="#"><span class="cmnt-reply">Reply</span></a>
-                    </h4>
-                    <p>Praesent nec risus non tellus scelerisque congue eu eu purus. Aliquam id porta lacus. Morbi
-                        eleifend ultricies placerat. Nullam luctus lectus a risus congue scelerisque. In in fermentum
-                        nunc.</p>
-                </div>
-            </div>
-            <div class="cmnt-dvdr"></div>
-            <div class="single-comment">
-                <img alt="Image blog default page" class="blocky" src="{!! asset('blog/img/samples/t5.jpg') !!}"/>
-                <div class="the-comment lefty">
-                    <h4>
-                        <span class="comntr-nm lefty">Miri Drik </span>
-                        <span class="cmnt-dt lefty"> at 14 July 2013</span>
-                        <a class="righty" href="#"><span class="cmnt-reply">Reply</span></a>
-                    </h4>
-                    <p>Praesent nec risus non tellus scelerisque congue eu eu purus. Aliquam id porta lacus. Morbi
-                        eleifend ultricies placerat. Nullam luctus lectus a risus congue scelerisque. In in fermentum
-                        nunc.</p>
+            <div class="comment" v-for="(comment,index) in comments.data">
+                <div class="cmnt-dvdr" v-if="index > 0"></div>
+                <div class="single-comment">
+                    <img alt="Image blog default page" class="blocky" src="{!! asset('blog/img/samples/t1.jpg') !!}"/>
+                    <div class="the-comment lefty">
+                        <h4>
+                            <span class="comntr-nm lefty">Eiad Ashraf </span>
+                            <span class="cmnt-dt lefty"> at @{{ comment.attributes.posted_at }}</span>
+                            {{--<a class="righty" href="#"><span class="cmnt-reply">Reply</span></a>--}}
+                        </h4>
+                        <p>@{{ comment.attributes.body }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -252,17 +197,20 @@
             <h3 class="sec-title">LEAVE A RESPONSE</h3>
             <form role="form">
                 <div class="form-group">
-                    <input type="name" class="form-control" id="exampleInputName" placeholder="Name or nickname">
+                    <input class="form-control" id="comment_name" placeholder="Name or nickname">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail">
+                    <input type="email" class="form-control" id="comment_email" placeholder="E-mail">
                 </div>
                 <div class="form-group">
-                    <input type="website" class="form-control" id="exampleInputWebsite"
+                    <input class="form-control" id="comment_website"
                            placeholder="Website (optional)">
                 </div>
-                <textarea class="form-control" rows="6" placeholder="Your comment"></textarea>
-                <a class="cmnt-btn trans2" href="#">POST YOUR COMMENT</a>
+                <textarea class="form-control" rows="6" placeholder="Your comment" v-model="newComment.body"></textarea>
+                <span class="help-block" v-if="formErrors['newComment.body']" style="color: red">
+                    <small>The name field is required</small>
+                </span>
+                <a class="cmnt-btn trans2" @click.prevent="createComment">POST YOUR COMMENT</a>
             </form>
         </div>
     </div>
@@ -302,6 +250,70 @@
 
     <!-- Facebook share JS -->
     <div id="fb-root"></div>
+@stop
+
+@section('plugins')
+    <script src="{!! asset('plugins/fancybox/dist/jquery.fancybox.js') !!}"></script>
+@stop
+@section('scripts')
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                comments: {},
+                newComment: {
+                    body: '',
+                    user_id: '',
+                    parent_id: ''
+                },
+                formErrors: {}
+            },
+            created: function () {
+                this.fetchComments()
+            },
+            methods: {
+                fetchComments() {
+                    let vm = this;
+                    vm.$http.get('/api/v1/posts/{!! $post->id !!}/comments').then(response => {
+                        console.log(response.data);
+                        vm.comments = response.data
+                    })
+                },
+                createComment() {
+                    let vm = this;
+                    let input = this.newComment;
+                    vm.$http.post('/api/v1/posts/{!! $post->id !!}/comments', input).then(response => {
+                        alert('Comment added');
+                    });
+                    this.fetchComments();
+                }
+            }
+        });
+
+        $().fancybox({
+            selector: '[data-fancybox="images"]',
+            thumbs: false,
+            hash: false,
+        });
+
+        $(".main-slider").slick({
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: false,
+            arrows: false,
+            responsive: [
+                {
+                    breakpoint: 960,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+
+    </script>
     <script>(function (d, s, id) {
             let js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
@@ -327,35 +339,4 @@
     <!-- Pinterest share JS -->
     <script type="text/javascript" async src="https://assets.pinterest.com/js/pinit.js"></script>
 
-@stop
-
-@section('plugins')
-    <script src="{!! asset('plugins/fancybox/dist/jquery.fancybox.js') !!}"></script>
-@stop
-@section('scripts')
-    <script !src="">
-        $().fancybox({
-            selector: '[data-fancybox="images"]',
-            thumbs: false,
-            hash: false,
-        });
-
-        $(".main-slider").slick({
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: false,
-            arrows: false,
-            responsive: [
-                {
-                    breakpoint: 960,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
-
-    </script>
 @stop

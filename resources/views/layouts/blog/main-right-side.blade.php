@@ -27,81 +27,81 @@
     {{--</div>--}}
 {{--</div>--}}
 <!-- Social Media Counter -->
-<div class="smedia lefty">
-    <div class="w50 blocky">
-        <a href="#">
-            <img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/fb.png') !!}"/>
-            <span>6423</span>
-        </a>
-    </div>
-    <div class="w50 blocky">
-        <a href="#">
-            <img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/tw.png') !!}"/>
-            <span>12344</span>
-        </a>
-    </div>
-    <div class="w50 blocky">
-        <a href="#">
-            <img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/gplus.png') !!}"/>
-            <span>1846</span>
-        </a>
-    </div>
-    <div class="w50 blocky">
-        <a href="#">
-            <img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/drp.png') !!}"/>
-            <span>416</span>
-        </a>
-    </div>
-    <div class="w50 blocky">
-        <a href="#">
-            <img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/flkr.png') !!}"/>
-            <span>91</span>
-        </a>
-    </div>
-    <div class="w50 blocky">
-        <a href="#">
-            <img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/ig.png') !!}"/>
-            <span>3487</span>
-        </a>
-    </div>
-</div>
+{{--<div class="smedia lefty">--}}
+    {{--<div class="w50 blocky">--}}
+        {{--<a href="#">--}}
+            {{--<img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/fb.png') !!}"/>--}}
+            {{--<span>6423</span>--}}
+        {{--</a>--}}
+    {{--</div>--}}
+    {{--<div class="w50 blocky">--}}
+        {{--<a href="#">--}}
+            {{--<img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/tw.png') !!}"/>--}}
+            {{--<span>12344</span>--}}
+        {{--</a>--}}
+    {{--</div>--}}
+    {{--<div class="w50 blocky">--}}
+        {{--<a href="#">--}}
+            {{--<img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/gplus.png') !!}"/>--}}
+            {{--<span>1846</span>--}}
+        {{--</a>--}}
+    {{--</div>--}}
+    {{--<div class="w50 blocky">--}}
+        {{--<a href="#">--}}
+            {{--<img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/drp.png') !!}"/>--}}
+            {{--<span>416</span>--}}
+        {{--</a>--}}
+    {{--</div>--}}
+    {{--<div class="w50 blocky">--}}
+        {{--<a href="#">--}}
+            {{--<img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/flkr.png') !!}"/>--}}
+            {{--<span>91</span>--}}
+        {{--</a>--}}
+    {{--</div>--}}
+    {{--<div class="w50 blocky">--}}
+        {{--<a href="#">--}}
+            {{--<img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/ig.png') !!}"/>--}}
+            {{--<span>3487</span>--}}
+        {{--</a>--}}
+    {{--</div>--}}
+{{--</div>--}}
 <!-- Trending news right -->
-<div class="trending lefty">
-    <h3 class="sec-title">TRENDING</h3>
-    <div class="trend-1">
-        <a href="#"><img alt="Image blog default page" src="{!! asset('blog/img/samples/z3.jpg') !!}"/></a>
-        <a class="lefty cat-a cat-label2" href="#">GAMES</a>
-        <div class="trend-2">
-            <h3><a href="#">Watch Dogs - First gameplay this year</a></h3>
-            <p>Curabitur fringilla porttitor porta. Vivamus vel nulla ullamcorper, fringilla ligula nec,
-                pellentesque nisl. Sed dolor..</p>
-            <p class="artcl-time-1">
-                <span><i class="fa fa-clock-o"></i>20 Jan 2014</span>
-                <span><i class="fa fa-comment-o"></i>21 comments</span>
-            </p>
-        </div>
-    </div>
-    <div class="float-width">
-        <div class="trend-sm float-width">
-            <a href="#"><img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/samples/e2.jpg') !!}"/></a>
-            <h4 class="lefty">USA Games Studio will release sandbox new game</h4>
-            <a class="lefty cat-a cat-label2" href="#">GAMES</a>
-            <p class="righty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span></p>
-        </div>
-        <div class="trend-sm float-width">
-            <a href="#"><img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/samples/e1.jpg') !!}"/></a>
-            <h4 class="lefty">After party of Blondi Concert will begin tomorrow</h4>
-            <a class="lefty cat-a cat-label4" href="#">MUSIC</a>
-            <p class="righty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span></p>
-        </div>
-        <div class="trend-sm float-width">
-            <a href="#"><img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/samples/e3.jpg') !!}"/></a>
-            <h4 class="lefty">The best place to see in Winter season this year</h4>
-            <a class="lefty cat-a cat-label3" href="#">TOURISM</a>
-            <p class="righty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span></p>
-        </div>
-    </div>
-</div>
+{{--<div class="trending lefty">--}}
+    {{--<h3 class="sec-title">TRENDING</h3>--}}
+    {{--<div class="trend-1">--}}
+        {{--<a href="#"><img alt="Image blog default page" src="{!! asset('blog/img/samples/z3.jpg') !!}"/></a>--}}
+        {{--<a class="lefty cat-a cat-label2" href="#">GAMES</a>--}}
+        {{--<div class="trend-2">--}}
+            {{--<h3><a href="#">Watch Dogs - First gameplay this year</a></h3>--}}
+            {{--<p>Curabitur fringilla porttitor porta. Vivamus vel nulla ullamcorper, fringilla ligula nec,--}}
+                {{--pellentesque nisl. Sed dolor..</p>--}}
+            {{--<p class="artcl-time-1">--}}
+                {{--<span><i class="fa fa-clock-o"></i>20 Jan 2014</span>--}}
+                {{--<span><i class="fa fa-comment-o"></i>21 comments</span>--}}
+            {{--</p>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="float-width">--}}
+        {{--<div class="trend-sm float-width">--}}
+            {{--<a href="#"><img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/samples/e2.jpg') !!}"/></a>--}}
+            {{--<h4 class="lefty">USA Games Studio will release sandbox new game</h4>--}}
+            {{--<a class="lefty cat-a cat-label2" href="#">GAMES</a>--}}
+            {{--<p class="righty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span></p>--}}
+        {{--</div>--}}
+        {{--<div class="trend-sm float-width">--}}
+            {{--<a href="#"><img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/samples/e1.jpg') !!}"/></a>--}}
+            {{--<h4 class="lefty">After party of Blondi Concert will begin tomorrow</h4>--}}
+            {{--<a class="lefty cat-a cat-label4" href="#">MUSIC</a>--}}
+            {{--<p class="righty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span></p>--}}
+        {{--</div>--}}
+        {{--<div class="trend-sm float-width">--}}
+            {{--<a href="#"><img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/samples/e3.jpg') !!}"/></a>--}}
+            {{--<h4 class="lefty">The best place to see in Winter season this year</h4>--}}
+            {{--<a class="lefty cat-a cat-label3" href="#">TOURISM</a>--}}
+            {{--<p class="righty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span></p>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
 <!-- Flicker Widget -->
 {{--<div class="flkr-cont lefty">--}}
     {{--<h3 class="sec-title">FLICKR WIDGET</h3>--}}

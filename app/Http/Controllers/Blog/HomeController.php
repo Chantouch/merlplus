@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Blog;
 use App\Http\Controllers\BaseController;
 use App\Model\Category;
 use App\Model\Post;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends BaseController
 {
@@ -24,8 +25,12 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        $posts = Post::with(['categories', 'comments'])->latest()->get();
+        $news_sliders = Post::with(['categories', 'comments'])
+            ->latest()->take(4)->get();
         $categories = Category::with('articles')->get();
+        $posts = [
+            'news_sliders' => $news_sliders,
+        ];
         return view($this->view . 'index', compact('posts', 'categories'));
     }
 }

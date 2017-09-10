@@ -10,6 +10,7 @@ use App\Scopes\PostedScope;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -211,8 +212,13 @@ class Post extends Model
     {
         return $query->selectRaw('DATE(created_at) AS date')
             ->selectRaw('COUNT(id) AS count')
-            ->where('active', 1)
-            ->whereBetween('created_at', [Carbon::now()->subDays(7)->format('Y-m-d'), Carbon::now()->format('Y-m-d')])
+            ->selectRaw('Count(CASE WHEN active = 1 THEN id END) AS CountActive')
+            ->selectRaw('Count(CASE WHEN active = 2 THEN id END) AS CountInActive')
+            ->selectRaw('Count(CASE WHEN active = 3 THEN id END) AS CountDraft')
+            //->where('active', 1)
+            //->whereBetween('created_at', [Carbon::now()->subDays(7)->format('Y-m-d'), Carbon::now()->format('Y-m-d')])
+            ->where(DB::raw('DATE(created_at)'), '>=', Carbon::now()->subDays(7)->format('Y-m-d'))
+            ->where(DB::raw('DATE(created_at)'), '<=', Carbon::now()->format('Y-m-d'))
             ->groupBy('date')
             ->orderBy('date', 'ASC');
     }
@@ -262,9 +268,9 @@ class Post extends Model
                 'original_filename' => $thumbnail->getClientOriginalName(),
                 'mime_type' => $thumbnail->getMimeType()
             ]);
-            $image_large->save($path . 'large_' . $file_name, 100);
-            $image_medium->save($path . 'medium_' . $file_name, 100);
-            $image_small->save($path . 'small_' . $file_name, 100);
+            $image_large->save($path . 'large_' . $file_name, 50);
+            $image_medium->save($path . 'medium_' . $file_name, 50);
+            $image_small->save($path . 'small_' . $file_name, 50);
             $this->update(['thumbnail_id' => $media->id]);
         } else {
             $name = $this->media()->first()->filename;
@@ -281,9 +287,9 @@ class Post extends Model
                 'original_filename' => $thumbnail->getClientOriginalName(),
                 'mime_type' => $thumbnail->getMimeType()
             ]);
-            $image_large->save($path . 'large_' . $file_name, 100);
-            $image_medium->save($path . 'medium_' . $file_name, 100);
-            $image_small->save($path . 'small_' . $file_name, 100);
+            $image_large->save($path . 'large_' . $file_name, 50);
+            $image_medium->save($path . 'medium_' . $file_name, 50);
+            $image_small->save($path . 'small_' . $file_name, 50);
         }
         return $thumbnail;
     }

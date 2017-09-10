@@ -13,7 +13,31 @@
         <div class="hm-slider-cont">
             @include('blog.inc.hm-news-slider')
         </div>
-        @include('blog.inc.fix-block')
+
+        <div class="rt-bk-cont">
+            @if(count($top_right_ads))
+                @foreach($top_right_ads as $ads)
+                    @if($ads->hasBanner())
+                        <a href="{!! $ads->url !!}" target="_blank">
+                            <div class="rt-block mid-block-1 boxgrid2 caption">
+                                <img alt="{!! $ads->provider_name !!}" class="img"
+                                     src="{!! asset($ads->banner()->media_url) !!}"/>
+                                <h2 class="cat-label cat-label4">
+                                    <a href="#">{!! $ads->provider_name !!}</a>
+                                </h2>
+                            </div>
+                        </a>
+                    @else
+                        <div class="rt-block mid-block-1 boxgrid2 caption item">
+                            {!! $ads->url !!}
+                            <h2 class="cat-label cat-label4">
+                                <a href="#">{!! $ads->provider_name !!}</a>
+                            </h2>
+                        </div>
+                    @endif
+                @endforeach
+            @endif
+        </div>
     </div>
 @stop
 @section('content')

@@ -15,10 +15,13 @@
                     <h3 class="box-title">Products Yearly Sales</h3>
                     <ul class="list-inline text-right">
                         <li>
-                            <h5><i class="fa fa-circle m-r-5 text-danger"></i>Active</h5>
+                            <h5><i class="fa fa-circle m-r-5 text-info"></i>Active</h5>
                         </li>
                         <li>
-                            <h5><i class="fa fa-circle m-r-5 text-info"></i>InActive</h5>
+                            <h5><i class="fa fa-circle m-r-5 text-danger"></i>InActive</h5>
+                        </li>
+                        <li>
+                            <h5><i class="fa fa-circle m-r-5 text-warning"></i>InActive</h5>
                         </li>
                     </ul>
                     <div id="ct-visits" style="height: 285px;"></div>
@@ -102,7 +105,9 @@
             var data = {
                 labels: {!! $labels !!},
                 series: [
-                    {!! $series !!}
+                    {!! $inactive !!},
+                    {!! $active !!},
+                    {!! $draft !!}
                 ]
             };
 

@@ -840,8 +840,8 @@ ul.sm-nowrap a:hover {
 .hm-slider-cont {
     position: relative;
     float: left;
-    width: 464px;
     height: 512px;
+    width:868px;
     padding: 0;
     margin-right: 13px
 }
@@ -1070,7 +1070,7 @@ span.topic-icn {
 }
 
 .mid-block-1 {
-    margin-bottom: 13px
+    margin-bottom: 0
 }
 
 .ticker {
