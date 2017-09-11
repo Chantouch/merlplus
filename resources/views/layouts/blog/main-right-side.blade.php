@@ -7,25 +7,25 @@
  */
 ?>
 <!-- One image slider -->
-{{--<div class="sm-sldr-box float-width">--}}
-    {{--<div class="flexslider sm-sldr">--}}
-        {{--<ul class="slides">--}}
-            {{--@if(isset($home_top_news_slider))--}}
-                {{--@if(count($home_top_news_slider))--}}
-                    {{--@foreach($home_top_news_slider->random(1) as $ads)--}}
-                        {{--<li>--}}
-                            {{--<img alt="{!! $ads->banner()->original_filename !!}" src="{!! asset($ads->banner()->media_url) !!}"/>--}}
-                        {{--</li>--}}
-                    {{--@endforeach--}}
-                {{--@else--}}
-                    {{--<li>--}}
-                        {{--<img alt="No image" src="{!! asset('blog/img/samples/z2.jpg') !!}"/>--}}
-                    {{--</li>--}}
-                {{--@endif--}}
-            {{--@endif--}}
-        {{--</ul>--}}
-    {{--</div>--}}
-{{--</div>--}}
+<div class="sm-sldr-box float-width">
+    <div class="flexslider sm-sldr">
+        <ul class="slides">
+            @if(isset($home_top_news_slider))
+                @if(count($home_top_news_slider))
+                    @foreach($home_top_news_slider->random(1) as $ads)
+                        <li>
+                            <img alt="{!! $ads->banner()->original_filename !!}" src="{!! asset($ads->banner()->media_url) !!}"/>
+                        </li>
+                    @endforeach
+                @else
+                    <li>
+                        <img alt="No image" src="{!! asset('blog/img/samples/z2.jpg') !!}"/>
+                    </li>
+                @endif
+            @endif
+        </ul>
+    </div>
+</div>
 <!-- Social Media Counter -->
 {{--<div class="smedia lefty">--}}
     {{--<div class="w50 blocky">--}}

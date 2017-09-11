@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                 <div class="white-box">
-                    <h3 class="box-title">Products Yearly Sales</h3>
+                    <h3 class="box-title">Articles daily posted</h3>
                     <ul class="list-inline text-right">
                         <li>
                             <h5><i class="fa fa-circle m-r-5 text-info"></i>Active</h5>
@@ -24,55 +24,7 @@
                             <h5><i class="fa fa-circle m-r-5 text-warning"></i>InActive</h5>
                         </li>
                     </ul>
-                    <div id="ct-visits" style="height: 285px;"></div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12">
-                <div class="bg-theme-alt">
-                    <div id="ct-daily-sales" class="p-t-30" style="height: 300px"></div>
-                </div>
-                <div class="white-box">
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <h2 class="m-b-0 font-medium">Week Sales</h2>
-                            <h5 class="text-muted m-t-0">Ios app - 160 sales</h5>
-                        </div>
-                        <div class="col-xs-4">
-                            <div class="circle circle-md bg-info pull-right m-t-10"><i class="ti-shopping-cart"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-lg-3 col-xs-12">
-                <div class="bg-theme white-box m-b-0">
-                    <ul class="expense-box">
-                        <li><i class="wi wi-day-cloudy text-white"></i>
-                            <div>
-                                <h1 class="text-white m-b-0">35<sup>o</sup></h1>
-                                <h4 class="text-white">Clear and sunny</h4>
-                            </div>
-                        </li>
-                    </ul>
-                    <div id="ct-weather" style="height: 120px"></div>
-                    <ul class="dp-table text-white">
-                        <li>05 AM</li>
-                        <li>10 AM</li>
-                        <li>03 PM</li>
-                        <li>08 PM</li>
-                    </ul>
-                </div>
-                <div class="white-box">
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <h2 class="m-b-0 font-medium">Sunday</h2>
-                            <h5 class="text-muted m-t-0">March 2017</h5>
-                        </div>
-                        <div class="col-xs-4">
-                            <div class="circle circle-md bg-success pull-right m-t-10"><i class="wi wi-day-sunny"></i>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="article-daily-posted" style="height: 285px;"></div>
                 </div>
             </div>
         </div>
@@ -151,7 +103,7 @@
             ];
 
             /* Initialize the chart with the above settings */
-            new Chartist.Line('#ct-visits', data, options, responsiveOptions);
+            new Chartist.Line('#article-daily-posted', data, options, responsiveOptions);
 
         })();
     </script>

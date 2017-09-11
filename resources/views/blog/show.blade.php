@@ -115,6 +115,11 @@
             </article>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>{!! __('posts.show.article') !!} ៖ {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
+        </div>
+    </div>
     <!-- The Article Social Media Share -->
     <div class="artcl-scl float-width">
         <div class="lefty artcl-tags">
@@ -151,69 +156,27 @@
             </ul>
         </div>
     </div>
-    <!-- Article Author Bio -->
-    <div class="author-bio float-width">
-        @if($post->author)
-            <h3 class="float-width">{!! $post->checkAuthor() !!}</h3>
-            <div class="author-info">
-                <img alt="Image blog default page" src="{!! asset('blog/img/samples/a2.jpg') !!}"/>
-                <p>
-                    Aliquam tristique vehicula nulla sit amet facilisis. Nulla ultrices vitae eros at semper. Donec
-                    sapien
-                    lacus, tincidunt sed sem quis, accumsan mollis eros. Aenean id enim dolor. Suspendisse potenti.
-                </p>
-                <ul>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                </ul>
-            </div>
-        @endif
+    <div class="ads_items web" id="ad_zone_01" style="margin-bottom:15px;" zone="7">
+        <ins style="text-decoration: none;">
+            <a href="http://ads.sabay.com/openx/www/delivery/ck.php?oaparams=2__bannerid=31527__zoneid=7__cb=879472f28a__oadest=https%3A%2F%2Fwww.facebook.com%2FBREDBankCambodia%2F"
+               target="_blank">
+                <img src="http://cdn.sabay.com/cdn/ads.sabay.com/images/6b04b737a6e1d8173a42271138144207.gif"
+                     width="728" height="90" alt="" title="" border="0"></a>
+            <div id="beacon_879472f28a" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
+                <img src="http://ads.sabay.com/openx/www/delivery/lg.php?bannerid=31527&amp;campaignid=8436&amp;zoneid=7&amp;loc=http%3A%2F%2Fnews.sabay.com.kh%2Farticle%2F969628%23utm_campaign%3Donpage&amp;referer=http%3A%2F%2Fnews.sabay.com.kh%2F&amp;cb=879472f28a"
+                     width="0" height="0" alt="" style="width: 0px; height: 0px;"></div>
+            <script type="text/javascript">
+                takeover('6b04b737a6e1d8173a42271138144207', 'https://ads.sabay.com/images/65b55a25792fe945d1bd0d4418e9ca97.gif');
+            </script>
+        </ins>
+        <script async src="//ads.sabay.com/openx/www/delivery/asyncjs.php"></script>
     </div>
-    <!-- Article Comments Section -->
-    <div class="artcl-comments float-width">
-        <h3 class="sec-title">COMMENTS</h3>
-        <div class="comments-section float-width">
-            <div class="comment" v-for="(comment,index) in comments.data">
-                <div class="cmnt-dvdr" v-if="index > 0"></div>
-                <div class="single-comment">
-                    <img alt="Image blog default page" class="blocky" src="{!! asset('blog/img/samples/t1.jpg') !!}"/>
-                    <div class="the-comment lefty">
-                        <h4>
-                            <span class="comntr-nm lefty">Eiad Ashraf </span>
-                            <span class="cmnt-dt lefty"> at @{{ comment.attributes.posted_at }}</span>
-                            {{--<a class="righty" href="#"><span class="cmnt-reply">Reply</span></a>--}}
-                        </h4>
-                        <p>@{{ comment.attributes.body }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="cmnt-reply-form float-width">
-            <h3 class="sec-title">LEAVE A RESPONSE</h3>
-            <form role="form">
-                <div class="form-group">
-                    <input class="form-control" id="comment_name" placeholder="Name or nickname">
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" id="comment_email" placeholder="E-mail">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" id="comment_website"
-                           placeholder="Website (optional)">
-                </div>
-                <textarea class="form-control" rows="6" placeholder="Your comment" v-model="newComment.body"></textarea>
-                <span class="help-block" v-if="formErrors['newComment.body']" style="color: red">
-                    <small>The name field is required</small>
-                </span>
-                <a class="cmnt-btn trans2" @click.prevent="createComment">POST YOUR COMMENT</a>
-            </form>
-        </div>
+    <div class="jumbotron">
+        <div class="title">ភ្ជាប់ទំនាក់ទំនងជាមួយ <span> MerlPlus News</span></div>
+        <div class="fb-like" data-href="https://www.facebook.com/pg/khclassifiedads/" data-layout="standard"
+             data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
     </div>
+    <div class="clearfix"></div>
     <!-- related Articles  -->
     <div class="artcl-reltd float-width">
         <h3 class="sec-title">RELATED POSTS</h3>
@@ -246,8 +209,8 @@
             </div>
         </div>
     </div>
-
-
+    <div class="fb-comments" data-href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}" data-width="100%"
+         data-numposts="5"></div>
     <!-- Facebook share JS -->
     <div id="fb-root"></div>
 @stop
@@ -315,14 +278,13 @@
 
     </script>
     <script>(function (d, s, id) {
-            let js, fjs = d.getElementsByTagName(s)[0];
+            var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s);
             js.id = id;
-            js.src = "https://connect.facebook.net/en_US/all.js#xfbml=1&appId=1906910106248873";
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1906910106248873";
             fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
+        }(document, 'script', 'facebook-jssdk'));</script>
 
     <!-- Twitter share JS -->
     <script>!function (d, s, id) {

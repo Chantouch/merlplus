@@ -54,4 +54,5 @@ Route::name('blog.')->namespace('Blog')->group(function () {
     Route::get('/media/{filename}', 'MediaController@getFiles')->name('media');
     Route::resource('article', 'PostsController', ['only' => 'show']);
     Route::resource('topics', 'CategoryController', ['only' => 'show']);
+    Route::resource('tag', 'TagController', ['only' => 'show']);
 });

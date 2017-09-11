@@ -62,7 +62,7 @@
                                             <label for="checkbox7"> </label>
                                         </div>
                                     </td>
-                                    <td style="width: 60px;"><img src="../plugins/images/users/varun.jpg"
+                                    <td style="width: 60px;"><img src="{!! asset('images/users/varun.jpg') !!}"
                                                                   class="img-circle" width="30" alt="user img"/>
                                     </td>
                                     <td>Andrew Simons</td>
@@ -81,7 +81,7 @@
                                             <label for="checkbox8"> </label>
                                         </div>
                                     </td>
-                                    <td><img src="../plugins/images/users/genu.jpg" alt="user img"
+                                    <td><img src="{!! asset('images/users/genu.jpg') !!}" alt="user img"
                                              class="img-circle" width="30"/></td>
                                     <td>Hanna Gover</td>
                                     <td>Admin</td>
@@ -99,7 +99,7 @@
                                             <label for="checkbox9"> </label>
                                         </div>
                                     </td>
-                                    <td><img src="../plugins/images/users/sonu.jpg" alt="user img"
+                                    <td><img src="{!! asset('images/users/sonu.jpg') !!}" alt="user img"
                                              class="img-circle" width="30"/></td>
                                     <td>Joshi Nirav</td>
                                     <td>Admin</td>
@@ -117,7 +117,7 @@
                                             <label for="checkbox10"> </label>
                                         </div>
                                     </td>
-                                    <td><img src="../plugins/images/users/pawandeep.jpg" alt="user img"
+                                    <td><img src="{!! asset('images/users/pawandeep.jpg') !!}" alt="user img"
                                              class="img-circle" width="30"/></td>
                                     <td>Joshi Sunil</td>
                                     <td>Admin</td>
@@ -174,7 +174,7 @@
                                             <label for="checkbox19"> </label>
                                         </div>
                                     </td>
-                                    <td style="width: 60px;"><img src="../plugins/images/users/varun.jpg"
+                                    <td style="width: 60px;"><img src="{!! asset('images/users/varun.jpg') !!}"
                                                                   alt="user img" class="img-circle" width="30"/>
                                     </td>
                                     <td>Andrew Simons</td>
@@ -193,7 +193,7 @@
                                             <label for="checkbox11"> </label>
                                         </div>
                                     </td>
-                                    <td><img src="../plugins/images/users/genu.jpg" alt="user img"
+                                    <td><img src="{!! asset('images/users/genu.jpg') !!}" alt="user img"
                                              class="img-circle" width="30"/></td>
                                     <td>Hanna Gover</td>
                                     <td>Admin</td>
@@ -211,7 +211,7 @@
                                             <label for="checkbox12"> </label>
                                         </div>
                                     </td>
-                                    <td><img src="../plugins/images/users/sonu.jpg" alt="user img"
+                                    <td><img src="{!! asset('images/users/sonu.jpg') !!}" alt="user img"
                                              class="img-circle" width="30"/></td>
                                     <td>Joshi Nirav</td>
                                     <td>Admin</td>
@@ -229,7 +229,7 @@
                                             <label for="checkbox13"> </label>
                                         </div>
                                     </td>
-                                    <td><img src="../plugins/images/users/pawandeep.jpg" alt="user img"
+                                    <td><img src="{!! asset('images/users/pawandeep.jpg') !!}" alt="user img"
                                              class="img-circle" width="30"/></td>
                                     <td>Joshi Sunil</td>
                                     <td>Admin</td>
@@ -286,7 +286,7 @@
                                             <label for="checkbox14"> </label>
                                         </div>
                                     </td>
-                                    <td style="width: 60px;"><img src="../plugins/images/users/varun.jpg"
+                                    <td style="width: 60px;"><img src="{!! asset('images/users/varun.jpg') !!}"
                                                                   alt="user img" class="img-circle" width="30"/>
                                     </td>
                                     <td>Andrew Simons</td>
@@ -305,7 +305,7 @@
                                             <label for="checkbox15"> </label>
                                         </div>
                                     </td>
-                                    <td><img src="../plugins/images/users/genu.jpg" alt="user img"
+                                    <td><img src="{!! asset('images/users/genu.jpg') !!}" alt="user img"
                                              class="img-circle" width="30"/></td>
                                     <td>Hanna Gover</td>
                                     <td>Admin</td>
@@ -323,7 +323,7 @@
                                             <label for="checkbox16"> </label>
                                         </div>
                                     </td>
-                                    <td><img src="../plugins/images/users/sonu.jpg" alt="user img"
+                                    <td><img src="{!! asset('images/users/sonu.jpg') !!}" alt="user img"
                                              class="img-circle" width="30"/></td>
                                     <td>Joshi Nirav</td>
                                     <td>Admin</td>
@@ -341,7 +341,7 @@
                                             <label for="checkbox17"> </label>
                                         </div>
                                     </td>
-                                    <td><img src="../plugins/images/users/pawandeep.jpg" alt="user img"
+                                    <td><img src="{!! asset('images/users/pawandeep.jpg') !!}" alt="user img"
                                              class="img-circle" width="30"/></td>
                                     <td>Joshi Sunil</td>
                                     <td>Admin</td>
@@ -398,7 +398,7 @@
                                             <label for="checkbox23"> </label>
                                         </div>
                                     </td>
-                                    <td style="width: 60px;"><img src="../plugins/images/users/varun.jpg"
+                                    <td style="width: 60px;"><img src="{!! asset('images/users/varun.jpg') !!}"
                                                                   alt="user img" class="img-circle" width="30"/>
                                     </td>
                                     <td>Andrew Simons</td>
@@ -417,7 +417,7 @@
                                             <label for="checkbox20"> </label>
                                         </div>
                                     </td>
-                                    <td><img src="../plugins/images/users/genu.jpg" alt="user img"
+                                    <td><img src="{!! asset('images/users/genu.jpg') !!}" alt="user img"
                                              class="img-circle" width="30"/></td>
                                     <td>Hanna Gover</td>
                                     <td>Admin</td>
@@ -435,7 +435,7 @@
                                             <label for="checkbox21"> </label>
                                         </div>
                                     </td>
-                                    <td><img src="../plugins/images/users/sonu.jpg" alt="user img"
+                                    <td><img src="{!! asset('images/users/sonu.jpg') !!}" alt="user img"
                                              class="img-circle" width="30"/></td>
                                     <td>Joshi Nirav</td>
                                     <td>Admin</td>
@@ -453,8 +453,10 @@
                                             <label for="checkbox22"> </label>
                                         </div>
                                     </td>
-                                    <td><img src="../plugins/images/users/pawandeep.jpg" alt="user img"
-                                             class="img-circle" width="30"/></td>
+                                    <td>
+                                        <img src="{!! asset('images/users/pawandeep.jpg') !!}" alt="user img" class="img-circle"
+                                             width="30"/>
+                                    </td>
                                     <td>Joshi Sunil</td>
                                     <td>Admin</td>
                                     <td>21 Mar 2004</td>
@@ -467,9 +469,11 @@
                             <div class="col-sm-8">
                                 <h3>1 members selected</h3>
                             </div>
-                            <div class="col-sm-2 pull-right m-t-10"><a href="javascript:void(0);"
-                                                                       class="btn btn-block p-10 btn-rounded btn-danger"><span>Save</span><i
-                                            class="ti-arrow-right m-l-5"></i></a></div>
+                            <div class="col-sm-2 pull-right m-t-10">
+                                <a href="javascript:void(0);" class="btn btn-block p-10 btn-rounded btn-danger">
+                                    <span>Save</span><i class="ti-arrow-right m-l-5"></i>
+                                </a>
+                            </div>
                         </div>
                     </section>
                 </div>
