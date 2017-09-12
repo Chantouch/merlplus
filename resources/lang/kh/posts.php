@@ -28,5 +28,6 @@ return [
         'title' => 'Votre titre',
         'content' => 'Votre contenu'
     ],
-    'show.article' => 'អត្តបទ'
+    'show.article' => 'អត្តបទ',
+	'btn_read_more' => 'អានបន្ត'
 ];

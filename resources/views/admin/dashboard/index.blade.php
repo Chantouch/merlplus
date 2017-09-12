@@ -6,6 +6,14 @@
           href="{!! asset('plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css') !!}">
     <link rel="stylesheet" href="{!! asset('plugins/calendar/dist/fullcalendar.css') !!}">
 @stop
+@section('style')
+    <style>
+        .manage-u-table select {
+            max-width: 150px;
+            border-radius: 0 !important;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="col-md-12">
         @include('admin.dashboard.different-data-widgets')
@@ -28,11 +36,11 @@
                 </div>
             </div>
         </div>
-        @include('admin.dashboard.wallet-user-widgets')
+        {{--@include('admin.dashboard.wallet-user-widgets')--}}
         @include('admin.dashboard.profile-inbox-widgets')
-        @include('admin.dashboard.calendar-todo-widgets')
+        {{--@include('admin.dashboard.calendar-todo-widgets')--}}
         @include('admin.dashboard.blog-component-widgets')
-        @include('admin.dashboard.chats-message-widgets')
+        {{--@include('admin.dashboard.chats-message-widgets')--}}
     </div>
 @endsection
 @section('plugins')
@@ -49,6 +57,58 @@
 @stop
 @section('scripts')
     <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                dashboard: [],
+                updateUser: {
+                    id: '',
+                    name: '',
+                    email: ''
+                }
+            },
+            created() {
+                this.dashboardData();
+            },
+            methods: {
+                dashboardData() {
+                    let vm = this;
+                    vm.$http.get('/api/v1/dashboard/').then(response => {
+                        vm.dashboard = response.data;
+                    })
+                },
+                postChartDaily() {
+                    let vm = this;
+                    vm.$http.get('/api/v1/dashboard/').then(response => {
+                        vm.dashboard = response.data;
+                        console.log(response.data);
+                    })
+                },
+                editUser(item) {
+                    let vm = this;
+                    vm.updateUser.name = item.name;
+                    vm.updateUser.email = item.email;
+                    vm.updateUser.id = item.id;
+                    $('#edit-user').modal({
+                        'show': true
+                    })
+                },
+                updateUserInfo(id) {
+                    let vm = this;
+                    let input = vm.updateUser;
+                    vm.$http.patch('/api/v1/users/' + id, input).then((response) => {
+                        vm.updateUser = {
+                            'name': '',
+                            'email': '',
+                            'id': ''
+                        };
+                        $("#edit-user").modal('hide');
+                        vm.dashboardData();
+                    });
+                }
+            }
+        });
+
         (function () {
             [].slice.call(document.querySelectorAll('.sttabs')).forEach(function (el) {
                 new CBPFWTabs(el);

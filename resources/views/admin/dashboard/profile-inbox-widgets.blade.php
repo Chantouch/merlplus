@@ -47,19 +47,7 @@
                     incididunt ut labore
                 </p>
                 <hr>
-                <h4 class="m-t-30 font-medium">Followers</h4>
-                <ul class="dp-table m-t-30">
-                    <li><img src="{!! asset('images/users/varun.jpg') !!}" alt="varun" width="60"
-                             data-toggle="tooltip" title="Varun Dhavan" class="img-circle"></li>
-                    <li><img src="{!! asset('images/users/genu.jpg') !!}" alt="varun" width="60" data-toggle="tooltip"
-                             title="Varun Dhavan" class="img-circle"></li>
-                    <li><img src="{!! asset('images/users/pawandeep.jpg') !!}" alt="varun" width="60"
-                             data-toggle="tooltip" title="Varun Dhavan" class="img-circle"></li>
-                    <li><a href="" class="circle circle-md bg-info di" data-toggle="tooltip" title="More">5+</a>
-                    </li>
-                </ul>
             </div>
-            <hr>
             <ul class="dp-table profile-social-icons">
                 <li><a href="javascript:void(0)"><i class="fa fa-globe"></i></a></li>
                 <li><a href="javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
@@ -80,52 +68,67 @@
                         <th>NAME</th>
                         <th>OCCUPATION</th>
                         <th>EMAIL</th>
-                        <th>CATEGORY</th>
+                        <th>JOINED@</th>
                         <th>MANAGE</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @if(!empty($userLists))
-                        @foreach($userLists as $index => $userList)
-                            <tr>
-                                <td class="text-center">{!! $index + 1 !!}</td>
-                                <td>
-                                    <span class="font-medium">{!! $userList->name !!}</span>
-                                    <br/><span class="text-muted">Texas, Unitedd states</span>
-                                </td>
-                                <td>
-                                    @if($userList->checkHasRole())
-                                        {!! $userList->roles->first()->name !!}
-                                    @else
-                                        No role
-                                    @endif
-                                    <br/><span class="text-muted">Past : teacher</span>
-                                </td>
-                                <td>
-                                    {!! $userList->email !!}
-                                    <br/><span class="text-muted">999 - 444 - 555</span>
-                                </td>
-                                <td>
-                                    <select class="form-control">
-                                        <option>Modulator</option>
-                                        <option>Admin</option>
-                                        <option>User</option>
-                                        <option>Subscriber</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5">
-                                        <i class="icon-trash"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
-                                        <i class="ti-pencil-alt"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
+                    <tr v-for="(user,index) in dashboard.usersList">
+                        <td class="text-center">@{{ index + 1 }}</td>
+                        <td>
+                            <span class="font-medium" v-text="user.name"></span>
+                            <br/><span class="text-muted">Texas, Unitedd states</span>
+                        </td>
+                        <td>
+                            <span v-for="role in user.roles" v-text="role.display_name"></span>
+                            <br/><span class="text-muted">Past : teacher</span>
+                        </td>
+                        <td>
+                            @{{ user.email }}
+                            <br/><span class="text-muted">999 - 444 - 555</span>
+                        </td>
+                        <td>
+                            @{{ user.created_at }}
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5">
+                                <i class="icon-trash"></i>
+                            </button>
+                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"
+                                    @click.prevent="editUser(user)">
+                                <i class="ti-pencil-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <!-- /.modal -->
+        <div id="edit-user" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Edit User</h4></div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="name" class="control-label">Name:</label>
+                                <input class="form-control" id="name" v-model="updateUser.name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="control-label">Email:</label>
+                                <input type="email" class="form-control" id="email" v-model="updateUser.email">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger waves-effect waves-light" @click.prevent="updateUserInfo(updateUser.id)">Save changes</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

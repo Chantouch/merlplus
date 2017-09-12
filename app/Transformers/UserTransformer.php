@@ -28,7 +28,6 @@ class UserTransformer extends TransformerAbstract
             'id' => $user->id,
             'name' => $user->name,
             'email' => $user->email,
-            'posted_at' => $user->posted_at->toIso8601String(),
             'comments_count' => $user->comments_count ?? $user->comments()->count(),
             'posts_count' => $user->posts_count ?? $user->posts()->count()
         ];

@@ -11,16 +11,38 @@
    RewriteRule .* ? [F,L]
    #URL Canonicalization
    RewriteCond %{HTTP_HOST} !^merlplus.bookingkh.com$ [NC]
-   RewriteRule ^(.*)$ https://merlplus.bookingkh.com/$1 [L,R=301]
+   RewriteRule ^(.*)$ https://www.merlplus.bookingkh.com/$1 [L,R=301]
     #IP Canonicalization
    RewriteCond %{HTTP_HOST} ^139\.162\.13\.242
-   RewriteRule (.*) https://merlplus.bookingkh.com/$1 [R=301,L]
+   RewriteRule (.*) https://www.merlplus.bookingkh.com/$1 [R=301,L]
 </IfModule>
 
+# ----------------------------------------------------------------------
+# Expires headers (for better cache control)
+# ----------------------------------------------------------------------
+
+# These are pretty far-future expires headers.
+# They assume you control versioning with filename-based cache busting
+# Additionally, consider that outdated proxies may miscache
+
+# If you don't use filenames to version, lower the CSS and JS to something like
+# "access plus 1 week".
+
 <IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresByType image/gif A2592000
-    ExpiresByType image/png A2592000
-    ExpiresByType image/jpg A2592000
-    ExpiresByType image/jpeg A2592000
+  ExpiresActive on
+# Your document html
+  ExpiresByType text/html "access plus 0 seconds"
+# Media: images, video, audio
+  ExpiresByType audio/ogg "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/ico "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 month"
+  ExpiresByType video/ogg "access plus 1 month"
+  ExpiresByType video/webm "access plus 1 month"
+
+# CSS and JavaScript
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
 </IfModule>
