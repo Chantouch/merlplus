@@ -317,7 +317,7 @@
                     <label class="col-sm-12" for="tag"></label>
                     <div class="col-md-12">
                         <input type="hidden" name="tags" :value="article.tags">
-                        <div class="checkbox checkbox-info" v-for="tag in tag_lists">
+                        <div class="checkbox checkbox-info" v-for="tag in tag_lists.tags">
                             <input :id="'tag-'+tag.id" type="checkbox" :value="tag.id"
                                    v-model="article.tags">
                             <label :for="'tag-'+tag.id"> @{{ tag.name }} </label>

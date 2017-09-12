@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Blog;
 use App\Http\Controllers\BaseController;
 use App\Model\Category;
 use App\Model\Post;
+use App\Model\Tag;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends BaseController
@@ -27,10 +28,16 @@ class HomeController extends BaseController
     {
         $news_sliders = Post::with(['categories', 'comments'])
             ->latest()->take(4)->get();
-        $categories = Category::with('articles')->get();
+        $categories = Category::with('articles')->latest()->get();
+        $tag = Tag::with('posts')
+            ->where('name', 'វីដេអូឃ្លីប')
+            ->orWhere('name', 'វីដេអូ')
+            ->orWhere('name', 'Video')
+            ->orWhere('name', 'Videos')
+            ->first();
         $posts = [
             'news_sliders' => $news_sliders,
         ];
-        return view($this->view . 'index', compact('posts', 'categories'));
+        return view($this->view . 'index', compact('posts', 'categories', 'tag'));
     }
 }

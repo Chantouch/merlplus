@@ -27,44 +27,44 @@
     </div>
 </div>
 <!-- Social Media Counter -->
-{{--<div class="smedia lefty">--}}
-    {{--<div class="w50 blocky">--}}
-        {{--<a href="#">--}}
-            {{--<img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/fb.png') !!}"/>--}}
-            {{--<span>6423</span>--}}
-        {{--</a>--}}
-    {{--</div>--}}
-    {{--<div class="w50 blocky">--}}
-        {{--<a href="#">--}}
-            {{--<img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/tw.png') !!}"/>--}}
-            {{--<span>12344</span>--}}
-        {{--</a>--}}
-    {{--</div>--}}
-    {{--<div class="w50 blocky">--}}
-        {{--<a href="#">--}}
-            {{--<img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/gplus.png') !!}"/>--}}
-            {{--<span>1846</span>--}}
-        {{--</a>--}}
-    {{--</div>--}}
-    {{--<div class="w50 blocky">--}}
-        {{--<a href="#">--}}
-            {{--<img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/drp.png') !!}"/>--}}
-            {{--<span>416</span>--}}
-        {{--</a>--}}
-    {{--</div>--}}
-    {{--<div class="w50 blocky">--}}
-        {{--<a href="#">--}}
-            {{--<img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/flkr.png') !!}"/>--}}
-            {{--<span>91</span>--}}
-        {{--</a>--}}
-    {{--</div>--}}
-    {{--<div class="w50 blocky">--}}
-        {{--<a href="#">--}}
-            {{--<img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/ig.png') !!}"/>--}}
-            {{--<span>3487</span>--}}
-        {{--</a>--}}
-    {{--</div>--}}
-{{--</div>--}}
+<div class="smedia lefty">
+    <div class="w50 blocky">
+        <a href="#">
+            <img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/fb.png') !!}"/>
+            <span>6423</span>
+        </a>
+    </div>
+    <div class="w50 blocky">
+        <a href="#">
+            <img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/tw.png') !!}"/>
+            <span>12344</span>
+        </a>
+    </div>
+    <div class="w50 blocky">
+        <a href="#">
+            <img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/gplus.png') !!}"/>
+            <span>1846</span>
+        </a>
+    </div>
+    <div class="w50 blocky">
+        <a href="#">
+            <img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/drp.png') !!}"/>
+            <span>416</span>
+        </a>
+    </div>
+    <div class="w50 blocky">
+        <a href="#">
+            <img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/flkr.png') !!}"/>
+            <span>91</span>
+        </a>
+    </div>
+    <div class="w50 blocky">
+        <a href="#">
+            <img alt="Image blog default page" class="lefty" src="{!! asset('blog/img/ig.png') !!}"/>
+            <span>3487</span>
+        </a>
+    </div>
+</div>
 <!-- Trending news right -->
 {{--<div class="trending lefty">--}}
     {{--<h3 class="sec-title">TRENDING</h3>--}}
@@ -114,7 +114,7 @@
     <form role="form">
         <div class="form-group">
             <input type="text" class="lefty" placeholder="Enter your email adress and hit enter">
-            <a href="#" class="lefty trans1" type="submit">save</a>
+            <a href="#" class="btn lefty trans1" type="submit">save</a>
         </div>
     </form>
 </div>

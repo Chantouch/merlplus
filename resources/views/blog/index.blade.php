@@ -7,7 +7,13 @@
  */
 ?>
 @extends('layouts.blog.app')
-
+@section('css')
+    <style>
+        .top-news .tn-small-1 img{
+            height: 85px !important;
+        }
+    </style>
+@stop
 @section('main-news-block')
     <div class="main-news-blks">
         <div class="hm-slider-cont">
@@ -42,9 +48,9 @@
 @stop
 @section('content')
     <!-- Top News Section -->
-    {{--<div class="top-news float-width">--}}
-        {{--@include('blog.inc.top-news')--}}
-    {{--</div>--}}
+    <div class="top-news float-width">
+        @include('blog.inc.top-news')
+    </div>
 
     <!-- Section 1 -->
     @include('blog.inc.section1')

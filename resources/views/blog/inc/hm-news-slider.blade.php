@@ -19,7 +19,7 @@
             @endif
             <h4 class="cat-label cat-label2">
                 @if(count($post->categories))
-                    <a href="#" class="font-uppercase">{!! $post->categories->first()->name !!}</a>
+                    <a href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}" class="font-uppercase">{!! $post->categories->first()->name !!}</a>
                 @endif
             </h4>
             <div class="cover boxcaption">
@@ -30,7 +30,7 @@
                     <span class="topic-icn">81</span>
                 </h1>
                 <p>
-                    {!! $post->excerpt(1000) !!}
+                    {!! $post->excerpt(1400) !!}
                 </p>
                 <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">MORE
                     <i class="fa fa-angle-double-right"></i>

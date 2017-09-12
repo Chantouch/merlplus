@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class TagController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +20,16 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::all();
-        return response($tags, 200);
+        $tag = Tag::with('posts')
+            ->where('name', 'វីដេអូឃ្លីប')
+            ->orWhere('name', 'វីដេអូ')
+            ->orWhere('name', 'Video')
+            ->orWhere('name', 'Videos')
+            ->first();
+        return response()->json([
+            'tags' => $tags,
+            'tag' => $tag
+        ], 200);
     }
 
 
@@ -36,7 +46,7 @@ class TagController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     public function store(Request $request)
@@ -47,7 +57,7 @@ class TagController extends Controller
             $validator = Validator::make($data, ['name' => 'required|min:3|unique:tags|max:255']);
             if ($validator->fails()) {
                 return [
-                    'fail'   => true,
+                    'fail' => true,
                     'errors' => $validator->getMessageBag()->toArray()
                 ];
             }
@@ -55,7 +65,7 @@ class TagController extends Controller
             $data['slug'] = str_slug($request->name, '-');
             $tag = Tag::with('posts')->create($data);
             DB::commit();
-            return response($tag,200);
+            return response($tag, 200);
         } catch (ModelNotFoundException $exception) {
             DB::rollback();
             return response(['error' => 'Something went wrong']);
@@ -65,7 +75,7 @@ class TagController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -76,7 +86,7 @@ class TagController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -87,8 +97,8 @@ class TagController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -99,7 +109,7 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
