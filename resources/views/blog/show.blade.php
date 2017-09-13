@@ -59,9 +59,20 @@
             margin: 0 0 10px;
         }
 
+        .artcl-reltd .reltd-sngl img {
+            height: 75px;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        .ads_items {
+            margin-bottom: 15px;
+        }
     </style>
 @stop
-@section('post-background')
+@section('post-backgrounds')
     <div class="fix-bg">
         @if($post->hasThumbnail())
             <img alt="{!! $post->excerptTitle(60) !!}" class="img"
@@ -71,6 +82,33 @@
                  src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
         @endif
         <div class="inside"></div>
+    </div>
+@stop
+@section('new_article_single_article')
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            New Articles
+        </div>
+        <div class="panel-body">
+            @if($post->categories->count())
+                @foreach($post->categories->first()->articles->take(6) as $article)
+                    <div class="media">
+                        <div class="media-left media-top">
+                            @if($article->hasThumbnail())
+                                <img src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
+                                     class="media-object" width="80" alt="{!! $article->title !!}">
+                            @else
+                                <img alt="{!! $article->excerptTitle(60) !!}" class="img-responsive" width="80"
+                                     src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
+                            @endif
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{!! $article->excerptTitle(80) !!}</h4>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
+        </div>
     </div>
 @stop
 @section('content')
@@ -156,21 +194,24 @@
             </ul>
         </div>
     </div>
-    <div class="ads_items web" id="ad_zone_01" style="margin-bottom:15px;" zone="7">
-        <ins style="text-decoration: none;">
-            <a href="http://ads.sabay.com/openx/www/delivery/ck.php?oaparams=2__bannerid=31527__zoneid=7__cb=879472f28a__oadest=https%3A%2F%2Fwww.facebook.com%2FBREDBankCambodia%2F"
-               target="_blank">
-                <img src="http://cdn.sabay.com/cdn/ads.sabay.com/images/6b04b737a6e1d8173a42271138144207.gif"
-                     width="728" height="90" alt="" title="" border="0"></a>
-            <div id="beacon_879472f28a" style="position: absolute; left: 0px; top: 0px; visibility: hidden;">
-                <img src="http://ads.sabay.com/openx/www/delivery/lg.php?bannerid=31527&amp;campaignid=8436&amp;zoneid=7&amp;loc=http%3A%2F%2Fnews.sabay.com.kh%2Farticle%2F969628%23utm_campaign%3Donpage&amp;referer=http%3A%2F%2Fnews.sabay.com.kh%2F&amp;cb=879472f28a"
-                     width="0" height="0" alt="" style="width: 0px; height: 0px;"></div>
-            <script type="text/javascript">
-                takeover('6b04b737a6e1d8173a42271138144207', 'https://ads.sabay.com/images/65b55a25792fe945d1bd0d4418e9ca97.gif');
-            </script>
-        </ins>
-        <script async src="//ads.sabay.com/openx/www/delivery/asyncjs.php"></script>
-    </div>
+    <!-- Ads button of single article -->
+    @if(isset($single_article_ads))
+        <div class="ads_items text-center">
+            @foreach($single_article_ads->random(1) as $article_ad)
+                @if($article_ad->hasBanner())
+                    <a href="{!! $article_ad->url !!}" target="_blank">
+                        <img src="{!! asset($article_ad->banner()->media_url) !!}" width="728" height="90"
+                             alt="{!! $article_ad->provider_name !!}">
+                    </a>
+                @else
+                    <a href="/" target="_blank">
+                        <img src="https://s.adroll.com/a/EJK/TOF/EJKTOFZSTBA7ROIOKMTGCK.gif" width="728" height="90"
+                             alt="">
+                    </a>
+                @endif
+            @endforeach
+        </div>
+    @endif
     <div class="jumbotron">
         <div class="title">ភ្ជាប់ទំនាក់ទំនងជាមួយ <span> MerlPlus News</span></div>
         <div class="fb-like" data-href="https://www.facebook.com/pg/khclassifiedads/" data-layout="standard"
@@ -180,34 +221,23 @@
     <!-- related Articles  -->
     <div class="artcl-reltd float-width">
         <h3 class="sec-title">RELATED POSTS</h3>
-        <div class="reltd-sngl">
-            <img alt="Image blog default page" src="{!! asset('blog/img/samples/e1.jpg') !!}">
-            <div class="reltd-sngl-txt">
-                <h3>After party of Blondi Concert will begin tomorrow </h3>
-                <p><i class="fa fa-clock-o"></i>20 Jan 2014</p>
-            </div>
-        </div>
-        <div class="reltd-sngl">
-            <img alt="Image blog default page" src="{!! asset('blog/img/samples/e2.jpg') !!}">
-            <div class="reltd-sngl-txt">
-                <h3>After party of Blondi Concert will begin tomorrow </h3>
-                <p><i class="fa fa-clock-o"></i>20 Jan 2014</p>
-            </div>
-        </div>
-        <div class="reltd-sngl">
-            <img alt="Image blog default page" src="{!! asset('blog/img/samples/e3.jpg') !!}">
-            <div class="reltd-sngl-txt">
-                <h3>After party of Blondi Concert will begin tomorrow </h3>
-                <p><i class="fa fa-clock-o"></i>20 Jan 2014</p>
-            </div>
-        </div>
-        <div class="reltd-sngl">
-            <img alt="Image blog default page" src="{!! asset('blog/img/samples/e4.jpg') !!}">
-            <div class="reltd-sngl-txt">
-                <h3>After party of Blondi Concert will begin tomorrow </h3>
-                <p><i class="fa fa-clock-o"></i>20 Jan 2014</p>
-            </div>
-        </div>
+        @if($post->categories->count())
+            @foreach($post->tags->first()->posts->take(4) as $article)
+                <div class="reltd-sngl">
+                    @if($article->hasThumbnail())
+                        <img src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
+                             class="img-responsive" alt="{!! $article->title !!}">
+                    @else
+                        <img alt="{!! $article->excerptTitle(60) !!}" class="img-responsive"
+                             src="{!! asset('blog/img/samples/e1.jpg') !!}"/>
+                    @endif
+                    <div class="reltd-sngl-txt">
+                        <h3>{!! $article->excerptTitle(80) !!}</h3>
+                        <p><i class="fa fa-clock-o"></i>{!! $article->posted_at->format('M d,Y') !!}</p>
+                    </div>
+                </div>
+            @endforeach
+        @endif
     </div>
     <div class="fb-comments" data-href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}" data-width="100%"
          data-numposts="5"></div>

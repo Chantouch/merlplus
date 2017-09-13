@@ -9,7 +9,7 @@ return array(
      |
      */
 
-    'title' => 'My Site',
+    'title' => 'Hot news, Local News, Fastest News, Reliable News, Valuables News, Health, Sport, Technology, in Cambodia : ',
 
     /*
      |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return array(
      */
 
     'open_graph' => [
-        'site_name' => 'My Site',
+        'site_name' => 'Hot news, Local News, Fastest News, Reliable News, Valuables News, Health, Sport, Technology, in Cambodia : ',
         'type' => 'website'
     ],
 

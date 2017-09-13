@@ -20,7 +20,7 @@ class CreateAdvertisesTable extends Migration
             $table->unsignedInteger('media_id', false)->nullable();
             $table->string('provider_name', 255)->nullable();
             $table->string('url')->nullable();
-            $table->tinyInteger('is_video')->default(0);
+            $table->string('is_video')->default(false);
             $table->longText('tracking_code_large')->nullable();
             $table->longText('tracking_code_tablet')->nullable();
             $table->longText('tracking_code_mobile')->nullable();

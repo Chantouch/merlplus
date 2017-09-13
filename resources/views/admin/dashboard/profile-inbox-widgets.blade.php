@@ -21,7 +21,7 @@
                             <h4>{!! ucfirst($profile->roles->first()->name) !!}</h4>
                         @endif
                         <a href="javascript:void(0)" class="btn btn-rounded btn-success">
-                            <i class="ti-plus m-r-5"></i> FOLLOW
+                            <i class="ti-pencil m-r-5"></i> EDIT
                         </a>
                     </div>
                 </div>
@@ -91,7 +91,8 @@
                             @{{ user.created_at }}
                         </td>
                         <td>
-                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5">
+                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg m-r-5"
+                                    v-if="user.id != auth.dashboard_value" @click.prevent="deleteUser(user)">
                                 <i class="icon-trash"></i>
                             </button>
                             <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"
@@ -104,6 +105,7 @@
                 </table>
             </div>
         </div>
+        <input type="hidden" value="{!! auth()->id() !!}" name="dashboard_value" id="dashboard_value">
         <!-- /.modal -->
         <div id="edit-user" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
              aria-hidden="true" style="display: none;">
@@ -126,7 +128,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger waves-effect waves-light" @click.prevent="updateUserInfo(updateUser.id)">Save changes</button>
+                        <button type="button" class="btn btn-danger waves-effect waves-light"
+                                @click.prevent="updateUserInfo(updateUser.id)">Save changes
+                        </button>
                     </div>
                 </div>
             </div>

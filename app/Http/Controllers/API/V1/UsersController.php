@@ -113,4 +113,23 @@ class UsersController extends ApiController
 
 		return $this->item($user);
 	}
+
+
+	/**
+	 * Delete the specified resource in storage.
+	 * @param $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy($id)
+	{
+		$user = User::with('roles')->find($id);
+
+		if (! $user) {
+			return $this->respondNotFound();
+		}
+
+		$user->delete();
+
+		return $this->respondNoContent();
+	}
 }

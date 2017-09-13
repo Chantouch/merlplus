@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
+use App\Model\Advertise;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -59,10 +60,10 @@ class PostsController extends BaseController
 	public function show($idOrSlug)
 	{
 		if (ctype_digit($idOrSlug)) {
-			$post = Post::with('comments')
+			$post = Post::with(['comments', 'categories.articles', 'tags'])
 				->where('id', $idOrSlug)->firstOrFail();
 		} else {
-			$post = Post::with('comments')
+			$post = Post::with(['comments', 'categories.articles', 'tags'])
 				->where('slug', $idOrSlug)->firstOrFail();
 		}
 		$comments = $post->comments()->with('author')->latest()->paginate(50);
@@ -78,8 +79,10 @@ class PostsController extends BaseController
 		MetaTag::set('title', $post->title);
 		MetaTag::set('description', $post->description);
 		MetaTag::set('image', asset('images/default-share-image.png'));
+		$single_article_ads = Advertise::with('ads_type')
+			->where('advertise_type_id', 9)->get();
 		return view($this->view . 'show', compact(
-			'post', 'comments', 'previousPost', 'nextPost'
+			'post', 'comments', 'previousPost', 'nextPost', 'single_article_ads'
 		));
 	}
 }

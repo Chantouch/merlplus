@@ -7,7 +7,6 @@
                 <th width="120">Thumbnail</th>
                 <th>Name</th>
                 <th>Category</th>
-                <th>Description</th>
                 <th>Tags</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -36,7 +35,6 @@
                             @endforeach
                         @endif
                     </td>
-                    <td>{!! $article->excerpt(100) !!}</td>
                     <td>
                         @foreach($article->tags as $tag)
                             <span class="label label-info">{!! $tag->name !!}</span>

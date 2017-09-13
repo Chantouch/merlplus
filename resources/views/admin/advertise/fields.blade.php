@@ -98,7 +98,7 @@
         <label for="is_video">Is Video?</label>
         <div class="form-group">
             <input type="hidden" name="is_video" :value="advertise.is_video">
-            <input type="checkbox" id="is_video" v-model="advertise.is_video" @change.prevent="isVideo">
+            <input type="checkbox" id="is_video" v-model="advertise.is_video" @change.prevent="isVideo" value="1">
         </div>
     </div>
 

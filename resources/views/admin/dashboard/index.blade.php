@@ -5,6 +5,7 @@
     <link rel="stylesheet"
           href="{!! asset('plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css') !!}">
     <link rel="stylesheet" href="{!! asset('plugins/calendar/dist/fullcalendar.css') !!}">
+    <link rel="stylesheet" href="{!! asset('plugins/sweetalert/sweetalert.css') !!}">
 @stop
 @section('style')
     <style>
@@ -52,6 +53,8 @@
     <script src="{!! asset('plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js') !!}"></script>
     <script src="{!! asset('plugins/calendar/dist/fullcalendar.min.js') !!}"></script>
     <script src="{!! asset('plugins/calendar/dist/cal-init.js') !!}"></script>
+    <script src="{!! asset('plugins/sweetalert/sweetalert.min.js') !!}"></script>
+    <script src="{!! asset('plugins/sweetalert/jquery.sweet-alert.custom.js') !!}"></script>
     <script src="{!! asset('js/dashboard1.js') !!}"></script>
     <script src="{!! asset('js/cbpFWTabs.js') !!}"></script>
 @stop
@@ -65,6 +68,9 @@
                     id: '',
                     name: '',
                     email: ''
+                },
+                auth: {
+                    dashboard_value: $("#dashboard_value").val()
                 }
             },
             created() {
@@ -104,6 +110,33 @@
                         };
                         $("#edit-user").modal('hide');
                         vm.dashboardData();
+                    });
+                },
+                deleteUser: function (item) {
+                    let vm = this;
+                    swal({
+                        title: "Are you sure?",
+                        text: "You will not be able to recover this imaginary file!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes, delete it!",
+                        cancelButtonText: "No, cancel plx!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    }, function (isConfirm) {
+                        if (isConfirm) {
+                            vm.$http.delete('/api/v1/users/' + item.id)
+                                .then(res => {
+                                    swal("Deleted!", "Your file has been deleted.", "success");
+                                    vm.dashboardData();
+                                })
+                                .catch(err => {
+
+                                })
+                        } else {
+                            swal("Cancelled", "Your file is safe :)", "error");
+                        }
                     });
                 }
             }
