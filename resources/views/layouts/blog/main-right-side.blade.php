@@ -67,6 +67,7 @@
         </a>
     </div>
 </div>
+
 <!-- Trending news right -->
 {{--<div class="trending lefty">--}}
 {{--<h3 class="sec-title">TRENDING</h3>--}}
@@ -120,6 +121,7 @@
         </div>
     </form>
 </div>
+
 <!-- Featured Video -->
 {{--<div class="ftrd-vd float-width">--}}
 {{--<h3 class="sec-title">FEATURED VIDEO</h3>--}}
@@ -200,7 +202,16 @@
 {{--</div>--}}
 {{--</div>--}}
 {{--</div>--}}
+
 <!-- Ad banner right -->
-<div class="lefty ad-rt">
-    <a href="#"><img alt="Image blog default page" src="{!! asset('blog/img/samples/u1.jpg') !!}"/></a>
-</div>
+@if(isset($main_right_ads))
+    @if(count($main_right_ads))
+        @foreach($main_right_ads as $ads)
+            <div class="lefty ad-rt">
+                <a href="{!! $ads->url !!}" target="_blank">
+                    <img alt="{!! $ads->provider_name !!}" src="{!! asset($ads->banner()->media_url) !!}"/>
+                </a>
+            </div>
+        @endforeach
+    @endif
+@endif
