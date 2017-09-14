@@ -68,7 +68,7 @@
                                             <i class="fa fa-clock-o"></i>{!! $post->posted_at->format('d M Y') !!}
                                         </span>
                                             <span>
-                                            <i class="fa fa-comment-o"></i>21 comments
+                                            <i class="fa fa-comment-o"></i>{!! $post->comments->count() !!} comments
                                         </span>
                                         </h6>
                                         <p>{!! $post->excerpt(300) !!}</p>

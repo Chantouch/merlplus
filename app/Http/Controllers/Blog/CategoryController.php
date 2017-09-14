@@ -51,17 +51,28 @@ class CategoryController extends BaseController
     /**
      * Display the specified resource.
      *
+     * @param Request $request
      * @param  int $idOrSlug
      * @return \Illuminate\Http\Response
      */
-    public function show($idOrSlug)
+    public function show(Request $request, $idOrSlug)
     {
         if (ctype_digit($idOrSlug)) {
             $category = Category::with(['parent', 'articles'])
                 ->where('id', $idOrSlug)->firstOrFail();
+            $posts = $category->articles()->paginate(10);
+            if ($request->ajax()) {
+                $view = view($this->view . 'data', compact('posts'))->render();
+                return response()->json(['html' => $view]);
+            }
         } else {
             $category = Category::with(['parent', 'articles'])
                 ->where('slug', $idOrSlug)->firstOrFail();
+            $posts = $category->articles()->paginate(10);
+            if ($request->ajax()) {
+                $view = view($this->view . 'data', compact('posts'))->render();
+                return response()->json(['html' => $view]);
+            }
         }
         $posts = Post::with('categories')->get()->random(4);
         return view($this->view . 'show', compact('category', 'posts'));

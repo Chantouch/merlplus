@@ -26,7 +26,7 @@
                                 </h3>
                                 <p class="artcl-time-1">
                                     <span><i class="fa fa-clock-o"></i>{!! $post->posted_at->diffForHumans() !!}</span>
-                                    <span><i class="fa fa-comment-o"></i>21 comments</span>
+                                    <span><i class="fa fa-comment-o"></i>{!! $post->comments->count() !!} comments</span>
                                 </p>
                                 <div>
                                     {!! $post->excerpt(820) !!}
