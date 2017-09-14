@@ -11,11 +11,18 @@
         <div class="col-lg-8">
             <!-- Main Menu -->
             <ul id="main-menu-items" class="sm sm-menu menu-efct">
-                <li class="active"><a href="/">Home</a></li>
-                <li class=""><a href="/topics/sport">Sport</a></li>
-                <li><a href="/topics/health">Health</a></li>
-                <li><a href="/topics/entertainment">Entertainment</a></li>
-                <li><a href="/topics/cook-recipes">Cook Recipe</a></li>
+                <li class="active"><a href="/">ទំព័រដើម</a></li>
+                @if(isset($menus))
+                    @if(count($menus))
+                        @foreach($menus as $index => $menu)
+                            <li>
+                                <a href="{!! route('blog.topics.show',[$menu->getRouteKey()]) !!}">
+                                    {!! $menu->name !!}
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
+                @endif
             </ul>
         </div>
         <div class="col-lg-4 main-search-bar">

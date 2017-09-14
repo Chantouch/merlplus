@@ -40,11 +40,11 @@
                                             <i class="fa fa-clock-o"></i>{!! $post->posted_at->format('d M Y') !!}
                                         </span>
                                             <span>
-                                            <i class="fa fa-comment-o"></i>21 comments
+                                            <i class="fa fa-comment-o"></i>{!! $post->comments->count() !!} comments
                                         </span>
                                         </h6>
                                         <p>
-                                            {!! $post->excerpt(500) !!}
+                                            {!! $post->excerpt(1000) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -53,14 +53,14 @@
                                 <div class="sec-1-sm">
                                     @if($post->hasThumbnail())
                                         <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                            <img alt="Image blog default page" class="blocky"
+                                            <img alt="Image blog default page" class="blocky" height="90"
                                                  src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                                         </a>
                                     @endif
                                     <div class="sec-1-sm-text blocky">
                                         <h3>
                                             <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                                {!!str_limit( $post->title, 25) !!}
+                                                {!! $post->excerptTitle() !!}
                                             </a>
                                         </h3>
                                         <h6>
@@ -71,7 +71,7 @@
                                             <i class="fa fa-comment-o"></i>21 comments
                                         </span>
                                         </h6>
-                                        <p>{!! $post->excerpt(100) !!}</p>
+                                        <p>{!! $post->excerpt(300) !!}</p>
                                     </div>
                                 </div>
                             @endif

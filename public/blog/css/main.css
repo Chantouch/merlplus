@@ -470,7 +470,7 @@ ul.sm {
 }
 
 .sm-menu a {
-    padding: 17px 0 !important;
+    padding: 12px 0 !important;
     color: #b6b5b5;
     font-size: 19px;
     font-weight: 500;
@@ -774,14 +774,14 @@ ul#toolbar-menu li:first-child a {
 
 .main-search-bar a {
     position: absolute;
-    top: 15px;
+    top: 18px;
     right: 30px;
     font-size: 20px;
     color: #000
 }
 
 .main-search-bar form {
-    margin-top: 9px
+    margin-top: 13px
 }
 
 .main-search-bar .navbar-form {
@@ -867,13 +867,13 @@ ul.sm-nowrap a:hover {
 
 span.topic-icn {
     background: url(../img/topic-icn-1.png) no-repeat;
-    background-size: 27px 23px;
-    width: 27px;
+    background-size: 100px 23px;
+    width: 100px;
     height: 23px;
     position: absolute;
     top: -16px;
     right: 14px;
-    color: #000;
+    color: #dd000d;
     font-size: 13px;
     font-weight: 700;
     line-height: 17px;
@@ -1618,15 +1618,15 @@ h3.sldr-title {
 }
 
 .sm-sldr-box {
-    margin: 0 0 46px
+    margin: 0 0 20px
 }
 
 .smedia {
-    margin: 0 0 27px
+    margin: 0 0 20px
 }
 
 .smedia div {
-    margin: 0 0 21px
+    margin: 0 0 20px
 }
 
 .smedia a span {
@@ -1737,7 +1737,7 @@ h3.sldr-title {
 }
 
 .subscribe {
-    margin: 0 0 60px
+    margin: 0 0 20px
 }
 
 .subscribe h6 {

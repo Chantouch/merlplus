@@ -84,6 +84,26 @@
         <div class="inside"></div>
     </div>
 @stop
+@section('main_right_ads_bar')
+    @if(isset($single_article_ads))
+        <div class="ads_items text-center">
+            @if(isset($main_right_ads))
+                @if(count($main_right_ads))
+                    @foreach($main_right_ads->take(2) as $index => $ads)
+                        @if($index < 2)
+                            <div class="ad-rt">
+                                <a href="{!! $ads->url !!}" target="_blank">
+                                    <img alt="{!! $ads->provider_name !!}"
+                                         src="{!! asset($ads->banner()->media_url) !!}"/>
+                                </a>
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
+            @endif
+        </div>
+    @endif
+@stop
 @section('new_article_single_article')
     <div class="panel panel-info">
         <div class="panel-heading">
@@ -95,15 +115,26 @@
                     <div class="media">
                         <div class="media-left media-top">
                             @if($article->hasThumbnail())
-                                <img src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
-                                     class="media-object" width="80" alt="{!! $article->title !!}">
+                                <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
+                                   title="{!! $article->title !!}">
+                                    <img src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
+                                         class="media-object" width="80" alt="{!! $article->title !!}">
+                                </a>
                             @else
-                                <img alt="{!! $article->excerptTitle(60) !!}" class="img-responsive" width="80"
-                                     src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
+                                <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
+                                   title="{!! $article->title !!}">
+                                    <img src="{!! asset('blog/img/samples/sample.jpg') !!}"
+                                         class="media-object" width="80" alt="{!! $article->title !!}">
+                                </a>
                             @endif
                         </div>
                         <div class="media-body">
-                            <h4 class="media-heading">{!! $article->excerptTitle(80) !!}</h4>
+                            <h4 class="media-heading">
+                                <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
+                                   title="{!! $article->title !!}">
+                                    {!! $article->excerptTitle(80) !!}
+                                </a>
+                            </h4>
                         </div>
                     </div>
                 @endforeach
@@ -197,12 +228,14 @@
     <!-- Ads button of single article -->
     @if(isset($single_article_ads))
         <div class="ads_items text-center">
-            @foreach($single_article_ads->random(1) as $article_ad)
+            @foreach($single_article_ads->random(1) as $index => $article_ad)
                 @if($article_ad->hasBanner())
-                    <a href="{!! $article_ad->url !!}" target="_blank">
+                    @if($article_ad->hasBanner())
                         <img src="{!! asset($article_ad->banner()->media_url) !!}" width="728" height="90"
                              alt="{!! $article_ad->provider_name !!}">
-                    </a>
+                    @else
+                        {!! $article_ad->provider_name !!}
+                    @endif
                 @else
                     <a href="/" target="_blank">
                         <img src="https://s.adroll.com/a/EJK/TOF/EJKTOFZSTBA7ROIOKMTGCK.gif" width="728" height="90"
@@ -225,14 +258,23 @@
             @foreach($post->tags->first()->posts->take(4) as $article)
                 <div class="reltd-sngl">
                     @if($article->hasThumbnail())
-                        <img src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
-                             class="img-responsive" alt="{!! $article->title !!}">
+                        <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
+                           title="{!! $article->title !!}">
+                            <img src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
+                                 class="img-responsive" alt="{!! $article->title !!}">
+                        </a>
                     @else
-                        <img alt="{!! $article->excerptTitle(60) !!}" class="img-responsive"
-                             src="{!! asset('blog/img/samples/e1.jpg') !!}"/>
+                        <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
+                           title="{!! $article->title !!}">
+                            <img alt="{!! $article->excerptTitle(60) !!}" class="img-responsive"
+                                 src="{!! asset('blog/img/samples/e1.jpg') !!}"/>
+                        </a>
                     @endif
                     <div class="reltd-sngl-txt">
-                        <h3>{!! $article->excerptTitle(80) !!}</h3>
+                        <h3>
+                            <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
+                               title="{!! $article->title !!}">{!! $article->excerptTitle(80) !!}</a>
+                        </h3>
                         <p><i class="fa fa-clock-o"></i>{!! $article->posted_at->format('M d,Y') !!}</p>
                     </div>
                 </div>

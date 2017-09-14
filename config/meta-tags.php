@@ -74,5 +74,5 @@ return array(
      |
      */
 
-    'locales' => ['en', 'es'],
+    'locales' => ['en', 'es', 'kh'],
 );

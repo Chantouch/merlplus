@@ -8,25 +8,8 @@
 ?>
 <!-- One image slider -->
 <div class="sm-sldr-box float-width">
+    @yield('main_right_ads_bar')
     @yield('new_article_single_article')
-    <div class="flexslider sm-sldr">
-        <ul class="slides">
-            @if(isset($home_top_news_slider))
-                @if(count($home_top_news_slider))
-                    @foreach($home_top_news_slider->take(3) as $ads)
-                        <li>
-                            <img alt="{!! $ads->banner()->original_filename !!}"
-                                 src="{!! asset($ads->banner()->media_url) !!}"/>
-                        </li>
-                    @endforeach
-                @else
-                    <li>
-                        <img alt="No image" src="{!! asset('blog/img/samples/z2.jpg') !!}"/>
-                    </li>
-                @endif
-            @endif
-        </ul>
-    </div>
 </div>
 <!-- Social Media Counter -->
 <div class="smedia lefty">
@@ -206,12 +189,14 @@
 <!-- Ad banner right -->
 @if(isset($main_right_ads))
     @if(count($main_right_ads))
-        @foreach($main_right_ads as $ads)
-            <div class="lefty ad-rt">
-                <a href="{!! $ads->url !!}" target="_blank">
-                    <img alt="{!! $ads->provider_name !!}" src="{!! asset($ads->banner()->media_url) !!}"/>
-                </a>
-            </div>
+        @foreach($main_right_ads as $index => $ads)
+            @if($index > 1)
+                <div class="lefty ad-rt">
+                    <a href="{!! $ads->url !!}" target="_blank">
+                        <img alt="{!! $ads->provider_name !!}" src="{!! asset($ads->banner()->media_url) !!}"/>
+                    </a>
+                </div>
+            @endif
         @endforeach
     @endif
 @endif

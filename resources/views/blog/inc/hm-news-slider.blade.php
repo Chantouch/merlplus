@@ -27,7 +27,7 @@
                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                         {!! $post->excerptTitle(45) !!}
                     </a>
-                    <span class="topic-icn">81</span>
+                    <span class="topic-icn">{!! $post->posted_at->diffForHumans() !!}</span>
                 </h1>
                 <p>
                     {!! $post->excerpt(1400) !!}
