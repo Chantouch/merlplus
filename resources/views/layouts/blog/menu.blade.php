@@ -27,13 +27,12 @@
         </div>
         <div class="col-lg-4 main-search-bar">
             <!-- Top Search bar -->
-            <form class="navbar-form float-width" role="search">
-                <div class="form-group float-width">
-                    <input type="text" class="form-control float-width"
-                           placeholder="Search for games, music, movies">
-                </div>
-                <a href="#" type="submit"><i class="fa fa-search"></i></a>
-            </form>
+            {!! Form::open(array('route' => 'blog.search', 'role'=>'search', 'method' => 'GET', 'class'=>'navbar-form float-width')) !!}
+            <div class="form-group float-width">
+                {!! Form::text('q', null, ['class' => 'form-control float-width', 'placeholder' => 'Search for games, music, movies', 'id' => 'name']) !!}
+            </div>
+            <button><i class="fa fa-search"></i></button>
+            {!! Form::close() !!}
         </div>
     </div>
     <!-- Close the Fixed Menu button -->

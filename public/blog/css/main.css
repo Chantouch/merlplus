@@ -772,12 +772,35 @@ ul#toolbar-menu li:first-child a {
     border: 1px solid #e8e8e8
 }
 
-.main-search-bar a {
+.main-search-bar button {
     position: absolute;
-    top: 18px;
+    top: 21px;
     right: 30px;
     font-size: 20px;
     color: #000
+}
+
+button, input {
+    border: 0;
+    padding: 0;
+    background: none repeat scroll 0 0 transparent;
+    border-spacing: 0;
+    color: #26589F;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.42rem;
+    list-style: none outside none;
+    margin: 0;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 0;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
 }
 
 .main-search-bar form {
@@ -841,7 +864,7 @@ ul.sm-nowrap a:hover {
     position: relative;
     float: left;
     height: 512px;
-    width:868px;
+    width: 868px;
     padding: 0;
     margin-right: 13px
 }
