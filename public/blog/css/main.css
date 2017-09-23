@@ -1204,7 +1204,7 @@ span.topic-icn {
 }
 
 .big-two-1, .big-two-2 {
-    width: 48.93333333333333%
+    width: 33%
 }
 
 .captionfull .boxcaption3 {
@@ -1243,8 +1243,8 @@ span.topic-icn {
     border-top: 2px solid #5aa628
 }
 
-.big-two-1 {
-    margin-right: 2.133333333333333%
+.big-two-1, .big-two-2 {
+    margin-right: 0.33%
 }
 
 .big-two-1.boxgrid3, .big-two-2.boxgrid3 {
@@ -1282,7 +1282,7 @@ p.artcl-time-1 span i {
 }
 
 .tn-small-1 {
-    width: 50%;
+    width: 33.33333333333333%;
     margin-bottom: 28px;
     padding-right: 15px
 }
@@ -1375,7 +1375,7 @@ p.artcl-time-1 span i {
 }
 
 .sec-1-sm {
-    width: 50%;
+    width: 33.33333%;
     float: left;
     margin-top: 8px;
     margin-bottom: 20px

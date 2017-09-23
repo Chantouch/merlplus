@@ -45,62 +45,53 @@
 </head>
 <body>
 <div id="app">
-    <div class="site-container">
-        <div class="site-pusher">
-            <!-- Main Home Layout start -->
-            <!-- Top toolbar -->
-            <div class="top-tool-bar">
-                @include('layouts.blog.top-toolbar')
-            </div>
-            <!-- Logo and Ad banner -->
-            <div class="logo-top-ad">
-                @include('layouts.blog.logo-ads')
-            </div>
-            <!-- Main Menu -->
-            <div class="main-menu">
-                @include('layouts.blog.menu')
-            </div>
-            <!-- Home Slider and Big news blocks -->
-            <div class="container">
-                @yield('main-news-block')
-            </div>
-            <!-- News Ticker -->
-            @if(!Request::is('article/*'))
-                <div class="container">
-                    @include('layouts.blog.breaking-news')
-                </div>
-            @endif
+    <!-- Main Home Layout start -->
+    <!-- Top toolbar -->
+    <div class="top-toolbar">
+        @include('layouts.blog.top-toolbar')
+    </div>
+    <!-- Logo and Ad banner -->
+    <div class="logo-top-ad">
+        @include('layouts.blog.logo-ads')
+    </div>
+    <!-- Main Menu -->
+    <div class="main-menu">
+        @include('layouts.blog.menu')
+    </div>
+    <!-- Home Slider and Big news blocks -->
+    <div class="container">
+        @yield('main-news-block')
+    </div>
+    <!-- News Ticker -->
+    @if(!Request::is('article/*'))
+        <div class="container">
+            @include('layouts.blog.breaking-news')
+        </div>
+    @endif
 
-            <div class="container-position">
-                @yield('post-background')
-                <div class="container">
-                    <!-- Main Left side -->
-                    <div class="main-left-side">
-                        @yield('content')
-                    </div>
-                    <!-- Main Right side -->
-                    <div class="main-right-side">
-                        @include('layouts.blog.main-right-side')
-                    </div>
-                </div>
-            </div>
-            <!-- Footer -->
-            <div class="main-footers">
-                <div class="container">
-                    @include('layouts.blog.footer')
-                </div>
-            </div>
-            <!-- Copy right footer -->
-            <div class="copy-rt-ftr">
-                <div class="container">
-                    <a class="lefty">&#169; Copyright 2017, All Rights Reserved</a>
-                    <a href="#" class="righty">Design and development by: Chantouch SEK</a>
-                </div>
-            </div>
-            <!-- Main Home Layout Ends -->
-        </div> <!-- END site-pusher -->
-    </div> <!-- END site-container -->
-    <a href="javascript:void (0)" class="scrollToTop">Scroll To Top</a>
+    <div class="container-position">
+        @yield('post-background')
+        <div class="container">
+            @yield('content')
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="main-footers">
+        <div class="container">
+            @include('layouts.blog.footer')
+        </div>
+    </div>
+    <!-- Copy right footer -->
+    <div class="copy-rt-ftr">
+        <div class="container">
+            <a class="lefty">&#169; Copyright 2017, All Rights Reserved</a>
+            <a href="#" class="righty">Design and development by: Chantouch SEK</a>
+        </div>
+    </div>
+    <!-- Main Home Layout Ends -->
+    <a href="javascript:void (0)" class="scrollToTop">
+        <i class="fa fa-chevron-up"></i>
+    </a>
 </div>
 
 <!-- Scripts -->
@@ -184,18 +175,6 @@
                 });
             }
         };
-
-    $(document).ready(function () {
-        (function ($) {
-            $('#header__icon').click(function (e) {
-                e.preventDefault();
-                $('body').toggleClass('with--sidebar');
-            });
-            $('#site-cache').click(function (e) {
-                $('body').removeClass('with--sidebar');
-            });
-        })(jQuery);
-    });
 
 </script>
 <script>

@@ -143,148 +143,153 @@
     </div>
 @stop
 @section('content')
-    <!-- HTML -->
-    <!-- The Article -->
-    <div class="artcl-main float-width">
-        <div class="artcl-prev-nxt float-width">
-            <div class="artcl-prev w50 blocky">
-                @if(count($previousPost))
-                    <a href="{!! route('blog.article.show', $previousPost->getRouteExist($previousPost)) !!}">
-                        <i class="fa fa-angle-left"></i> PREV ARTICLE</a>
-                    <p>{!! strip_tags(str_limit($previousPost->title,45)) !!}</p>
-                @endif
-            </div>
-            <div class="artcl-nxt w50 blocky text-right">
-                @if(count($nextPost))
-                    <a href="{!! route('blog.article.show', $nextPost->getRouteExist($nextPost)) !!}">
-                        NEXT ARTICLE <i class="fa fa-angle-right"></i>
-                    </a>
-                    <p>{!! strip_tags(str_limit($nextPost->title,45)) !!}</p>
-                @endif
-            </div>
-        </div>
-        <div class="artcl-body float-width">
-            <h2>{!! $post->excerptTitle(300) !!}</h2>
-            <h5>
-                <span><i class="fa fa-user"></i>{!! $post->checkAuthor() !!}</span>
-                <span><i class="fa fa-clock-o"></i>{!! $post->posted_at !!}</span>
-                <span><i class="fa fa-comment-o"></i>{!! count($post->comments) !!} comments</span>
-            </h5>
-            <article class="float-width articl-data">
-                <div class="content">
-                    {!! $post->description !!}
+    <div class="main-left-side">
+        <div class="artcl-main float-width">
+            <div class="artcl-prev-nxt float-width">
+                <div class="artcl-prev w50 blocky">
+                    @if(count($previousPost))
+                        <a href="{!! route('blog.article.show', $previousPost->getRouteExist($previousPost)) !!}">
+                            <i class="fa fa-angle-left"></i> PREV ARTICLE</a>
+                        <p>{!! strip_tags(str_limit($previousPost->title,45)) !!}</p>
+                    @endif
                 </div>
-                <p class="artcl-qt">
-                    <i class="fa fa-quote-left"></i>
-                    <span>
+                <div class="artcl-nxt w50 blocky text-right">
+                    @if(count($nextPost))
+                        <a href="{!! route('blog.article.show', $nextPost->getRouteExist($nextPost)) !!}">
+                            NEXT ARTICLE <i class="fa fa-angle-right"></i>
+                        </a>
+                        <p>{!! strip_tags(str_limit($nextPost->title,45)) !!}</p>
+                    @endif
+                </div>
+            </div>
+            <div class="artcl-body float-width">
+                <h2>{!! $post->excerptTitle(300) !!}</h2>
+                <h5>
+                    <span><i class="fa fa-user"></i>{!! $post->checkAuthor() !!}</span>
+                    <span><i class="fa fa-clock-o"></i>{!! $post->posted_at !!}</span>
+                    <span><i class="fa fa-comment-o"></i>{!! count($post->comments) !!} comments</span>
+                </h5>
+                <article class="float-width articl-data">
+                    <div class="content">
+                        {!! $post->description !!}
+                    </div>
+                    <p class="artcl-qt">
+                        <i class="fa fa-quote-left"></i>
+                        <span>
                         Proin porta arcu sollicitudin magna viverra commodo. In pellentesque turpis sapien, at tincidunt dolor fringilla nec. Maecenas sollicitudin metus eget
                         vestibulum luctus.
                     </span>
-                </p>
-            </article>
+                    </p>
+                </article>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <p>{!! __('posts.show.article') !!} ៖ {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
+        <div class="row">
+            <div class="col-md-12">
+                <p>{!! __('posts.show.article') !!} ៖ {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
+            </div>
         </div>
-    </div>
-    <!-- The Article Social Media Share -->
-    <div class="artcl-scl float-width">
-        <div class="lefty artcl-tags">
-            <h3>TAGS : </h3>
-            <ul>
-                @if(count($post->tags))
-                    @foreach($post->tags as $tag)
-                        <li>
-                            <a href="#">
-                                <span class="badge badge-info">{!! $tag->name !!}</span>
-                            </a>
-                        </li>
-                    @endforeach
-                @endif
-            </ul>
+        <!-- The Article Social Media Share -->
+        <div class="artcl-scl float-width">
+            <div class="lefty artcl-tags">
+                <h3>TAGS : </h3>
+                <ul>
+                    @if(count($post->tags))
+                        @foreach($post->tags as $tag)
+                            <li>
+                                <a href="#">
+                                    <span class="badge badge-info">{!! $tag->name !!}</span>
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
+                </ul>
+            </div>
+            <div class="righty artcl-shr">
+                <ul>
+                    <li>
+                        <div class="fb-share-button"
+                             data-href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}"
+                             data-width="100" data-type="button">
+                        </div>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
+                    </li>
+                    <li>
+                        <a href="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.flickr.com%2Fphotos%2Fkentbrew%2F6851755809%2F&amp;media=http%3A%2F%2Ffarm8.staticflickr.com%2F7027%2F6851755809_df5b2051c9_z.jpg&amp;description=Next%20stop%3A%20Pinterest"
+                           data-pin-do="buttonPin" data-pin-config="none">
+                            <img alt="Pin share"
+                                 src="https://assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png"/>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="righty artcl-shr">
-            <ul>
-                <li>
-                    <div class="fb-share-button" data-href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}"
-                         data-width="100" data-type="button">
-                    </div>
-                </li>
-                <li>
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
-                </li>
-                <li>
-                    <a href="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.flickr.com%2Fphotos%2Fkentbrew%2F6851755809%2F&amp;media=http%3A%2F%2Ffarm8.staticflickr.com%2F7027%2F6851755809_df5b2051c9_z.jpg&amp;description=Next%20stop%3A%20Pinterest"
-                       data-pin-do="buttonPin" data-pin-config="none">
-                        <img alt="Pin share"
-                             src="https://assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png"/>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- Ads button of single article -->
-    @if(isset($single_article_ads))
-        <div class="ads_items text-center">
-            @foreach($single_article_ads->random(1) as $index => $article_ad)
-                @if($article_ad->hasBanner())
+        <!-- Ads button of single article -->
+        @if(isset($single_article_ads))
+            <div class="ads_items text-center">
+                @foreach($single_article_ads->random(1) as $index => $article_ad)
                     @if($article_ad->hasBanner())
-                        <img src="{!! asset($article_ad->banner()->media_url) !!}" width="728" height="90"
-                             alt="{!! $article_ad->provider_name !!}">
+                        @if($article_ad->hasBanner())
+                            <img src="{!! asset($article_ad->banner()->media_url) !!}" width="728" height="90"
+                                 alt="{!! $article_ad->provider_name !!}">
+                        @else
+                            {!! $article_ad->provider_name !!}
+                        @endif
                     @else
-                        {!! $article_ad->provider_name !!}
-                    @endif
-                @else
-                    <a href="/" target="_blank">
-                        <img src="https://s.adroll.com/a/EJK/TOF/EJKTOFZSTBA7ROIOKMTGCK.gif" width="728" height="90"
-                             alt="">
-                    </a>
-                @endif
-            @endforeach
-        </div>
-    @endif
-    <div class="jumbotron">
-        <div class="title">ភ្ជាប់ទំនាក់ទំនងជាមួយ <span> MerlPlus News</span></div>
-        <div class="fb-like" data-href="https://www.facebook.com/pg/khclassifiedads/" data-layout="standard"
-             data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
-    </div>
-    <div class="clearfix"></div>
-    <!-- related Articles  -->
-    <div class="artcl-reltd float-width">
-        <h3 class="sec-title">RELATED POSTS</h3>
-        @if($post->categories->count())
-            @foreach($post->tags->first()->posts->take(4) as $article)
-                <div class="reltd-sngl">
-                    @if($article->hasThumbnail())
-                        <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
-                           title="{!! $article->title !!}">
-                            <img src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
-                                 class="img-responsive" alt="{!! $article->title !!}">
-                        </a>
-                    @else
-                        <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
-                           title="{!! $article->title !!}">
-                            <img alt="{!! $article->excerptTitle(60) !!}" class="img-responsive"
-                                 src="{!! asset('blog/img/samples/e1.jpg') !!}"/>
+                        <a href="/" target="_blank">
+                            <img src="https://s.adroll.com/a/EJK/TOF/EJKTOFZSTBA7ROIOKMTGCK.gif" width="728" height="90"
+                                 alt="">
                         </a>
                     @endif
-                    <div class="reltd-sngl-txt">
-                        <h3>
-                            <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
-                               title="{!! $article->title !!}">{!! $article->excerptTitle(80) !!}</a>
-                        </h3>
-                        <p><i class="fa fa-clock-o"></i>{!! $article->posted_at->format('M d,Y') !!}</p>
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         @endif
+        <div class="jumbotron">
+            <div class="title">ភ្ជាប់ទំនាក់ទំនងជាមួយ <span> MerlPlus News</span></div>
+            <div class="fb-like" data-href="https://www.facebook.com/pg/khclassifiedads/" data-layout="standard"
+                 data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- related Articles  -->
+        <div class="artcl-reltd float-width">
+            <h3 class="sec-title">RELATED POSTS</h3>
+            @if($post->categories->count())
+                @foreach($post->tags->first()->posts->take(4) as $article)
+                    <div class="reltd-sngl">
+                        @if($article->hasThumbnail())
+                            <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
+                               title="{!! $article->title !!}">
+                                <img src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
+                                     class="img-responsive" alt="{!! $article->title !!}">
+                            </a>
+                        @else
+                            <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
+                               title="{!! $article->title !!}">
+                                <img alt="{!! $article->excerptTitle(60) !!}" class="img-responsive"
+                                     src="{!! asset('blog/img/samples/e1.jpg') !!}"/>
+                            </a>
+                        @endif
+                        <div class="reltd-sngl-txt">
+                            <h3>
+                                <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
+                                   title="{!! $article->title !!}">{!! $article->excerptTitle(80) !!}</a>
+                            </h3>
+                            <p><i class="fa fa-clock-o"></i>{!! $article->posted_at->format('M d,Y') !!}</p>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+        <div class="fb-comments" data-href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}"
+             data-width="100%"
+             data-numposts="5"></div>
+        <!-- Facebook share JS -->
+        <div id="fb-root"></div>
     </div>
-    <div class="fb-comments" data-href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}" data-width="100%"
-         data-numposts="5"></div>
-    <!-- Facebook share JS -->
-    <div id="fb-root"></div>
+    <div class="main-right-side">
+        @include('layouts.blog.main-right-side')
+    </div>
 @stop
 
 @section('plugins')

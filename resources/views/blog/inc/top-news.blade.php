@@ -11,9 +11,9 @@
         <h3 class="sec-title">Video</h3>
         <div class="top-big-two">
             @if($tag->posts->count())
-                @foreach($tag->posts->take(2) as $index => $post)
-                    @if($index < 2)
-                        <div class="big-two-{!! $index + 1 !!} blocky boxgrid3 caption">
+                @foreach($tag->posts->take(3) as $index => $post)
+                    @if($index < 3)
+                        <div class="big-two-1 blocky boxgrid3 caption">
                             @if($post->hasThumbnail())
                                 <img alt="{!! $post->excerptTitle(100) !!}" class="img"
                                      src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
@@ -41,7 +41,7 @@
 
     @if($tag->posts->count())
         @foreach($tag->posts->take(6) as $index => $post)
-            @if($index > 1)
+            @if($index > 2)
                 <div class="tn-small-1 blocky">
                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                         @if($post->hasThumbnail())

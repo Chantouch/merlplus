@@ -17,7 +17,7 @@
                         </a>
                     </h3>
                     @if(count($category->articles))
-                        @foreach($category->articles->take(5) as $index => $post)
+                        @foreach($category->articles->take(7) as $index => $post)
                             @if($index === 0)
                                 <div class="sec-1-big float-width">
                                     @if($post->hasThumbnail())

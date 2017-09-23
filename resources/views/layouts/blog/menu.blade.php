@@ -11,7 +11,11 @@
         <div class="col-lg-8">
             <!-- Main Menu -->
             <ul id="main-menu-items" class="sm sm-menu menu-efct">
-                <li class="active"><a href="/">ទំព័រដើម</a></li>
+                <li class="active">
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
                 @if(isset($menus))
                     @if(count($menus))
                         @foreach($menus as $index => $menu)
