@@ -257,6 +257,14 @@ class Post extends Model
 		return $this->media()->where('id', $this->thumbnail_id)->first();
 	}
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function thumb()
+    {
+        return $this->belongsTo(Media::class, 'thumbnail_id');
+	}
+
 	/**
 	 * Store and set the post's thumbnail
 	 *

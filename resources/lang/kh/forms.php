@@ -3,25 +3,25 @@
 return [
 
   'actions' => [
-    'save' => 'Sauvegarder',
-    'update' => 'Mettre à jour',
-    'back' => 'Retour',
-    'generate' => 'Générer',
-    'delete' => 'Supprimer'
+    'save' => 'រក្សារទុក',
+    'update' => 'កែប្រែ',
+    'back' => 'ត្រឡប់ក្រោយ',
+    'generate' => 'បង្កើត',
+    'delete' => 'លុបចោល'
   ],
 
   'comments' => [
-    'delete' => 'Êtes-vous sûr de vouloir supprimer ce commentaires ?'
+    'delete' => 'តើអ្នកពិតជាចង់លុបចោលមតិនេះមែនឬទេ?'
   ],
 
   'posts' => [
-    'delete' => 'Êtes-vous sûr de vouloir supprimer cet article ?',
-    'delete_thumbnail' => "Êtes-vous sûr de vouloir supprimer l'image à la une ?"
+    'delete' => 'តើអ្នកពិតជាចង់លុបចោលអត្ថបទនេះមែនឬទេ?',
+    'delete_thumbnail' => "តើអ្នកពិតជាចង់លុបចោលរូបភាពនេះមែនឬទេ?"
   ],
 
   'users' => [
-    'regenerate' => 'Êtes-vous sûr de vouloir regénérer une clé ? Toutes ses API seront deconnectées.',
-    'destroy_api_token' => 'Êtes-vous sûr de vouloir supprimer cette clé ? Toutes ses API seront deconnectées.',
+    'regenerate' => 'តើអ្នកពិតជាចង់បង្កើតសោសម្ងាត់សារជាថ្មីមែនឬទេ? API ទាំងអស់នេះនឹងកាត់ផ្តាច់ការតភ្ជាប់​​។',
+    'destroy_api_token' => 'តើអ្នកពិតជាចង់លុបចោលសោសម្ងាត់នេះមែនឬទេ? API ទាំងអស់នេះនឹងកាត់ផ្តាច់ការតភ្ជាប់​​។',
   ]
 
 ];

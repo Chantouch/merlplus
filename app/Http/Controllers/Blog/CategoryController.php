@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\BaseController;
+use App\Model\Advertise;
 use App\Model\Category;
 use App\Model\Post;
 use Illuminate\Http\Request;
@@ -74,8 +75,10 @@ class CategoryController extends BaseController
                 return response()->json(['html' => $view]);
             }
         }
-        $posts = Post::with('categories')->get()->random(4);
-        return view($this->view . 'show', compact('category', 'posts'));
+        $latest_posts = Post::with('categories')->take(6)->get();
+        $single_article_ads = Advertise::with('ads_type')
+            ->where('advertise_type_id', 9)->get();
+        return view($this->view . 'show', compact('category', 'posts', 'latest_posts','single_article_ads'));
     }
 
     /**

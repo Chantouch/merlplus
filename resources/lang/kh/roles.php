@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'none' => 'Aucun',
-  'admin' => "Administrateur",
-  'editor' => "Éditeur",
+  'none' => 'គ្មាន',
+  'admin' => "អ្នកគ្រប់គ្រង",
+  'editor' => "អ្នកកែសម្រួល",
 ];

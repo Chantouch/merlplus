@@ -1,22 +1,7 @@
 <!DOCTYPE html>
-{{--<html lang="{{ app()->getLocale() }}">--}}
-<!--[if lt IE 7]>
-<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="{{ app()->getLocale() }}">
-<![endif]-->
-<!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8" lang="{{ app()->getLocale() }}">
-<![endif]-->
-<!--[if IE 8]>
-<html class="no-js lt-ie9" lang="{{ app()->getLocale() }}">
-<![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="{{ app()->getLocale() }}">
-<!--<![endif]-->
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ MetaTag::get('title') }} | {{ config('app.name', 'Merlplus.com') }}</title>
     {!! MetaTag::tag('description') !!}
     {!! MetaTag::tag('keywords') !!}
@@ -25,15 +10,18 @@
     {!! MetaTag::twitterCard() !!}
     {!! MetaTag::tag('image', asset('images/default-logo.png')) !!}
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{!! asset('blog/css/css8b0d.css?file=bootstrap.min') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/css97f7.css?file=bootstrap-theme') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/css4610.css?file=normalize') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/css8b0d.css') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/css97f7.css') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/css4610.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/csse1a8.css?file=elements') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/csse1a8.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/main.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/css9a38.css?file=responsive') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/cssf83a.css?file=calendar') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/css9a38.css') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/cssf83a.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
     <script src="{!! asset('blog/js/modernizr.min.js') !!}"></script>
     <style>
@@ -41,6 +29,22 @@
             background-image: url({!! asset('images/loading.gif') !!});
         }
     </style>
+    <script>
+        (function (b, o, i, l, e, r) {
+            b.GoogleAnalyticsObject = l;
+            b[l] || (b[l] =
+                function () {
+                    (b[l].q = b[l].q || []).push(arguments)
+                });
+            b[l].l = +new Date;
+            e = o.createElement(i);
+            r = o.getElementsByTagName(i)[0];
+            e.src = '//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-51288724-1');
+        ga('send', 'pageview');
+    </script>
     @yield('css')
 </head>
 <body>
@@ -102,19 +106,19 @@
 
 <script src="{!! asset('bootstrap/dist/js/bootstrap.min.js') !!}"></script>
 
-<script src="{!! asset('blog/js/jsec26.css?file=jquery.smartmenus.min') !!}"></script>
+<script src="{!! asset('blog/js/jsec26.css') !!}"></script>
 
-<script src="{!! asset('blog/js/js047d.css?file=jquery.flexslider-min') !!}"></script>
+<script src="{!! asset('blog/js/js047d.css') !!}"></script>
 
-<script src="{!! asset('blog/js/js288f.css?file=newsTicker') !!}"></script>
+<script src="{!! asset('blog/js/js288f.css') !!}"></script>
 
-<script src="{!! asset('blog/js/js6a7f.css?file=jquery.customSelect.min') !!}"></script>
+<script src="{!! asset('blog/js/js6a7f.css') !!}"></script>
 
-<script src="{!! asset('blog/js/jse3a4.css?file=retina-1.1.0.min') !!}"></script>
+<script src="{!! asset('blog/js/jse3a4.css') !!}"></script>
 
-<script src="{!! asset('blog/js/jsf0b3.css?file=jflickrfeed.min') !!}"></script>
+<script src="{!! asset('blog/js/jsf0b3.css') !!}"></script>
 
-<script src="{!! asset('blog/js/jsf83a.css?file=calendar') !!}"></script>
+<script src="{!! asset('blog/js/jsf83a.css') !!}"></script>
 
 <script src="{!! asset('blog/js/main.min.js') !!}"></script>
 
@@ -176,22 +180,6 @@
             }
         };
 
-</script>
-<script>
-    (function (b, o, i, l, e, r) {
-        b.GoogleAnalyticsObject = l;
-        b[l] || (b[l] =
-            function () {
-                (b[l].q = b[l].q || []).push(arguments)
-            });
-        b[l].l = +new Date;
-        e = o.createElement(i);
-        r = o.getElementsByTagName(i)[0];
-        e.src = '//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e, r)
-    }(window, document, 'script', 'ga'));
-    ga('create', 'UA-51288724-1');
-    ga('send', 'pageview');
 </script>
 </body>
 </html>

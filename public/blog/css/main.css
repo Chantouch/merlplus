@@ -734,7 +734,7 @@ ul.main-menu-sub li:first-child a {
 }
 
 .logo-top-ad {
-    background: #fff;
+    background: #161616;
     padding: 8px 0;
     border-bottom: 1px solid #e8e8e8;
     min-height: 107px
@@ -1203,8 +1203,12 @@ span.topic-icn {
     -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90)
 }
 
-.big-two-1, .big-two-2 {
+.big-two-1 {
     width: 33%
+}
+
+.big-two-2 {
+    width: 48.93333333333333%;
 }
 
 .captionfull .boxcaption3 {
@@ -1243,8 +1247,12 @@ span.topic-icn {
     border-top: 2px solid #5aa628
 }
 
-.big-two-1, .big-two-2 {
+.big-two-1 {
     margin-right: 0.33%
+}
+
+.big-two-2 {
+    margin-right: 1%
 }
 
 .big-two-1.boxgrid3, .big-two-2.boxgrid3 {
@@ -1282,13 +1290,13 @@ p.artcl-time-1 span i {
 }
 
 .tn-small-1 {
-    width: 33.33333333333333%;
+    /*width: 33.33333333333333%;*/
     margin-bottom: 28px;
     padding-right: 15px
 }
 
 .tn-small-1 h4 {
-    max-width: 253px;
+    max-width: 244px;
     font-size: 16px;
     margin: 6px 0 9px 15px;
     line-height: 20px

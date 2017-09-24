@@ -23,9 +23,9 @@ class BaseController extends Controller
 	public function __construct()
 
 	{
-		MetaTag::set('title', 'Hot news, Local News, Fastest News, Reliable News, Valuables News, Health, Sport, Technology, in Cambodia : Merlplus.com');
-		MetaTag::set('keywords', 'health, cooking, breaking news, entertainment, technology, life, sport, in local area of Cambodia');
-		MetaTag::set('description', 'Merlplus, searchable fastest news, up-to-date in a minute news, breaking news, feature and audio stories. Merlplus provides the trusted local Cambodia news, also the world wide news, to all original area, and regional perspective. Entertainments, technologies, cook recipes, science, business news....');
+		MetaTag::set('title', 'Merlplus.com - Local news in Cambodia');
+		MetaTag::set('keywords', 'merlplus, merlplus.com ,health, cooking, breaking news, entertainment, technology, life, sport, local news in Cambodia');
+		MetaTag::set('description', 'Merlplus, up-to-date in a minute news, breaking news, feature and audio stories. Merlplus provides the trusted local Cambodia news, also the world wide news, to all original area, and regional perspective ,local news in Cambodia. Entertainments, technologies, cook recipes, science, business news....');
 		MetaTag::set('image', asset('images/default-share-image.png'));
 		$top_ads = Advertise::with(['ads_type', 'media'])
 			->where('advertise_type_id', 1)->get();

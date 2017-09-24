@@ -11,7 +11,7 @@
         <div class="col-lg-8">
             <!-- Main Menu -->
             <ul id="main-menu-items" class="sm sm-menu menu-efct">
-                <li class="active">
+                <li class="{!! Request::is('/') ? ' active': '' !!}">
                     <a href="/">
                         <i class="fa fa-home"></i>
                     </a>
@@ -19,7 +19,7 @@
                 @if(isset($menus))
                     @if(count($menus))
                         @foreach($menus as $index => $menu)
-                            <li>
+                            <li class="{!! Request::segment(2) == $menu->slug ? ' active': '' !!}">
                                 <a href="{!! route('blog.topics.show',[$menu->getRouteKey()]) !!}">
                                     {!! $menu->name !!}
                                 </a>

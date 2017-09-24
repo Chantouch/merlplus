@@ -173,13 +173,6 @@
                     <div class="content">
                         {!! $post->description !!}
                     </div>
-                    <p class="artcl-qt">
-                        <i class="fa fa-quote-left"></i>
-                        <span>
-                        Proin porta arcu sollicitudin magna viverra commodo. In pellentesque turpis sapien, at tincidunt dolor fringilla nec. Maecenas sollicitudin metus eget
-                        vestibulum luctus.
-                    </span>
-                    </p>
                 </article>
             </div>
         </div>
@@ -196,8 +189,8 @@
                     @if(count($post->tags))
                         @foreach($post->tags as $tag)
                             <li>
-                                <a href="#">
-                                    <span class="badge badge-info">{!! $tag->name !!}</span>
+                                <a href="{!! route('blog.tag.show',[$tag->getRouteKey()]) !!}">
+                                    <span class="label label-info">{!! $tag->name !!}</span>
                                 </a>
                             </li>
                         @endforeach
@@ -246,7 +239,7 @@
             </div>
         @endif
         <div class="jumbotron">
-            <div class="title">ភ្ជាប់ទំនាក់ទំនងជាមួយ <span> MerlPlus News</span></div>
+            <div class="title">ភ្ជាប់ទំនាក់ទំនងជាមួយ <span> MerlPlus</span></div>
             <div class="fb-like" data-href="https://www.facebook.com/pg/khclassifiedads/" data-layout="standard"
                  data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
         </div>

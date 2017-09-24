@@ -12,22 +12,21 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'failed'   => 'Ces identifiants ne correspondent pas à nos enregistrements',
-    'throttle' => 'Trop de tentatives de connexion. Veuillez essayer de nouveau dans :seconds secondes.',
-    'login'    => 'Se connecter',
-    'logout'    => 'Se déconnecter',
-    'register' => "S'inscrire",
-    'remember_me' => 'Se souvenir de moi',
-    'forgotten_password' => 'Mot de passe oublié ?',
-    'reset_password' => 'Réinitialiser le mot de passe',
-    'send_password_reset_link' => 'Envoyer un lien de réinitialisation du mot de passe',
-    'logged_in' => 'Vous êtes désormais connecté.',
-    'logged_in_provider' => 'Vous êtes désormais connecté avec :Provider.',
-    'not_authorized' => "Cette opération n'est pas autorisée.",
-
+	
+    'failed'   => 'ព័ត៌មានដែលលោកអ្នកបានបញ្ចូលមិនត្រឹមត្រូវទេ',
+    'throttle' => 'លោកអ្នកព្យាយាមបញ្ចូលព័ត៌មានដែលមិនត្រឹមត្រូវច្រើនដងពេក។ សូមព្យាយាមម្តងទៀតនៅ :seconds វិនាទី.',
+    'login'    => 'តភ្ជាប់',
+    'logout'    => 'ចាកចេញ',
+    'register' => "ចុះឈ្មោះ",
+    'remember_me' => 'ធ្វើការចង់ចាំខ្ញុំ',
+    'forgotten_password' => 'តើលោកអ្នកភ្លេចលេខកូដសំងាត់?',
+    'reset_password' => 'ការកំណត់លេខកូដសំងាត់សារជាថ្មី',
+    'send_password_reset_link' => 'ផ្ញើតំណភា្ជប់ដើម្បីកំណត់លេខកូដសំងាត់សារជាថ្មី',
+    'logged_in' => 'អ្នកបានតភ្ជាប់',
+    'logged_in_provider' => 'អ្នកបានតភ្ជាប់ជាមួយ :Provider.',
+    'not_authorized' => "ប្រព័ន្ធប្រតិបត្តិការរបស់លោកអ្នកមិនអនុញ្ញាត",
     'services' => [
-        'github' => 'Se connecter avec Github',
-        'twitter' => 'Se connecter avec Twitter',
+        'github' => 'តភ្ជាប់ជាមួយ Github',
+        'twitter' => 'តភ្ជាប់ជាមួយ Twitter',
     ],
 ];

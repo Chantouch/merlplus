@@ -1,16 +1,16 @@
 <?php
 
 return [
-  'subscribre' => "S'inscrire",
-  'placeholder' => 'Votre email',
-  'created' => "Email ajouté à la newsletter avec succès",
-  'unsubscribed' => 'La demande de désabonnement a bien été prise en compte.',
+  'subscribre' => "ចុះឈ្មោះ",
+  'placeholder' => 'អ៊ីម៉ែលរបស់អ្នក',
+  'created' => "អ៊ីម៉ែលត្រូវបានបង្កើតទៅកាន់ព្រឹត្តិប័ត្រព័ត៌មានដោយជោគជ័យ",
+  'unsubscribed' => 'ការមិនទទួលយកព្រឹត្តិប័ត្រព័ត៌មានត្រូវបានបញ្ចូនទៅកាន់គណនេយ្យ',
 
   'email' => [
-    'subject' => 'Newsletter du mois',
-    'welcome' => 'Bienvenue sur la Newsletter du mois !',
-    'description' => 'Voici la liste des :count derniers articles publiés au cours du mois',
-    'thanks' => 'Merci de vous être abonné à notre newsletter',
-    'unsubscribe' => 'Se désabonner'
+    'subject' => 'ព្រឹត្តិប័ត្រព័ត៌មានប្រចាំខែ',
+    'welcome' => 'សូមស្វាគមន៍មកកាន់ព្រឹត្តិប័ត្រព័ត៌មានប្រចាំខែ!',
+    'description' => 'នេះគឺជាចំនួនបញ្ជីនៃអត្ថបទចុងក្រោយដែលបានចេញផ្សាយក្នុងកំឡុងខែ :count។',
+    'thanks' => 'សូមអរគុណចំពោះការអានព្រឹត្តិប័ត្រព័ត៌មានរបស់យើង',
+    'unsubscribe' => 'ការមិនទទួលយកព្រឹត្តិប័ត្រព័ត៌មាន'
   ]
 ];

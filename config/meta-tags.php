@@ -9,7 +9,7 @@ return array(
      |
      */
 
-    'title' => 'Hot news, Local News, Fastest News, Reliable News, Valuables News, Health, Sport, Technology, in Cambodia : ',
+    'title' => 'Merlplus.com - News Site in Cambodia',
 
     /*
      |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return array(
      */
 
     'open_graph' => [
-        'site_name' => 'Hot news, Local News, Fastest News, Reliable News, Valuables News, Health, Sport, Technology, in Cambodia : ',
+        'site_name' => 'www.merlplus.com',
         'type' => 'website'
     ],
 
@@ -54,8 +54,8 @@ return array(
 
     'twitter' => [
         'card' => 'summary',
-        'creator' => '@chantouchsek',
-        'site' => '@bookinkh.com'
+        'creator' => '@merlplus',
+        'site' => '@merlplus.com'
     ],
 
     /*

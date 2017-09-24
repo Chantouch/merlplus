@@ -52,4 +52,19 @@ class Tag extends Model
 
 		];
 	}
+
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKey(): string
+    {
+        if (!empty($this->slug)) {
+            return $this->slug;
+        }
+        return $this->id;
+    }
+
 }

@@ -1,33 +1,34 @@
 <?php
 
 return [
-    'publish' => 'Publier',
-    'delete' => 'Supprimer',
-    'delete_thumbnail' => "Supprimer l'image à la une",
-    'edit' => 'Éditer',
-    'last_posts' => 'Les derniers articles',
-    'add_article' => 'Ajouter un article',
-    'edit_article' => 'Éditer un article',
-    'created' => 'Article créé avec succès',
-    'updated' => 'Article mis à jour avec succès',
-    'deleted' => 'Article supprimé avec succès',
-    'empty' => "Il n'y a aucun article pour le moment.",
-    'new_posts' => 'nouvel article|nouveaux articles',
-    'count' => ':count article|:count articles',
-    'show' => "Voir l'article",
+    'publish' => 'ផ្សាយចេញ',
+    'delete' => 'លុបចោល',
+    'delete_thumbnail' => "លុបចោលនូវរូបភាព",
+    'edit' => 'កែសម្រួល',
+    'last_posts' => 'អត្ថបទថ្មីៗ',
+    'add_article' => 'ការបន្ថែមអត្ថបទ',
+    'edit_article' => 'ការកែសម្រួលអត្ថបទ',
+    'created' => 'អត្ថបទត្រូវបានបង្កើតដោយជោគជ័យ',
+    'updated' => 'អត្ថបទត្រូវបានកែសម្រួលដោយជោគជ័យ',
+    'deleted' => 'អត្ថបទត្រូវបានលុបចោលដោយជោគជ័យ',
+    'empty' => "ភ្លាមៗនេះមិនមានអត្ថបទក្នុងការពិនិត្យសារជាថ្មី",
+    'new_posts' => 'អត្ថបទថ្មី',
+    'count' => ':count អត្ថបទ',
+    'show' => "មើលលម្អិត",
 
     'attributes' => [
-        'title' => 'Titre',
-        'content' => 'Contenu',
-        'author' => 'Auteur',
-        'thumbnail' => 'Image à la une',
-        'posted_at' => 'Posté le',
+        'title' => 'ចំណងជើង',
+        'content' => 'មាតិកា',
+        'author' => 'អ្នកនិពន្ធ',
+        'thumbnail' => 'រូបភាព',
+        'posted_at' => 'ការផ្សាយឯ',
     ],
 
     'placeholder' => [
-        'title' => 'Votre titre',
-        'content' => 'Votre contenu'
+        'title' => 'ចំណងជើងរបស់អ្នក',
+        'content' => 'មាតិការបស់អ្នក'
     ],
     'show.article' => 'អត្តបទ',
-	'btn_read_more' => 'អានបន្ត'
+    'btn_read_more' => 'អានបន្ត',
+    'video' => 'វីដីអូ'
 ];

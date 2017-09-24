@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'password' => 'Les mots de passe doivent contenir au moins six caractères et doivent être identiques.',
-    'reset'    => 'Votre mot de passe a été réinitialisé !',
-    'sent'     => 'Nous vous avons envoyé par courriel le lien de réinitialisation du mot de passe !',
-    'token'    => "Ce jeton de réinitialisation du mot de passe n'est pas valide.",
-    'user'     => "Aucun utilisateur n'a été trouvé avec cette adresse e-mail.",
+    'password' => 'លេខកូដសម្ងាត់យ៉ាងហោចណាស់ ៦ តួរអក្សរ ហើយជាសញ្ញាពិសេស។',
+    'reset'    => 'លេខកូដសម្ងាត់របស់អ្នកត្រូវបានកំណត់សារជាថ្មី',
+    'sent'     => 'យើងបានផ្ញើតំណរភ្ជាប់ដើម្បីធ្វើការកំណត់លេខកូដសម្ងាត់សារជាថ្មីនៅក្នុងអ៊ីមែលរបស់អ្នក',
+    'token'    => "កំណត់សម្គាល់លេខកូដសម្ងាត់សារជាថ្មីមិនត្រឹមត្រូវទេ",
+    'user'     => "រកមិនឃើញអ្នកប្រើប្រាស់ជាមួយអាសយដ្ឋានអ៊ីមែលនេះទេ។",
 
 ];

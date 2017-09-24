@@ -23,7 +23,7 @@
                                     @if($post->hasThumbnail())
                                         <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                                             <img alt="{!! $post->title !!}" class="blocky"
-                                                 src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                                 src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                                         </a>
                                     @endif
                                     <div class="sec-1-big-text lefty">
@@ -44,7 +44,7 @@
                                         </span>
                                         </h6>
                                         <p>
-                                            {!! $post->excerpt(1000) !!}
+                                            {!! $post->excerpt(2000) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                                     @if($post->hasThumbnail())
                                         <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                                             <img alt="Image blog default page" class="blocky" height="90"
-                                                 src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                                 src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                                         </a>
                                     @endif
                                     <div class="sec-1-sm-text blocky">

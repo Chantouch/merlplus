@@ -25,7 +25,7 @@
             <div class="cover boxcaption">
                 <h1>
                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                        {!! $post->excerptTitle(45) !!}
+                        {!! $post->excerptTitle(90) !!}
                     </a>
                     <span class="topic-icn">{!! $post->posted_at->diffForHumans() !!}</span>
                 </h1>
@@ -39,3 +39,40 @@
         </div>
     @endforeach
 @endif
+
+<div class="flex-container">
+    <div class="flexslider hm-slider">
+        <ul class="slides">
+            @if(count($posts))
+                @foreach($posts['news_sliders'] as $index => $post)
+                    <li>
+                        @if($post->hasThumbnail())
+                            <img alt="{!! $post->title !!}" class="img"
+                                 src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
+                        @else
+                            <img alt="{!! $post->title !!}"
+                                 src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
+                        @endif
+                        <h3 class="cat-label cat-label1">
+                            @if(count($post->categories))
+                                <a href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}"
+                                   class="font-uppercase">{!! $post->categories->first()->name !!}</a>
+                            @endif
+                        </h3>
+                        <div class="hm-sldr-caption">
+                            <h3>
+                                <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
+                                    {!! $post->excerptTitle(30) !!}
+                                </a>
+                                <span class="topic-icn">{!! $post->posted_at->diffForHumans() !!}</span>
+                            </h3>
+                            <p>
+                                {!! $post->excerpt(900) !!}
+                            </p>
+                        </div>
+                    </li>
+                @endforeach
+            @endif
+        </ul>
+    </div>
+</div>

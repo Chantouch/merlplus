@@ -31,6 +31,7 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
 		Route::resource('comments', 'CommentsController', ['only' => ['index', 'show']]);
 		Route::get('users/{user}/comments', 'UsersController@comments');
 		Route::resource('posts', 'PostsController', ['only' => ['index', 'show']]);
+		Route::resource('articles', 'ArticlesController', ['only' => ['index', 'show']]);
 		Route::get('users/{user}/posts', 'UsersController@posts')->name('users.posts.index');
 		Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'update', 'destroy']]);
 		Route::delete('media-library/drop/{filename}', 'MediaLibraryController@destroyDropZoneUpload')->name('media-library.drop');
