@@ -49,7 +49,7 @@
     <input type="hidden" name="tags" :value="tags">
     <div class="form-line">
         <select class="form-control" multiple data-placeholder="Choose" id="tag" v-model="tags">
-            <option v-for="tag in tag_lists" :value="tag.id">@{{ tag.name }}</option>
+            <option v-for="tag in tag_lists.tags" :value="tag.id">@{{ tag.name }}</option>
         </select>
     </div>
     @if ($errors->has('tags'))

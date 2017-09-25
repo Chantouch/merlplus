@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
-    <title>{{ MetaTag::get('title') }} | {{ config('app.name', 'Merlplus.com') }}</title>
+    <title>{{ MetaTag::get('title') }} | {{ config('app.name', 'Merlplus') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -105,7 +105,7 @@
     window.addEventListener("load", function(event) {
         var timeout = setTimeout(function() {
             lazyload();
-        }, 1000);
+        }, 600);
     });
 
     var $ = jQuery.noConflict();
