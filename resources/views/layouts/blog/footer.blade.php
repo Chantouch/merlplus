@@ -29,7 +29,7 @@
 <div class="info-ftr float-width">
     <div class="mag-info lefty">
         <a class="ftr-logo" href="#">
-            <img alt="Image blog default page" src="{!! asset('blog/img/logo.png') !!}" width="250"/>
+            <img alt="Image blog default page" data-src="{!! asset('blog/img/logo.png') !!}" width="250" class="lazyload"/>
         </a>
         <p>
             ​© រក្សា​សិទ្ធិ​គ្រប់​យ៉ាង​ដោយ​ Merlplus ឆ្នាំ​២០១៦ <br>
@@ -84,8 +84,8 @@
                 @foreach($latest_posts as $latest_post)
                     <div class="pst-ftr-sngl float-width">
                         <a href="#" class="lefty pst-ftr-img">
-                            <img alt="{!! $latest_post->title !!}" width="70" height="70"
-                                 src="{!! asset(route('media.posts.path',[$latest_post->id,'small_'.$latest_post->thumbnail()->filename])) !!}"/></a>
+                            <img alt="{!! $latest_post->title !!}" width="70" height="70" class="lazyload"
+                                 data-src="{!! asset(route('media.posts.path',[$latest_post->id,'small_'.$latest_post->thumbnail()->filename])) !!}"/></a>
                         <h5>{!! $latest_post->excerptTitle(25) !!}</h5>
                         <h6 class="lefty">
                             <span>
@@ -93,9 +93,9 @@
                             <span>
                                 <i class="fa fa-comment-o"></i>{!! $latest_post->comments->count() !!} Comments</span>
                         </h6>
-                        <a href="#" class="lefty stars">
-                            <img alt="Image blog default page" src="{!! asset('blog/img/4-stars.png') !!}">
-                        </a>
+                        {{--<a href="#" class="lefty stars">--}}
+                            {{--<img alt="Image blog default page" src="{!! asset('blog/img/4-stars.png') !!}">--}}
+                        {{--</a>--}}
                     </div>
                 @endforeach
             @endif

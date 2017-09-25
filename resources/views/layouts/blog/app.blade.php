@@ -3,27 +3,21 @@
 <head>
     <meta charset="utf-8">
     <title>{{ MetaTag::get('title') }} | {{ config('app.name', 'Merlplus.com') }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {!! MetaTag::tag('description') !!}
     {!! MetaTag::tag('keywords') !!}
     {!! MetaTag::tag('image') !!}
     {!! MetaTag::openGraph() !!}
     {!! MetaTag::twitterCard() !!}
-    {!! MetaTag::tag('image', asset('images/default-logo.png')) !!}
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{!! asset('blog/css/css8b0d.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/css97f7.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/css4610.css') !!}">
+    {!! MetaTag::tag('image', asset('images/logo.png')) !!}
+    <link rel="stylesheet" href="{!! asset('blog/css/app.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/csse1a8.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/main.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/css9a38.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/cssf83a.css') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/responsive.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
-    <script src="{!! asset('blog/js/modernizr.min.js') !!}"></script>
     <style>
         .hm-slider .slides {
             background-image: url({!! asset('images/loading.gif') !!});
@@ -67,11 +61,11 @@
         @yield('main-news-block')
     </div>
     <!-- News Ticker -->
-    @if(!Request::is('article/*'))
-        <div class="container">
-            @include('layouts.blog.breaking-news')
-        </div>
-    @endif
+    {{--@if(!Request::is('article/*'))--}}
+        {{--<div class="container">--}}
+            {{--@include('layouts.blog.breaking-news')--}}
+        {{--</div>--}}
+    {{--@endif--}}
 
     <div class="container-position">
         @yield('post-background')
@@ -99,32 +93,8 @@
 </div>
 
 <!-- Scripts -->
-{{--<script src="{{ asset('js/app.js') }}"></script>--}}
-
-<script src="{!! asset('blog/js/jquery-3.2.1.min.js') !!}"></script>
-{{--<script src="{!! asset('blog/js/js5a10.js?file=vendor/jquery-3.2.1.min') !!}"></script>--}}
-
-<script src="{!! asset('bootstrap/dist/js/bootstrap.min.js') !!}"></script>
-
-<script src="{!! asset('blog/js/jsec26.css') !!}"></script>
-
-<script src="{!! asset('blog/js/js047d.css') !!}"></script>
-
-<script src="{!! asset('blog/js/js288f.css') !!}"></script>
-
-<script src="{!! asset('blog/js/js6a7f.css') !!}"></script>
-
-<script src="{!! asset('blog/js/jse3a4.css') !!}"></script>
-
-<script src="{!! asset('blog/js/jsf0b3.css') !!}"></script>
-
-<script src="{!! asset('blog/js/jsf83a.css') !!}"></script>
-
-<script src="{!! asset('blog/js/main.min.js') !!}"></script>
-
-<script src="{!! asset('blog/js/slick.min.js') !!}"></script>
-<script src="{!! asset('blog/js/jquery.lazyload.min.js') !!}"></script>
-<script src="{!! asset('blog/js/echo.min.js') !!}"></script>
+<script src="{{ asset('blog/js/app.js') }}"></script>
+<script src="{{ asset('blog/js/jquery.lazyload.min.js') }}"></script>
 <script type="text/javascript" src="{!! asset('js/vue/vue.js') !!}"></script>
 <script src="{!! asset('js/vue/vue-resource.min.js') !!}"></script>
 <script src="{!! asset('js/vue/vue-axios.min.js') !!}"></script>
@@ -132,22 +102,10 @@
 
 @yield('scripts')
 <script !src="">
-    $(function () {
-        $("img").lazyload({
-            effect: "fadeIn"
-        });
-        echo.init({
-            offset: 100,
-            throttle: 250,
-            unload: false,
-            callback: function (element, op) {
-                if (op === 'load') {
-                    element.classList.add('loaded');
-                } else {
-                    element.classList.remove('loaded');
-                }
-            }
-        });
+    window.addEventListener("load", function(event) {
+        var timeout = setTimeout(function() {
+            lazyload();
+        }, 1000);
     });
 
     var $ = jQuery.noConflict();

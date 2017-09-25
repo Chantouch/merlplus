@@ -25,8 +25,9 @@
                     @if($ads->hasBanner())
                         <a href="{!! $ads->url !!}" target="_blank">
                             <div class="rt-block mid-block-1 boxgrid2 caption">
-                                <img alt="{!! $ads->provider_name !!}" class="img"
-                                     src="{!! asset($ads->banner()->media_url) !!}"/>
+                                <img alt="{!! $ads->provider_name !!}" class="img lazyload"
+                                     src="{!! asset('blog/img/blur.jpg') !!}"
+                                     data-src="{!! asset($ads->banner()->media_url) !!}"/>
                                 <h2 class="cat-label cat-label4">
                                     <a href="{!! $ads->url !!}">{!! $ads->provider_name !!}</a>
                                 </h2>
@@ -52,13 +53,15 @@
                 @if(count($home_top_news_slider))
                     @foreach($home_top_news_slider->take(3) as $ads)
                         <li>
-                            <img alt="{!! $ads->banner()->original_filename !!}"
-                                 src="{!! asset($ads->banner()->media_url) !!}"/>
+                            <img alt="{!! $ads->banner()->original_filename !!}" class="lazyload"
+                                 src="{!! asset('blog/img/blur.jpg') !!}"
+                                 data-src="{!! asset($ads->banner()->media_url) !!}"/>
                         </li>
                     @endforeach
                 @else
                     <li>
-                        <img alt="No image" src="{!! asset('blog/img/samples/z2.jpg') !!}"/>
+                        <img alt="No image" class="lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
+                             data-src="{!! asset('blog/img/samples/z2.jpg') !!}"/>
                     </li>
                 @endif
             @endif

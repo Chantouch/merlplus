@@ -1,21 +1,29 @@
 <IfModule mod_rewrite.c>
    RewriteEngine On
+   #IP Canonicalization
+   RewriteCond %{HTTP_HOST} ^139\.162\.25\.42
+   RewriteRule (.*) https://merlplus.com/$1 [R=301,L]
+   #Libwww-perl Access
+   RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
+   RewriteRule .* - [F,L]
+   #URL Canonicalization
+   RewriteCond %{HTTPS} on
+   Options +FollowSymlinks
+   RewriteBase /
+   RewriteCond %{HTTP_HOST} ^merlplus\.com$ [NC]
+   RewriteRule ^(.*)$ https://www.merlplus.com/$1 [R=301,L]
    # Force SSL
    RewriteCond %{HTTP_HOST} ^merlplus.com [NC]
    RewriteCond %{SERVER_PORT} 80
    RewriteRule ^(.*)$ https://www.merlplus.com/$1 [R,L]
    # Remove public folder form URL
    RewriteRule ^(.*)$ public/$1 [L]
-   #Libwww-perl Access
-   RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
-   RewriteRule .* ? [F,L]
-   #URL Canonicalization
-   RewriteCond %{HTTP_HOST} !^merlplus.com$ [NC]
-   RewriteRule ^(.*)$ https://www.merlplus.com/$1 [L,R=301]
-    #IP Canonicalization
-   RewriteCond %{HTTP_HOST} ^139\.162\.13\.242
-   RewriteRule (.*) https://www.merlplus.com/$1 [R=301,L]
 </IfModule>
+
+#Keep Alive Header
+<ifModule mod_headers.c>
+ Header set Connection keep-alive
+</ifModule>
 
 # ----------------------------------------------------------------------
 # Expires headers (for better cache control)
@@ -61,19 +69,38 @@ Header append Vary User-Agent
 </IfModule>
 ## endable compress ##
 
-## EXPIRES CACHING ##
 <IfModule mod_expires.c>
-ExpiresActive On
-ExpiresByType image/jpg "access 1 year"
-ExpiresByType image/jpeg "access 1 year"
-ExpiresByType image/gif "access 1 year"
-ExpiresByType image/png "access 1 year"
-ExpiresByType text/css "access 1 month"
-ExpiresByType text/html "access 1 month"
-ExpiresByType application/pdf "access 1 month"
-ExpiresByType text/x-javascript "access 1 month"
-ExpiresByType application/x-shockwave-flash "access 1 month"
-ExpiresByType image/x-icon "access 1 year"
-ExpiresDefault "access 1 month"
+  ExpiresActive on
+
+# Perhaps better to whitelist expires rules? Perhaps.
+  ExpiresDefault                          "access plus 1 month"
+
+# Data
+  ExpiresByType text/xml                  "access plus 0 seconds"
+  ExpiresByType application/xml           "access plus 0 seconds"
+  ExpiresByType application/json          "access plus 0 seconds"
+
+# Favicon (cannot be renamed)
+  ExpiresByType image/x-icon              "access plus 1 week"
+
+# Media: images, video, audio
+  ExpiresByType image/gif                 "access plus 1 month"
+  ExpiresByType image/png                 "access plus 1 month"
+  ExpiresByType image/jpeg                "access plus 1 month"
+  ExpiresByType video/ogg                 "access plus 1 month"
+  ExpiresByType audio/ogg                 "access plus 1 month"
+  ExpiresByType video/mp4                 "access plus 1 month"
+  ExpiresByType video/webm                "access plus 1 month"
+
+# Webfonts
+  ExpiresByType application/x-font-ttf    "access plus 1 month"
+  ExpiresByType font/opentype             "access plus 1 month"
+  ExpiresByType application/x-font-woff   "access plus 1 month"
+  ExpiresByType image/svg+xml             "access plus 1 month"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+
+# CSS and JavaScript
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+
 </IfModule>
-## EXPIRES CACHING ##des

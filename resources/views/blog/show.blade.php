@@ -75,11 +75,11 @@
 @section('post-backgrounds')
     <div class="fix-bg">
         @if($post->hasThumbnail())
-            <img alt="{!! $post->excerptTitle(60) !!}" class="img"
-                 src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+            <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload"
+                 data-src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
         @else
-            <img alt="{!! $post->excerptTitle(60) !!}" class="img"
-                 src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
+            <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload"
+                 data-src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
         @endif
         <div class="inside"></div>
     </div>
@@ -93,8 +93,8 @@
                         @if($index < 2)
                             <div class="ad-rt">
                                 <a href="{!! $ads->url !!}" target="_blank">
-                                    <img alt="{!! $ads->provider_name !!}"
-                                         src="{!! asset($ads->banner()->media_url) !!}"/>
+                                    <img alt="{!! $ads->provider_name !!}" class="lazyload"
+                                         data-src="{!! asset($ads->banner()->media_url) !!}"/>
                                 </a>
                             </div>
                         @endif
@@ -117,14 +117,14 @@
                             @if($article->hasThumbnail())
                                 <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
                                    title="{!! $article->title !!}">
-                                    <img src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
-                                         class="media-object" width="80" alt="{!! $article->title !!}">
+                                    <img data-src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
+                                         class="media-object lazyload" width="80" alt="{!! $article->title !!}">
                                 </a>
                             @else
                                 <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
                                    title="{!! $article->title !!}">
-                                    <img src="{!! asset('blog/img/samples/sample.jpg') !!}"
-                                         class="media-object" width="80" alt="{!! $article->title !!}">
+                                    <img data-src="{!! asset('blog/img/samples/sample.jpg') !!}"
+                                         class="media-object lazyload" width="80" alt="{!! $article->title !!}">
                                 </a>
                             @endif
                         </div>
@@ -164,11 +164,15 @@
             </div>
             <div class="artcl-body float-width">
                 <h2>{!! $post->excerptTitle(300) !!}</h2>
-                <h5>
-                    <span><i class="fa fa-user"></i>{!! $post->checkAuthor() !!}</span>
-                    <span><i class="fa fa-clock-o"></i>{!! $post->posted_at !!}</span>
-                    <span><i class="fa fa-comment-o"></i>{!! count($post->comments) !!} comments</span>
-                </h5>
+                <!-- The Article Social Media Share -->
+                <div class="lefty artcl-tags">
+                    <h5>
+                        <span><i class="fa fa-user"></i>{!! $post->checkAuthor() !!}</span>
+                        <span><i class="fa fa-clock-o"></i>{!! $post->posted_at !!}</span>
+                        <span><i class="fa fa-comment-o"></i>{!! count($post->comments) !!} comments</span>
+                    </h5>
+                </div>
+                @include('blog.inc.share')
                 <article class="float-width articl-data">
                     <div class="content">
                         {!! $post->description !!}
@@ -197,26 +201,7 @@
                     @endif
                 </ul>
             </div>
-            <div class="righty artcl-shr">
-                <ul>
-                    <li>
-                        <div class="fb-share-button"
-                             data-href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}"
-                             data-width="100" data-type="button">
-                        </div>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
-                    </li>
-                    <li>
-                        <a href="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.flickr.com%2Fphotos%2Fkentbrew%2F6851755809%2F&amp;media=http%3A%2F%2Ffarm8.staticflickr.com%2F7027%2F6851755809_df5b2051c9_z.jpg&amp;description=Next%20stop%3A%20Pinterest"
-                           data-pin-do="buttonPin" data-pin-config="none">
-                            <img alt="Pin share"
-                                 src="https://assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png"/>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            @include('blog.inc.share')
         </div>
         <!-- Ads button of single article -->
         @if(isset($single_article_ads))
@@ -224,16 +209,11 @@
                 @foreach($single_article_ads->random(1) as $index => $article_ad)
                     @if($article_ad->hasBanner())
                         @if($article_ad->hasBanner())
-                            <img src="{!! asset($article_ad->banner()->media_url) !!}" width="728" height="90"
-                                 alt="{!! $article_ad->provider_name !!}">
+                            <img data-src="{!! asset($article_ad->banner()->media_url) !!}" width="728" height="90"
+                                 class="lazyload" alt="{!! $article_ad->provider_name !!}">
                         @else
                             {!! $article_ad->provider_name !!}
                         @endif
-                    @else
-                        <a href="/" target="_blank">
-                            <img src="https://s.adroll.com/a/EJK/TOF/EJKTOFZSTBA7ROIOKMTGCK.gif" width="728" height="90"
-                                 alt="">
-                        </a>
                     @endif
                 @endforeach
             </div>
@@ -253,14 +233,14 @@
                         @if($article->hasThumbnail())
                             <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
                                title="{!! $article->title !!}">
-                                <img src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
-                                     class="img-responsive" alt="{!! $article->title !!}">
+                                <img data-src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
+                                     class="img-responsive lazyload" alt="{!! $article->title !!}">
                             </a>
                         @else
                             <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
                                title="{!! $article->title !!}">
-                                <img alt="{!! $article->excerptTitle(60) !!}" class="img-responsive"
-                                     src="{!! asset('blog/img/samples/e1.jpg') !!}"/>
+                                <img alt="{!! $article->excerptTitle(60) !!}" class="img-responsive lazyload"
+                                     data-src="{!! asset('blog/img/samples/e1.jpg') !!}"/>
                             </a>
                         @endif
                         <div class="reltd-sngl-txt">
@@ -354,10 +334,12 @@
             js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1906910106248873";
             fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <!-- Twitter share JS -->
-    <script>!function (d, s, id) {
+    <script>
+        !function (d, s, id) {
             let js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
             if (!d.getElementById(id)) {
                 js = d.createElement(s);

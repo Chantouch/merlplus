@@ -1,6 +1,5 @@
 User-agent: *
-Disallow: /admin/
-Disallow: /ajax/
-Disallow: /js/
+User-agent: Libwww-perl
+Disallow:
 
 Sitemap: https://www.merlplus.com/sitemap.xml

@@ -18,11 +18,12 @@
                     <th>{!! $loop->index+1 !!}</th>
                     <td>
                         @if($article->hasThumbnail())
-                            <img src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
-                                 alt="{!! $article->title !!}" width="50">
+                            <img data-src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
+                                 src="{!! asset('blog/img/blur.jpg') !!}" alt="{!! $article->title !!}" width="50"
+                                 class="img-thumbnail lazyload">
                         @else
-                            <img src="{!! asset('img/slider-870x323.jpg') !!}" alt="Thumbnail of page"
-                                 class="img-thumbnail">
+                            <img data-src="{!! asset('img/slider-870x323.jpg') !!}" alt="Thumbnail of page"
+                                 src="{!! asset('blog/img/blur.jpg') !!}" class="img-thumbnail lazyload">
                         @endif
                     </td>
                     <td>{!! str_limit($article->title, 100) !!}</td>

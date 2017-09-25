@@ -14,9 +14,9 @@
 
 <!-- Featured Video -->
 {{--<div class="ftrd-vd float-width">--}}
-    {{--<h3 class="sec-title">FEATURED VIDEO</h3>--}}
-    {{--<iframe src="https://player.vimeo.com/video/8170203?color=b3a07d" width="100%" height="300"--}}
-            {{--frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>--}}
+{{--<h3 class="sec-title">FEATURED VIDEO</h3>--}}
+{{--<iframe src="https://player.vimeo.com/video/8170203?color=b3a07d" width="100%" height="300"--}}
+{{--frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>--}}
 {{--</div>--}}
 
 <!-- Ad banner right -->
@@ -26,7 +26,8 @@
             @if($index > 1)
                 <div class="lefty ad-rt">
                     <a href="{!! $ads->url !!}" target="_blank">
-                        <img alt="{!! $ads->provider_name !!}" src="{!! asset($ads->banner()->media_url) !!}"/>
+                        <img alt="{!! $ads->provider_name !!}" data-src="{!! asset($ads->banner()->media_url) !!}"
+                             class="lazyload"/>
                     </a>
                 </div>
             @endif

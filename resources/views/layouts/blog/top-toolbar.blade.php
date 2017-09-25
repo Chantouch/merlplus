@@ -18,7 +18,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">
-                <img src="{!! asset('blog/img/logo.png') !!}" alt="Merlplus.com"></a>
+                <img data-src="{!! asset('blog/img/logo.png') !!}" alt="Merlplus.com" class="lazyload"></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

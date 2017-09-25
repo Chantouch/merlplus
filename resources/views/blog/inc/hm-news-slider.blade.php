@@ -11,15 +11,16 @@
     @foreach($posts['news_sliders'] as $index => $post)
         <div class="mid-block-1 boxgrid caption item">
             @if($post->hasThumbnail())
-                <img alt="{!! $post->excerptTitle(60) !!}" class="img"
-                     src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
+                     data-src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
             @else
-                <img alt="{!! $post->excerptTitle(60) !!}"
-                     src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
+                <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
+                     data-src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
             @endif
             <h4 class="cat-label cat-label2">
                 @if(count($post->categories))
-                    <a href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}" class="font-uppercase">{!! $post->categories->first()->name !!}</a>
+                    <a href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}"
+                       class="font-uppercase">{!! $post->categories->first()->name !!}</a>
                 @endif
             </h4>
             <div class="cover boxcaption">
@@ -47,11 +48,11 @@
                 @foreach($posts['news_sliders'] as $index => $post)
                     <li>
                         @if($post->hasThumbnail())
-                            <img alt="{!! $post->title !!}" class="img"
-                                 src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
+                            <img alt="{!! $post->title !!}" class="img lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
+                                 data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                         @else
-                            <img alt="{!! $post->title !!}"
-                                 src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
+                            <img alt="{!! $post->title !!}" class="img lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
+                                 data-src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
                         @endif
                         <h3 class="cat-label cat-label1">
                             @if(count($post->categories))

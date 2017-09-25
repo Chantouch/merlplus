@@ -22,8 +22,8 @@
                                 <div class="sec-1-big float-width">
                                     @if($post->hasThumbnail())
                                         <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                            <img alt="{!! $post->title !!}" class="blocky"
-                                                 src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
+                                            <img alt="{!! $post->title !!}" class="blocky lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
+                                                 data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                                         </a>
                                     @endif
                                     <div class="sec-1-big-text lefty">
@@ -53,8 +53,8 @@
                                 <div class="sec-1-sm">
                                     @if($post->hasThumbnail())
                                         <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                            <img alt="Image blog default page" class="blocky" height="90"
-                                                 src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
+                                            <img alt="Image blog default page" class="blocky lazyload" height="90" src="{!! asset('blog/img/blur.jpg') !!}"
+                                                 data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                                         </a>
                                     @endif
                                     <div class="sec-1-sm-text blocky">

@@ -11,7 +11,8 @@
         <!-- Website Logo -->
         <div class="logo col-lg-4">
             <a href="/">
-                <img alt="Image blog default page" src="{!! asset('blog/img/logo.png') !!}" width="270"/>
+                <img alt="Merlplus.com" src="{!! asset('blog/img/logo.png') !!}" width="270"
+                     class="lazyload"/>
             </a>
         </div>
         <div class="top-banner col-lg-8">
@@ -20,11 +21,15 @@
                 @foreach($top_ads as $ads)
                     @if($ads->hasBanner())
                         <a href="{!! $ads->url !!}" target="_blank">
-                            {{ Html::image($ads->banner()->media_url, $ads->banner()->original_filename) }}
+                            <img alt="{!! $ads->banner()->original_filename !!}"
+                                 src="{!! asset('blog/img/blur-ads.jpg') !!}"
+                                 data-src="{!! asset($ads->banner()->media_url) !!}"
+                                 height="90" class="lazyload"/>
                         </a>
                     @else
                         <a href="#">
-                            <img alt="Image blog default page" src="{!! asset('blog/img/top-banner.jpg') !!}" height="90"/>
+                            <img alt="Image blog default page" data-src="{!! asset('blog/img/top-banner.jpg') !!}"
+                                 src="{!! asset('blog/img/blur-ads.jpg') !!}" height="90" class="lazyload"/>
                         </a>
                     @endif
                 @endforeach

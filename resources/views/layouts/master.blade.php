@@ -128,6 +128,7 @@
 <!-- Custom Theme JavaScript -->
 <script src="{{ asset('js/custom.js') }}"></script>
 <!-- Plugin JavaScript -->
+<script src="{{ asset('blog/js/jquery.lazyload.min.js') }}"></script>
 <script src="{!! asset('plugins/moment/moment.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('js/vue/vue.js') !!}"></script>
 <script src="{!! asset('js/vue/vue-resource.min.js') !!}"></script>
@@ -137,6 +138,11 @@
 <!--Style Switcher -->
 <script src="{{ asset('plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
 <script>
+    window.addEventListener("load", function(event) {
+        var timeout = setTimeout(function() {
+            lazyload();
+        }, 5000);
+    });
     $(function () {
                 @if(Session::has('message'))
         let type = "{{ Session::get('alert-type', 'info') }}";
