@@ -43,6 +43,10 @@
         @include('admin.dashboard.blog-component-widgets')
         {{--@include('admin.dashboard.chats-message-widgets')--}}
     </div>
+    <div class="col-md-12">
+        {!! $visitor !!}
+        {!! $users_online !!}
+    </div>
 @endsection
 @section('plugins')
     <script src="{!! asset('plugins/waypoints/lib/jquery.waypoints.js') !!}"></script>
