@@ -44,14 +44,12 @@ class BaseController extends Controller
 		$menus = Category::with('images')
 			->where('parent_id', null)
 			->latest()->take(5)->get();
-		$latest_posts = Post::with('categories')->latest()->take(4)->get();
 		view()->share([
 			'top_ads'              => $top_ads,
 			'top_right_ads'        => $top_right_ads,
 			'home_top_news_slider' => $home_top_news_slider,
 			'main_right_ads'       => $main_right_ads,
 			'menus'                => $menus,
-			'latest_posts' => $latest_posts
 		]);
 	}
 

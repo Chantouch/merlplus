@@ -27,6 +27,13 @@
                         @endforeach
                     @endif
                 @endif
+                <li class="">
+                    <a href="http://127.0.0.1:8000/topics/life">
+                        <img src="http://media.sabay.com/media/Commercial/Micro-Site/NET2017/microButton_97x72px.png"
+                             data-src="http://media.sabay.com/media/Commercial/Micro-Site/NET2017/microButton_97x72px.png"
+                             alt="button ads" class="lazyload">
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="col-lg-4 main-search-bar">

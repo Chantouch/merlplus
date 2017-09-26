@@ -70,6 +70,37 @@
         .ads_items {
             margin-bottom: 15px;
         }
+
+        .post-top-bar {
+            height: 35px;
+            padding: 10px 0 0;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .single .sponsor_img {
+            margin-top: -15px;
+        }
+
+        .sponsor, .sponsor div, li.sponsor {
+            float: left;
+        }
+
+        .sponsor_img {
+            background-size: 65%;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 150px;
+            height: 44px;
+            margin-left: -15px;
+        }
+
+        .single .sponsor_by {
+            margin-top: 0;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
     </style>
 @stop
 @section('post-backgrounds')
@@ -144,6 +175,15 @@
 @stop
 @section('content')
     <div class="main-left-side">
+        <div class="post-top-bar">
+            <a href="https://www.facebook.com/CLEARMENCambodia/" target="_blank" title="Opens in a new window">
+                <div class="single sponsor">
+                    <div class="sponsor_by" style="color:#04304C">នាំមកជូនដោយ</div>
+                    <div class="sponsor_img"
+                         style="background-image:url(http://media.sabay.com/media/Commercial/Micro-Site/Clear/Untitled-1.png);"></div>
+                </div>
+            </a>
+        </div>
         <div class="artcl-main float-width">
             <div class="artcl-prev-nxt float-width">
                 <div class="artcl-prev w50 blocky">

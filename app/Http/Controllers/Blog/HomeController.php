@@ -37,10 +37,8 @@ class HomeController extends BaseController
 			->orWhere('name', 'Video')
 			->orWhere('name', 'Videos')
 			->first();
-		$breaking_news = Post::with('categories')->latest()->take(6)->select('id', 'title')->get();
 		$posts = [
 			'news_sliders'  => $news_sliders,
-			'breaking_news' => $breaking_news
 		];
 		return view($this->view . 'index', compact('posts', 'categories', 'tag'));
 	}
