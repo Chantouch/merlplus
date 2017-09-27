@@ -41,21 +41,25 @@
                     <li>
                         <div class="message-center">
                             <a href="#">
-                                <div class="user-img"><img src="{!! asset('images/users/pawandeep.jpg') !!}"
-                                                           alt="user" class="img-circle"> <span
-                                            class="profile-status online pull-right"></span></div>
+                                <div class="user-img">
+                                    <img src="{!! asset('images/users/pawandeep.jpg') !!}"
+                                         alt="user" class="img-circle">
+                                    <span class="profile-status online pull-right"></span>
+                                </div>
                                 <div class="mail-contnet">
                                     <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span>
-                                    <span class="time">9:30 AM</span></div>
+                                    <span class="time">9:30 AM</span>
+                                </div>
                             </a>
                             <a href="#">
-                                <div class="user-img"><img src="{!! asset('images/users/sonu.jpg') !!}" alt="user"
-                                                           class="img-circle"> <span
-                                            class="profile-status busy pull-right"></span></div>
+                                <div class="user-img">
+                                    <img src="{!! asset('images/users/sonu.jpg') !!}" alt="user" class="img-circle">
+                                    <span class="profile-status busy pull-right"></span></div>
                                 <div class="mail-contnet">
-                                    <h5>Sonu Nigam</h5> <span
-                                            class="mail-desc">I've sung a song! See you at</span> <span
-                                            class="time">9:10 AM</span></div>
+                                    <h5>Sonu Nigam</h5>
+                                    <span class="mail-desc">I've sung a song! See you at</span>
+                                    <span class="time">9:10 AM</span>
+                                </div>
                             </a>
                             <a href="#">
                                 <div class="user-img"><img src="{!! asset('images/users/arijit.jpg') !!}" alt="user"
@@ -155,9 +159,11 @@
                 </ul>
             </li>
             <!-- .Megamenu -->
-            <li class="mega-dropdown"><a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown"
-                                         href="#"><span class="hidden-xs">Mega</span> <i
-                            class="icon-options-vertical"></i></a>
+            <li class="mega-dropdown">
+                <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
+                    <span class="hidden-xs">Mega</span>
+                    <i class="icon-options-vertical"></i>
+                </a>
                 <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
                     <li class="col-sm-3">
                         <ul>
@@ -218,20 +224,38 @@
         <ul class="nav navbar-top-links navbar-right pull-right">
             <li>
                 <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                    <input type="text" placeholder="Search..." class="form-control"> <a href=""><i
-                                class="fa fa-search"></i></a></form>
+                    <input type="text" placeholder="Search..." class="form-control">
+                    <a href=""><i class="fa fa-search"></i></a>
+                </form>
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img
-                            src="{!! asset('images/users/varun.jpg') !!}" alt="user-img" width="36"
-                            class="img-circle"><b class="hidden-xs">Steave</b><span class="caret"></span> </a>
+                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
+                    @if (auth()->check())
+                        @if(auth()->user()->hasThumbnail())
+                            <img src="{!! asset('storage/uploads/user/'.auth()->user()->thumbnail()->filename) !!}"
+                                 width="36" alt="{!! auth()->user()->name !!}" class="img-circle">
+                        @else
+                            <img src="{!! asset('images/users/varun.jpg') !!}" alt="user-img" width="36"
+                                 class="img-circle">
+                        @endif
+                    @endif
+                    <b class="hidden-xs">{!! auth()->user()->name !!}</b><span class="caret"></span>
+                </a>
                 <ul class="dropdown-menu dropdown-user animated flipInY">
                     <li>
                         <div class="dw-user-box">
-                            <div class="u-img"><img src="{!! asset('images/users/varun.jpg') !!}" alt="user"/></div>
+                            <div class="u-img">
+                                @if(auth()->user()->hasThumbnail())
+                                    <img src="{!! asset('storage/uploads/user/'.auth()->user()->thumbnail()->filename) !!}"
+                                         width="36"
+                                         alt="{!! auth()->user()->name !!}" class="img-circle">
+                                @else
+                                    <img src="{!! asset('images/users/varun.jpg') !!}" alt="user-img" width="36">
+                                @endif
+                            </div>
                             <div class="u-text">
-                                <h4>Steave Jobs</h4>
-                                <p class="text-muted">varun@gmail.com</p>
+                                <h4>{!! auth()->user()->name !!}</h4>
+                                <p class="text-muted">{!! auth()->user()->email !!}</p>
                                 <a href="profile.html" class="btn btn-rounded btn-danger btn-sm">
                                     View Profile
                                 </a>

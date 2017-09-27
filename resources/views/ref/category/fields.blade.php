@@ -1,34 +1,53 @@
-@if(count($categories)>1)
-    {!! Form::label('parent_id', 'Category Level:') !!}
-    <div class="form-group">
-        <div class="form-line">
-            {!! Form::select('parent_id',$categories , null, ['class' => 'form-control show-tick', 'data-live-search' => 'true', 'placeholder' => 'Select category']) !!}
+<div class="row">
+    <div class="col-md-6">
+        @if(count($categories)>1)
+            {!! Form::label('parent_id', 'Category Level:') !!}
+            <div class="form-group">
+                <div class="form-line">
+                    {!! Form::select('parent_id',$categories , null, ['class' => 'form-control show-tick', 'data-live-search' => 'true', 'placeholder' => 'Select category']) !!}
+                </div>
+            </div>
+        @endif
+
+            {!! Form::label('slug', 'Category slug:') !!}
+            <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
+                <div class="form-line">
+                    {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Enter your category slug']) !!}
+                </div>
+                @if ($errors->has('slug'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('slug') }}</strong>
+                    </span>
+                @endif
+            </div>
+
+    </div>
+    <div class="col-md-6">
+        {!! Form::label('name', 'Category Name:') !!}
+        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+            <div class="form-line">
+                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter your category name']) !!}
+            </div>
+            @if ($errors->has('name'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('name') }}</strong>
+                </span>
+            @endif
+        </div>
+
+        {!! Form::label('color_id', 'Category Color:') !!}
+        <div class="form-group{{ $errors->has('color_id') ? ' has-error' : '' }}">
+            <div class="input-group">
+                <span class="input-group-addon" id="color-id-category">@</span>
+                {!! Form::text('color_id', null, ['class' => 'form-control', 'placeholder' => 'Enter your category color', 'aria-describedby' => 'color-id-category']) !!}
+            </div>
+            @if ($errors->has('color_id'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('color_id') }}</strong>
+                </span>
+            @endif
         </div>
     </div>
-@endif
-
-{!! Form::label('name', 'Category Name:') !!}
-<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-    <div class="form-line">
-        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter your category name']) !!}
-    </div>
-    @if ($errors->has('name'))
-        <span class="help-block">
-            <strong>{{ $errors->first('name') }}</strong>
-        </span>
-    @endif
-</div>
-
-{!! Form::label('slug', 'Category slug:') !!}
-<div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
-    <div class="form-line">
-        {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Enter your category slug']) !!}
-    </div>
-    @if ($errors->has('slug'))
-        <span class="help-block">
-            <strong>{{ $errors->first('slug') }}</strong>
-        </span>
-    @endif
 </div>
 
 {!! Form::label('description', 'Category Description:') !!}
@@ -71,7 +90,6 @@
         </span>
     @endif
 </div>
-
 
 
 {{ Form::hidden('status', '0') }}

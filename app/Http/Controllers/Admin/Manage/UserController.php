@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Manage;
 
+use App\Http\Requests\UsersRequest;
 use App\Model\Role;
 use App\Model\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -12,6 +13,10 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
+	protected $view = 'manage.users.';
+	protected $route = "admin.manage.user.";
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +25,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('manage.users.index', compact('users'));
+        return view($this->view . 'index', compact('users'));
     }
 
     /**
@@ -31,23 +36,19 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('manage.users.create', compact('roles'));
+        return view($this->view . 'create', compact('roles'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  UsersRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsersRequest $request)
     {
         try {
             $data = $request->all();
-            $validator = Validator::make($data, User::rule(), User::messages());
-            if ($validator->fails()) {
-                return redirect()->back()->withErrors($validator)->withInput();
-            }
             if (!empty($request->password)) {
                 $password = trim($request->password);
             } else {
@@ -63,10 +64,13 @@ class UserController extends Controller
             }
             $data['password'] = bcrypt($password);
             $user = User::with('roles')->create($data);
+	        if ($request->hasFile('avatar')) {
+		        $user->storeAndSetThumbnail($request->file('avatar'));
+	        }
             if (isset($request->roles)) {
                 $user->syncRoles(explode(',', implode(',', $request->roles)));
             }
-            return redirect()->route('admin.manage.user.show', $user->id);
+            return redirect()->route($this->route . 'show', $user->id);
         } catch (ModelNotFoundException $exception) {
             throw  new ModelNotFoundException();
         }
@@ -81,7 +85,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::with('roles')->find($id);
-        return view('manage.users.show', compact('user'));
+        return view($this->view . 'show', compact('user'));
     }
 
     /**
@@ -94,28 +98,20 @@ class UserController extends Controller
     {
         $user = User::with('roles')->findOrFail($id);
         $roles = Role::all();
-        return view('manage.users.edit', compact('user', 'roles'));
+        return view($this->view . 'edit', compact('user', 'roles'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  UsersRequest $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsersRequest $request, $id)
     {
         try {
             $data = $request->all();
-            $this->validate($request, [
-                'name' => 'required|max:255',
-                'email' => 'required|email|unique:users,email,' . $id
-            ]);
-            $validator = Validator::make($data, User::rule($id), User::messages());
-            if ($validator->fails()) {
-                return redirect()->back()->withErrors($validator)->withInput();
-            }
             $user = User::with('roles')->find($id);
             $data['name'] = $request->name;
             $data['email'] = $request->email;
@@ -131,6 +127,9 @@ class UserController extends Controller
             } elseif ($request->password_options == 'manual') {
                 $data['password'] = bcrypt($request->password);
             }
+	        if ($request->hasFile('avatar')) {
+		        $user->storeAndSetThumbnail($request->file('avatar'));
+	        }
             $update = $user->update($data);
             if ($update) {
                 $user->syncRoles(explode(',', implode(',', $request->roles)));
@@ -138,7 +137,7 @@ class UserController extends Controller
                 DB::rollBack();
                 return redirect()->back()->with('error', 'You can not update user role, Please contact admin');
             }
-            return redirect()->route('admin.manage.user.show', $id);
+            return redirect()->route($this->route . 'show', $id);
         } catch (ModelNotFoundException $exception) {
             throw  new ModelNotFoundException();
         }
@@ -153,5 +152,15 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function editProfile()
+	{
+		$roles = Role::all();
+		$user = auth()->user();
+		return view($this->view . 'edit', compact('user','roles'));
     }
 }

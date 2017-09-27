@@ -84,10 +84,10 @@
                             </span>
                         </li>
                         <li class="col-last">
-                            <h3 class="counter text-right m-t-15">{!! empty($visitors) ? 1 : count($visitors) !!}</h3>
+                            <h3 class="counter text-right m-t-15">{!! empty($net_earning) ? 0 : $net_earning !!}</h3>
                         </li>
                         <li class="col-middle">
-                            <h4>Net Earnings</h4>
+                            <h4>Net Earnings ($)</h4>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-warning" role="progressbar"
                                      aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"

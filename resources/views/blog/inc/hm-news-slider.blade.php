@@ -17,12 +17,12 @@
                 <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
                      data-src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
             @endif
-            <h4 class="cat-label cat-label2">
-                @if(count($post->categories))
+            @if(count($post->categories))
+                <h4 class="cat-label cat-label{!! $post->categories->first()->color_id !!}">
                     <a href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}"
                        class="font-uppercase">{!! $post->categories->first()->name !!}</a>
-                @endif
-            </h4>
+                </h4>
+            @endif
             <div class="cover boxcaption">
                 <h1>
                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">

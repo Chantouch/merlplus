@@ -17,7 +17,7 @@ class Advertise extends Model
     protected $fillable = [
         'slug', 'advertise_type_id', 'provider_name', 'tracking_code_large',
         'tracking_code_tablet', 'tracking_code_mobile', 'active', 'url',
-        'start_date', 'end_date', 'media_id', 'is_video'
+        'start_date', 'end_date', 'media_id', 'is_video','price'
     ];
 
     //-------Validation-------//
@@ -26,7 +26,8 @@ class Advertise extends Model
     {
         return [
             'advertise_type_id' => 'required',
-            'provider_name' => 'required|max:255'
+            'provider_name' => 'required|max:255',
+	        'price' => 'required|regex:/^\d*(\.\d{1,2})?$/'
         ];
     }
 

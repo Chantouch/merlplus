@@ -27,6 +27,7 @@ class CreateAdvertisesTable extends Migration
             $table->tinyInteger('active')->default(0);
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
+            $table->decimal('price', '10', '2');
             $table->timestamps();
             $table->foreign('advertise_type_id')->references('id')
                 ->on('advertise_types')->onDelete('cascade');

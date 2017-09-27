@@ -18,9 +18,31 @@
     <link rel="stylesheet" href="{!! asset('blog/css/main.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/responsive.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/component.css') !!}">
     <style>
         .hm-slider .slides {
             background-image: url({!! asset('images/loading.gif') !!});
+        }
+
+        button.navbar-toggle.pull-left {
+            margin-left: 15px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+                border-color: rgba(0, 0, 0, 0);
+                margin-top: 0;
+                padding-top: 8px;
+            }
+
+            .navbar-form {
+                padding: 10px 15px;
+                margin: 8px -15px;
+                border-top: 0px solid transparent;
+                border-bottom: 0px solid transparent;
+                -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 0px 0 rgba(255, 255, 255, .1);
+            }
         }
     </style>
     <script>
@@ -62,9 +84,9 @@
     </div>
     <!-- News Ticker -->
     {{--@if(!Request::is('article/*'))--}}
-        {{--<div class="container">--}}
-            {{--@include('layouts.blog.breaking-news')--}}
-        {{--</div>--}}
+    {{--<div class="container">--}}
+    {{--@include('layouts.blog.breaking-news')--}}
+    {{--</div>--}}
     {{--@endif--}}
 
     <div class="container-position">
@@ -95,6 +117,8 @@
 <!-- Scripts -->
 <script src="{{ asset('blog/js/app.js') }}"></script>
 <script src="{{ asset('blog/js/jquery.lazyload.min.js') }}"></script>
+<script src="{{ asset('blog/js/classie.js') }}"></script>
+<script src="{{ asset('blog/js/uisearch.js') }}"></script>
 <script type="text/javascript" src="{!! asset('js/vue/vue.js') !!}"></script>
 <script src="{!! asset('js/vue/vue-resource.min.js') !!}"></script>
 <script src="{!! asset('js/vue/vue-axios.min.js') !!}"></script>
@@ -102,8 +126,9 @@
 
 @yield('scripts')
 <script !src="">
-    window.addEventListener("load", function(event) {
-        var timeout = setTimeout(function() {
+    new UISearch( document.getElementById( 'sb-search' ) );
+    window.addEventListener("load", function (event) {
+        var timeout = setTimeout(function () {
             lazyload();
         }, 600);
     });

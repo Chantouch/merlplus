@@ -202,22 +202,6 @@
                             <span class="hide-menu">Permission</span>
                         </a>
                     </li>
-
-                    <li>
-                        <a href="javascript:void(0)" class="waves-effect">
-                            <i class="ti-email fa-fw"></i>
-                            <span class="hide-menu">Email Templates</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-third-level">
-                            <li>
-                                <a href="#">
-                                    <i class="fa-fw">B</i>
-                                    <span class="hide-menu">Basic</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
             </li>
             <li>
@@ -241,13 +225,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{!! route('admin.advertise.active') !!}">
                             <i class=" fa-fw">A</i>
                             <span class="hide-menu">Active</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{!! route('admin.advertise.expired') !!}">
                             <i class=" fa-fw">E</i>
                             <span class="hide-menu">Expired</span>
                         </a>

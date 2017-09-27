@@ -1,13 +1,30 @@
-{!! Form::label('provider_name', 'Provider Name:') !!}
-<div class="form-group{{ $errors->has('provider_name') ? ' has-error' : '' }}">
-    <div class="form-line">
-        {!! Form::text('provider_name', null, ['class' => 'form-control', 'placeholder' => 'Enter your provider name']) !!}
+<div class="row">
+    <div class="col-md-6">
+        {!! Form::label('provider_name', 'Provider Name:') !!}
+        <div class="form-group{{ $errors->has('provider_name') ? ' has-error' : '' }}">
+            <div class="form-line">
+                {!! Form::text('provider_name', null, ['class' => 'form-control', 'placeholder' => 'Enter your provider name']) !!}
+            </div>
+            @if ($errors->has('provider_name'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('provider_name') }}</strong>
+                </span>
+            @endif
+        </div>
     </div>
-    @if ($errors->has('provider_name'))
-        <span class="help-block">
-            <strong>{{ $errors->first('provider_name') }}</strong>
-        </span>
-    @endif
+    <div class="col-md-6">
+        {!! Form::label('price', 'Price:') !!}
+        <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
+            <div class="form-line">
+                {!! Form::text('price', null, ['class' => 'form-control', 'placeholder' => 'Enter ads price']) !!}
+            </div>
+            @if ($errors->has('price'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('price') }}</strong>
+                </span>
+            @endif
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-md-6">

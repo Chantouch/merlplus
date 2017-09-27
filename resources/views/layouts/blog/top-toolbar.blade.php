@@ -11,17 +11,27 @@
         <!-- Toolbar get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
+                    data-target="#bs-navbar-collapse" id="btn-navbar-toggle">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
-                <img data-src="{!! asset('blog/img/logo.png') !!}" alt="Merlplus.com" class="lazyload"></a>
+            <a class="navbar-brand" href="/" id="home-nav">
+                <img data-src="{!! asset('blog/img/logo.png') !!}" src="{!! asset('blog/img/logo.png') !!}"
+                     alt="Merlplus.com" class="lazyload">
+            </a>
+            <!-- add search form -->
+            <div id="sb-search" class="sb-search">
+                {!! Form::open(array('route' => 'blog.search', 'role'=>'search', 'method' => 'GET')) !!}
+                {!! Form::text('q', null, ['class' => 'sb-search-input', 'placeholder' => 'Search for games, music, movies', 'id' => 'search']) !!}
+                <input class="sb-search-submit" type="submit" value="">
+                <span class="sb-icon-search"></span>
+                {!! Form::close() !!}
+            </div>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active home">
                     <a href="/"><i class="fa fa-home"></i></a>

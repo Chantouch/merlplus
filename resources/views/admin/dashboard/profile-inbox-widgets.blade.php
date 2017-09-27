@@ -12,15 +12,19 @@
             <div class="p-30">
                 <div class="row">
                     <div class="col-xs-4 col-sm-4">
-                        <img src="{!! asset('images/users/varun.jpg') !!}" alt="varun"
-                             class="img-circle img-responsive">
+                        @if(isset($profile))
+                            @if($profile->hasThumbnail())
+                                <img src="{!! asset('storage/uploads/user/'.$profile->thumbnail()->filename) !!}"
+                                     alt="{!! $profile->name !!}" class="img-circle img-responsive">
+                            @endif
+                        @endif
                     </div>
                     <div class="col-xs-12 col-sm-8">
                         <h2 class="m-b-0">{!! $profile->name !!}</h2>
                         @if($profile->isAdmin())
                             <h4>{!! ucfirst($profile->roles->first()->name) !!}</h4>
                         @endif
-                        <a href="javascript:void(0)" class="btn btn-rounded btn-success">
+                        <a href="{!! route('admin.profile.edit') !!}" class="btn btn-rounded btn-success">
                             <i class="ti-pencil m-r-5"></i> EDIT
                         </a>
                     </div>

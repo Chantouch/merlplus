@@ -7,39 +7,41 @@
  */
 ?>
 @if(count($tag))
-    <div class="float-width sec-cont">
-        <h3 class="sec-title">{!! __('posts.video') !!}</h3>
-        <div class="top-big-two">
-            @if($tag->posts->count())
-                @foreach($tag->posts->take(3) as $index => $post)
-                    @if($index < 3)
-                        <div class="big-two-1 blocky boxgrid3 caption">
-                            @if($post->hasThumbnail())
-                                <img alt="{!! $post->excerptTitle(100) !!}" class="img lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
-                                     data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
-                            @endif
-                            <div class="cover boxcaption3">
-                                <h3>
-                                    <a href="{!! route('blog.article.show', [$post->id]) !!}">
-                                        {!! str_limit($post->title, 50) !!}
-                                    </a>
-                                </h3>
-                                <p class="artcl-time-1">
-                                    <span><i class="fa fa-clock-o"></i>{!! $post->posted_at->diffForHumans() !!}</span>
-                                    <span><i class="fa fa-comment-o"></i>{!! $post->comments->count() !!}
-                                        comments</span>
-                                </p>
-                                <div>
-                                    {!! $post->excerpt(820) !!}
+    @if($tag->posts->count())
+        <div class="top-news float-width">
+            <div class="float-width sec-cont">
+                <h3 class="sec-title">{!! __('posts.video') !!}</h3>
+                <div class="top-big-two">
+                    @foreach($tag->posts->take(3) as $index => $post)
+                        @if($index < 3)
+                            <div class="big-two-1 blocky boxgrid3 caption">
+                                @if($post->hasThumbnail())
+                                    <img alt="{!! $post->excerptTitle(100) !!}" class="img lazyload"
+                                         src="{!! asset('blog/img/blur.jpg') !!}"
+                                         data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
+                                @endif
+                                <div class="cover boxcaption3">
+                                    <h3>
+                                        <a href="{!! route('blog.article.show', [$post->id]) !!}">
+                                            {!! str_limit($post->title, 50) !!}
+                                        </a>
+                                    </h3>
+                                    <p class="artcl-time-1">
+                                        <span><i class="fa fa-clock-o"></i>{!! $post->posted_at->diffForHumans() !!}</span>
+                                        <span><i class="fa fa-comment-o"></i>{!! $post->comments->count() !!}
+                                            comments</span>
+                                    </p>
+                                    <div>
+                                        {!! $post->excerpt(820) !!}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endif
-                @endforeach
-            @endif
+                        @endif
+                    @endforeach
+                </div>
+            </div>
         </div>
-    </div>
-
+    @endif
     @if($tag->posts->count())
         <div class="row">
             @foreach($tag->posts->take(9) as $index => $post)

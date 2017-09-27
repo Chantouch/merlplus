@@ -70,10 +70,7 @@
 @stop
 @section('content')
     <!-- Top News Section -->
-    <div class="top-news float-width">
-        @include('blog.inc.top-news')
-    </div>
-
+    @include('blog.inc.top-news')
     <!-- Section 1 -->
     @include('blog.inc.section1')
     <!--End Section 1--->

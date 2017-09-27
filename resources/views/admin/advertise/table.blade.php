@@ -6,6 +6,7 @@
                 <th>#</th>
                 <th>Slug</th>
                 <th>Name</th>
+                <th>Price</th>
                 <th>Ad Type</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -17,6 +18,7 @@
                     <th>{!! $loop->index+1 !!}</th>
                     <td>{!! $advertise->slug !!}</td>
                     <td>{!! $advertise->provider_name !!}</td>
+                    <td>{!! $advertise->price !!} $</td>
                     <td>{!! $advertise->ads_type->name !!}</td>
                     <td>
                         {!! $advertise->active !!}

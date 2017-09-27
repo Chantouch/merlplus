@@ -90,6 +90,7 @@
             background-size: 65%;
             background-repeat: no-repeat;
             background-position: center;
+            background-image:url({!! asset('blog/img/microButton_97x72px.png') !!});
             width: 150px;
             height: 44px;
             margin-left: -15px;
@@ -179,8 +180,7 @@
             <a href="https://www.facebook.com/CLEARMENCambodia/" target="_blank" title="Opens in a new window">
                 <div class="single sponsor">
                     <div class="sponsor_by" style="color:#04304C">នាំមកជូនដោយ</div>
-                    <div class="sponsor_img"
-                         style="background-image:url(http://media.sabay.com/media/Commercial/Micro-Site/Clear/Untitled-1.png);"></div>
+                    <div class="sponsor_img"></div>
                 </div>
             </a>
         </div>
@@ -258,7 +258,7 @@
                 @endforeach
             </div>
         @endif
-        <div class="jumbotron">
+        <div class="jumbotron color5bc0de">
             <div class="title">ភ្ជាប់ទំនាក់ទំនងជាមួយ <span> MerlPlus</span></div>
             <div class="fb-like" data-href="https://www.facebook.com/pg/khclassifiedads/" data-layout="standard"
                  data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
@@ -349,25 +349,9 @@
             hash: false,
         });
 
-        $(".main-slider").slick({
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: false,
-            arrows: false,
-            responsive: [
-                {
-                    breakpoint: 960,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
-
     </script>
-    <script>(function (d, s, id) {
+    <script>
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s);

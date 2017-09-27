@@ -2,17 +2,21 @@
 
 namespace App\Model;
 
+use App\Http\Traits\Mediable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Laratrust\Traits\LaratrustUserTrait;
 use Laravel\Passport\HasApiTokens;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasApiTokens, LaratrustUserTrait, SoftDeletes;
+    use Notifiable, HasApiTokens, LaratrustUserTrait, SoftDeletes, Mediable;
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'api_token'
+        'name', 'email', 'password', 'api_token', 'thumbnail_id'
     ];
 
     /**
@@ -125,6 +129,14 @@ class User extends Authenticatable
         return $this->hasRole(Role::ROLE_SUPER_ADMIN);
     }
 
+	/**
+	 * @return bool
+	 */
+	public function getIsAdminAttribute()
+	{
+		return true;
+	}
+
     /**
      * Check if the user has role editor
      *
@@ -163,5 +175,76 @@ class User extends Authenticatable
 	{
 		return $this->hasMany(MediaLibrary::class);
     }
+
+	/**
+	 * Check if the post has a valid thumbnail
+	 *
+	 * @return boolean
+	 */
+	public function hasThumbnail(): bool
+	{
+		return $this->hasMedia($this->thumbnail_id);
+	}
+
+	/**
+	 * Retrieve the post's thumbnail
+	 *
+	 * @return mixed
+	 */
+	public function thumbnail()
+	{
+		return $this->media()->where('id', $this->thumbnail_id)->first();
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function thumb()
+	{
+		return $this->belongsTo(Media::class, 'thumbnail_id');
+	}
+
+	/**
+	 * Store and set the post's thumbnail
+	 *
+	 * @param UploadedFile $thumbnail
+	 * @return UploadedFile
+	 */
+	public function storeAndSetThumbnail(UploadedFile $thumbnail)
+	{
+		//$thumbnail_name = $thumbnail->store('uploads/posts');
+		$avatar = Image::make($thumbnail)->resize(128, 128);;
+		$ext = $thumbnail->getClientOriginalExtension();
+		$path = storage_path('app/public/uploads/user/');
+		$file_name = str_random(30) . '.' . $ext;
+		if (!file_exists($path)) {
+			mkdir($path, 0777, true);
+		}
+		if (!$this->hasThumbnail()) {
+			$media = $this->media()->create([
+				'filename'          => $file_name,
+				'original_filename' => $thumbnail->getClientOriginalName(),
+				'mime_type'         => $thumbnail->getMimeType()
+			]);
+			$avatar->save($path . $file_name, 100);
+			$this->update(['thumbnail_id' => $media->id]);
+		} else {
+			$name = $this->media()->first()->filename;
+			$old_path = [
+				'public/uploads/user/' . $name,
+			];
+			if (File::exists(storage_path('app/public/uploads/user'))) {
+				Storage::delete($old_path);
+			}
+			$this->media()->first()->update([
+				'filename'          => $file_name,
+				'original_filename' => $thumbnail->getClientOriginalName(),
+				'mime_type'         => $thumbnail->getMimeType()
+			]);
+			$avatar->save($path . $file_name, 100);
+		}
+		return $thumbnail;
+	}
+
 
 }

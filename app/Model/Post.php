@@ -290,9 +290,9 @@ class Post extends Model
 				'original_filename' => $thumbnail->getClientOriginalName(),
 				'mime_type'         => $thumbnail->getMimeType()
 			]);
-			$image_large->save($path . 'large_' . $file_name, 50);
-			$image_medium->save($path . 'medium_' . $file_name, 50);
-			$image_small->save($path . 'small_' . $file_name, 50);
+			$image_large->save($path . 'large_' . $file_name, 100);
+			$image_medium->save($path . 'medium_' . $file_name, 100);
+			$image_small->save($path . 'small_' . $file_name, 100);
 			$this->update(['thumbnail_id' => $media->id]);
 		} else {
 			$name = $this->media()->first()->filename;
@@ -309,9 +309,9 @@ class Post extends Model
 				'original_filename' => $thumbnail->getClientOriginalName(),
 				'mime_type'         => $thumbnail->getMimeType()
 			]);
-			$image_large->save($path . 'large_' . $file_name, 50);
-			$image_medium->save($path . 'medium_' . $file_name, 50);
-			$image_small->save($path . 'small_' . $file_name, 50);
+			$image_large->save($path . 'large_' . $file_name, 100);
+			$image_medium->save($path . 'medium_' . $file_name, 100);
+			$image_small->save($path . 'small_' . $file_name, 100);
 		}
 		return $thumbnail;
 	}

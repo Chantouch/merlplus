@@ -9,7 +9,7 @@ class Category extends Model
 {
     protected $guarded = [];
     protected $fillable = [
-        'name', 'slug', 'description', 'status', 'parent_id'
+        'name', 'slug', 'description', 'status', 'parent_id', 'color_id'
     ];
 
     /**
@@ -37,19 +37,6 @@ class Category extends Model
     public function tags()
     {
         return $this->morphToMany(Tag::class, 'taggable');
-    }
-
-    /**
-     * @return string
-     */
-    public function tagList()
-    {
-        $tag = $this->tags;
-        $tags = array();
-        foreach ($tag as $tg) {
-            $tags[$tg->name] = $tg->name;
-        }
-        return implode(', ', $tags);
     }
 
     //===============Validation===============//
