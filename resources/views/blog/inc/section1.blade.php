@@ -80,5 +80,46 @@
                 </div>
             </div>
         @endforeach
+        <div class="flex-container">
+            <div class="flexslider hm-slider">
+                <ul class="slides">
+                    <li>
+                        <img alt="Image blog default page" src="img/samples/sample.jpg"/>
+                        <h3 class="cat-label cat-label1"><a href="#">NEWS</a></h3>
+                        <div class="hm-sldr-caption">
+                            <h3><a href="#">Rugby Players are shocked about new rules in game<span
+                                            class="topic-icn">17</span></a></h3>
+                            <p>Curabitur fringilla porttitor porta. Vivamus vel nulla ullamcorper,
+                                fringilla ligula nec, pellentesque nisl. Sed dolor justo, dapibus quis tellus et,
+                                rhoncus rhoncus purus...
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <img alt="Image blog default page" src="img/samples/sample6.jpg"/>
+                        <h3 class="cat-label cat-label1"><a href="#">NEWS</a></h3>
+                        <div class="hm-sldr-caption">
+                            <h3><a href="#">Abu Trika Strikes a new Goal!<span class="topic-icn">17</span></a></h3>
+                            <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their
+                                default model text, and a search for 'lorem ipsum' will uncover many web sites still
+                                in their infancy. Various versions have evolved over...
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <img alt="Image blog default page" src="img/samples/sample7.jpg"/>
+                        <h3 class="cat-label cat-label1"><a href="#">NEWS</a></h3>
+                        <div class="hm-sldr-caption">
+                            <h3><a href="#">Kawerki is the new future in Tennis<span class="topic-icn">17</span></a>
+                            </h3>
+                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
+                                suffered alteration in some form, by injected humour, or randomised words which
+                                don't look even slightly believable...
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     @endif
 @endif

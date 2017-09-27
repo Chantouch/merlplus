@@ -59,7 +59,7 @@
                                 {!!str_limit( $post->title, 50) !!}
                             </a>
                         </h4>
-                        <a class="lefty cat-a cat-label{!! $index - 1 !!}"
+                        <a class="lefty cat-a cat-label{!! $post->categories->first()->color_id !!}"
                            href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}">{!! $post->categories->first()->name !!}</a>
                         <p class="righty">
                         <span>
