@@ -12,37 +12,16 @@
     {!! MetaTag::tag('image') !!}
     {!! MetaTag::openGraph() !!}
     {!! MetaTag::twitterCard() !!}
-    {!! MetaTag::tag('image', asset('images/logo.png')) !!}
+    <meta property="fb:app_id" content="1906910106248873" />
+    <meta name="robots" content="noodp"/>
+    <link rel="canonical" href="https://www.merlplus.com/" />
     <link rel="stylesheet" href="{!! asset('blog/css/app.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/main.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/responsive.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/component.css') !!}">
     <style>
         .hm-slider .slides {
             background-image: url({!! asset('images/loading.gif') !!});
-        }
-
-        button.navbar-toggle.pull-left {
-            margin-left: 15px;
-        }
-
-        @media only screen and (max-width: 768px) {
-            .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-                border-color: rgba(0, 0, 0, 0);
-                margin-top: 0;
-                padding-top: 8px;
-            }
-
-            .navbar-form {
-                padding: 10px 15px;
-                margin: 8px -15px;
-                border-top: 0px solid transparent;
-                border-bottom: 0px solid transparent;
-                -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);
-                box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 0px 0 rgba(255, 255, 255, .1);
-            }
         }
     </style>
     <script>
@@ -115,13 +94,8 @@
 </div>
 
 <!-- Scripts -->
-<script src="{{ asset('blog/js/app.js') }}"></script>
-<script src="{{ asset('blog/js/jquery.lazyload.min.js') }}"></script>
-<script src="{{ asset('blog/js/classie.js') }}"></script>
-<script src="{{ asset('blog/js/uisearch.js') }}"></script>
+<script src="{{ asset('blog/js/app-383kldle83903.min.js') }}"></script>
 <script type="text/javascript" src="{!! asset('js/vue/vue.js') !!}"></script>
-<script src="{!! asset('js/vue/vue-resource.min.js') !!}"></script>
-<script src="{!! asset('js/vue/vue-axios.min.js') !!}"></script>
 @yield('plugins')
 
 @yield('scripts')

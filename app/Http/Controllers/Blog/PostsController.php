@@ -78,7 +78,7 @@ class PostsController extends BaseController
 		//---------Set meta tag to header----------//
 		MetaTag::set('title', $post->title);
 		MetaTag::set('description', $post->description);
-		MetaTag::set('image', asset('images/default-share-image.png'));
+		MetaTag::set('image', asset($post->hasThumbnail() ? route('media.posts.path', [$post->id, 'medium_' . $post->thumbnail()->filename]) : ''));
 		$single_article_ads = Advertise::with('ads_type')
 			->where('advertise_type_id', 9)->get();
 		return view($this->view . 'show', compact(

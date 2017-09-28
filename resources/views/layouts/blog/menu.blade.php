@@ -16,17 +16,10 @@
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
-                @if(isset($menus))
-                    @if(count($menus))
-                        @foreach($menus as $index => $menu)
-                            <li class="{!! Request::segment(2) == $menu->slug ? ' active': '' !!}">
-                                <a href="{!! route('blog.topics.show',[$menu->getRouteKey()]) !!}">
-                                    {!! $menu->name !!}
-                                </a>
-                            </li>
-                        @endforeach
-                    @endif
-                @endif
+                <li class=""><a href="/topics/sport">{!! __('menu.sport') !!}</a></li>
+                <li><a href="/topics/health">{!! __('menu.health') !!}</a></li>
+                <li><a href="/topics/entertainment">{!! __('menu.entertainment') !!}</a></li>
+                <li><a href="/topics/cook-recipes">{!! __('menu.cook-recipes') !!}</a></li>
                 <li class="">
                     <a href="http://127.0.0.1:8000/topics/life">
                         <img src="{!! asset('blog/img/microButton_97x72px.png') !!}"

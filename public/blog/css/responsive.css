@@ -132,11 +132,15 @@
         top: 15px;
         right: 30px
     }
+
+    .top-banner {
+        top: 5px;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 999px) {
     .container {
-        width: 748px !important
+        width: 770px !important
     }
 
     .main-search-bar {
@@ -161,7 +165,7 @@
     }
 
     .hm-slider-cont {
-        max-width: 464px;
+        max-width: 100%;
         display: block;
         margin: 0 auto 12px;
         float: none
@@ -291,6 +295,95 @@
     #hidemenu {
         display: none !important
     }
+
+    .rt-bk-cont {
+        width: 100%;
+        height: 270px;
+    }
+
+    .rt-bk-cont .boxgrid2 {
+        width: 300px;
+    }
+
+    .top-banner {
+        top: 8px;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .top-toolbar, .flex-container {
+        display: none;
+        visibility: hidden;
+    }
+
+    .flex-container .hm-slider {
+        width: 434px;
+    }
+
+    .item {
+        width: 50%;
+    }
+
+    .sub-item-cat {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-toggle {
+        float: left;
+        margin-left: 5px;
+    }
+
+    .navbar-brand {
+        display: inherit;
+        float: left;
+        margin: 0 auto;
+        /*width: 64px;*/
+    }
+
+    .main-menu, .logo-top-ad, .mid-block-1 {
+        display: none;
+        visibility: hidden;
+    }
+
+    .flex-container {
+        display: block;
+        visibility: visible;
+    }
+
+    .hm-slider-cont {
+        height: auto;
+    }
+
+    .flex-container .hm-slider {
+        max-height: 245px;
+        height: 245px;
+    }
+
+    .flexslider .slides img {
+        height: 245px;
+    }
+
+    .navbar-inverse .navbar-nav > li:first-child > a {
+        width: 100%;
+        float: left;
+    }
+
+    .navbar-inverse .navbar-nav > li > a {
+        width: 50%;
+        float: left;
+    }
+
+    .sub-item-cat {
+        display: block;
+    }
+
+    .sub-cat-top {
+        display: block;
+    }
+
 }
 
 @media only screen and (min-width: 690px) and (max-width: 767px) {
@@ -437,6 +530,10 @@
 
     #hidemenu {
         display: none !important
+    }
+
+    .single .sponsor_img {
+        margin-top: -10px;
     }
 }
 

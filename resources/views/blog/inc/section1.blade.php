@@ -10,8 +10,8 @@
     @if(count($categories))
         @foreach($categories->take(4) as $category)
             <div class="news-sec-1 float-width">
-                <div class="float-width sec-cont2">
-                    <h3 class="sec-title">
+                <div class="float-width sec-cont2 label{!! $category->color_id !!}">
+                    <h3 class="sec-title label-title label{!! $category->color_id !!}">
                         <a href="{!! route('blog.topics.show',[$category->getRouteKey()]) !!}">
                             {!! $category->name !!}
                         </a>
@@ -22,7 +22,8 @@
                                 <div class="sec-1-big float-width">
                                     @if($post->hasThumbnail())
                                         <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                            <img alt="{!! $post->title !!}" class="blocky lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
+                                            <img alt="{!! $post->title !!}" class="blocky lazyload"
+                                                 src="{!! asset('blog/img/blur.jpg') !!}"
                                                  data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                                         </a>
                                     @endif
@@ -50,10 +51,12 @@
                                 </div>
                             @endif
                             @if($index > 0)
-                                <div class="sec-1-sm">
+                                <div class="sec-1-sm sub-cat-top">
                                     @if($post->hasThumbnail())
                                         <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                            <img alt="Image blog default page" class="blocky lazyload" height="90" src="{!! asset('blog/img/blur.jpg') !!}"
+                                            <img alt="merlplus, merlplus.com {!! $post->title !!}"
+                                                 class="blocky lazyload" height="90"
+                                                 src="{!! asset('blog/img/blur.jpg') !!}"
                                                  data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                                         </a>
                                     @endif
@@ -76,50 +79,36 @@
                                 </div>
                             @endif
                         @endforeach
+                        {{--<div class="row">--}}
+                            {{--<div class="col-md-12 col-xs-12">--}}
+                                {{--<div class="flexslider hm-slider sub-item-cat">--}}
+                                    {{--<ul class="slides">--}}
+                                        {{--@foreach($category->articles->take(7) as $index => $post)--}}
+                                            {{--@if($index > 0)--}}
+                                                {{--<li>--}}
+                                                    {{--@if($post->hasThumbnail())--}}
+                                                        {{--<img alt="merlplus, merlplus.com {!! $post->title !!}"--}}
+                                                             {{--class="lazyload"--}}
+                                                             {{--src="{!! asset('blog/img/blur.jpg') !!}"--}}
+                                                             {{--data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>--}}
+                                                    {{--@endif--}}
+                                                    {{--<div class="hm-sldr-caption">--}}
+                                                        {{--<h4>--}}
+                                                            {{--<a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">--}}
+                                                                {{--{!! $post->title !!}--}}
+                                                            {{--</a>--}}
+                                                        {{--</h4>--}}
+                                                    {{--</div>--}}
+                                                {{--</li>--}}
+                                            {{--@endif--}}
+                                        {{--@endforeach--}}
+                                    {{--</ul>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                     @endif
                 </div>
             </div>
         @endforeach
-        <div class="flex-container">
-            <div class="flexslider hm-slider">
-                <ul class="slides">
-                    <li>
-                        <img alt="Image blog default page" src="img/samples/sample.jpg"/>
-                        <h3 class="cat-label cat-label1"><a href="#">NEWS</a></h3>
-                        <div class="hm-sldr-caption">
-                            <h3><a href="#">Rugby Players are shocked about new rules in game<span
-                                            class="topic-icn">17</span></a></h3>
-                            <p>Curabitur fringilla porttitor porta. Vivamus vel nulla ullamcorper,
-                                fringilla ligula nec, pellentesque nisl. Sed dolor justo, dapibus quis tellus et,
-                                rhoncus rhoncus purus...
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <img alt="Image blog default page" src="img/samples/sample6.jpg"/>
-                        <h3 class="cat-label cat-label1"><a href="#">NEWS</a></h3>
-                        <div class="hm-sldr-caption">
-                            <h3><a href="#">Abu Trika Strikes a new Goal!<span class="topic-icn">17</span></a></h3>
-                            <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                default model text, and a search for 'lorem ipsum' will uncover many web sites still
-                                in their infancy. Various versions have evolved over...
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <img alt="Image blog default page" src="img/samples/sample7.jpg"/>
-                        <h3 class="cat-label cat-label1"><a href="#">NEWS</a></h3>
-                        <div class="hm-sldr-caption">
-                            <h3><a href="#">Kawerki is the new future in Tennis<span class="topic-icn">17</span></a>
-                            </h3>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which
-                                don't look even slightly believable...
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
     @endif
 @endif

@@ -41,7 +41,7 @@ return array(
      */
 
     'open_graph' => [
-        'site_name' => 'www.merlplus.com',
+        'site_name' => 'Merlplus.com - News Site in Cambodia',
         'type' => 'website'
     ],
 

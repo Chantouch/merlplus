@@ -10,87 +10,12 @@
 @section('css')
     <link rel="stylesheet" href="{!! asset('plugins/fancybox/dist/jquery.fancybox.css') !!}">
     <style>
-        .my-contrain {
-            position: relative;
-        }
-
-        .fix-bg {
-            position: absolute;
-            left: 0;
-            top: -20px;
-            width: 100%;
-            height: 800px;
-            overflow: hidden;
-        }
-
-        .fix-bg .img {
-            position: absolute;
-            left: -20px;
-            height: 100%;
-            top: 0;
-            width: calc(100% + 40px);
-            background: no-repeat top center;
-            background-size: 100% auto;
-            -webkit-filter: blur(10px);
-            -moz-filter: blur(10px);
-            -o-filter: blur(10px);
-            -ms-filter: blur(10px);
-            filter: blur(10px);
-        }
-
-        .fix-bg .inside {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: -webkit-linear-gradient(top, rgba(246, 246, 246, 0) 0, #f2f2f2 100%);
-            background: linear-gradient(to bottom, rgba(246, 246, 246, 0) 0, #f2f2f2 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80f6f6f6', endColorstr='#f6f6f6', GradientType=0);
-        }
-
-        .container-position, .artcl-main, .smedia {
-            position: relative;
-        }
-
-        .title {
-            font-size: 18px;
-            font-weight: 900;
-            margin: 0 0 10px;
-        }
-
-        .artcl-reltd .reltd-sngl img {
-            height: 75px;
-        }
-
-        [v-cloak] {
-            display: none;
-        }
-
-        .ads_items {
-            margin-bottom: 15px;
-        }
-
-        .post-top-bar {
-            height: 35px;
-            padding: 10px 0 0;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .single .sponsor_img {
-            margin-top: -15px;
-        }
-
-        .sponsor, .sponsor div, li.sponsor {
-            float: left;
-        }
 
         .sponsor_img {
             background-size: 65%;
             background-repeat: no-repeat;
             background-position: center;
-            background-image:url({!! asset('blog/img/microButton_97x72px.png') !!});
+            background-image: url({!! asset('blog/img/microButton_97x72px.png') !!});
             width: 150px;
             height: 44px;
             margin-left: -15px;
@@ -215,6 +140,12 @@
                 @include('blog.inc.share')
                 <article class="float-width articl-data">
                     <div class="content">
+                        @if($post->hasThumbnail())
+                            <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload img-responsive"
+                                 src="{!! asset('blog/img/blur.jpg') !!}"
+                                 data-src="{!! asset(route('media.posts.path',[$post->id,'medium_'.$post->thumbnail()->filename])) !!}"/>
+                            @else
+                        @endif
                         {!! $post->description !!}
                     </div>
                 </article>
@@ -250,7 +181,8 @@
                     @if($article_ad->hasBanner())
                         @if($article_ad->hasBanner())
                             <img data-src="{!! asset($article_ad->banner()->media_url) !!}" width="728" height="90"
-                                 class="lazyload" alt="{!! $article_ad->provider_name !!}">
+                                 src="{!! asset('blog/img/blur.jpg') !!}" class="lazyload img-responsive"
+                                 alt="{!! $article_ad->provider_name !!}">
                         @else
                             {!! $article_ad->provider_name !!}
                         @endif
@@ -274,12 +206,14 @@
                             <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
                                title="{!! $article->title !!}">
                                 <img data-src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
-                                     class="img-responsive lazyload" alt="{!! $article->title !!}">
+                                     src="{!! asset('blog/img/blur.jpg') !!}" class="img-responsive lazyload"
+                                     alt="{!! $article->title !!}">
                             </a>
                         @else
                             <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
                                title="{!! $article->title !!}">
                                 <img alt="{!! $article->excerptTitle(60) !!}" class="img-responsive lazyload"
+                                     src="{!! asset('blog/img/blur.jpg') !!}"
                                      data-src="{!! asset('blog/img/samples/e1.jpg') !!}"/>
                             </a>
                         @endif

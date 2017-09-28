@@ -23,16 +23,16 @@
             @if(count($top_right_ads))
                 @foreach($top_right_ads as $ads)
                     @if($ads->hasBanner())
-                        <a href="{!! $ads->url !!}" target="_blank">
-                            <div class="rt-block mid-block-1 boxgrid2 caption">
+                        <div class="rt-block mid-block-1 col-sm-6 boxgrid2 caption">
+                            <a href="{!! $ads->url !!}" target="_blank">
                                 <img alt="{!! $ads->provider_name !!}" class="img lazyload"
                                      src="{!! asset('blog/img/blur.jpg') !!}"
                                      data-src="{!! asset($ads->banner()->media_url) !!}"/>
-                                <h2 class="cat-label cat-label4">
-                                    <a href="{!! $ads->url !!}">{!! $ads->provider_name !!}</a>
-                                </h2>
-                            </div>
-                        </a>
+                            </a>
+                            <h2 class="cat-label cat-label4">
+                                <a href="{!! $ads->url !!}">{!! $ads->provider_name !!}</a>
+                            </h2>
+                        </div>
                     @else
                         <div class="rt-block mid-block-1 boxgrid2 caption item">
                             {!! $ads->url !!}
@@ -76,37 +76,20 @@
     <!--End Section 1--->
 @stop
 @section('scripts')
-    <script !src="">
-        (function () {
-
-            // store the slider in a local variable
-            var $window = $(window),
-                flexslider = {vars: {}};
-
-            // tiny helper function to add breakpoints
-            function getGridSize() {
-                return (window.innerWidth < 600) ? 2 :
-                    (window.innerWidth < 900) ? 3 : 4;
-            }
-
-            $window.load(function () {
-                $('.flexslider').flexslider({
-                    animation: "slide",
-                    animationLoop: false,
-                    itemWidth: 210,
-                    itemMargin: 5,
-                    //minItems: getGridSize(), // use function to pull in initial value
-                    //maxItems: getGridSize() // use function to pull in initial value
-                });
-            });
-
-            // check grid size on resize event
-            $window.resize(function () {
-                var gridSize = getGridSize();
-
-                flexslider.vars.minItems = gridSize;
-                flexslider.vars.maxItems = gridSize;
-            });
-        }());
+    <script>
+        $('.flexsliders').flexslider({
+            animation: "slide",
+            controlNav: false,
+            itemWidth: 250,
+            animationLoop: true,
+            slideshow: true,
+            directionNav: 1,
+            pauseText: "",
+            itemMargin: 0,
+            slideshowSpeed: 6e3,
+            animationSpeed: 2500,
+            prevText: "",
+            nextText: ""
+        });
     </script>
 @stop
