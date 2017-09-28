@@ -22,12 +22,12 @@
 <!-- Ad banner right -->
 @if(isset($main_right_ads))
     @if(count($main_right_ads))
-        @foreach($main_right_ads as $index => $ads)
+        @foreach($main_right_ads->random() as $index => $ads)
             @if($index > 1)
                 <div class="lefty ad-rt">
                     <a href="{!! $ads->url !!}" target="_blank">
                         <img alt="{!! $ads->provider_name !!}" data-src="{!! asset($ads->banner()->media_url) !!}"
-                             class="lazyload"/>
+                             class="lazyload img-responsive"/>
                     </a>
                 </div>
             @endif

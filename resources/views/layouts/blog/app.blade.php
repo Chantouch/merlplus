@@ -96,6 +96,8 @@
 <!-- Scripts -->
 <script src="{{ asset('blog/js/app-383kldle83903.min.js') }}"></script>
 <script type="text/javascript" src="{!! asset('js/vue/vue.js') !!}"></script>
+<script src="{!! asset('js/vue/vue-resource.min.js') !!}"></script>
+{{--<script src="{!! asset('js/vue/vue-axios.min.js') !!}"></script>--}}
 @yield('plugins')
 
 @yield('scripts')
@@ -104,7 +106,7 @@
     window.addEventListener("load", function (event) {
         var timeout = setTimeout(function () {
             lazyload();
-        }, 600);
+        }, 50);
     });
 
     var $ = jQuery.noConflict();

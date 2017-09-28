@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 use App\Model\Advertise;
 use App\Model\Category;
 use App\Model\Post;
+use Carbon\Carbon;
 use Torann\LaravelMetaTags\Facades\MetaTag;
 
 class BaseController extends Controller
@@ -28,19 +29,27 @@ class BaseController extends Controller
 		MetaTag::set('description', 'Merlplus - Local news in Cambodia, up-to-date in a minute news, breaking news, feature and audio stories. Merlplus provides the trusted local Cambodia news, also the world wide news, to all original area, and regional perspective ,local news in Cambodia. Entertainments, technologies, cook recipes, science, business news....');
 		MetaTag::set('image', asset('images/logo.png'));
 		$top_ads = Advertise::with(['ads_type', 'media'])
-			->where('advertise_type_id', 1)->get();
+			->where('advertise_type_id', 1)
+            ->where('end_date', '>=', Carbon::now())
+            ->get();
 		if (!$top_ads->isEmpty()) {
 			$top_ads = $top_ads->random(1);
 		}
 		$top_right_ads = Advertise::with(['ads_type', 'media'])
-			->where('advertise_type_id', 3)->get();
+			->where('advertise_type_id', 3)
+            ->where('end_date', '>=', Carbon::now())
+            ->get();
 		if (!$top_right_ads->isEmpty()) {
 			$top_right_ads = $top_right_ads->random(2);
 		}
 		$home_top_news_slider = Advertise::with(['ads_type', 'media'])
-			->where('advertise_type_id', 10)->get();
+			->where('advertise_type_id', 10)
+            ->where('end_date', '>=', Carbon::now())
+            ->get();
 		$main_right_ads = Advertise::with(['ads_type'])
-			->where('advertise_type_id', 11)->get();
+			->where('advertise_type_id', 11)
+            ->where('end_date', '>=', Carbon::now())
+            ->get();
 		$menus = Category::with('images')
 			->where('parent_id', null)
 			->latest()->take(5)->get();

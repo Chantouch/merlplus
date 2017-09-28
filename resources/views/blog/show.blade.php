@@ -29,40 +29,52 @@
 
     </style>
 @stop
-@section('post-backgrounds')
+@section('post-background')
     <div class="fix-bg">
         @if($post->hasThumbnail())
             <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload"
+                 src="{!! asset('blog/img/blur.jpg') !!}"
                  data-src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
         @else
             <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload"
-                 data-src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
+                 src="{!! asset('blog/img/blur.jpg') !!}" data-src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
         @endif
         <div class="inside"></div>
     </div>
 @stop
 @section('main_right_ads_bar')
-    @if(isset($single_article_ads))
-        <div class="ads_items text-center">
-            @if(isset($main_right_ads))
-                @if(count($main_right_ads))
-                    @foreach($main_right_ads->take(2) as $index => $ads)
-                        @if($index < 2)
-                            <div class="ad-rt">
-                                <a href="{!! $ads->url !!}" target="_blank">
-                                    <img alt="{!! $ads->provider_name !!}" class="lazyload"
-                                         data-src="{!! asset($ads->banner()->media_url) !!}"/>
-                                </a>
-                            </div>
-                        @endif
-                    @endforeach
-                @endif
+    @if(isset($main_right_ads))
+        <div class="ads_items text-center pos-relative">
+            @if(count($main_right_ads) > 1)
+                @foreach($main_right_ads->random(2) as $index => $ads)
+                    @if($index < 2)
+                        <div class="ad-rt">
+                            <a href="{!! $ads->url !!}" target="_blank">
+                                <img alt="{!! $ads->provider_name !!}" class="lazyload img-responsive"
+                                     src="{!! asset('blog/img/blur.jpg') !!}"
+                                     data-src="{!! asset($ads->banner()->media_url) !!}"/>
+                            </a>
+                        </div>
+                    @endif
+                @endforeach
+            @else
+                @foreach($main_right_ads->take(1) as $index => $ads)
+                    @if($index < 2)
+                        <div class="ad-rt">
+                            <a href="{!! $ads->url !!}" target="_blank">
+                                <img alt="{!! $ads->provider_name !!}" class="lazyload img-responsive"
+                                     src="{!! asset('blog/img/blur.jpg') !!}"
+                                     data-src="{!! asset($ads->banner()->media_url) !!}"/>
+                            </a>
+                        </div>
+                    @endif
+                @endforeach
             @endif
         </div>
     @endif
 @stop
 @section('new_article_single_article')
-    <div class="panel panel-info">
+    <div class="panel panel-info pos-relative">
         <div class="panel-heading">
             New Articles
         </div>
@@ -75,13 +87,15 @@
                                 <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
                                    title="{!! $article->title !!}">
                                     <img data-src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
-                                         class="media-object lazyload" width="80" alt="{!! $article->title !!}">
+                                         src="{!! asset('blog/img/blur.jpg') !!}" class="media-object lazyload"
+                                         width="80" alt="{!! $article->title !!}">
                                 </a>
                             @else
                                 <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
                                    title="{!! $article->title !!}">
                                     <img data-src="{!! asset('blog/img/samples/sample.jpg') !!}"
-                                         class="media-object lazyload" width="80" alt="{!! $article->title !!}">
+                                         src="{!! asset('blog/img/blur.jpg') !!}" class="media-object lazyload"
+                                         width="80" alt="{!! $article->title !!}">
                                 </a>
                             @endif
                         </div>
@@ -100,16 +114,16 @@
     </div>
 @stop
 @section('content')
-    <div class="main-left-side">
+    <div class="main-left-side pos-relative">
         <div class="post-top-bar">
             <a href="https://www.facebook.com/CLEARMENCambodia/" target="_blank" title="Opens in a new window">
                 <div class="single sponsor">
-                    <div class="sponsor_by" style="color:#04304C">នាំមកជូនដោយ</div>
+                    <div class="sponsor_by">នាំមកជូនដោយ</div>
                     <div class="sponsor_img"></div>
                 </div>
             </a>
         </div>
-        <div class="artcl-main float-width">
+        <div class="artcl-main float-width" id="main-single-article">
             <div class="artcl-prev-nxt float-width">
                 <div class="artcl-prev w50 blocky">
                     @if(count($previousPost))
@@ -144,7 +158,6 @@
                             <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload img-responsive"
                                  src="{!! asset('blog/img/blur.jpg') !!}"
                                  data-src="{!! asset(route('media.posts.path',[$post->id,'medium_'.$post->thumbnail()->filename])) !!}"/>
-                            @else
                         @endif
                         {!! $post->description !!}
                     </div>
@@ -177,7 +190,7 @@
         <!-- Ads button of single article -->
         @if(isset($single_article_ads))
             <div class="ads_items text-center">
-                @foreach($single_article_ads->random(1) as $index => $article_ad)
+                @foreach($single_article_ads as $index => $article_ad)
                     @if($article_ad->hasBanner())
                         @if($article_ad->hasBanner())
                             <img data-src="{!! asset($article_ad->banner()->media_url) !!}" width="728" height="90"
@@ -284,6 +297,45 @@
         });
 
     </script>
+
+    <script type="text/javascript">
+        // the function we call when we click on each img tag
+        function fancyBoxMe(e) {
+            var numElemets = $("#main-single-article img").length;
+            if ((e + 1) == numElemets) {
+                nexT = 0
+            } else {
+                nexT = e + 1
+            }
+            if (e == 0) {
+                preV = (numElemets - 1)
+            } else {
+                preV = e - 1
+            }
+            var tarGet = $('#main-single-article img').eq(e).attr('src');
+            $().fancybox({
+                href: tarGet,
+                helpers: {
+                    title: {
+                        type: 'inside'
+                    }
+                },
+                afterLoad: function () {
+                    this.title = 'Image ' + (e + 1) + ' of ' + numElemets + ' :: <a href="javascript:;" onclick="fancyBoxMe(' + preV + ')">prev</a>&nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="fancyBoxMe(' + nexT + ')">next</a>'
+                }
+            }); // fancybox
+        } // fancyBoxMe
+
+        // bind click to each img tag
+        $(document).ready(function () {
+            $("#main-single-article img").each(function (i) {
+                $(this).bind('click', function () {
+                    fancyBoxMe(i);
+                }); //bind
+            }); //each
+        }); // ready
+    </script>
+
     <script>
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];

@@ -6,6 +6,7 @@ use App\Http\Controllers\BaseController;
 use App\Model\Advertise;
 use App\Model\Category;
 use App\Model\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CategoryController extends BaseController
@@ -77,7 +78,9 @@ class CategoryController extends BaseController
         }
         $latest_posts = Post::with('categories')->take(6)->get();
         $single_article_ads = Advertise::with('ads_type')
-            ->where('advertise_type_id', 9)->get();
+            ->where('advertise_type_id', 9)
+            ->where('end_date', '>=', Carbon::now())
+            ->get();
         return view($this->view . 'show', compact('category', 'posts', 'latest_posts','single_article_ads'));
     }
 
