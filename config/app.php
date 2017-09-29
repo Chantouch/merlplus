@@ -166,14 +166,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Laravel\Tinker\TinkerServiceProvider::class,
-        Laravel\Passport\PassportServiceProvider::class,
-        Laratrust\LaratrustServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
-        Cviebrock\EloquentSluggable\ServiceProvider::class,
-	    Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
-	    Mews\Purifier\PurifierServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
 
 	    /*
 		 * Application Service Providers...
