@@ -12,13 +12,9 @@
     <style>
 
         .sponsor_img {
-            background-size: 65%;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-image: url({!! asset('blog/img/microButton_97x72px.png') !!});
-            width: 150px;
-            height: 44px;
-            margin-left: -15px;
+            /*margin-left: -15px;*/
+            width: 120px;
+            height: 60px;
         }
 
         .single .sponsor_by {
@@ -34,7 +30,7 @@
         @if($post->hasThumbnail())
             <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload"
                  src="{!! asset('blog/img/blur.jpg') !!}"
-                 data-src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                 data-src="{!! asset(route('media.posts.path',[$post->id,'large_'.$post->thumbnail()->filename])) !!}"/>
         @else
             <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload"
                  src="{!! asset('blog/img/blur.jpg') !!}" data-src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
@@ -115,14 +111,25 @@
 @stop
 @section('content')
     <div class="main-left-side pos-relative">
-        <div class="post-top-bar">
-            <a href="https://www.facebook.com/CLEARMENCambodia/" target="_blank" title="Opens in a new window">
-                <div class="single sponsor">
-                    <div class="sponsor_by">នាំមកជូនដោយ</div>
-                    <div class="sponsor_img"></div>
+        @if(isset($button_single_ads))
+            @foreach($button_single_ads as $index => $article_ad)
+                <div class="post-top-bar">
+                    <a href="{!! $article_ad->url !!}" target="_blank" title="Opens in a new window">
+                        <div class="single sponsor">
+                            <div class="sponsor_by">នាំមកជូនដោយ</div>
+                            <div class="sponsor_img">
+                                @if($article_ad->hasBanner())
+                                    <img data-src="{!! asset($article_ad->banner()->media_url) !!}" width="728"
+                                         height="90" src="{!! asset('blog/img/blur.jpg') !!}"
+                                         class="lazyload img-responsive"
+                                         alt="{!! $article_ad->provider_name !!}">
+                                @endif
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
+            @endforeach
+        @endif
         <div class="artcl-main float-width" id="main-single-article">
             <div class="artcl-prev-nxt float-width">
                 <div class="artcl-prev w50 blocky">
@@ -192,13 +199,11 @@
             <div class="ads_items text-center">
                 @foreach($single_article_ads as $index => $article_ad)
                     @if($article_ad->hasBanner())
-                        @if($article_ad->hasBanner())
-                            <img data-src="{!! asset($article_ad->banner()->media_url) !!}" width="728" height="90"
-                                 src="{!! asset('blog/img/blur.jpg') !!}" class="lazyload img-responsive"
-                                 alt="{!! $article_ad->provider_name !!}">
-                        @else
-                            {!! $article_ad->provider_name !!}
-                        @endif
+                        <img data-src="{!! asset($article_ad->banner()->media_url) !!}" width="728" height="90"
+                             src="{!! asset('blog/img/blur.jpg') !!}" class="lazyload img-responsive"
+                             alt="{!! $article_ad->provider_name !!}">
+                    @else
+                        {!! $article_ad->provider_name !!}
                     @endif
                 @endforeach
             </div>

@@ -619,9 +619,9 @@ ul.sm {
     margin: 0 15px
 }
 
-.sm-menu li:last-child a > img {
+.sm-menu li > a > img.img-responsive {
     height: 50px;
-    margin-top: -8px;
+    margin-top: -5px;
     margin-bottom: -20px;
     background-color: #2ab27b;
 }
@@ -2718,7 +2718,7 @@ li.cont-phn {
 }
 
 .single .sponsor_img {
-    margin-top: -15px;
+    margin-top: -28px;
 }
 
 .blocky .img, .item .img {

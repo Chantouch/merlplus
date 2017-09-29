@@ -16,17 +16,32 @@
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
-                <li class=""><a href="/topics/sport">{!! __('menu.sport') !!}</a></li>
-                <li><a href="/topics/health">{!! __('menu.health') !!}</a></li>
-                <li><a href="/topics/entertainment">{!! __('menu.entertainment') !!}</a></li>
-                <li><a href="/topics/cook-recipes">{!! __('menu.cook-recipes') !!}</a></li>
-                <li class="">
-                    <a href="http://127.0.0.1:8000/topics/life">
-                        <img src="{!! asset('blog/img/microButton_97x72px.png') !!}"
-                             data-src="{!! asset('blog/img/microButton_97x72px.png') !!}"
-                             alt="button ads" class="lazyload">
-                    </a>
-                </li>
+                @if(isset($menus))
+                    @if(count($menus))
+                        @foreach($menus as $index => $menu)
+                            <li class="">
+                                <a href="{!! route('blog.topics.show',[$menu->getRouteKey()]) !!}">
+                                    {!! $menu->name !!}
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
+                @endif
+                @if(isset($tag_menu))
+                    @if(count($tag_menu))
+                        @foreach($tag_menu as $index => $menu)
+                            <li class="">
+                                <a href="{!! route('blog.tag.show',[$menu->getRouteKey()]) !!}">
+                                    @if($menu->hasMenuThumbnail())
+                                        <img src="{!! asset('storage/uploads/tag/'.$menu->menuThumbnail()->filename) !!}"
+                                             data-src="{!! asset('storage/uploads/tag/'.$menu->menuThumbnail()->filename) !!}"
+                                             alt="{!! $menu->name !!}" class="lazyload img-responsive">
+                                    @endif
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
+                @endif
             </ul>
         </div>
         <div class="col-lg-4 main-search-bar">

@@ -1,4 +1,11 @@
 @extends('layouts.master')
+@section('style')
+    <style>
+        .img-thumbnail{
+            background-color: #0b97c4;
+        }
+    </style>
+@stop
 @section('content')
     <div class="col-sm-12">
         <div class="white-box">

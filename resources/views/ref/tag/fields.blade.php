@@ -22,9 +22,59 @@
     @endif
 </div>
 
+<!--Feature image for tag -->
+<label for="feature_image">Feature Image (Size: 1920x760)</label>
+<div class="form-group{{ $errors->has('thumbnail') ? ' has-error' : '' }}">
+    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+        <div class="form-control" data-trigger="fileinput">
+            <i class="glyphicon glyphicon-file fileinput-exists"></i>
+            <span class="fileinput-filename"></span>
+        </div>
+        <span class="input-group-addon btn btn-default btn-file">
+            <span class="fileinput-new">Select file</span>
+            <span class="fileinput-exists">Change</span>
+            <input type="file" name="thumbnail" accept="image/*">
+        </span>
+        <a href="javascript:void (0)" class="input-group-addon btn btn-default fileinput-exists"
+           data-dismiss="fileinput">Remove</a>
+    </div>
+    @if ($errors->has('thumbnail'))
+        <span class="help-block">
+            <small>{{ $errors->first('thumbnail') }}</small>
+        </span>
+    @endif
+</div>
+
+<!--Menu image for tag -->
+<label for="menu_thumbnail">Menu Thumbnail (Size: 112x72)</label>
+<div class="form-group{{ $errors->has('menu_thumbnail') ? ' has-error' : '' }}">
+    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+        <div class="form-control" data-trigger="fileinput">
+            <i class="glyphicon glyphicon-file fileinput-exists"></i>
+            <span class="fileinput-filename"></span>
+        </div>
+        <span class="input-group-addon btn btn-default btn-file">
+            <span class="fileinput-new">Select file</span>
+            <span class="fileinput-exists">Change</span>
+            <input type="file" name="menu_thumbnail" accept="image/*">
+        </span>
+        <a href="javascript:void (0)" class="input-group-addon btn btn-default fileinput-exists"
+           data-dismiss="fileinput">Remove</a>
+    </div>
+    @if ($errors->has('menu_thumbnail'))
+        <span class="help-block">
+            <small>{{ $errors->first('menu_thumbnail') }}</small>
+        </span>
+    @endif
+</div>
+
+{{ Form::hidden('is_menu', '0') }}
+{!! Form::checkbox('is_menu', '1', null, ['class' => 'filled-in', 'id'=> 'is_menu']) !!}
+<label for="is_menu" class="m-r-15">Is Menu</label>
+
 {{ Form::hidden('status', '0') }}
-{!! Form::checkbox('status', '1', null, ['class' => 'filled-in', 'id'=> 'active']) !!}
-<label for="active">Active</label>
+{!! Form::checkbox('status', '1', null, ['class' => 'filled-in', 'id'=> 'status']) !!}
+<label for="status">Active</label>
 <br>
 <button class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
 <a href="{!! route('admin.ref.tag.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>

@@ -205,7 +205,7 @@ class User extends Authenticatable
 	}
 
 	/**
-	 * Store and set the post's thumbnail
+	 * Store and set the user's thumbnail
 	 *
 	 * @param UploadedFile $thumbnail
 	 * @return UploadedFile
@@ -213,7 +213,7 @@ class User extends Authenticatable
 	public function storeAndSetThumbnail(UploadedFile $thumbnail)
 	{
 		//$thumbnail_name = $thumbnail->store('uploads/posts');
-		$avatar = Image::make($thumbnail)->resize(128, 128);;
+		$avatar = Image::make($thumbnail)->resize(128, 128);
 		$ext = $thumbnail->getClientOriginalExtension();
 		$path = storage_path('app/public/uploads/user/');
 		$file_name = str_random(30) . '.' . $ext;
@@ -245,6 +245,5 @@ class User extends Authenticatable
 		}
 		return $thumbnail;
 	}
-
 
 }

@@ -6,6 +6,9 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Slug</th>
+                <th>Menu Thumbnail</th>
+                <th>Thumbnail</th>
+                <th>Is Menu</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -16,9 +19,21 @@
                     <th>{!! $loop->index+1 !!}</th>
                     <td>{!! $tag->name !!}</td>
                     <td>{!! $tag->slug !!}</td>
+                    <td>
+                        @if($tag->hasMenuThumbnail())
+                            <img src="{!! asset('storage/uploads/tag/'.$tag->menuThumbnail()->filename) !!}" width="60"
+                                 alt="{!! $tag->name !!}" class="img-thumbnail">
+                        @endif
+                    </td>
+                    <td>
+                        @if($tag->hasThumbnail())
+                            <img src="{!! asset('storage/uploads/tag/'.$tag->thumbnail()->filename) !!}" width="80"
+                                 alt="{!! $tag->name !!}" class="img-thumbnail">
+                        @endif
+                    </td>
+                    <td>{!! $tag->is_menu !!}</td>
                     <td>{!! $tag->status !!}</td>
                     <td>
-
                         <div class="btn-group">
                             {!! Form::open(['route' => ['admin.ref.tag.destroy', $tag->id], 'method' => 'delete']) !!}
                             <a href="{!! route('admin.ref.tag.show', [$tag->id]) !!}"
@@ -32,7 +47,6 @@
                             {!! Form::button('Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-outline waves-effect btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                             {!! Form::close() !!}
                         </div>
-
                     </td>
                 </tr>
             @endforeach

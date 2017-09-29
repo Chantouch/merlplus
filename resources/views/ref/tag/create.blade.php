@@ -1,4 +1,8 @@
 @extends('layouts.master')
+@section('page-css')
+    <link href="{!! asset('plugins/multiselect/css/multi-select.css') !!}" rel="stylesheet" type="text/css"/>
+    <link href="{!! asset('plugins/custom-select/custom-select.css') !!}" rel="stylesheet" type="text/css"/>
+@stop
 @section('style')
 
 @stop
@@ -15,9 +19,10 @@
 @stop
 
 @section('plugins')
-
+    <script type="text/javascript" src="{!! asset('plugins/multiselect/js/jquery.multi-select.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('plugins/custom-select/custom-select.min.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('js/jasny-bootstrap.js') !!}"></script>
 @stop
-
 
 @section('scripts')
     <script>
