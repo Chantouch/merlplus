@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{!! asset('favicon.ico') !!}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('settings.app_name') }}</title>
     <link href="{!! asset('bootstrap/dist/css/bootstrap.min.css') !!}" rel="stylesheet">
     @yield('bootstrap')
     <link href="{!! asset('plugins/sidebar-nav/dist/sidebar-nav.min.css') !!}" rel="stylesheet">
@@ -136,6 +136,11 @@
 <!--Style Switcher -->
 <script src="{{ asset('plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
 <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     window.addEventListener("load", function(event) {
         var timeout = setTimeout(function() {
             lazyload();

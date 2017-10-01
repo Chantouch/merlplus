@@ -103,9 +103,9 @@
                 </div>
             </div>
 
-            @if(count($posts))
+            @if(count($latest_posts))
                 <div class="row">
-                    @foreach($posts as $index => $post)
+                    @foreach($latest_posts as $index => $post)
                         <div class="col-md-6 col-sm-6 col-xs-6 tn-small-1 blocky">
                             <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                                 @if($post->hasThumbnail())
@@ -123,12 +123,12 @@
 
                             @if(count($post->categories))
                                 <a href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}"
-                                   class="lefty cat-a cat-label{!! $index+1 !!} font-uppercase">{!! $post->categories->first()->name !!}</a>
+                                   class="lefty cat-a cat-label{!! $post->categories->first()->color_id !!} font-uppercase">{!! $post->categories->first()->name !!}</a>
                             @endif
                             <p class="righty">
-                            <span>
-                                <i class="fa fa-clock-o"></i>{!! $post->posted_at->format('M d,Y') !!}
-                            </span>
+                                <span>
+                                    <i class="fa fa-clock-o"></i>{!! $post->posted_at->format('M d,Y') !!}
+                                </span>
                             </p>
                         </div>
                     @endforeach

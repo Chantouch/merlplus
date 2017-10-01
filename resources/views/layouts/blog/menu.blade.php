@@ -19,7 +19,7 @@
                 @if(isset($menus))
                     @if(count($menus))
                         @foreach($menus as $index => $menu)
-                            <li class="">
+                            <li class="{!! Request::segment(2) == $menu->slug ? ' active': '' !!}">
                                 <a href="{!! route('blog.topics.show',[$menu->getRouteKey()]) !!}">
                                     {!! $menu->name !!}
                                 </a>
@@ -58,6 +58,11 @@
     <a class="fxd-mnu-x trans1" title="Close" id="hidemenu">
         <span class="fa-stack fa-lg">
             <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+        </span>
+    </a>
+    <a class="fxd-mnu-x trans1" title="Close" id="show_menu">
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-times fa-stack-1x fa-plus"></i>
         </span>
     </a>
 </div>

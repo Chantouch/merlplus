@@ -9,17 +9,17 @@
             </div>
         @endif
 
-            {!! Form::label('slug', 'Category slug:') !!}
-            <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
-                <div class="form-line">
-                    {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Enter your category slug']) !!}
-                </div>
-                @if ($errors->has('slug'))
-                    <span class="help-block">
+        {!! Form::label('slug', 'Category slug:') !!}
+        <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
+            <div class="form-line">
+                {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Enter your category slug']) !!}
+            </div>
+            @if ($errors->has('slug'))
+                <span class="help-block">
                         <strong>{{ $errors->first('slug') }}</strong>
                     </span>
-                @endif
-            </div>
+            @endif
+        </div>
 
     </div>
     <div class="col-md-6">
@@ -78,19 +78,37 @@
     @endif
 </div>
 
+<div class="row">
+    <div class="col-md-6">
 
-{!! Form::label('file', 'Image:') !!}
-<div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
-    <div class="form-line">
-        {!! Form::file('file', ['class' => 'form-control']) !!}
+        {!! Form::label('file', 'Image:') !!}
+        <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
+            <div class="form-line">
+                {!! Form::file('file', ['class' => 'form-control']) !!}
+            </div>
+            @if ($errors->has('file'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('file') }}</strong>
+                </span>
+            @endif
+        </div>
+
     </div>
-    @if ($errors->has('file'))
-        <span class="help-block">
-            <strong>{{ $errors->first('file') }}</strong>
-        </span>
-    @endif
+    <div class="col-md-6">
+        {!! Form::label('position_order', 'Category Order:') !!}
+        <div class="form-group{{ $errors->has('position_order') ? ' has-error' : '' }}">
+            <div class="input-group">
+                <span class="input-group-addon" id="color-id-category">@</span>
+                {!! Form::text('position_order', null, ['class' => 'form-control', 'placeholder' => 'Enter your category order', 'aria-describedby' => 'color-id-category']) !!}
+            </div>
+            @if ($errors->has('position_order'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('position_order') }}</strong>
+                </span>
+            @endif
+        </div>
+    </div>
 </div>
-
 
 {{ Form::hidden('status', '0') }}
 {!! Form::checkbox('status', '1', null, ['class' => 'filled-in', 'id'=> 'active']) !!}

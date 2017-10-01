@@ -27,6 +27,7 @@ class CreatePostsTable extends Migration
 	        $table->datetime('posted_at');
             $table->integer('thumbnail_id')->unsigned()->nullable();
             $table->foreign('thumbnail_id')->references('id')->on('media');
+            $table->integer('most_read')->default(0);
             $table->timestamps();
         });
     }

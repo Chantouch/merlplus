@@ -1801,6 +1801,10 @@ h3.sldr-title {
     margin: 0 0 20px
 }
 
+.sm-sldr-box h4 > a {
+    font-size: 16px;
+}
+
 .smedia {
     margin: 0 0 20px
 }
@@ -2028,7 +2032,7 @@ h3.sldr-title {
 }
 
 .info-ftr {
-    padding: 40px 0
+    padding: 40px 0 0
 }
 
 .info-ftr p {
@@ -2052,7 +2056,7 @@ h3.sldr-title {
 }
 
 .scl-ftr {
-    margin-bottom: 48px;
+    margin-bottom: 0;
     margin-top: 0
 }
 
@@ -2282,7 +2286,7 @@ a.crnt-pg {
 
 .artcl-body h2 {
     margin: 0 0 20px;
-    font-size: 27px;
+    font-size: 20px;
     line-height: 1.5;
     font-weight: 700
 }
@@ -2312,7 +2316,7 @@ a.crnt-pg {
 }
 
 .articl-data p {
-    float: left;
+    float: none;
     font-size: 15px;
     color: #747474;
     line-height: 23px;
@@ -2353,6 +2357,10 @@ p.artcl-qt span {
 .artcl-shr ul, .artcl-tags ul, .author-info ul {
     list-style: none;
     padding: 0
+}
+
+.artcl-shr button.share {
+    margin-top: -10px;
 }
 
 .artcl-scl {
@@ -2960,5 +2968,72 @@ h3.sec-title.label5 > a {
 
 .pos-relative {
     position: relative;
-    z-index: 99999;
+}
+
+/*btn for social share link*/
+
+.btn-fb, .btn-li {
+    background: #658ad0;
+    color: #fff;
+}
+
+.btn-tw {
+    background: #1dadeb;
+    color: #fff;
+}
+
+.btn-g-plus {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.m-b-15 {
+    margin-bottom: 15px;
+}
+
+.info-ftr .contact p {
+    margin: 3px 0;
+}
+
+.footer ul li a {
+    color: #999;
+}
+
+.footer-nav li a:first-child {
+    border-left: 0;
+}
+
+.footer-nav li a {
+    border-left: 1px solid #ddd;
+    color: #4e575d;
+    font-size: 12px;
+    padding: 0 10px;
+    text-transform: capitalize;
+}
+
+.footer-nav.list-inline.right {
+    padding-right: 0;
+    margin-right: -20px;
+}
+
+.footer-nav.list-inline.left {
+    margin-left: -20px;
+}
+
+.footer-nav.list-inline i.fa {
+    color: #fff;
+}
+
+.tn-small-1 img, .news-sec-1 img, .sec-1-sm img, .sm-sldr-box .media img, .artcl-reltd .reltd-sngl img {
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.tn-small-1:hover img, .artcl-reltd .reltd-sngl:hover img, .news-sec-1 .sec-1-big:hover img, .sec-1-sm:hover img, .sm-sldr-box .media:hover img {
+    -ms-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
 }

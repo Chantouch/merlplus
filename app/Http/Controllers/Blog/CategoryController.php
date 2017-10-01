@@ -62,7 +62,7 @@ class CategoryController extends BaseController
         if (ctype_digit($idOrSlug)) {
             $category = Category::with(['parent', 'articles'])
                 ->where('id', $idOrSlug)->firstOrFail();
-            $posts = $category->articles()->paginate(10);
+            $posts = $category->articles()->paginate(config('settings.posts_per_page', '10'));
             if ($request->ajax()) {
                 $view = view($this->view . 'data', compact('posts'))->render();
                 return response()->json(['html' => $view]);
@@ -70,18 +70,18 @@ class CategoryController extends BaseController
         } else {
             $category = Category::with(['parent', 'articles'])
                 ->where('slug', $idOrSlug)->firstOrFail();
-            $posts = $category->articles()->paginate(10);
+            $posts = $category->articles()->paginate(config('settings.posts_per_page', '10'));
             if ($request->ajax()) {
                 $view = view($this->view . 'data', compact('posts'))->render();
                 return response()->json(['html' => $view]);
             }
         }
-        $latest_posts = Post::with('categories')->take(6)->get();
+        $latest_posts = Post::with('categories')->take(config('settings.new_posts_number', '6'))->get();
         $single_article_ads = Advertise::with('ads_type')
             ->where('advertise_type_id', 9)
             ->where('end_date', '>=', Carbon::now())
             ->get();
-        return view($this->view . 'show', compact('category', 'posts', 'latest_posts','single_article_ads'));
+        return view($this->view . 'show', compact('category', 'posts', 'latest_posts', 'single_article_ads'));
     }
 
     /**

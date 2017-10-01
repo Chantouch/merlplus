@@ -9,7 +9,7 @@ class Category extends Model
 {
     protected $guarded = [];
     protected $fillable = [
-        'name', 'slug', 'description', 'status', 'parent_id', 'color_id'
+        'name', 'slug', 'description', 'status', 'parent_id', 'color_id', 'position_order'
     ];
 
     /**

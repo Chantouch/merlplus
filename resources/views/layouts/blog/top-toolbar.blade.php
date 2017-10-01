@@ -22,12 +22,14 @@
                      alt="Merlplus.com" class="lazyload">
             </a>
             <!-- add search form -->
-            <div id="sb-search" class="sb-search">
-                {!! Form::open(array('route' => 'blog.search', 'role'=>'search', 'method' => 'GET')) !!}
-                {!! Form::text('q', null, ['class' => 'sb-search-input', 'placeholder' => 'Search for games, music, movies', 'id' => 'search']) !!}
-                <input class="sb-search-submit" type="submit" value="">
-                <span class="sb-icon-search"></span>
-                {!! Form::close() !!}
+            <div class="search-box">
+                <div id="sb-search" class="sb-search">
+                    {!! Form::open(array('route' => 'blog.search', 'role'=>'search', 'method' => 'GET')) !!}
+                    {!! Form::text('q', null, ['class' => 'sb-search-input', 'placeholder' => 'Search for games, music, movies', 'id' => 'search']) !!}
+                    <input class="sb-search-submit" type="submit" value="">
+                    <span class="sb-icon-search"></span>
+                    {!! Form::close() !!}
+                </div>
             </div>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->

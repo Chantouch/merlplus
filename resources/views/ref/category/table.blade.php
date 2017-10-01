@@ -8,6 +8,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Tags</th>
+                <th>Order</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -32,6 +33,7 @@
                             <span class="label label-info">{!! $tag->name !!}</span>
                         @endforeach
                     </td>
+                    <td>{!! $category->position_order !!}</td>
                     <td>
                         <span class="badge badge-primary">{!! $category->status !!}</span>
                     </td>

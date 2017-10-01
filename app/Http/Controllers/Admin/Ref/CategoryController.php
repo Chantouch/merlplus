@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Ref;
 
+use App\Http\Controllers\Blog\Traits\SlugUtf8;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\TagTrait;
 use App\Http\Traits\UploadTrait;
@@ -18,6 +19,7 @@ class CategoryController extends Controller
 
     use UploadTrait;
     use TagTrait;
+    use SlugUtf8;
     public $route = 'admin.ref.category.';
     public $view = 'ref.category.';
 
@@ -62,7 +64,7 @@ class CategoryController extends Controller
                 return back()->withInput()->withErrors($validator);
             }
             if (empty($request->slug)) {
-                $data['slug'] = str_slug($request->name);
+                $data['slug'] = $this->slug_utf8($request->name);
             }
             if ($request->has('parent_id')) {
                 $data['parent_id'] = $request->parent_id;
@@ -146,8 +148,8 @@ class CategoryController extends Controller
             if ($request->hasFile('file')) {
                 $this->uploadImage($request, 'uploads/category/', $category, 'file');
             }
-            if (!empty($request->slug)) {
-                $data['slug'] = str_slug($request->name);
+            if (empty($category->slug)) {
+                $data['slug'] = $this->slug_utf8($request->name);
             }
             $update = $category->update($data);
             if (!$update) {

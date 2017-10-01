@@ -238,6 +238,17 @@
                     </li>
                 </ul>
             </li>
+
+            <li>
+                <a href="{!! route('admin.settings.index') !!}"
+                   class="waves-effect{!! Request::is('admin/settings*') ? ' active': '' !!}">
+                    <i class="mdi mdi-av-timer fa-fw" data-icon="v"></i>
+                    <span class="hide-menu"> Settings
+                        <span class="label label-rouded label-inverse pull-right">1</span>
+                    </span>
+                </a>
+            </li>
+
             <li class="devider"></li>
             @if (Auth::check())
                 <li>

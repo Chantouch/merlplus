@@ -1,20 +1,38 @@
-<!DOCTYPE html>
+<?php
+$fullUrl = Request::url();
+?>
+        <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
-    <title>{{ MetaTag::get('title') }} | {{ config('app.name', 'Merlplus') }}</title>
+    <title>{{ MetaTag::get('title') }} | {{ config('settings.app_name', 'Merlplus') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-title" content="{{ config('settings.app_name') }}">
     {!! MetaTag::tag('description') !!}
     {!! MetaTag::tag('keywords') !!}
     {!! MetaTag::tag('image') !!}
     {!! MetaTag::openGraph() !!}
-    {!! MetaTag::twitterCard() !!}
-    <meta property="fb:app_id" content="1906910106248873" />
-    <meta name="robots" content="noodp"/>
-    <link rel="canonical" href="https://www.merlplus.com/" />
+    {!! MetaTag::tag('robots') !!}
+    {!! MetaTag::tag('site_name', config('settings.app_name', 'Merlplus')) !!}
+    {!! MetaTag::tag('url', $fullUrl); !!}
+    {!! MetaTag::tag('locale', 'en_EN') !!}
+    <link rel="canonical" href="{!! $fullUrl !!}"/>
+    @if (config('services.facebook.client_id'))
+        <meta property="fb:app_id" content="{{ config('services.facebook.client_id') }}"/>
+        {!! MetaTag::twitterCard() !!}
+    @endif
+    @if (config('settings.google_site_verification'))
+        <meta name="google-site-verification" content="{{ config('settings.google_site_verification') }}"/>
+    @endif
+    @if (config('settings.msvalidate'))
+        <meta name="msvalidate.01" content="{{ config('settings.msvalidate') }}"/>
+    @endif
+    @if (config('settings.alexa_verify_id'))
+        <meta name="alexaVerifyID" content="{{ config('settings.alexa_verify_id') }}"/>
+    @endif
     <link rel="stylesheet" href="{!! asset('blog/css/app.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/main.css') !!}">
@@ -83,8 +101,33 @@
     <!-- Copy right footer -->
     <div class="copy-rt-ftr">
         <div class="container">
-            <a class="lefty">&#169; Copyright 2017, All Rights Reserved</a>
-            <a href="#" class="righty">Design and development by: Chantouch SEK</a>
+            <ul class="pull-left navbar-link footer-nav list-inline left">
+                <li>
+                    <a href="https://classified.bookingkh.com/page/anti-scam.html"> Anti-Scam </a>
+                    <a href="https://classified.bookingkh.com/page/terms.html"> Terms </a>
+                    <a href="https://classified.bookingkh.com/page/privacy.html"> Privacy </a>
+                    <a href="https://classified.bookingkh.com/contact.html"> Contact Us </a>
+                    <a href="https://classified.bookingkh.com/sitemap.html"> Sitemap </a>
+                </li>
+                <li></li>
+            </ul>
+            <ul class="pull-right navbar-link footer-nav list-inline right">
+                <li> © 2017 <a href="https://classified.bookingkh.com">
+                        {!! config('settings.app_name') !!}
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/khclassifiedads/" target="_blank">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com/DevidCs83" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.bookingkh.com">Powered by BookingKh</a>
+                </li>
+            </ul>
         </div>
     </div>
     <!-- Main Home Layout Ends -->
@@ -95,14 +138,16 @@
 
 <!-- Scripts -->
 <script src="{{ asset('blog/js/app-383kldle83903.min.js') }}"></script>
+<script src="{{ asset('blog/js/main.min.js') }}"></script>
 <script type="text/javascript" src="{!! asset('js/vue/vue.js') !!}"></script>
 <script src="{!! asset('js/vue/vue-resource.min.js') !!}"></script>
 {{--<script src="{!! asset('js/vue/vue-axios.min.js') !!}"></script>--}}
+<script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}"></script>
 @yield('plugins')
 
 @yield('scripts')
-<script !src="">
-    new UISearch( document.getElementById( 'sb-search' ) );
+<script>
+    new UISearch(document.getElementById('sb-search'));
     window.addEventListener("load", function (event) {
         var timeout = setTimeout(function () {
             lazyload();
@@ -138,6 +183,15 @@
                 });
             }
         };
+
+    /* Social Share */
+    $('.share').ShareLink({
+        title: '{{ addslashes(MetaTag::get('title')) }}',
+        text: '{!! addslashes(MetaTag::get('title')) !!}',
+        url: '{!! $fullUrl !!}',
+        width: 640,
+        height: 480
+    });
 
 </script>
 </body>

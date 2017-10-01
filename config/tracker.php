@@ -5,7 +5,7 @@ return [
     /*
      * Enable it?
      */
-    'enabled' => true,
+    'enabled' => false,
 
     /*
      * Enable cache?
@@ -76,7 +76,7 @@ return [
      *    - Error log
      *    - URL queries (including values)
      */
-    'log_enabled' => true,
+    'log_enabled' => false,
 
     /*
      * Log artisan commands?

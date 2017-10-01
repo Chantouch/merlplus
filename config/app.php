@@ -167,6 +167,8 @@ return [
          * Package Service Providers...
          */
 
+        Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
+
 	    /*
 		 * Application Service Providers...
 		 */
