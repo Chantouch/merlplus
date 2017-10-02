@@ -174,4 +174,22 @@ class Setting extends Model
         $this->attributes[$attribute_name] = $destination_path . '/' . $filename;
         //}
     }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parent()
+    {
+        return $this->belongsTo(Setting::class, 'parent_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function child()
+    {
+        return $this->hasMany(Setting::class, 'parent_id', 'id')
+            ->whereNotNull('parent_id');
+    }
 }

@@ -13,6 +13,7 @@ use App\Model\Advertise;
 use App\Model\Category;
 use App\Model\Page;
 use App\Model\Post;
+use App\Model\Setting;
 use App\Model\Tag;
 use Carbon\Carbon;
 use Torann\LaravelMetaTags\Facades\MetaTag;
@@ -48,10 +49,17 @@ class BaseController extends Controller
             ->where('parent_id', null)->take(5)
             ->orderBy('position_order', 'ASC')->get();
         $tag_menu = Tag::with('posts')->where('is_menu', 1)->get();
-        $pages = Page::orderBy('order', 'ASC')->get();
+        $pages = Page::where('status', 1)->orderBy('order', 'ASC')->get();
+        $socials = '';
+        if (config('settings.social_activated')) {
+            $socials = Setting::with('child')
+                ->where('key', 'social_activated')
+                ->firstOrFail()->child()
+                ->where('value', '!=', '')->get();
+        }
         MetaTag::set('title', 'Merlplus - Local news in Cambodia');
         MetaTag::set('keywords', 'breaking news, cambodia news, local news, breaking news in cambodia, health, cooking, breaking news, entertainment, technology, life, sport, local news in Cambodia');
-        MetaTag::set('description', config('settings.app_slogan', '\'Merlplus - Local news in Cambodia, up-to-date in a minute news, breaking news, feature and audio stories. Merlplus provides the trusted local Cambodia news, also the world wide news, to all original area, and regional perspective ,local news in Cambodia. Entertainments, technologies, cook recipes, science, business news....\''));
+        MetaTag::set('description', config('settings.app_slogan', 'Merlplus - Local news in Cambodia, up-to-date in a minute news, breaking news, feature and audio stories. Merlplus provides the trusted local Cambodia news, also the world wide news, to all original area, and regional perspective ,local news in Cambodia. Entertainments, technologies, cook recipes, science, business news....'));
         MetaTag::set('image', asset('images/logo.png'));
         MetaTag::set('robots', 'index,follow');
         view()->share([
@@ -61,7 +69,8 @@ class BaseController extends Controller
             'main_right_ads' => $main_right_ads,
             'menus' => $menus,
             'tag_menu' => $tag_menu,
-            'pages' => $pages
+            'pages' => $pages,
+            'socials' => $socials
         ]);
     }
 

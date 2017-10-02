@@ -36,23 +36,16 @@
                     <div class="col-md-12 m-b-15">
                         <h3>ជួបគ្នានៅបណ្តាញសង្គម</h3>
                         <ul>
-                            @if(config('settings.facebook_page_url'))
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"
-                                       class="trans1 fb-ftr"></a>
-                                </li>
-                            @endif
-                            @if(config('settings.twitter_url'))
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"
-                                       class="trans1 tw-ftr"></a>
-                                </li>
-                            @endif
-                            @if(config('settings.pinterest_url'))
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"
-                                       class="trans1 pin-ftr"></a>
-                                </li>
+                            @if(config('settings.social_activated'))
+                                @if(count($socials))
+                                    @foreach($socials as $social)
+                                        <li>
+                                            <a href="{!! config('settings.'.$social->key) !!}" data-toggle="tooltip"
+                                               data-placement="bottom" title="{!! $social->name !!}"
+                                               class="trans1 fb-ftr"></a>
+                                        </li>
+                                    @endforeach()
+                                @endif
                             @endif
                         </ul>
                         @endif

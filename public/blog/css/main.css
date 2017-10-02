@@ -2068,12 +2068,12 @@ h3.sldr-title {
 .scl-ftr ul li {
     float: left;
     display: inline;
-    margin: 7px
+    margin: 5px 2px;
 }
 
-.scl-ftr ul li:first-child {
-    margin-left: 0
-}
+/*.scl-ftr ul li:first-child {*/
+/*margin-left: 0*/
+/*}*/
 
 .scl-ftr a {
     background-size: 100%;
@@ -2085,7 +2085,7 @@ h3.sldr-title {
 
 .post-ftr, .twts-ftr {
     width: 30.12820512820513%;
-    padding: 7px 2.564102564102564% 27px
+    padding: 7px 2% 27px
 }
 
 .scl-ftr a:hover {
@@ -3036,4 +3036,12 @@ h3.sec-title.label5 > a {
     -webkit-transform: scale(1.1);
     -o-transform: scale(1.1);
     transform: scale(1.1);
+}
+
+hr.small {
+    background-color: #78c546;
+    height: 2px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    width: 44px;
 }

@@ -103,9 +103,13 @@ $fullUrl = Request::url();
         <div class="container">
             <ul class="pull-left navbar-link footer-nav list-inline left">
                 <li>
-                    <a href="https://classified.bookingkh.com/page/anti-scam.html"> Anti-Scam </a>
-                    <a href="https://classified.bookingkh.com/page/terms.html"> Terms </a>
-                    <a href="https://classified.bookingkh.com/page/privacy.html"> Privacy </a>
+                    @if(count($pages))
+                        @foreach($pages as $page)
+                            <a href="{!! route('blog.page.show',[$page->getRouteKey()]) !!}">
+                                {!! $page->name !!}
+                            </a>
+                        @endforeach
+                    @endif
                     <a href="https://classified.bookingkh.com/contact.html"> Contact Us </a>
                     <a href="https://classified.bookingkh.com/sitemap.html"> Sitemap </a>
                 </li>
@@ -116,14 +120,16 @@ $fullUrl = Request::url();
                         {!! config('settings.app_name') !!}
                     </a>
                 </li>
-                <li>
-                    <a href="https://www.facebook.com/khclassifiedads/" target="_blank">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                    <a href="https://twitter.com/DevidCs83" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </li>
+                @if(config('settings.social_activated'))
+                    <li>
+                        <a href="{!! config('settings.facebook_page_url') !!}" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/DevidCs83" target="_blank" title="Chantouch SEK">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </li>
+                @endif
                 <li>
                     <a href="https://www.bookingkh.com">Powered by BookingKh</a>
                 </li>
