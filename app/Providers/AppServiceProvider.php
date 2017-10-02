@@ -5,10 +5,8 @@ namespace App\Providers;
 use App\Model\Comment;
 use App\Model\Post;
 use App\Model\Setting;
-use App\Model\User;
 use App\Observers\CommentObserver;
 use App\Observers\PostObserver;
-use App\Observers\UserObserver;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
@@ -103,6 +101,7 @@ class AppServiceProvider extends ServiceProvider
         Config::set('services.google.client_id', env('GOOGLE_CLIENT_ID', config('settings.google_client_id')));
         Config::set('services.google.client_secret', env('GOOGLE_CLIENT_SECRET', config('settings.google_client_secret')));
         Config::set('services.googlemaps.key', env('GOOGLE_MAPS_API_KEY', config('settings.googlemaps_key')));
+        Config::set('analytics.view_id', env('ANALYTICS_VIEW_ID', config('settings.google_page_view_id')));
         // Meta-tags
         Config::set('meta-tags.title', config('settings.app_slogan'));
         Config::set('meta-tags.open_graph.site_name', config('settings.app_name'));

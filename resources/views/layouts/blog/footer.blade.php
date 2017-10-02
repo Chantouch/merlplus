@@ -61,7 +61,7 @@
                         @if(config('settings.app_phone_number'))
                             <h3>{!! __('app.contact') !!}</h3>
                             <p>
-                                <a href="mailto:{!! config('settings.app_email') !!}">{!! config('settings.app_email') !!}</a>
+                                {{ Html::obfuscate(config('settings.app_email')) }}
                             </p>
                             <p>{!! config('settings.app_phone_number') !!}</p>
                         @endif

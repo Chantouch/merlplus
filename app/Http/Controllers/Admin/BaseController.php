@@ -14,6 +14,7 @@ use Torann\LaravelMetaTags\Facades\MetaTag;
 
 class BaseController extends Controller
 {
+	protected $client;
 
 	/**
 	 * BaseController constructor.
@@ -21,7 +22,11 @@ class BaseController extends Controller
 	public function __construct()
 
 	{
-		MetaTag::set('title', 'MerlPlus Dashboard | ');
+		$client = new \Google_Client();
+		$guzzleClient = new \GuzzleHttp\Client(['curl' => [CURLOPT_SSL_VERIFYPEER => false]]);
+		$client->setHttpClient($guzzleClient);
+		$this->client = $client;
+		MetaTag::set('title', 'Dashboard');
 		MetaTag::set('description', 'Blog Wes Anderson bicycle rights, occupy Shoreditch gentrify keffiyeh.');
 		MetaTag::set('image', asset('images/default-share-image.png'));
 	}

@@ -112,7 +112,7 @@ $fullUrl = Request::url();
                 <li></li>
             </ul>
             <ul class="pull-right navbar-link footer-nav list-inline right">
-                <li> © 2017 <a href="https://classified.bookingkh.com">
+                <li> © 2017 <a href="{!! config('app.url') !!}">
                         {!! config('settings.app_name') !!}
                     </a>
                 </li>

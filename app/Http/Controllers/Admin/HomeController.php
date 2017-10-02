@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Model\Advertise;
 use App\Model\Comment;
 use App\Model\Post;
 use App\Model\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Analytics;
+use Spatie\Analytics\Period;
 
-class HomeController extends Controller
+class HomeController extends BaseController
 {
 	/**
 	 * Create a new controller instance.
@@ -20,6 +21,7 @@ class HomeController extends Controller
 	public function __construct()
 	{
 		$this->middleware('auth');
+		parent::__construct();
 	}
 
 	/**
@@ -70,6 +72,8 @@ class HomeController extends Controller
 		$userLists = User::with('roles')->latest()->get();
 		$latest_posts = Post::latest()->take(4)->get();
 		$net_earning = Advertise::with('ads_type')->sum('price');
+		//$analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+		//dd($analyticsData);
 		return view('admin.dashboard.index', compact(
 			'comments', 'postsLastWeek', 'users', 'postsTotal', 'profile',
 			'userLists', 'latest_posts', 'net_earning'

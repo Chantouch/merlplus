@@ -1,5 +1,2 @@
 User-agent: *
-User-agent: Libwww-perl
 Disallow:
-
-Sitemap: https://www.merlplus.com/sitemap.xml
