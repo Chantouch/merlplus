@@ -1,21 +1,22 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Chantouch
- * Date: 10/3/2017
- * Time: 1:41 PM
- */
-?>
-You received a message from : {{ $user['name'] }}
+@component('mail::message')
+    # Received message
 
-<p>
+    ## Dear Admin
+
+    You recently received a message from : {{ $user['name'] }}
+
     Name: {{ $user['name'] }}
-</p>
 
-<p>
     Email: {{ $user['email'] }}
-</p>
 
-<p>
+    Phone: Message: {{ $user['phone'] }}
+
     Message: {{ $user['user_message'] }}
-</p>
+
+    @component('mail::button', ['url' => '/'])
+        Back Home
+    @endcomponent
+
+    Thanks,<br>
+    {{ config('app.name') }}
+@endcomponent

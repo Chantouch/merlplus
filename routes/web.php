@@ -69,4 +69,7 @@ Route::name('blog.')->namespace('Blog')->group(function () {
     Route::get('/sitemap.html', 'SitemapController@index')->name('sitemap.html');
     Route::get('/sitemap/posts', 'SitemapController@posts')->name('sitemap.posts');
     Route::get('/sitemap/categories', 'SitemapController@categories')->name('sitemap.categories');
+    Route::get('mail', function (){
+        return new App\Mail\AutoReply();
+    });
 });

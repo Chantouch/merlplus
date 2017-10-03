@@ -7,20 +7,18 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Contact extends Mailable
+class AutoReply extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $user;
 
     /**
      * Create a new message instance.
      *
-     * @param $user
+     * @return void
      */
-    public function __construct($user)
+    public function __construct()
     {
-        $this->user = $user;
+        //
     }
 
     /**
@@ -30,9 +28,9 @@ class Contact extends Mailable
      */
     public function build()
     {
-        return $this->from($this->user['email'], ['app_name' => config('settings.app_name')])
-            ->subject($this->user['subject'])
-            ->view('emails.contact')
-            ->with(['user' => $this->user]);
+
+        return $this->from(config('settings.app_email_sender'), ['app_name' => config('settings.app_name')])
+            ->subject('Thanks for contact us')
+            ->markdown('emails.auto-reply');
     }
 }
