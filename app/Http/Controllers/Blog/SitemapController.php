@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Blog;
 
+use App\Http\Controllers\BaseController;
 use App\Model\Category;
 use App\Model\Post;
-use App\Http\Controllers\Controller;
 
-class SitemapController extends Controller
+class SitemapController extends BaseController
 {
     public function index()
     {
@@ -15,7 +15,7 @@ class SitemapController extends Controller
             ->orderBy('updated_at', 'desc')->first();
         return response()->view('sitemap.index', [
             'post' => $post,
-        ])->header('Content-Type', 'text/xml');
+        ])->header('Content-Type', 'text/html');
     }
 
     public function posts()

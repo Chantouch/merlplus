@@ -1,7 +1,7 @@
 <?php
 $fullUrl = Request::url();
 ?>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
@@ -88,6 +88,7 @@ $fullUrl = Request::url();
 
     <div class="container-position">
         @yield('post-background')
+        @yield('contact-map')
         <div class="container">
             @yield('content')
         </div>
@@ -110,8 +111,8 @@ $fullUrl = Request::url();
                             </a>
                         @endforeach
                     @endif
-                    <a href="https://classified.bookingkh.com/contact.html"> Contact Us </a>
-                    <a href="https://classified.bookingkh.com/sitemap.html"> Sitemap </a>
+                    <a href="{!! route('blog.contact.index') !!}"> {!! __('app.contact') !!} </a>
+                    <a href="{!! route('blog.sitemap.html') !!}"> Sitemap </a>
                 </li>
                 <li></li>
             </ul>

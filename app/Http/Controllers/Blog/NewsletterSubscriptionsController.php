@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Validator;
 
 class NewsletterSubscriptionsController extends Controller
 {
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param NewsletterSubscriptionRequest $request
+	 */
     public function store(NewsletterSubscriptionRequest $request)
     {
         $newsletterSubscription = NewsletterSubscription::create([

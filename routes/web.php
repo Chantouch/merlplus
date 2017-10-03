@@ -64,8 +64,9 @@ Route::name('blog.')->namespace('Blog')->group(function () {
     Route::resource('topics', 'CategoryController', ['only' => 'show']);
     Route::resource('tag', 'TagController', ['only' => 'show']);
     Route::resource('page', 'PageController', ['only' => 'show']);
+    Route::resource('contact', 'ContactController', ['only' => ['index', 'store']]);
     //Sitemap
-    Route::get('/sitemap.html', 'SitemapController@index');
-    Route::get('/sitemap/posts', 'SitemapController@posts');
-    Route::get('/sitemap/categories', 'SitemapController@categories');
+    Route::get('/sitemap.html', 'SitemapController@index')->name('sitemap.html');
+    Route::get('/sitemap/posts', 'SitemapController@posts')->name('sitemap.posts');
+    Route::get('/sitemap/categories', 'SitemapController@categories')->name('sitemap.categories');
 });

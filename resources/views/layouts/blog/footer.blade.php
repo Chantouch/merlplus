@@ -31,35 +31,33 @@
     </div>
     <div class="twts-ftr lefty">
         <div class="scl-ftr float-width">
-            @if(config('settings.social_activated'))
-                <div class="row">
-                    <div class="col-md-12 m-b-15">
+            <div class="row">
+                <div class="col-md-12 m-b-15">
+                    @if(config('settings.social_activated'))
                         <h3>ជួបគ្នានៅបណ្តាញសង្គម</h3>
                         <ul>
-                            @if(config('settings.social_activated'))
-                                @if(count($socials))
-                                    @foreach($socials as $social)
-                                        <li>
-                                            <a href="{!! config('settings.'.$social->key) !!}" data-toggle="tooltip"
-                                               data-placement="bottom" title="{!! $social->name !!}"
-                                               class="trans1 fb-ftr"></a>
-                                        </li>
-                                    @endforeach()
-                                @endif
+                            @if(count($socials))
+                                @foreach($socials as $social)
+                                    <li>
+                                        <a href="{!! config('settings.'.$social->key) !!}" data-toggle="tooltip"
+                                           data-placement="bottom" title="{!! $social->name !!}"
+                                           class="trans1 fb-ftr"></a>
+                                    </li>
+                                @endforeach()
                             @endif
                         </ul>
-                        @endif
-                    </div>
-                    <div class="col-md-12 contact">
-                        @if(config('settings.app_phone_number'))
-                            <h3>{!! __('app.contact') !!}</h3>
-                            <p>
-                                {{ Html::obfuscate(config('settings.app_email')) }}
-                            </p>
-                            <p>{!! config('settings.app_phone_number') !!}</p>
-                        @endif
-                    </div>
+                    @endif
                 </div>
+                <div class="col-md-12 contact">
+                    @if(config('settings.app_phone_number'))
+                        <h3>{!! __('app.contact') !!}</h3>
+                        <p>
+                            {{ Html::mailto(config('settings.app_email')) }}
+                        </p>
+                        <p>{!! config('settings.app_phone_number') !!}</p>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
 </div>
