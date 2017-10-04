@@ -1,7 +1,7 @@
 <?php
 $fullUrl = Request::url();
 ?>
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
@@ -37,6 +37,9 @@ $fullUrl = Request::url();
     <link rel="stylesheet" href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/main.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/responsive.css') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
+    <link rel="stylesheet" href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}">
+    <link rel="stylesheet" href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.theme.default.min.css') !!}">
     <style>
         .hm-slider .slides {
             background-image: url({!! asset('images/loading.gif') !!});
@@ -79,12 +82,6 @@ $fullUrl = Request::url();
     <div class="container">
         @yield('main-news-block')
     </div>
-    <!-- News Ticker -->
-    {{--@if(!Request::is('article/*'))--}}
-    {{--<div class="container">--}}
-    {{--@include('layouts.blog.breaking-news')--}}
-    {{--</div>--}}
-    {{--@endif--}}
 
     <div class="container-position">
         @yield('post-background')
@@ -150,6 +147,7 @@ $fullUrl = Request::url();
 <script src="{!! asset('js/vue/vue-resource.min.js') !!}"></script>
 {{--<script src="{!! asset('js/vue/vue-axios.min.js') !!}"></script>--}}
 <script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}"></script>
+<script src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}"></script>
 @yield('plugins')
 
 @yield('scripts')
@@ -159,6 +157,37 @@ $fullUrl = Request::url();
         var timeout = setTimeout(function () {
             lazyload();
         }, 50);
+    });
+
+    $(document).ready(function () {
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            responsiveClass: true,
+            lazyLoad: true,
+            lazyContent: true,
+            responsive: {
+                0: {
+                    items: 2,
+                    nav: false,
+                    dots: true,
+                    loop: true,
+                    autoplay: true
+                },
+                600: {
+                    items: 3,
+                    nav: false,
+                    dots: true,
+                    loop: true
+                },
+                1000: {
+                    items: 5,
+                    nav: false,
+                    dots: true,
+                    loop: false
+                }
+            }
+        })
     });
 
     var $ = jQuery.noConflict();

@@ -51,3 +51,36 @@
 .page-content .media a > img {
     width: 130px;
 }
+
+.author {
+    float: left;
+    display: block;
+}
+
+.artcl-shr {
+    padding: 0 10px;
+}
+
+.main-left-side .ads_items {
+    float: left;
+}
+
+.mobile-title {
+    float: left;
+}
+
+.navbar-inverse {
+    background-image: -webkit-linear-gradient(top, #5aa628 0, #5aa628 100%);
+    background-image: linear-gradient(to bottom, #83ce52 0, #5aa628 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.navbar-inverse {
+    background-color: #5aa628;
+    border-color: #e7e7e7;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #fff;
+}

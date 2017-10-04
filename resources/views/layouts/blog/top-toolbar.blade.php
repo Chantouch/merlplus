@@ -25,7 +25,7 @@
             <div class="search-box">
                 <div id="sb-search" class="sb-search">
                     {!! Form::open(array('route' => 'blog.search', 'role'=>'search', 'method' => 'GET')) !!}
-                    {!! Form::text('q', null, ['class' => 'sb-search-input', 'placeholder' => 'Search for games, music, movies', 'id' => 'search']) !!}
+                    {!! Form::text('q', null, ['class' => 'sb-search-input', 'placeholder' => __('app.search'), 'id' => 'search']) !!}
                     <input class="sb-search-submit" type="submit" value="">
                     <span class="sb-icon-search"></span>
                     {!! Form::close() !!}

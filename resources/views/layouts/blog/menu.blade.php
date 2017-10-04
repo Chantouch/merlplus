@@ -48,7 +48,7 @@
             <!-- Top Search bar -->
             {!! Form::open(array('route' => 'blog.search', 'role'=>'search', 'method' => 'GET', 'class'=>'navbar-form float-width')) !!}
             <div class="form-group float-width">
-                {!! Form::text('q', null, ['class' => 'form-control float-width', 'placeholder' => 'Search for games, music, movies', 'id' => 'name']) !!}
+                {!! Form::text('q', null, ['class' => 'form-control float-width', 'placeholder' => __('app.search'), 'id' => 'name']) !!}
             </div>
             <button><i class="fa fa-search"></i></button>
             {!! Form::close() !!}

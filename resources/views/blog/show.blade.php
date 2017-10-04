@@ -9,6 +9,7 @@
 @extends('layouts.blog.app')
 @section('css')
     <link rel="stylesheet" href="{!! asset('plugins/fancybox/dist/jquery.fancybox.css') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
     <style>
 
         .sponsor_img {
@@ -206,11 +207,9 @@
                         </article>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>{!! __('posts.show.article') !!}
-                            ៖ {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
-                    </div>
+                <div class="col-md-12 author">
+                    <p>{!! __('posts.show.article') !!}
+                        ៖ {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
                 </div>
                 <!-- The Article Social Media Share -->
                 <div class="artcl-scl float-width">
@@ -247,8 +246,9 @@
                 <div class="clearfix"></div>
                 <div class="jumbotron color5bc0de">
                     <div class="title">ភ្ជាប់ទំនាក់ទំនងជាមួយ <span> MerlPlus</span></div>
-                    <div class="fb-like" data-href="https://www.facebook.com/pg/khclassifiedads/" data-layout="standard"
-                         data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+                    <div class="fb-like" data-href="https://www.facebook.com/pg/khclassifiedads/"
+                         data-layout="button_count" data-action="like" data-size="large" data-show-faces="false"
+                         data-share="true"></div>
                 </div>
                 <div class="clearfix"></div>
                 <!-- related Articles  -->

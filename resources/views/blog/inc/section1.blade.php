@@ -51,61 +51,37 @@
                                 </div>
                             @endif
                             @if($index > 0)
-                                <div class="sec-1-sm sub-cat-top">
-                                    @if($post->hasThumbnail())
-                                        <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                            <img alt="merlplus, merlplus.com {!! $post->title !!}"
-                                                 class="blocky lazyload" height="90"
-                                                 src="{!! asset('blog/img/blur.jpg') !!}"
-                                                 data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
-                                        </a>
-                                    @endif
-                                    <div class="sec-1-sm-text blocky">
-                                        <h3>
+                                <div class="web">
+                                    <div class="sec-1-sm sub-cat-top">
+                                        @if($post->hasThumbnail())
                                             <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                                {!! $post->excerptTitle() !!}
+                                                <img alt="merlplus, merlplus.com {!! $post->title !!}"
+                                                     class="blocky lazyload" height="90"
+                                                     src="{!! asset('blog/img/blur.jpg') !!}"
+                                                     data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                                             </a>
-                                        </h3>
-                                        <h6>
+                                        @endif
+                                        <div class="sec-1-sm-text blocky">
+                                            <h3>
+                                                <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
+                                                    {!! $post->excerptTitle() !!}
+                                                </a>
+                                            </h3>
+                                            <h6>
                                         <span>
                                             <i class="fa fa-clock-o"></i>{!! $post->posted_at->format('d M Y') !!}
                                         </span>
-                                            <span>
+                                                <span>
                                             <i class="fa fa-comment-o"></i>{!! $post->comments->count() !!} comments
                                         </span>
-                                        </h6>
-                                        <p>{!! $post->excerpt(300) !!}</p>
+                                            </h6>
+                                            <p>{!! $post->excerpt(300) !!}</p>
+                                        </div>
                                     </div>
                                 </div>
                             @endif
                         @endforeach
-                        {{--<div class="row">--}}
-                            {{--<div class="col-md-12 col-xs-12">--}}
-                                {{--<div class="flexslider hm-slider sub-item-cat">--}}
-                                    {{--<ul class="slides">--}}
-                                        {{--@foreach($category->articles->take(7) as $index => $post)--}}
-                                            {{--@if($index > 0)--}}
-                                                {{--<li>--}}
-                                                    {{--@if($post->hasThumbnail())--}}
-                                                        {{--<img alt="merlplus, merlplus.com {!! $post->title !!}"--}}
-                                                             {{--class="lazyload"--}}
-                                                             {{--src="{!! asset('blog/img/blur.jpg') !!}"--}}
-                                                             {{--data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>--}}
-                                                    {{--@endif--}}
-                                                    {{--<div class="hm-sldr-caption">--}}
-                                                        {{--<h4>--}}
-                                                            {{--<a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">--}}
-                                                                {{--{!! $post->title !!}--}}
-                                                            {{--</a>--}}
-                                                        {{--</h4>--}}
-                                                    {{--</div>--}}
-                                                {{--</li>--}}
-                                            {{--@endif--}}
-                                        {{--@endforeach--}}
-                                    {{--</ul>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
+                        @include('blog.inc.mobile')
                     @endif
                 </div>
             </div>

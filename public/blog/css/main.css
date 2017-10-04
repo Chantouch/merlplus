@@ -1528,7 +1528,7 @@ p.artcl-time-1 span i {
 .sec-1-big div.sec-1-big-text p {
     font-size: 15px;
     color: #666;
-    margin: 15px 0 0
+    margin: 0 auto;
 }
 
 .sec-1-sm {
@@ -2243,7 +2243,7 @@ a.crnt-pg {
     background: #fff;
     margin: 0 0 20px;
     padding: 0 0 20px;
-    border-top: 2px solid #f04a3c
+    border-top: 2px solid #ffffff
 }
 
 .artcl-prev-nxt {
@@ -2906,6 +2906,7 @@ li.cont-phn {
     margin-bottom: 15px;
 }
 
+
 .post-top-bar {
     height: 35px;
     padding: 10px 0 0;
@@ -2919,8 +2920,8 @@ li.cont-phn {
 
 h3.sec-title.label-title > a {
     position: relative;
-    top: 0;
-    right: 0;
+    top: -18px;
+    right: 15px;
     padding: 8px 20px;
     margin: 0;
     font-size: 14px;

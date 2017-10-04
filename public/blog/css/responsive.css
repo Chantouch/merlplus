@@ -136,6 +136,11 @@
     .top-banner {
         top: 5px;
     }
+
+    .sec-1-sm img {
+        width: auto;
+        margin: 0;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 999px) {
@@ -229,7 +234,7 @@
     }
 
     .sec-1-sm {
-        width: 100%;
+        width: 50%;
         float: left;
         display: block;
         margin-top: 28px
@@ -309,6 +314,12 @@
         top: 8px;
     }
 
+    .sec-1-sm div.sec-1-sm-text {
+        width: 65.82633053221288%;
+        margin-left: 0;
+        margin-top: 14px;
+    }
+
 }
 
 @media (min-width: 768px) {
@@ -326,6 +337,10 @@
     }
 
     .sub-item-cat {
+        display: none;
+    }
+
+    .mobile {
         display: none;
     }
 }
@@ -386,6 +401,14 @@
 
     .no-js .sb-search, .sb-search.sb-search-open {
         width: 97.5%;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .web {
+        display: none;
     }
 
 }
@@ -539,6 +562,7 @@
     .single .sponsor_img {
         margin-top: -10px;
     }
+
 }
 
 @media only screen and (min-width: 601px) and (max-width: 689px) {
@@ -728,6 +752,10 @@
 
     #hidemenu, .mega-menu-li {
         display: none !important
+    }
+
+    .web {
+        display: none;
     }
 }
 
@@ -945,8 +973,10 @@
         width: 96.5%;
     }
 
-    .footer-nav.list-inline.left {
+    .footer-nav.list-inline.left, .footer-nav.list-inline.right {
         margin-left: 0;
+        float: none !important;
+        text-align: center;
     }
 
     .info-ftr .mag-info, .info-ftr .post-ftr, .info-ftr .twts-ftr {
@@ -1110,7 +1140,7 @@
         width: 100%;
         float: left;
         display: block;
-        margin-top: 28px
+        margin-top: 0
     }
 
     .sec-1-sm div.sec-1-sm-text {
@@ -1188,15 +1218,18 @@
     }
 
     .artcl-tags {
-        margin-bottom: 15px
+        float: none;
+        margin: 0 0 15px 0;
+        line-height: 24px;
     }
 
     .artcl-body h2 {
-        font-size: 25px
+        font-size: 20px
     }
 
     .artcl-body h5 {
-        font-size: 11px
+        font-size: 11px;
+        line-height: 1.5;
     }
 
     .author-info ul {
@@ -1318,6 +1351,24 @@
 
     .info-ftr .mag-info, .info-ftr .post-ftr, .info-ftr .twts-ftr {
         text-align: center !important;
+    }
+
+    .artcl-shr {
+        padding: 0 !important;
+        margin: 10px auto;
+        float: left !important;
+    }
+
+    .main-footers {
+        margin-top: 0;
+    }
+
+    .sec-1-sm:nth-child(odd) {
+        padding-right: 5px
+    }
+
+    .web {
+        display: none;
     }
 }
 
