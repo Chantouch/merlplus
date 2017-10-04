@@ -20,6 +20,7 @@
     </div>
     <div class="post-ftr lefty">
         <h3>{!! __('app.about_us') !!}</h3>
+        <hr class="small">
         @if(config('settings.about_company'))
             <p>
                 {!! config('settings.about_company') !!}
@@ -35,6 +36,7 @@
                 <div class="col-md-12 m-b-15">
                     @if(config('settings.social_activated'))
                         <h3>ជួបគ្នានៅបណ្តាញសង្គម</h3>
+                        <hr class="small">
                         <ul>
                             @if(count($socials))
                                 @foreach($socials as $social)
@@ -51,6 +53,7 @@
                 <div class="col-md-12 contact">
                     @if(config('settings.app_phone_number'))
                         <h3>{!! __('app.contact') !!}</h3>
+                        <hr class="small">
                         <p>
                             {{ Html::mailto(config('settings.app_email')) }}
                         </p>

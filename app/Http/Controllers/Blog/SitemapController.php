@@ -10,11 +10,9 @@ class SitemapController extends BaseController
 {
     public function index()
     {
-        $post = Post::with('categories')
-            ->where('active', 1)
-            ->orderBy('updated_at', 'desc')->first();
+	    $categories = Category::all();
         return response()->view('sitemap.index', [
-            'post' => $post,
+            'categories' => $categories,
         ])->header('Content-Type', 'text/html');
     }
 

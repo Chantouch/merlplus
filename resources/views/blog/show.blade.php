@@ -244,6 +244,7 @@
                         @endforeach
                     </div>
                 @endif
+                <div class="clearfix"></div>
                 <div class="jumbotron color5bc0de">
                     <div class="title">ភ្ជាប់ទំនាក់ទំនងជាមួយ <span> MerlPlus</span></div>
                     <div class="fb-like" data-href="https://www.facebook.com/pg/khclassifiedads/" data-layout="standard"

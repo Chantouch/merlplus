@@ -69,11 +69,12 @@
     </div>
 @stop
 @section('content')
-    <!-- Top News Section -->
-    @include('blog.inc.top-news')
     <!-- Section 1 -->
     @include('blog.inc.section1')
     <!--End Section 1--->
+    <!-- Top News Section -->
+    @include('blog.inc.top-news')
+    <!--End Top News Section -->
 @stop
 @section('scripts')
     <script>

@@ -1756,16 +1756,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.13",
+            "version": "v5.5.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "bfbe20d32ee9f98c89df852847827407a5127be4"
+                "reference": "26c700eb79e5bb55b59df2c495c9c71f16f43302"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/bfbe20d32ee9f98c89df852847827407a5127be4",
-                "reference": "bfbe20d32ee9f98c89df852847827407a5127be4",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/26c700eb79e5bb55b59df2c495c9c71f16f43302",
+                "reference": "26c700eb79e5bb55b59df2c495c9c71f16f43302",
                 "shasum": ""
             },
             "require": {
@@ -1884,7 +1884,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-09-24T19:09:38+00:00"
+            "time": "2017-10-03T17:41:03+00:00"
         },
         {
             "name": "laravel/passport",
@@ -5419,19 +5419,20 @@
         },
         {
             "name": "spatie/laravel-sitemap",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-sitemap.git",
-                "reference": "226752a561bca98f37251ddd7e480c347a67cc31"
+                "reference": "8681a0cfb62e8f7a8a9a7c384ec4552d67008bd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/226752a561bca98f37251ddd7e480c347a67cc31",
-                "reference": "226752a561bca98f37251ddd7e480c347a67cc31",
+                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/8681a0cfb62e8f7a8a9a7c384ec4552d67008bd4",
+                "reference": "8681a0cfb62e8f7a8a9a7c384ec4552d67008bd4",
                 "shasum": ""
             },
             "require": {
+                "guzzlehttp/guzzle": "^6.3",
                 "illuminate/support": "~5.5.0",
                 "nesbot/carbon": "^1.21",
                 "php": "^7.0",
@@ -5475,7 +5476,7 @@
                 "laravel-sitemap",
                 "spatie"
             ],
-            "time": "2017-09-22T14:41:25+00:00"
+            "time": "2017-10-03T07:56:13+00:00"
         },
         {
             "name": "spatie/phpunit-snapshot-assertions",

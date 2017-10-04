@@ -39,3 +39,15 @@
     margin-bottom: 30px;
     padding: 20px 15px;
 }
+
+.page-content .cat-title {
+    margin-bottom: 15px;
+}
+
+.m-r-10 {
+    margin-right: 10px;
+}
+
+.page-content .media a > img {
+    width: 130px;
+}

@@ -907,7 +907,7 @@
     }
 
     .post-ftr, .twts-ftr {
-        width: 80%
+        width: 100%
     }
 
     .author-info ul {
@@ -943,6 +943,14 @@
 
     .no-js .sb-search, .sb-search.sb-search-open {
         width: 96.5%;
+    }
+
+    .footer-nav.list-inline.left {
+        margin-left: 0;
+    }
+
+    .info-ftr .mag-info, .info-ftr .post-ftr, .info-ftr .twts-ftr {
+        text-align: center !important;
     }
 }
 
@@ -1157,7 +1165,7 @@
     }
 
     .post-ftr, .twts-ftr {
-        width: 80%
+        width: 100%
     }
 
     .subscribe form input {
@@ -1300,6 +1308,17 @@
     .no-js .sb-search, .sb-search.sb-search-open {
         width: 95%;
     }
+
+    .copy-rt-ftr ul {
+        float: none;
+        padding: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .info-ftr .mag-info, .info-ftr .post-ftr, .info-ftr .twts-ftr {
+        text-align: center !important;
+    }
 }
 
 @media only screen and (max-width: 320px) {
@@ -1355,5 +1374,13 @@
 
     .no-js .sb-search, .sb-search.sb-search-open {
         width: 93%;
+    }
+
+    .info-ftr .mag-info, .info-ftr .post-ftr, .info-ftr .twts-ftr {
+        text-align: center !important;
+    }
+
+    .post-ftr, .twts-ftr {
+        width: 100%
     }
 }
