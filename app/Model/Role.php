@@ -3,7 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Support\Facades\Request;
-use Laratrust\LaratrustRole as Roles;
+use Laratrust\Models\LaratrustRole as Roles;
 
 class Role extends Roles
 {

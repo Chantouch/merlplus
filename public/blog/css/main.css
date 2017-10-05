@@ -1038,7 +1038,7 @@ ul.sm-nowrap a:hover {
 }
 
 span.topic-icn {
-    background: url(../img/topic-icn-1.png) no-repeat;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAXBAMAAAAIOCkdAAAAIVBMVEX///////////////////////////////////////////9/gMdvAAAACnRSTlMAFTxae7fe4eT844A6eQAAACxJREFUGJVjWIUMFjAMey4cMHatKmBAApqoXBZULkMUKlcClcuUgMJlMGAAALvImgt7CJfsAAAAAElFTkSuQmCC') no-repeat;
     background-size: 100px 23px;
     width: 100px;
     height: 23px;

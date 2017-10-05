@@ -12,10 +12,10 @@
             @foreach($category->articles->take(11) as $index => $post)
                 @if($index > 0)
                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                        <img class="owl-lazy"
+                        <img alt="{!! $post->title !!}" class="blocky lazyload"
+                             src="{!! asset('blog/img/blur.jpg') !!}"
                              data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"
-                             data-src-retina="{!! asset('/media/news/'.$post->id.'/large_'.$post->thumbnail()->filename) !!}"
-                             alt="{!! $post->title !!}">
+                             data-src-retina="{!! asset('/media/news/'.$post->id.'/large_'.$post->thumbnail()->filename) !!}"/>
                         <h5 class="mobile-title">{!! $post->title !!}</h5>
                     </a>
                 @endif

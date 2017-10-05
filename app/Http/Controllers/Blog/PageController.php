@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Blog;
 use App\Http\Controllers\BaseController;
 use App\Model\Page;
 use Illuminate\Http\Request;
+use Torann\LaravelMetaTags\Facades\MetaTag;
 
 class PageController extends BaseController
 {
@@ -60,6 +61,9 @@ class PageController extends BaseController
         } else {
             $page = Page::where('slug', $idOrSlug)->firstOrFail();
         }
+	    MetaTag::set('title', $page->name);
+	    MetaTag::set('description', $page->description);
+	    MetaTag::set('image', asset($page->hasThumbnail() ? asset('storage/uploads/media/page/' . $page->thumbnail()->filename) : ''));
         return view('blog.page.index', compact('page'));
     }
 

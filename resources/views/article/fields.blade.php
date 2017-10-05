@@ -13,6 +13,22 @@
                 @endif
             </div>
         </div>
+
+        <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
+            <label for="basic-url" class="col-md-12">SEO (Slug)</label>
+            <div class="col-sm-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="article-slug">{!! config('app.url').'/article/' !!}</span>
+                    {!! Form::text('slug', null, ['class' => 'form-control', 'aria-describedby' => 'slug']) !!}
+                </div>
+                @if ($errors->has('slug'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('slug') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-12">
                 <button type="button" class="btn btn-primary" @click.prevent="addMedia">
@@ -138,6 +154,7 @@
                         @endif
                     </div>
                 </div>
+                <!--Comment first-->
                 <p>Status: @{{ article.status }}
                     <a href="javascript:void (0)" @click.prevent="showStatus()" v-if="edit">Edit</a>
                 </p>
@@ -221,7 +238,7 @@
                             </span><span class="hidden-xs"> All Categories</span>
                         </a>
                     </li>
-                    <li role="presentation" class="">
+                    <li role="presentation" class="" v-if="categories.most_used_cat > 0">
                         <a href="#most-used" aria-controls="most-used" role="tab" data-toggle="tab"
                            aria-expanded="false">
                             <span class="visible-xs">
@@ -236,18 +253,19 @@
                     <div role="tabpanel" class="tab-pane active" id="all-cat">
                         <div class="form-group{{ $errors->has('categories') ? ' has-error' : '' }}">
                             <div class="col-md-12">
-                                <input type="hidden" name="categories" :value="article.category">
-                                <div class="checkbox checkbox-success" v-for="category in categories.categories">
-                                    <input :id="'checkbox-'+category.id" type="checkbox" :value="category.id"
-                                           v-model="article.category">
-                                    <label :for="'checkbox-'+category.id"> @{{ category.name }} </label>
+                                <div class="category-field slimscrollright">
+                                    <input type="hidden" name="categories" :value="article.category">
+                                    <div class="checkbox checkbox-success" v-for="category in categories.categories">
+                                        <input :id="'checkbox-'+category.id" type="checkbox" :value="category.id"
+                                               v-model="article.category">
+                                        <label :for="'checkbox-'+category.id"> @{{ category.name }} </label>
+                                    </div>
+                                    @if ($errors->has('categories'))
+                                        <span class="help-block">
+                                            <small>{{ $errors->first('categories') }}</small>
+                                        </span>
+                                    @endif
                                 </div>
-                                {{--{!! Form::select('categories[]',$categories , null, ['class' => 'select2 m-b-10 select2-multiple', 'multiple', 'data-placeholder'=>'Choose']) !!}--}}
-                                @if ($errors->has('categories'))
-                                    <span class="help-block">
-                                        <small>{{ $errors->first('categories') }}</small>
-                                    </span>
-                                @endif
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -255,18 +273,19 @@
                     <div role="tabpanel" class="tab-pane" id="most-used">
                         <div class="form-group{{ $errors->has('categories') ? ' has-error' : '' }}">
                             <div class="col-md-12">
-                                <input type="hidden" name="categories" :value="article.category">
-                                <div class="checkbox checkbox-success" v-for="category in categories.most_used_cat">
-                                    <input :id="'checkbox-'+category.id" type="checkbox" :value="category.id"
-                                           v-model="article.category">
-                                    <label :for="'checkbox-'+category.id"> @{{ category.name }} </label>
+                                <div class="category-field slimscrollright">
+                                    <input type="hidden" name="categories" :value="article.category">
+                                    <div class="checkbox checkbox-success" v-for="category in categories.most_used_cat">
+                                        <input :id="'checkbox-'+category.id" type="checkbox" :value="category.id"
+                                               v-model="article.category">
+                                        <label :for="'checkbox-'+category.id"> @{{ category.name }} </label>
+                                    </div>
+                                    @if ($errors->has('categories'))
+                                        <span class="help-block">
+                                            <small>{{ $errors->first('categories') }}</small>
+                                        </span>
+                                    @endif
                                 </div>
-                                {{--{!! Form::select('categories[]',$categories , null, ['class' => 'select2 m-b-10 select2-multiple', 'multiple', 'data-placeholder'=>'Choose']) !!}--}}
-                                @if ($errors->has('categories'))
-                                    <span class="help-block">
-                                        <small>{{ $errors->first('categories') }}</small>
-                                    </span>
-                                @endif
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -312,21 +331,22 @@
         </div>
         <div class="panel-wrapper collapse in">
             <div class="panel-body">
-
                 <div class="form-group tagsinput-area">
                     <label class="col-sm-12" for="tag"></label>
                     <div class="col-md-12">
-                        <input type="hidden" name="tags" :value="article.tags">
-                        <div class="checkbox checkbox-info" v-for="tag in tag_lists.tags">
-                            <input :id="'tag-'+tag.id" type="checkbox" :value="tag.id"
-                                   v-model="article.tags">
-                            <label :for="'tag-'+tag.id"> @{{ tag.name }} </label>
+                        <div class="tag-field slimscrollright">
+                            <input type="hidden" name="tags" :value="article.tags">
+                            <div class="checkbox checkbox-info" v-for="tag in tag_lists.tags">
+                                <input :id="'tag-'+tag.id" type="checkbox" :value="tag.id"
+                                       v-model="article.tags">
+                                <label :for="'tag-'+tag.id"> @{{ tag.name }} </label>
+                            </div>
+                            @if ($errors->has('tags'))
+                                <span class="help-block">
+                                    <small>{{ $errors->first('tags') }}</small>
+                                </span>
+                            @endif
                         </div>
-                        @if ($errors->has('tags'))
-                            <span class="help-block">
-                                <small>{{ $errors->first('tags') }}</small>
-                            </span>
-                        @endif
                     </div>
                 </div>
 
@@ -382,19 +402,43 @@
                 </div>
                 @if(isset($post))
                     @if(count($post->images))
+                        <div v-if="images.length > 0">
+                            <img class="img-thumbnail" :src="images">
+                        </div>
                         <img src="{!! asset($post->path.$post->images->file) !!}" alt="{!! $post->title !!}"
                              class="img-thumbnail">
                     @endif
-                    <div v-if="images.length > 0">
-                        <img class="img-thumbnail" :src="images">
-                    </div>
                 @else
-                    <img src="{!! asset('images/not.jpg') !!}" alt="No Image Available"
-                         class="img-thumbnail">
                     <div class="img-preview" v-if="images.length > 0">
-                        <img class="img-thumbnail" :src="images">
+                        <img class="img-thumbnail" :src="images" alt="Image thumbnail">
                     </div>
                 @endif
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Publish
+            <div class="panel-action">
+                <a href="javascript:void (0);" data-perform="panel-collapse">
+                    <i class="ti-minus"></i>
+                </a>
+            </div>
+        </div>
+        <div class="panel-wrapper collapse in">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <button class="fcbtn btn btn-primary btn-outline btn-1d pull-left" name="submit" value="draft">
+                            <span>Save as Draft</span>
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <button class="fcbtn btn btn-info btn-outline btn-1e pull-right" name="submit" value="publish">
+                            <span>Publish</span> <i class="fa fa-save m-l-5"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1372,6 +1372,12 @@
     }
 }
 
+@media only screen and (min-width: 321px) {
+    .info-ftr hr.small {
+        margin-left: 0;
+    }
+}
+
 @media only screen and (max-width: 320px) {
     .main-news-blks .flex-direction-nav a:before {
         font-size: 60px

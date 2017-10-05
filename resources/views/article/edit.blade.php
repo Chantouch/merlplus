@@ -5,6 +5,7 @@
     <link href="{!! asset('plugins/summernote/dist/summernote.css') !!}" rel="stylesheet" type="text/css"/>
     <link href="{!! asset('plugins/dropzone-master/dist/dropzone.css') !!}" rel="stylesheet" type="text/css"/>
     <link href="{!! asset('plugins/sweetalert/sweetalert.css') !!}" rel="stylesheet" type="text/css"/>
+    <link href="{!! asset('css/custom.css') !!}" rel="stylesheet" type="text/css"/>
 @stop
 @section('content')
     {!! Form::model($post, ['route' => ['admin.article.update', $post->id], 'method' => 'patch', 'files'=> true,'class'=>'form-horizontal']) !!}

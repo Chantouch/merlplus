@@ -19,7 +19,7 @@
                 @if(isset($menus))
                     @if(count($menus))
                         @foreach($menus as $index => $menu)
-                            <li class="{!! Request::segment(2) == $menu->slug ? ' active': '' !!}">
+                            <li class="{!! Request::segment(2) == $menu->getRouteKey() ? ' active': '' !!}">
                                 <a href="{!! route('blog.topics.show',[$menu->getRouteKey()]) !!}">
                                     {!! $menu->name !!}
                                 </a>

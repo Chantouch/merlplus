@@ -60,11 +60,12 @@
                             </a>
                         </h4>
                         <a class="lefty cat-a cat-label{!! $post->categories->first()->color_id !!}"
-                           href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}">{!! $post->categories->first()->name !!}</a>
+                           href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}">
+                            {!! $post->categories->first()->name !!}</a>
                         <p class="righty">
-                        <span>
-                            <i class="fa fa-clock-o"></i> {!! $post->created_at->diffForHumans() !!}
-                        </span>
+                            <span>
+                                <i class="fa fa-clock-o"></i> {!! $post->created_at->diffForHumans() !!}
+                            </span>
                         </p>
                     </div>
                 @endif

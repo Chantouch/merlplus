@@ -9,7 +9,7 @@
 @extends('layouts.blog.app')
 @section('content')
     <div class="row">
-        <h1 class="text-center page-title">Term</h1>
+        <h1 class="text-center page-title">{!! $page->name !!}</h1>
         <hr class="center-block small text-hr">
         <div class="col-md-12 page-content">
             <div class="inner-box pos-relative jumbotron">

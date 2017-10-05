@@ -2,14 +2,20 @@
 
 namespace App\Model;
 
+use App\Http\Traits\Mediable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Page extends Model
 {
+
+	use Mediable;
     protected $guarded = [];
     protected $fillable = [
-        'name', 'slug', 'description', 'status', 'parent_id', 'order'
+        'name', 'slug', 'description', 'status', 'parent_id', 'order', 'thumbnail_id'
     ];
 
     /**
@@ -94,4 +100,76 @@ class Page extends Model
         }
         return $this->id;
     }
+
+
+	/**
+	 * Check if the post has a valid thumbnail
+	 *
+	 * @return boolean
+	 */
+	public function hasThumbnail(): bool
+	{
+		return $this->hasMedia($this->thumbnail_id);
+	}
+
+	/**
+	 * Retrieve the post's thumbnail
+	 *
+	 * @return mixed
+	 */
+	public function thumbnail()
+	{
+		return $this->media()->where('id', $this->thumbnail_id)->first();
+	}
+
+
+	/**
+	 * Store and set the post's thumbnail
+	 *
+	 * @param UploadedFile $media
+	 * @return UploadedFile
+	 */
+	public function storeAndSetThumbnail(UploadedFile $media)
+	{
+		$path = storage_path('app/public/uploads/media/page');
+		if (!file_exists($path)) {
+			mkdir($path, 0777, true);
+		}
+		if ($this->hasThumbnail()) {
+			$banner_name = $this->thumbnail()->filename;
+			$media_name = $media->store('public/uploads/media/page');
+			$old_path = [
+				'public/uploads/media/page/' . $banner_name
+			];
+			if (File::exists($path)) {
+				Storage::delete($old_path);
+			}
+			$this->thumbnail()->update([
+				'filename' => str_replace('public/uploads/media/page/', '', $media_name),
+				'original_filename' => $media->getClientOriginalName(),
+				'mime_type' => $media->getMimeType()
+			]);
+		} else {
+			$media_name = $media->store('public/uploads/media/page');
+			$media = $this->media()->create([
+				'filename' => str_replace('public/uploads/media/page/', '', $media_name),
+				'original_filename' => $media->getClientOriginalName(),
+				'mime_type' => $media->getMimeType()
+			]);
+			$this->update(['thumbnail_id' => $media->id]);
+		}
+		return $media;
+	}
+
+	/**
+	 * return the excerpt of the post content
+	 *
+	 * @param  $length
+	 * @return string
+	 */
+	public function exceptDescription($length = 50): string
+	{
+		return str_limit(strip_tags($this->description), $length);
+	}
+
 }

@@ -375,7 +375,7 @@ class Post extends Model
      */
     public function excerpt($length = 50): string
     {
-        return strip_tags(str_limit($this->description, $length));
+	    return str_limit(strip_tags($this->description), $length);
     }
 
 
@@ -387,7 +387,7 @@ class Post extends Model
      */
     public function excerptTitle($length = 30): string
     {
-        return strip_tags(str_limit($this->title, $length));
+	    return str_limit(strip_tags($this->title), $length);
     }
 
     /**

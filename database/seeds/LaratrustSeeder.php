@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -20,95 +20,99 @@ class LaratrustSeeder extends Seeder
         $mapPermission = collect(config('laratrust_seeder.permissions_map'));
 
         foreach ($config as $key => $modules) {
-            // Create a new role
-            $role = \App\Model\Role::with('permissions')->create([
-                'name' => $key,
-                'display_name' => ucwords(str_replace("_", " ", $key)),
-                'description' => ucwords(str_replace("_", " ", $key))
-            ]);
 
-            $this->command->info('Creating Role ' . strtoupper($key));
+            // Create a new role
+            $role = \App\Model\Role::create([
+                'name' => $key,
+                'display_name' => ucwords(str_replace('_', ' ', $key)),
+                'description' => ucwords(str_replace('_', ' ', $key))
+            ]);
+            $permissions = [];
+
+            $this->command->info('Creating Role '. strtoupper($key));
 
             // Reading role permission modules
             foreach ($modules as $module => $value) {
-                $permissions = explode(',', $value);
 
-                foreach ($permissions as $p => $perm) {
+                foreach (explode(',', $value) as $p => $perm) {
+
                     $permissionValue = $mapPermission->get($perm);
 
-                    $permission = \App\Model\Permission::with('roles')->firstOrCreate([
+                    $permissions[] = \App\Model\Permission::firstOrCreate([
                         'name' => $permissionValue . '-' . $module,
                         'display_name' => ucfirst($permissionValue) . ' ' . ucfirst($module),
                         'description' => ucfirst($permissionValue) . ' ' . ucfirst($module),
-                    ]);
+                    ])->id;
 
-                    $this->command->info('Creating Permission to ' . $permissionValue . ' for ' . $module);
-
-                    if (!$role->hasPermission($permission->name)) {
-                        $role->attachPermission($permission);
-                    } else {
-                        $this->command->info($key . ': ' . $p . ' ' . $permissionValue . ' already exist');
-                    }
+                    $this->command->info('Creating Permission to '.$permissionValue.' for '. $module);
                 }
             }
 
+            // Attach all permissions to the role
+            $role->permissions()->sync($permissions);
+
             $this->command->info("Creating '{$key}' user");
+
             // Create default user for each role
-            $user = \App\Model\User::with('roles')->create([
-                'name' => ucwords(str_replace("_", " ", $key)),
-                'email' => $key . '@merlplus.com',
+            $user = \App\Model\User::create([
+                'name' => ucwords(str_replace('_', ' ', $key)),
+                'email' => $key.'@merlplus.com',
                 'password' => bcrypt('password')
             ]);
+
             $user->attachRole($role);
         }
 
-        // creating user with permissions
+        // Creating user with permissions
         if (!empty($userPermission)) {
+
             foreach ($userPermission as $key => $modules) {
+
                 foreach ($modules as $module => $value) {
-                    $permissions = explode(',', $value);
+
                     // Create default user for each permission set
-                    $user = \App\Model\User::with('roles')->create([
-                        'name' => ucwords(str_replace("_", " ", $key)),
-                        'email' => $key . '@merlplus.com',
+                    $user = \App\Model\User::create([
+                        'name' => ucwords(str_replace('_', ' ', $key)),
+                        'email' => $key.'@merlplus.com',
                         'password' => bcrypt('password'),
-                        'remember_token' => str_random(10)
+                        'remember_token' => str_random(10),
                     ]);
-                    foreach ($permissions as $p => $perm) {
+                    $permissions = [];
+
+                    foreach (explode(',', $value) as $p => $perm) {
+
                         $permissionValue = $mapPermission->get($perm);
 
-                        $permission = \App\Model\Permission::with('roles')->firstOrCreate([
+                        $permissions[] = \App\Model\Permission::firstOrCreate([
                             'name' => $permissionValue . '-' . $module,
                             'display_name' => ucfirst($permissionValue) . ' ' . ucfirst($module),
                             'description' => ucfirst($permissionValue) . ' ' . ucfirst($module),
-                        ]);
+                        ])->id;
 
-                        $this->command->info('Creating Permission to ' . $permissionValue . ' for ' . $module);
-
-                        if (!$user->hasPermission($permission->name)) {
-                            $user->attachPermission($permission);
-                        } else {
-                            $this->command->info($key . ': ' . $p . ' ' . $permissionValue . ' already exist');
-                        }
+                        $this->command->info('Creating Permission to '.$permissionValue.' for '. $module);
                     }
                 }
+
+                // Attach all permissions to the user
+                $user->permissions()->sync($permissions);
             }
         }
     }
 
     /**
      * Truncates all the laratrust tables and the users table
+     *
      * @return    void
      */
     public function truncateLaratrustTables()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::disableForeignKeyConstraints();
         DB::table('permission_role')->truncate();
         DB::table('permission_user')->truncate();
         DB::table('role_user')->truncate();
-        \App\Model\User::with('roles')->truncate();
-        \App\Model\Role::with('roles')->truncate();
-        \App\Model\Permission::with('roles')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        \App\Model\User::truncate();
+        \App\Model\Role::truncate();
+        \App\Model\Permission::truncate();
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -21,9 +21,11 @@ class CreatePagesTable extends Migration
             $table->longText('description')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('order')->default(0);
+            $table->unsignedInteger('thumbnail_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('parent_id')->references('id')->on('pages')->onDelete('cascade');
+            $table->foreign('thumbnail_id')->references('id')->on('media')->onDelete('cascade');
         });
     }
 

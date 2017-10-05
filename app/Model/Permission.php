@@ -3,7 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Support\Facades\Request;
-use Laratrust\LaratrustPermission as Permissions;
+use Laratrust\Models\LaratrustPermission as Permissions;
 
 class Permission extends Permissions
 {

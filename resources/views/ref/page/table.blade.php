@@ -17,8 +17,8 @@
                 <tr>
                     <th>{!! $loop->index+1 !!}</th>
                     <td>
-                        @if(count($page->images))
-                            <img src="{!! asset('uploads/page/'.$page->images->file) !!}"
+                        @if(count($page->hasThumbnail()))
+                            <img src="{!! asset('storage/uploads/media/page/' . $page->thumbnail()->filename) !!}"
                                  alt="{!! $page->name !!}" width="25">
                         @else
                             <img src="{!! asset('img/slider-870x323.jpg') !!}" alt="Thumbnail of page"
@@ -26,7 +26,7 @@
                         @endif
                     </td>
                     <td>{!! $page->name !!}</td>
-                    <td>{!! str_limit($page->description, 70) !!}</td>
+                    <td>{!! $page->exceptDescription() !!}</td>
                     <td>
                         @foreach($page->tags as $tag)
                             <span class="label label-info">{!! $tag->name !!}</span>

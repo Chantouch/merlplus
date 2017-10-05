@@ -45,7 +45,7 @@
                                         </span>
                                         </h6>
                                         <p>
-                                            {!! $post->excerpt(2000) !!}
+                                            {!! $post->excerpt(500) !!}
                                         </p>
                                     </div>
                                 </div>
