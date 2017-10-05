@@ -41,7 +41,7 @@
                     category: {!! isset($post->categories) ? $post->categories->pluck('id') : 0 !!},
                     tags: {!! isset($post->tags) ? $post->tags->pluck('id') : 0 !!},
                 },
-                images: '',
+                images: "{!! $post->hasThumbnail() ? '/media/news/'. $post->id .'/small_'.$post->thumbnail()->filename : '' !!}",
                 categories: [],
                 newCat: {
                     'newcategory': '',

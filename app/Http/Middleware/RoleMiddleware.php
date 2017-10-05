@@ -17,7 +17,7 @@ class RoleMiddleware
 	public function handle($request, Closure $next, $role)
 	{
 		if (!$request->user()->hasRole($role)) {
-			return redirect()->route('/')->withErrors(__('auth.not_authorized'));
+			return redirect()->route('blog.index')->withErrors(__('auth.not_authorized'));
 		}
 
 		return $next($request);

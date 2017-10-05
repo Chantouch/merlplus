@@ -999,10 +999,6 @@
         width: 100%
     }
 
-    img {
-        max-width: 100%
-    }
-
     .sm-menu li:first-child a {
         margin-left: 15px
     }

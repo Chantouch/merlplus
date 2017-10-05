@@ -401,12 +401,10 @@
                     </div>
                 </div>
                 @if(isset($post))
-                    @if(count($post->images))
+                    @if(count($post->media))
                         <div v-if="images.length > 0">
                             <img class="img-thumbnail" :src="images">
                         </div>
-                        <img src="{!! asset($post->path.$post->images->file) !!}" alt="{!! $post->title !!}"
-                             class="img-thumbnail">
                     @endif
                 @else
                     <div class="img-preview" v-if="images.length > 0">

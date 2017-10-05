@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->integer('thumbnail_id');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
 	        $table->foreign('thumbnail_id')->references('id')
 		        ->on('media')->onDelete('cascade');
         });

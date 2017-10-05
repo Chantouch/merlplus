@@ -21,6 +21,7 @@ class CreateCategoriesTable extends Migration
             $table->longText('description')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->integer('color_id')->default(1)->nullable();
+            $table->integer('position_order')->default(0)->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');

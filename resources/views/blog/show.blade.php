@@ -202,6 +202,11 @@
                         @include('layouts.inc.social.horizontal')
                         <article class="float-width articl-data">
                             <div class="content">
+                                @if($post->hasThumbnail())
+                                    <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload img-responsive"
+                                         src="{!! asset('blog/img/blur.jpg') !!}"
+                                         data-src="{!! asset(route('media.posts.path',[$post->id,'medium_'.$post->thumbnail()->filename])) !!}"/>
+                                @endif
                                 {!! $post->description !!}
                             </div>
                         </article>
@@ -253,8 +258,8 @@
                 <div class="clearfix"></div>
                 <!-- related Articles  -->
                 <div class="artcl-reltd float-width">
+                    @if($post->tags->count())
                     <h3 class="sec-title">RELATED POSTS</h3>
-                    @if($post->categories->count())
                         @foreach($post->tags->first()->posts->take(4) as $article)
                             <div class="reltd-sngl">
                                 @if($article->hasThumbnail())

@@ -65,6 +65,9 @@ class ArticleController extends Controller
             DB::beginTransaction();
             $data = $request->all();
             $storage_path = storage_path("app/public/uploads/media/library/");
+	        if (!file_exists($storage_path)) {
+		        mkdir($storage_path, 0777, true);
+	        }
             //First check need to clean the description for html tag
             //$data['description'] = clean($request->description);
             $dom = new DOMDocument();

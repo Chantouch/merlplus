@@ -25,12 +25,7 @@ Route::get('media/news/{id}/{filename}', function ($id, $filename) {
 
 Auth::routes();
 
-Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () {
-	Route::get('/', 'AdminController@welcome');
-	Route::get('/manage', ['middleware' => ['permission:manage-admins'], 'uses' => 'AdminController@manageAdmins']);
-});
-
-Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware(['auth'])->group(function () {
+Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('roles:superadministrator')->group(function () {
 	Route::get('dashboard', 'HomeController@index')->name('dashboard');
 	Route::prefix('profile')->name('profile.')->namespace('Manage')->group(function () {
 		Route::get('edit', 'UserController@editProfile')->name('edit');
