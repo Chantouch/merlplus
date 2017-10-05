@@ -33,8 +33,8 @@
     <div class="twts-ftr lefty">
         <div class="scl-ftr float-width">
             <div class="row">
-                <div class="col-md-12 m-b-15">
-                    @if(config('settings.social_activated'))
+                @if(config('settings.social_activated'))
+                    <div class="col-md-12 m-b-15">
                         <h3>ជួបគ្នានៅបណ្តាញសង្គម</h3>
                         <hr class="small">
                         <ul>
@@ -48,18 +48,18 @@
                                 @endforeach()
                             @endif
                         </ul>
-                    @endif
-                </div>
-                <div class="col-md-12 contact">
-                    @if(config('settings.app_phone_number'))
+                    </div>
+                @endif
+                @if(config('settings.app_phone_number'))
+                    <div class="col-md-12 contact">
                         <h3>{!! __('app.contact') !!}</h3>
                         <hr class="small">
                         <p>
                             {{ Html::mailto(config('settings.app_email')) }}
                         </p>
                         <p>{!! config('settings.app_phone_number') !!}</p>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

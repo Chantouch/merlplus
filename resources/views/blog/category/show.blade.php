@@ -29,12 +29,12 @@
     @endif
 @stop
 @section('new_article_single_article')
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            {!! __('posts.new_posts') !!}
-        </div>
-        <div class="panel-body">
-            @if($latest_posts->count())
+    @if($latest_posts->count())
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                {!! __('posts.new_posts') !!}
+            </div>
+            <div class="panel-body">
                 @foreach($latest_posts as $article)
                     <div class="media">
                         <div class="media-left media-top">
@@ -62,17 +62,17 @@
                         </div>
                     </div>
                 @endforeach
-            @endif
+            </div>
         </div>
-    </div>
+    @endif
 @stop
 @section('content')
     <div class="main-left-side">
         <div class="top-news float-width">
-            <div class="float-width sec-cont">
-                <h3 class="sec-title">{!! $category->name !!} - Top news</h3>
-                <div class="top-big-two">
-                    @if(count($category->articles))
+            @if(count($category->articles))
+                <div class="float-width sec-cont">
+                    <h3 class="sec-title">{!! $category->name !!} - Top news</h3>
+                    <div class="top-big-two">
                         @foreach($category->articles->take(2) as $index => $post)
                             <div class="big-two-2 blocky boxgrid3 caption">
                                 @if($post->hasThumbnail())
@@ -99,10 +99,9 @@
                                 </div>
                             </div>
                         @endforeach
-                    @endif
+                    </div>
                 </div>
-            </div>
-
+            @endif
             @if(count($latest_posts))
                 <div class="row">
                     @foreach($latest_posts as $index => $post)
@@ -135,18 +134,20 @@
                 </div>
             @endif
         </div>
-        <div class="news-sec-1 float-width">
-            <div class="float-width sec-cont2">
-                <h3 class="sec-title">{!! $category->name !!}</h3>
-                <div id="post-data">
-                    @include('blog.category.data')
+        @if(count($category->articles))
+            <div class="news-sec-1 float-width">
+                <div class="float-width sec-cont2">
+                    <h3 class="sec-title">{!! $category->name !!}</h3>
+                    <div id="post-data">
+                        @include('blog.category.data')
+                    </div>
+                </div>
+                <hr>
+                <div class="ajax-load text-center" style="display:none">
+                    <p><img src="{!! asset('images/ajax.gif') !!}">Loading More post</p>
                 </div>
             </div>
-            <hr>
-            <div class="ajax-load text-center" style="display:none">
-                <p><img src="http://demo.itsolutionstuff.com/plugin/loader.gif">Loading More post</p>
-            </div>
-        </div>
+        @endif
     </div>
     <div class="main-right-side">
         @include('layouts.blog.main-right-side')

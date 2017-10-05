@@ -7,16 +7,16 @@
  */
 ?>
 @if(isset($categories))
-    @if(count($categories))
+    @if($categories->count())
         @foreach($categories->take(4) as $category)
-            <div class="news-sec-1 float-width">
-                <div class="float-width sec-cont2 label{!! $category->color_id !!}">
-                    <h3 class="sec-title label-title label{!! $category->color_id !!}">
-                        <a href="{!! route('blog.topics.show',[$category->getRouteKey()]) !!}">
-                            {!! $category->name !!}
-                        </a>
-                    </h3>
-                    @if(count($category->articles))
+            @if($category->articles->count())
+                <div class="news-sec-1 float-width">
+                    <div class="float-width sec-cont2 label{!! $category->color_id !!}">
+                        <h3 class="sec-title label-title label{!! $category->color_id !!}">
+                            <a href="{!! route('blog.topics.show',[$category->getRouteKey()]) !!}">
+                                {!! $category->name !!}
+                            </a>
+                        </h3>
                         @foreach($category->articles->take(7) as $index => $post)
                             @if($index === 0)
                                 <div class="sec-1-big float-width">
@@ -82,9 +82,9 @@
                             @endif
                         @endforeach
                         @include('blog.inc.mobile')
-                    @endif
+                    </div>
                 </div>
-            </div>
+            @endif
         @endforeach
     @endif
 @endif

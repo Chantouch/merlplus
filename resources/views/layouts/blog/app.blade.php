@@ -120,10 +120,10 @@ $fullUrl = Request::url();
                 </li>
                 @if(config('settings.social_activated'))
                     <li>
-                        <a href="{!! config('settings.facebook_page_url') !!}" target="_blank">
+                        <a href="https://www.facebook.com/chantouch.sek" target="_blank" title="Chantouch Sek">
                             <i class="fa fa-facebook"></i>
                         </a>
-                        <a href="https://twitter.com/DevidCs83" target="_blank" title="Chantouch SEK">
+                        <a href="https://twitter.com/DevidCs83" target="_blank" title="Chantouch Sek">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>

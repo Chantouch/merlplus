@@ -108,16 +108,16 @@ class User extends Authenticatable
         return $this->roles->isNotEmpty();
     }
 
-    /**
-     * Check if the user has a role
-     *
-     * @param string $role
-     * @return boolean
-     */
-    public function hasRole($role): bool
-    {
-        return $this->roles->where('name', $role)->isNotEmpty();
-    }
+//    /**
+//     * Check if the user has a role
+//     *
+//     * @param string $role
+//     * @return boolean
+//     */
+//    public function hasRole($role): bool
+//    {
+//        return $this->roles->where('name', $role)->isNotEmpty();
+//    }
 
     /**
      * Check if the user has role admin

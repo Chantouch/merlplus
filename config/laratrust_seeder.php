@@ -5,26 +5,49 @@ return [
         'superadministrator' => [
             'users' => 'c,r,u,d',
             'acl' => 'c,r,u,d',
-            'profile' => 'r,u'
+            'refs' => 'c,r,u,d',
+            'manages' => 'c,r,u,d',
+            'ads' => 'c,r,u,d',
+            'settings' => 'c,r,u,d',
+            'posts' => 'c,r,u,d',
+            'profile' => 'r,u',
+            'dashboard' => 'r'
         ],
         'administrator' => [
             'users' => 'c,r,u,d',
-            'profile' => 'r,u'
+            'acl' => 'r,u',
+            'refs' => 'c,r,u,d',
+            'manages' => 'c,r,u,d',
+            'ads' => 'c,r,u,d',
+            'settings' => 'c,r,u,d',
+            'posts' => 'c,r,u,d',
+            'profile' => 'r,u',
+            'dashboard' => 'r'
         ],
         'editor' => [
-            'profile' => 'c,r,u'
+            'refs' => 'r,u',
+            'manages' => 'r',
+            'ads' => 'c,r,u,d',
+            'settings' => 'r,u',
+            'posts' => 'c,r,u',
+            'profile' => 'r,u',
+            'dashboard' => 'r'
+        ],
+        'supporter' => [
+            'refs' => 'r,u',
+            'manages' => 'r',
+            'ads' => 'c,r,u,d',
+            'settings' => 'r,u',
+            'posts' => 'c,r,u',
+            'profile' => 'r,u',
+            'dashboard' => 'r'
         ],
         'subscriber' => [
             'profile' => 'r,u'
-        ],
-        'supporter' => [
-            'profile' => 'r,u'
-        ],
+        ]
     ],
     'permission_structure' => [
-        'cru_user' => [
-            'profile' => 'c,r,u'
-        ],
+
     ],
     'permissions_map' => [
         'c' => 'create',
