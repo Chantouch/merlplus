@@ -3,10 +3,13 @@
     <link href="{!! asset('plugins/multiselect/css/multi-select.css') !!}" rel="stylesheet" type="text/css"/>
     <link href="{!! asset('plugins/custom-select/custom-select.css') !!}" rel="stylesheet" type="text/css"/>
 @stop
+@section('breadcrumb')
+    <li class="active">{!! __('app.table.category_create') !!}</li>
+@stop
 @section('content')
     <div class="col-sm-12">
         <div class="white-box">
-            <h3 class="box-title m-b-0">Category</h3>
+            <h3 class="box-title m-b-0">{!! __('app.table.category') !!}</h3>
             <p class="text-muted m-b-30">Easy to managing your category</p>
             {!! Form::open(['route' => ['admin.ref.category.store'], 'method' => 'POST', 'files'=> true]) !!}
             @include('ref.category.fields')
@@ -14,10 +17,10 @@
         </div>
     </div>
 @stop
-
 @section('plugins')
     <script type="text/javascript" src="{!! asset('plugins/multiselect/js/jquery.multi-select.js') !!}"></script>
     <script type="text/javascript" src="{!! asset('plugins/custom-select/custom-select.min.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('js/jasny-bootstrap.js') !!}"></script>
 @stop
 
 

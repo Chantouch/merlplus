@@ -17,6 +17,7 @@
 @section('plugins')
     <script type="text/javascript" src="{!! asset('plugins/multiselect/js/jquery.multi-select.js') !!}"></script>
     <script type="text/javascript" src="{!! asset('plugins/custom-select/custom-select.min.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('js/jasny-bootstrap.js') !!}"></script>
 @stop
 
 

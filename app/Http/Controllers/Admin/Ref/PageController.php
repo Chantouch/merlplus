@@ -12,6 +12,8 @@ use App\Model\Taggable;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use DOMDocument;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -229,6 +231,16 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
+	    $path = storage_path('app/public/uploads/page');
+	    if ($page->hasThumbnail()) {
+		    $page_name = $page->thumbnail()->filename;
+		    $old_path = [
+			    'public/uploads/page/' . $page_name
+		    ];
+		    if (File::exists($path)) {
+			    Storage::delete($old_path);
+		    }
+	    }
         $delete = $page->delete();
         if (!$delete) {
             return back()->with('error', 'Your page can not delete from your system right now. Plz try again later.');

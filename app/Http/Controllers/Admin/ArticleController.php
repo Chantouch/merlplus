@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
 use DOMDocument;
 
@@ -229,7 +231,19 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::with('images')->find($id);
+	    $path = storage_path('app/public/uploads/posts/' . $id . '/');
+        $post = Post::with('media')->find($id);
+	    if ($post->hasThumbnail()) {
+		    $name = $post->thumbnail()->filename;
+		    $old_path = [
+			    'public/uploads/posts/' . $id . '/' . 'large_' . $name,
+			    'public/uploads/posts/' . $id . '/' . 'medium_' . $name,
+			    'public/uploads/posts/' . $id . '/' . 'small_' . $name
+		    ];
+		    if (File::exists($path)) {
+			    Storage::delete($old_path);
+		    }
+	    }
         $post->delete();
         return redirect()->route($this->route . 'index')->with('success', 'Article deleted successfully.');
     }
@@ -239,7 +253,7 @@ class ArticleController extends Controller
      */
     public function draft()
     {
-        $articles = Post::with('images')->where('active', 2)->paginate(25);
+        $articles = Post::with('media')->where('active', 2)->paginate(25);
         return view($this->view . 'index', compact('articles'));
     }
 }

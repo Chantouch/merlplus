@@ -403,7 +403,7 @@
                 @if(isset($post))
                     @if(count($post->media))
                         <div v-if="images.length > 0">
-                            <img class="img-thumbnail" :src="images">
+                            <img class="img-thumbnail" :src="images" alt="Image thumbnail">
                         </div>
                     @endif
                 @else
@@ -414,7 +414,7 @@
             </div>
         </div>
     </div>
-
+    <!-- publish of article-->
     <div class="panel panel-default">
         <div class="panel-heading">Publish
             <div class="panel-action">
@@ -435,6 +435,60 @@
                         <button class="fcbtn btn btn-info btn-outline btn-1e pull-right" name="submit" value="publish">
                             <span>Publish</span> <i class="fa fa-save m-l-5"></i>
                         </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Resource of article-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Resource and Contributor
+            <div class="panel-action">
+                <a href="javascript:void (0);" data-perform="panel-collapse">
+                    <i class="ti-minus"></i>
+                </a>
+            </div>
+        </div>
+        <div class="panel-wrapper collapse in">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <!--Source -->
+                        <div class="form-group{{ $errors->has('origin_source') ? ' has-error' : '' }}">
+                            {!! Form::label('origin_source', 'Origin Source:', ['class'=>'col-md-12']) !!}
+                            <div class="col-sm-12">
+                                {!! Form::text('origin_source', null, ['class' => 'form-control', 'placeholder' => 'Enter your article origin source form']) !!}
+                                @if ($errors->has('origin_source'))
+                                    <span class="help-block">
+                                        <small>{{ $errors->first('origin_source') }}</small>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('source_title') ? ' has-error' : '' }}">
+                            {!! Form::label('source_title', 'Source Title:', ['class'=>'col-md-12']) !!}
+                            <div class="col-sm-12">
+                                {!! Form::text('source_title', null, ['class' => 'form-control', 'placeholder' => 'Enter your article origin source title']) !!}
+                                @if ($errors->has('source_title'))
+                                    <span class="help-block">
+                                        <small>{{ $errors->first('source_title') }}</small>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <!--Contributor-->
+                        <div class="form-group{{ $errors->has('contributor') ? ' has-error' : '' }}">
+                            {!! Form::label('contributor', 'Contributor:', ['class'=>'col-md-12']) !!}
+                            <div class="col-sm-12">
+                                {!! Form::text('contributor', null, ['class' => 'form-control', 'placeholder' => 'Enter your article contributor']) !!}
+                                @if ($errors->has('contributor'))
+                                    <span class="help-block">
+                                        <small>{{ $errors->first('contributor') }}</small>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

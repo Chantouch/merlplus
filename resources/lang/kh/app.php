@@ -38,4 +38,18 @@ return [
     "your_subject" =>"ប្រធានបទរបស់អ្នក",
     "your_message" =>"សាររបស់អ្នក",
     "submit_message" =>"ផ្ញើរសាររបស់អ្នក",
+	'table' => [
+		'category' => 'ប្រភេទ',
+		'category_create' => 'បន្ថែម ប្រភេទ',
+		'category_show' => 'មើល ប្រភេទ',
+		'category_edit' => 'កែ ប្រភេទ',
+		'no_data' => 'គ្មាន ទិន្នន័យ',
+		'action' => 'ឌំណើារការ'
+	],
+	'home' => 'ទំព័រដើម',
+	'is_menu' => 'ដាក់ចូលមីនុយ?',
+	'article' => [
+		'translator' => 'ប្រែ​សម្រួល៖',
+		'source' => 'ប្រភព៖',
+	]
 ];

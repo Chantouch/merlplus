@@ -26,11 +26,8 @@ class Post extends Model
     protected $guarded = [];
     protected $dates = ['posted_at'];
     protected $fillable = [
-        'title', 'description',
-        'slug', 'user_id',
-        'active', 'path',
-        'thumbnail_id', 'posted_at',
-        'meta_id', 'most_read'
+        'title', 'description', 'slug', 'user_id', 'active', 'path', 'source_title',
+        'thumbnail_id', 'posted_at', 'meta_id', 'most_read', 'contributor', 'origin_source'
     ];
 
     //-----------Relationship--------------//

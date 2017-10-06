@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{!! asset('favicon.ico') !!}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('settings.app_name') }}</title>
+    <title>{{ config('settings.app_name', 'Merlplus.com') }}</title>
     <link href="{!! asset('bootstrap/dist/css/bootstrap.min.css') !!}" rel="stylesheet">
     @yield('bootstrap')
     <link href="{!! asset('plugins/sidebar-nav/dist/sidebar-nav.min.css') !!}" rel="stylesheet">
@@ -58,8 +58,8 @@
                         <button class="right-side-toggle waves-effect waves-light btn-info btn-circle pull-right m-l-20">
                             <i class="ti-settings text-white"></i></button>
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin.dashboard') !!}">Dashboard</a></li>
-                            <li class="active">Starter Page</li>
+                            <li><a href="{!! route('admin.dashboard') !!}">{!! __('app.home') !!}</a></li>
+                            @yield('breadcrumb')
                         </ol>
                     </div>
                 </div>
@@ -141,8 +141,8 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    window.addEventListener("load", function(event) {
-        var timeout = setTimeout(function() {
+    window.addEventListener("load", function (event) {
+        var timeout = setTimeout(function () {
             lazyload();
         }, 500);
     });

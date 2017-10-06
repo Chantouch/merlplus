@@ -87,10 +87,11 @@
     <img class="img-thumbnail" :src="images" alt="Image thumbnail">
 </div>
 
-<div class="form-group">
+<div class="checkbox checkbox-success">
     {{ Form::hidden('status', '0') }}
-    {!! Form::checkbox('status', '1', null, ['class' => 'filled-in', 'id'=> 'active']) !!}
-    <label for="active">Active</label>
+    {!! Form::checkbox('status', '1', null, ['id'=> 'status']) !!}
+    <label for="status"> <span>Active</span> </label>
 </div>
+
 <button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
 <a href="{!! route('admin.ref.page.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>

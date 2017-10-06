@@ -46,9 +46,11 @@
     @endif
 </div>
 
-{{ Form::hidden('status', '0') }}
-{!! Form::checkbox('status', '1', null, ['class' => 'filled-in', 'id'=> 'status']) !!}
-<label for="status">Active</label>
-<br>
+<div class="checkbox checkbox-success">
+    {{ Form::hidden('status', '0') }}
+    {!! Form::checkbox('status', '1', null, ['id'=> 'status']) !!}
+    <label for="status"> <span>Active</span> </label>
+</div>
+
 <button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
 <a href="{!! route('admin.cities.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>

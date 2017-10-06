@@ -80,19 +80,37 @@
 
 <div class="row">
     <div class="col-md-6">
-
-        {!! Form::label('file', 'Image:') !!}
         <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
-            <div class="form-line">
-                {!! Form::file('file', ['class' => 'form-control']) !!}
+            <div class="row">
+                <label class="col-sm-12">Image <span>(Please follow the size of image)</span></label>
+                <div class="col-sm-12">
+                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                        <div class="form-control" data-trigger="fileinput">
+                            <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                            <span class="fileinput-filename"></span>
+                        </div>
+                        <span class="input-group-addon btn btn-default btn-file">
+                            <span class="fileinput-new">Select file</span>
+                            <span class="fileinput-exists">Change</span>
+                            <input type="file" name="file" accept="image/*">
+                        </span>
+                        <a href="javascript:void (0)" class="input-group-addon btn btn-default fileinput-exists"
+                           data-dismiss="fileinput">Remove</a>
+                    </div>
+                    @if ($errors->has('file'))
+                        <span class="help-block">
+                            <small>{{ $errors->first('file') }}</small>
+                        </span>
+                    @endif
+                    @if(isset($category))
+                        @if($category->hasThumbnail())
+                            <img src="{!! $$category->thumbnail()->filename !!}" alt="{!! $advertise->provider_name !!}"
+                                 class="img-responsive">
+                        @endif
+                    @endif
+                </div>
             </div>
-            @if ($errors->has('file'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('file') }}</strong>
-                </span>
-            @endif
         </div>
-
     </div>
     <div class="col-md-6">
         {!! Form::label('position_order', 'Category Order:') !!}
@@ -110,9 +128,11 @@
     </div>
 </div>
 
-{{ Form::hidden('status', '0') }}
-{!! Form::checkbox('status', '1', null, ['class' => 'filled-in', 'id'=> 'active']) !!}
-<label for="active">Active</label>
-<br>
-<button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
+<div class="checkbox checkbox-success">
+    {{ Form::hidden('status', '0') }}
+    {!! Form::checkbox('status', '1', null, ['id'=> 'status']) !!}
+    <label for="status"> <span>Active</span> </label>
+</div>
+
+<button class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
 <a href="{!! route('admin.ref.category.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>

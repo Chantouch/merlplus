@@ -63,6 +63,10 @@
     display: block;
 }
 
+.author a {
+    color: #428bca !important;
+}
+
 .artcl-shr {
     padding: 0 10px;
 }
@@ -89,4 +93,42 @@
 
 .navbar-inverse .navbar-toggle {
     border-color: #fff;
+}
+
+.sec-1-big div.zoom-img a, .sec-1-sm div.zoom-img a {
+    overflow: hidden;
+}
+
+.sec-cont2 .sec-1-big:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.sec-1-big div.zoom-img a {
+    position: relative;
+    float: left;
+    width: 300px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.sec-1-big div.zoom-img a > img {
+    width: 100% !important;
+    height: 200px;
+}
+
+.sec-1-sm div.zoom-img a > img {
+    width: 100% !important;
+    height: 120px;
+}
+
+.sec-1-sm div.zoom-img a {
+    position: relative;
+    float: left;
+    width: 140px;
+    height: auto;
+    margin: 0;
+    padding: 0;
 }

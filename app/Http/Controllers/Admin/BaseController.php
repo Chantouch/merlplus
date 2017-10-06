@@ -26,9 +26,6 @@ class BaseController extends Controller
 		$guzzleClient = new \GuzzleHttp\Client(['curl' => [CURLOPT_SSL_VERIFYPEER => false]]);
 		$client->setHttpClient($guzzleClient);
 		$this->client = $client;
-		MetaTag::set('title', 'Dashboard');
-		MetaTag::set('description', 'Blog Wes Anderson bicycle rights, occupy Shoreditch gentrify keffiyeh.');
-		MetaTag::set('image', asset('images/default-share-image.png'));
 	}
 
 }

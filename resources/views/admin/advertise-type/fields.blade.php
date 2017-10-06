@@ -52,9 +52,11 @@
     </div>
 </div>
 
-{{ Form::hidden('active', '0') }}
-{!! Form::checkbox('active', '1', null, ['class' => 'filled-in', 'id'=> 'active']) !!}
-<label for="active">Active</label>
-<br>
+<div class="checkbox checkbox-success">
+    {{ Form::hidden('active', '0') }}
+    {!! Form::checkbox('active', '1', null, ['id'=> 'status']) !!}
+    <label for="status"> <span>Active</span> </label>
+</div>
+
 <button class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
 <a href="{!! route('admin.advertise-type.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>

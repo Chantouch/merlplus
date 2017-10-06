@@ -101,7 +101,6 @@ class Page extends Model
         return $this->id;
     }
 
-
 	/**
 	 * Check if the post has a valid thumbnail
 	 *

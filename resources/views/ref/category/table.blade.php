@@ -10,7 +10,7 @@
                 <th>Tags</th>
                 <th>Order</th>
                 <th>Status</th>
-                <th>Action</th>
+                <th>{!! __('app.table.action') !!}</th>
             </tr>
             </thead>
             <tbody>
@@ -18,12 +18,9 @@
                 <tr>
                     <th scope="row">{!! $loop->index+1 !!}</th>
                     <td>
-                        @if(count($category->images))
-                            <img src="{!! asset('uploads/category/'.$category->images->file) !!}"
-                                 alt="{!! $category->name !!}" width="25">
-                        @else
-                            <img src="{!! asset('img/slider-870x323.jpg') !!}" alt="Thumbnail of category"
-                                 class="img-thumbnail">
+                        @if($category->hasThumbnail())
+                            <img src="{!! asset('storage/uploads/category/'.$category->thumbnail()->filename) !!}"
+                                 alt="{!! $category->name !!}" width="50">
                         @endif
                     </td>
                     <td>{!! $category->name !!}</td>
@@ -58,6 +55,6 @@
         </table>
         {!! $categories->render() !!}
     @else
-        <p>There is no data here.</p>
+        <p>{!! __('app.table.no_data') !!}</p>
     @endif
 </div>

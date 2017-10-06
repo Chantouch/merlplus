@@ -25,6 +25,7 @@ return [
             'dashboard' => 'r'
         ],
         'editor' => [
+	        'users' => 'r',
             'refs' => 'r,u',
             'manages' => 'r',
             'ads' => 'c,r,u,d',

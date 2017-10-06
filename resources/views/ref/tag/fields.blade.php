@@ -68,13 +68,17 @@
     @endif
 </div>
 
-{{ Form::hidden('is_menu', '0') }}
-{!! Form::checkbox('is_menu', '1', null, ['class' => 'filled-in', 'id'=> 'is_menu']) !!}
-<label for="is_menu" class="m-r-15">Is Menu</label>
+<div class="checkbox checkbox-info">
+    {{ Form::hidden('is_menu', '0') }}
+    {!! Form::checkbox('is_menu', '1', null, ['id'=> 'is_menu']) !!}
+    <label for="is_menu"> <span>{!! __('app.is_menu') !!}</span> </label>
+</div>
 
-{{ Form::hidden('status', '0') }}
-{!! Form::checkbox('status', '1', null, ['class' => 'filled-in', 'id'=> 'status']) !!}
-<label for="status">Active</label>
-<br>
+<div class="checkbox checkbox-success">
+    {{ Form::hidden('status', '0') }}
+    {!! Form::checkbox('status', '1', null, ['id'=> 'status']) !!}
+    <label for="status"> <span>Active</span> </label>
+</div>
+
 <button class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
 <a href="{!! route('admin.ref.tag.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>
