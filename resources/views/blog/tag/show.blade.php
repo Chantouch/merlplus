@@ -69,8 +69,12 @@
 @section('content')
     <div class="main-left-side">
         <div class="news-sec-1 float-width">
-            <div class="float-width sec-cont2">
-                <h3 class="sec-title">{!! $category->name !!}</h3>
+            <div class="float-width sec-cont2 label7">
+                <h3 class="sec-title label-title label7">
+                    <a href="javascript:void (0)">
+                        {!! $category->name !!}
+                    </a>
+                </h3>
                 <div id="post-data">
                     @include('blog.category.data')
                 </div>

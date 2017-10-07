@@ -86,9 +86,9 @@ $fullUrl = Request::url();
     <div class="container-position">
         @yield('post-background')
         @yield('contact-map')
-        <div class="container">
-            @yield('content')
-        </div>
+    </div>
+    <div class="container">
+        @yield('content')
     </div>
     <!-- Footer -->
     <div class="main-footers">
@@ -227,6 +227,11 @@ $fullUrl = Request::url();
         url: '{!! $fullUrl !!}',
         width: 640,
         height: 480
+    });
+
+    $('.counter').ShareCounter({
+        url: '{!! $fullUrl !!}/',
+        increment: true
     });
 
 </script>

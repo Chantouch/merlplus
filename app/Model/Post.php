@@ -369,10 +369,10 @@ class Post extends Model
     /**
      * return the excerpt of the post content
      *
-     * @param  $length
+     * @param int $length
      * @return string
      */
-    public function excerpt($length = 50): string
+    public function excerpt($length = 600): string
     {
         return str_limit(strip_tags($this->description), $length);
     }
@@ -381,11 +381,15 @@ class Post extends Model
     /**
      * return the excerpt of the post content
      *
-     * @param  $length
+     * @param int $length
+     * @param int $length_unicode
      * @return string
      */
-    public function excerptTitle($length = 30): string
+    public function excerptTitle($length = 30, $length_unicode = 70): string
     {
+        if (strlen($this->title) != strlen(utf8_decode($this->title))) {
+            return str_limit(strip_tags($this->title), $length_unicode);
+        }
         return str_limit(strip_tags($this->title), $length);
     }
 

@@ -8,8 +8,6 @@
 ?>
 @extends('layouts.blog.app')
 @section('css')
-    <link rel="stylesheet" href="{!! asset('plugins/fancybox/dist/jquery.fancybox.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
     <style>
 
         .sponsor_img {
@@ -156,131 +154,130 @@
     @endif
 @stop
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <div class="main-left-side pos-relative">
-                @if(isset($button_single_ads))
-                    @foreach($button_single_ads as $index => $article_ad)
-                        <div class="post-top-bar">
-                            <a href="{!! $article_ad->url !!}" target="_blank" title="Opens in a new window">
-                                <div class="single sponsor">
-                                    <div class="sponsor_by">នាំមកជូនដោយ</div>
-                                    <div class="sponsor_img">
-                                        @if($article_ad->hasBanner())
-                                            <img data-src="{!! asset($article_ad->banner()->media_url) !!}" width="728"
-                                                 height="90"
-                                                 src="{!! asset('blog/img/blur.jpg') !!}"
-                                                 class="lazyload img-responsive"
-                                                 alt="{!! $article_ad->provider_name !!}">
-                                        @endif
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                @endif
-                <div class="artcl-main float-width" id="main-single-article">
-                    <div class="artcl-prev-nxt float-width">
-                        <div class="artcl-prev w50 blocky">
-                            @if(count($previousPost))
-                                <a href="{!! route('blog.article.show', $previousPost->getRouteKey()) !!}">
-                                    <i class="fa fa-angle-left"></i> {!! $previousPost->excerptTitle(50) !!}
-                                </a>
-                            @endif
-                        </div>
-                        <div class="artcl-nxt w50 blocky text-right">
-                            @if(count($nextPost))
-                                <a href="{!! route('blog.article.show', $nextPost->getRouteKey()) !!}">
-                                    {!! $nextPost->excerptTitle(50) !!} <i class="fa fa-angle-right"></i>
-                                </a>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="artcl-body float-width">
-                        <h2>{!! $post->excerptTitle(300) !!}</h2>
-                        <!-- The Article Social Media Share -->
-                        <div class="lefty artcl-tags">
-                            <h5>
-                                <span><i class="fa fa-user"></i>{!! $post->checkAuthor() !!}</span>
-                                <span><i class="fa fa-clock-o"></i>{!! $post->posted_at !!}</span>
-                                <span><i class="fa fa-comment-o"></i>{!! count($post->comments) !!} comments</span>
-                            </h5>
-                        </div>
-                        @include('layouts.inc.social.horizontal')
-                        <article class="float-width articl-data">
-                            <div class="content">
-                                @if($post->hasThumbnail())
-                                    <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload img-responsive"
+    {{--<div class="row">--}}
+    <div class="main-left-side pos-relative">
+        @if(isset($button_single_ads))
+            @foreach($button_single_ads as $index => $article_ad)
+                <div class="post-top-bar">
+                    <a href="{!! $article_ad->url !!}" target="_blank" title="Opens in a new window">
+                        <div class="single sponsor">
+                            <div class="sponsor_by">នាំមកជូនដោយ</div>
+                            <div class="sponsor_img">
+                                @if($article_ad->hasBanner())
+                                    <img data-src="{!! asset($article_ad->banner()->media_url) !!}" width="728"
+                                         height="90"
                                          src="{!! asset('blog/img/blur.jpg') !!}"
-                                         data-src="{!! asset(route('media.posts.path',[$post->id,'medium_'.$post->thumbnail()->filename])) !!}"/>
+                                         class="lazyload img-responsive"
+                                         alt="{!! $article_ad->provider_name !!}">
                                 @endif
-                                {!! $post->description !!}
                             </div>
-                        </article>
-                    </div>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-md-12 author">
-                    @if(!empty($post->origin_source) && !empty($post->source_title))
-                        <p>{!! __('app.article.source') !!}
-                            <a href="{!! $post->origin_source !!}" title="{!! $post->source_title !!}" target="_blank">
-                                {!! $post->source_title !!}
-                            </a>
-                        </p>
-                        <p>{!! __('app.article.translator') !!} {!! $post->contributor ? $post->contributor : 'Admin' !!} </p>
-                    @else
-                        <p>{!! __('posts.show.article') !!} {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
+            @endforeach
+        @endif
+        <div class="artcl-main float-width" id="main-single-article">
+            <div class="artcl-prev-nxt float-width">
+                <div class="artcl-prev w50 blocky">
+                    @if(count($previousPost))
+                        <a href="{!! route('blog.article.show', $previousPost->getRouteKey()) !!}">
+                            <i class="fa fa-angle-left"></i> {!! $previousPost->excerptTitle(50) !!}
+                        </a>
                     @endif
                 </div>
+                <div class="artcl-nxt w50 blocky text-right">
+                    @if(count($nextPost))
+                        <a href="{!! route('blog.article.show', $nextPost->getRouteKey()) !!}">
+                            {!! $nextPost->excerptTitle(50) !!} <i class="fa fa-angle-right"></i>
+                        </a>
+                    @endif
+                </div>
+            </div>
+            <div class="artcl-body float-width">
+                <h2>{!! $post->title !!}</h2>
                 <!-- The Article Social Media Share -->
-                <div class="artcl-scl float-width">
-                    <div class="lefty artcl-tags">
-                        <h3>TAGS : </h3>
-                        <ul>
-                            @if(count($post->tags))
-                                @foreach($post->tags as $tag)
-                                    <li>
-                                        <a href="{!! route('blog.tag.show',[$tag->getRouteKey()]) !!}">
-                                            <span class="label label-info">{!! $tag->name !!}</span>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            @endif
-                        </ul>
-                    </div>
-                    @include('layouts.inc.social.horizontal')
+                <div class="lefty artcl-tags">
+                    <h5>
+                        <span><i class="fa fa-user"></i>{!! $post->checkAuthor() !!}</span>
+                        <span><i class="fa fa-clock-o"></i>{!! $post->posted_at !!}</span>
+                        <span><i class="fa fa-comment-o"></i>{!! count($post->comments) !!} comments</span>
+                    </h5>
                 </div>
-                <!-- Ads button of single article -->
-                @if(isset($single_article_ads))
-                    <div class="ads_items text-center">
-                        @foreach($single_article_ads as $index => $article_ad)
-                            @if($article_ad->hasBanner())
-                                <img data-src="{!! asset($article_ad->banner()->media_url) !!}" width="728" height="90"
-                                     src="{!! asset('blog/img/blur.jpg') !!}"
-                                     class="lazyload img-responsive"
-                                     alt="{!! $article_ad->provider_name !!}">
-                            @else
-                                {!! $article_ad->provider_name !!}
-                            @endif
-                        @endforeach
+                @include('layouts.inc.social.horizontal')
+                <article class="float-width articl-data">
+                    <div class="content">
+                        @if($post->hasThumbnail())
+                            <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload img-responsive"
+                                 src="{!! asset('blog/img/blur.jpg') !!}"
+                                 data-src="{!! asset(route('media.posts.path',[$post->id,'medium_'.$post->thumbnail()->filename])) !!}"/>
+                        @endif
+                        {!! $post->description !!}
                     </div>
-                @endif
-                <div class="clearfix"></div>
-                <div class="jumbotron color5bc0de">
-                    <div class="title">ភ្ជាប់ទំនាក់ទំនងជាមួយ <span> MerlPlus</span></div>
-                    <div class="fb-like" data-href="https://www.facebook.com/pg/khclassifiedads/"
-                         data-layout="button_count" data-action="like" data-size="large" data-show-faces="false"
-                         data-share="true"></div>
-                </div>
-                <div class="clearfix"></div>
-                @include('blog.inc.related')
-                @include('layouts.inc.tools.facebook-comments')
+                </article>
             </div>
-            <div class="main-right-side">
-                @include('layouts.blog.main-right-side')
-            </div>
-
         </div>
+        {{--<div class="row">--}}
+        {{--<div class="col-md-12 author">--}}
+    <!-- The Article Social Media Share -->
+        <div class="artcl-scl float-width">
+            @if(!empty($post->origin_source) && !empty($post->source_title))
+                <p>{!! __('app.article.source') !!}
+                    <a href="{!! $post->origin_source !!}" title="{!! $post->source_title !!}" target="_blank">
+                        {!! $post->source_title !!}
+                    </a>
+                </p>
+                <p>{!! __('app.article.translator') !!} {!! $post->contributor ? $post->contributor : 'Admin' !!} </p>
+            @else
+                <p>{!! __('posts.show.article') !!} {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
+            @endif
+            <div class="lefty artcl-tags">
+                <h3>TAGS : </h3>
+                <ul>
+                    @if(count($post->tags))
+                        @foreach($post->tags as $tag)
+                            <li>
+                                <a href="{!! route('blog.tag.show',[$tag->getRouteKey()]) !!}">
+                                    <span class="label label-info">{!! $tag->name !!}</span>
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
+                </ul>
+            </div>
+            @include('layouts.inc.social.horizontal')
+        </div>
+        {{--</div>--}}
+        {{--</div>--}}
+    <!-- Ads button of single article -->
+        @if(isset($single_article_ads))
+            <div class="ads_items text-center">
+                @foreach($single_article_ads as $index => $article_ad)
+                    @if($article_ad->hasBanner())
+                        <img data-src="{!! asset($article_ad->banner()->media_url) !!}" width="728" height="90"
+                             src="{!! asset('blog/img/blur.jpg') !!}"
+                             class="lazyload img-responsive"
+                             alt="{!! $article_ad->provider_name !!}">
+                    @else
+                        {!! $article_ad->provider_name !!}
+                    @endif
+                @endforeach
+            </div>
+        @endif
+        <div class="clearfix"></div>
+        <div class="jumbotron color5bc0de">
+            <div class="title">ភ្ជាប់ទំនាក់ទំនងជាមួយ <span> MerlPlus</span></div>
+            <div class="fb-like" data-href="https://www.facebook.com/pg/khclassifiedads/"
+                 data-layout="button_count" data-action="like" data-size="large" data-show-faces="false"
+                 data-share="true"></div>
+        </div>
+        <div class="clearfix"></div>
+        @include('blog.inc.related')
+        @include('layouts.inc.tools.facebook-comments')
     </div>
+    <div class="main-right-side">
+        @include('layouts.blog.main-right-side')
+    </div>
+    {{--</div>--}}
 @stop
 
 @section('plugins')

@@ -78,8 +78,8 @@ class PostsController extends BaseController
             ->select('slug', 'title', 'id')
             ->orderby('slug', 'desc')->first();
         //---------Set meta tag to header----------//
-        MetaTag::set('title', $post->excerptTitle(70));
-        MetaTag::set('description', $post->excerpt(200));
+        MetaTag::set('title', $post->excerptTitle(700));
+        MetaTag::set('description', $post->excerpt(2000));
         MetaTag::set('image', asset($post->hasThumbnail() ? route('media.posts.path', [$post->id, 'medium_' . $post->thumbnail()->filename]) : ''));
         $single_article_ads = Advertise::with('ads_type')
             ->where('end_date', '>=', Carbon::now())

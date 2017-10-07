@@ -104,7 +104,7 @@
                     @endif
                     @if(isset($category))
                         @if($category->hasThumbnail())
-                            <img src="{!! $$category->thumbnail()->filename !!}" alt="{!! $advertise->provider_name !!}"
+                            <img src="{!! $category->thumbnail()->filename !!}" alt="{!! $category->name !!}"
                                  class="img-responsive">
                         @endif
                     @endif

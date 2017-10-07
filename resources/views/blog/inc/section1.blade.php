@@ -8,7 +8,7 @@
 ?>
 @if(isset($categories))
     @if($categories->count())
-        @foreach($categories->take(4) as $category)
+        @foreach($categories->take(5) as $category)
             @if($category->articles->count())
                 <div class="news-sec-1 float-width">
                     <div class="float-width sec-cont2 label{!! $category->color_id !!}">
@@ -32,22 +32,11 @@
                                     <div class="sec-1-big-text lefty">
                                         <h3>
                                             <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                                {!! str_limit( $post->title, 45) !!}
+                                                {!! $post->excerptTitle() !!}
                                             </a>
                                         </h3>
-                                        <h6>
-                                        <span>
-                                            <i class="fa fa-user"></i>{!! $post->author->name !!}
-                                        </span>
-                                            <span>
-                                            <i class="fa fa-clock-o"></i>{!! $post->posted_at->format('d M Y') !!}
-                                        </span>
-                                            <span>
-                                            <i class="fa fa-comment-o"></i>{!! $post->comments->count() !!} comments
-                                        </span>
-                                        </h6>
                                         <p>
-                                            {!! $post->excerpt(500) !!}
+                                            {!! $post->excerpt() !!}
                                         </p>
                                     </div>
                                 </div>
@@ -79,7 +68,7 @@
                                                     <i class="fa fa-comment-o"></i>{!! $post->comments->count() !!} comments
                                                 </span>
                                             </h6>
-                                            <p>{!! $post->excerpt(300) !!}</p>
+                                            <p>{!! $post->excerpt() !!}</p>
                                         </div>
                                     </div>
                                 </div>

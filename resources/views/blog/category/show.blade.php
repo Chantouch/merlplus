@@ -68,76 +68,14 @@
 @stop
 @section('content')
     <div class="main-left-side">
-        <div class="top-news float-width">
-            @if(count($category->articles))
-                <div class="float-width sec-cont">
-                    <h3 class="sec-title">{!! $category->name !!} - Top news</h3>
-                    <div class="top-big-two">
-                        @foreach($category->articles->take(2) as $index => $post)
-                            <div class="big-two-2 blocky boxgrid3 caption">
-                                @if($post->hasThumbnail())
-                                    <img alt="{!! $post->excerptTitle(60) !!}"
-                                         src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
-                                @else
-                                    <img alt="{!! $post->excerptTitle(60) !!}"
-                                         src="{!! asset('blog/img/samples/z1'.$index.'.jpg') !!}"/>
-                                @endif
-                                <div class="cover boxcaption3">
-                                    <h3>
-                                        <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                            {!! $post->excerptTitle(35) !!}
-                                        </a>
-                                    </h3>
-                                    <p class="artcl-time-1">
-                                        <span><i class="fa fa-clock-o"></i>{!! $post->posted_at->format('M d,Y') !!}</span>
-                                        <span><i class="fa fa-comment-o"></i>{!! $post->comments->count() !!}
-                                            comments</span>
-                                    </p>
-                                    <p>
-                                        {!! $post->excerpt(1200) !!}
-                                    </p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            @endif
-            @if(count($latest_posts))
-                <div class="row">
-                    @foreach($latest_posts as $index => $post)
-                        <div class="col-md-6 col-sm-6 col-xs-6 tn-small-1 blocky">
-                            <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                @if($post->hasThumbnail())
-                                    <img alt="{!! $post->excerptTitle(60) !!}" class="lefty" width="107" height="85"
-                                         src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
-                                @else
-                                    <img class="lefty" alt="{!! $post->excerptTitle(60) !!}"
-                                         src="{!! asset('blog/img/samples/e1.jpg') !!}"/>
-                                @endif
-                            </a>
-
-                            <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                <h4 class="lefty">{!! $post->excerptTitle(40) !!}</h4>
-                            </a>
-
-                            @if(count($post->categories))
-                                <a href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}"
-                                   class="lefty cat-a cat-label{!! $post->categories->first()->color_id !!} font-uppercase">{!! $post->categories->first()->name !!}</a>
-                            @endif
-                            <p class="righty">
-                                <span>
-                                    <i class="fa fa-clock-o"></i>{!! $post->posted_at->format('M d,Y') !!}
-                                </span>
-                            </p>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-        </div>
         @if(count($category->articles))
             <div class="news-sec-1 float-width">
-                <div class="float-width sec-cont2">
-                    <h3 class="sec-title">{!! $category->name !!}</h3>
+                <div class="float-width sec-cont2 label{!! $category->color_id !!}">
+                    <h3 class="sec-title label-title label{!! $category->color_id !!}">
+                        <a href="{!! route('blog.topics.show',[$category->getRouteKey()]) !!}">
+                            {!! $category->name !!}
+                        </a>
+                    </h3>
                     <div id="post-data">
                         @include('blog.category.data')
                     </div>

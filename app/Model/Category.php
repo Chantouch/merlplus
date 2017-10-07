@@ -63,7 +63,7 @@ class Category extends Model
             case 'PATCH': {
                 return [
                     'name' => 'required|max:255|unique:categories,name,' . $id . ',id',
-                    'file' => 'mimes:jpg,png|max:10240'
+                    'file' => 'max:10240'
                 ];
             }
             default:

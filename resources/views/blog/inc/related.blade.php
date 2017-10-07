@@ -7,6 +7,7 @@
  */
 ?>
 <!-- related Articles  -->
+<div class="col-md-12">
 <div class="artcl-reltd float-width">
     @if($post->tags->count())
         <h3 class="sec-title">RELATED POSTS</h3>
@@ -45,4 +46,5 @@
             @endif
         @endforeach
     @endif
+</div>
 </div>

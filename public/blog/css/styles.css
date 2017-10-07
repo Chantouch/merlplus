@@ -88,11 +88,15 @@
 
 .navbar-inverse {
     background-color: #5aa628;
-    border-color: #e7e7e7;
+    border-color: #5aa628;
 }
 
 .navbar-inverse .navbar-toggle {
     border-color: #fff;
+}
+
+.content > p, .artcl-body > h2, .artcl-body .artcl-tags, .artcl-body .artcl-shr {
+    padding: 0 0 0 5px !important;
 }
 
 .sec-1-big div.zoom-img a, .sec-1-sm div.zoom-img a {

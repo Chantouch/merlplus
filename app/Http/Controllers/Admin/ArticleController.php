@@ -109,7 +109,7 @@ class ArticleController extends Controller
                 case 'draft':
                     $data['active'] = 2;
             }
-            $post = Post::with('images')->create($data);
+            $post = Post::with('media')->create($data);
             if ($post) {
                 if ($request->hasFile('thumbnail')) {
                     $post->storeAndSetThumbnail($request->file('thumbnail'), $post);
