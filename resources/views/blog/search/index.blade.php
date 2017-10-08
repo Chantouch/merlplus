@@ -10,19 +10,27 @@
 @section('content')
     <!-- Single Category News Blocks -->
     <div class="news-sec-1 float-width">
-        <div class="float-width sec-cont2">
-            <h3 class="sec-title">We found {!! $posts_count !!} article related to your search</h3>
+        <div class="float-width sec-cont2 label6">
+            <h3 class="sec-title label-title label6">
+                <a href="javascript:void (0)">
+                    We found {!! $posts_count !!} article related to your search
+                </a>
+            </h3>
             @if(count($posts))
                 @foreach($posts as $index => $post)
                     <div class="sec-1-big float-width">
                         @if($post->hasThumbnail())
-                            <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                <img alt="{!! $post->excerptTitle(60) !!}" class="lefty img-responsive" width="271"
-                                     src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
-                            </a>
+                            <div class="zoom-img">
+                                <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
+                                    <img alt="{!! $post->excerptTitle(60) !!}" class="lefty img-responsive" width="271"
+                                         src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                </a>
+                            </div>
                         @else
-                            <img class="lefty" alt="{!! $post->excerptTitle(60) !!}"
-                                 src="{!! asset('blog/img/samples/z'.$index.'.jpg') !!}"/>
+                            <div class="zoom-img">
+                                <img class="lefty" alt="{!! $post->excerptTitle(60) !!}"
+                                     src="{!! asset('blog/img/samples/z'.$index.'.jpg') !!}"/>
+                            </div>
                         @endif
                         <div class="sec-1-big-text lefty">
                             <h3>
@@ -48,7 +56,7 @@
         </div>
         <hr>
         <div class="ajax-load text-center" style="display:none">
-            <p><img src="http://demo.itsolutionstuff.com/plugin/loader.gif">Loading More post</p>
+            <p><img src="{!! asset('images/ajax.gif') !!}">Loading More post</p>
         </div>
     </div>
 @stop

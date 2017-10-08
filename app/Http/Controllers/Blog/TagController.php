@@ -76,10 +76,16 @@ class TagController extends BaseController
                 return response()->json(['html' => $view]);
             }
         }
-        $latest_posts = Post::with('categories')->take(config('settings.new_posts_number', '6'))->get();
+	    $most_read = Post::with('media')
+		    ->where('active', 1)
+		    ->where('most_read', '>=', config('settings.most_read', 50))
+		    ->take(config('settings.most_read_posts_number', '6'))->get();
+	    $new_posts = Post::with('media')
+		    ->where('active', 1)
+		    ->latest()->take(config('settings.new_posts_number', '6'))->get();
         $single_article_ads = Advertise::with('ads_type')
             ->where('advertise_type_id', 9)->get();
-        return view($this->view . 'show', compact('category', 'posts', 'latest_posts', 'single_article_ads'));
+        return view($this->view . 'show', compact('category', 'posts', 'most_read', 'new_posts', 'single_article_ads'));
     }
 
     /**

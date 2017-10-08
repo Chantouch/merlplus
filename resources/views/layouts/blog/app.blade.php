@@ -33,9 +33,11 @@ $fullUrl = Request::url();
     @if (config('settings.alexa_verify_id'))
         <meta name="alexaVerifyID" content="{{ config('settings.alexa_verify_id') }}"/>
     @endif
-    <link rel="stylesheet" href="{!! asset('blog/css/app.css') !!}">
+    {{--<link rel="stylesheet" href="{!! asset('blog/css/app.css') !!}">--}}
     <link rel="stylesheet" href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/bootstrap.min.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/main.css') !!}">
+    <link rel="stylesheet" href="{!! asset('blog/css/search.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/responsive.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
     <link rel="stylesheet" href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}">

@@ -29,40 +29,14 @@
     @endif
 @stop
 @section('new_article_single_article')
-    @if($latest_posts->count())
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                {!! __('posts.new_posts') !!}
-            </div>
-            <div class="panel-body">
-                @foreach($latest_posts as $article)
-                    <div class="media">
-                        <div class="media-left media-top">
-                            @if($article->hasThumbnail())
-                                <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
-                                   title="{!! $article->title !!}">
-                                    <img src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
-                                         class="media-object" width="80" alt="{!! $article->title !!}">
-                                </a>
-                            @else
-                                <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
-                                   title="{!! $article->title !!}">
-                                    <img src="{!! asset('blog/img/samples/sample.jpg') !!}"
-                                         class="media-object" width="80" alt="{!! $article->title !!}">
-                                </a>
-                            @endif
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">
-                                <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
-                                   title="{!! $article->title !!}">
-                                    {!! $article->excerptTitle(80) !!}
-                                </a>
-                            </h4>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+    @if($new_posts->count())
+        <div class="panel panel-info pos-relative">
+            @include('blog._components.latest-post')
+        </div>
+    @endif
+    @if($most_read->count())
+        <div class="panel panel-info pos-relative">
+            @include('blog._components.most-read')
         </div>
     @endif
 @stop

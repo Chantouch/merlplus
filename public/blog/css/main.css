@@ -1490,7 +1490,7 @@ p.artcl-time-1 span i {
 }
 
 .sec-1-big div.sec-1-big-text {
-    width: 58.93333333333333%;
+    width: 57.93333333333333%;
     margin-left: 3.6%
 }
 
@@ -2242,7 +2242,6 @@ a.crnt-pg {
 .artcl-main {
     background: #fff;
     margin: 0 0 20px;
-    padding: 0 0 20px;
     border-top: 2px solid #ffffff
 }
 
@@ -2368,6 +2367,7 @@ p.artcl-qt span {
 
 .artcl-scl {
     padding: 0 5px;
+    margin-bottom: 10px;
 }
 
 .artcl-tags h3 {
@@ -2611,7 +2611,8 @@ button.cmnt-btn:hover {
 
 .reltd-sngl-txt {
     float: left;
-    width: 68.71794871794871%
+    width: 68.71794871794871%;
+    margin-left: 10px;
 }
 
 .reltd-sngl-txt h3 {
@@ -2620,7 +2621,7 @@ button.cmnt-btn:hover {
     font-weight: 500;
     margin: 5px 0;
     max-height: 34px;
-    overflow: hidden
+    line-height: 1.2;
 }
 
 .reltd-sngl-txt p {

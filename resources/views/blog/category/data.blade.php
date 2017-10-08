@@ -19,19 +19,23 @@
     @foreach($posts as $index => $post)
         <div class="sec-1-big float-width">
             @if($post->hasThumbnail())
-                <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                    <img alt="{!! $post->title !!}" class="lefty img-responsive" width="271"
-                         src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
-                </a>
+                <div class="zoom-img">
+                    <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
+                        <img alt="{!! $post->title !!}" class="lefty img-responsive" width="271"
+                             src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                    </a>
+                </div>
             @else
-                <img class="lefty" alt="{!! $post->excerptTitle(60) !!}"
-                     src="{!! asset('blog/img/samples/z'.$index.'.jpg') !!}"/>
+                <div class="zoom-img">
+                    <img class="lefty" alt="{!! $post->excerptTitle(60) !!}"
+                         src="{!! asset('blog/img/samples/z'.$index.'.jpg') !!}"/>
+                </div>
             @endif
             <div class="sec-1-big-text lefty">
-                    <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}"
-                       title="{!! $post->title !!}">
-                        <h3>{!! $post->excerptTitle(40) !!}</h3>
-                    </a>
+                <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}"
+                   title="{!! $post->title !!}">
+                    <h3>{!! $post->excerptTitle(40) !!}</h3>
+                </a>
                 <h6>
                     <span>
                         <i class="fa fa-user"></i>{!! $post->checkAuthor()? $post-> author->name : 'Admin' !!}</span><span>

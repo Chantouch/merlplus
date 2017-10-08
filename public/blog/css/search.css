@@ -1,0 +1,112 @@
+
+.sb-search-input, .sb-search-submit {
+    background: #fff;
+    border: none;
+    outline: 0
+}
+
+@font-face {
+    font-family: icomoon;
+    src: url(../fonts/icomoon/icomoon.eot);
+    src: url(../fonts/icomoon/icomoon.eot?#iefix) format('embedded-opentype'), url(../fonts/icomoon/icomoon.woff) format('woff'), url(../fonts/icomoon/icomoon.ttf) format('truetype'), url(../fonts/icomoon/icomoon.svg#icomoon) format('svg');
+    font-weight: 400;
+    font-style: normal
+}
+
+.sb-search {
+    position: relative;
+    margin-top: 7px;
+    width: 0;
+    right: 15px;
+    min-width: 36px;
+    height: 30px;
+    float: right;
+    overflow: hidden;
+    -webkit-transition: width .3s;
+    -moz-transition: width .3s;
+    transition: width .3s;
+    -webkit-backface-visibility: hidden
+}
+
+.sb-icon-search, .sb-search-input, .sb-search-submit {
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0
+}
+
+.sb-search-input {
+    width: 100%;
+    z-index: 10;
+    padding: 14px 40px 18px 7px;
+    font-family: inherit;
+    font-size: 12px;
+    color: #2c3e50
+}
+
+.sb-search-input::-webkit-input-placeholder {
+    color: #efb480
+}
+
+.sb-search-input:-moz-placeholder {
+    color: #efb480
+}
+
+.sb-search-input::-moz-placeholder {
+    color: #efb480
+}
+
+.sb-search-input:-ms-input-placeholder {
+    color: #efb480
+}
+
+.sb-icon-search, .sb-search-submit {
+    width: 36px;
+    display: block;
+    padding: 0;
+    line-height: 34px;
+    text-align: center;
+    cursor: pointer
+}
+
+.sb-search-submit {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    color: transparent;
+    z-index: -1
+}
+
+.sb-icon-search {
+    color: #fff;
+    background-image: -webkit-linear-gradient(top, #7dc74e 0, #5fb02a 100%);
+    background-image: linear-gradient(to bottom, #7dc74e 0, #5fb02a 100%);
+    z-index: 90;
+    font-size: 20px;
+    font-family: icomoon;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased
+}
+
+.sb-icon-search:before {
+    content: "\e000"
+}
+
+.no-js .sb-search, .sb-search.sb-search-open {
+    width: 93%
+}
+
+.no-js .sb-search .sb-icon-search, .sb-search.sb-search-open .sb-icon-search {
+    /*background: #da6d0d;*/
+    color: #fff;
+    z-index: 11
+}
+
+.no-js .sb-search .sb-search-submit, .sb-search.sb-search-open .sb-search-submit {
+    z-index: 90
+}

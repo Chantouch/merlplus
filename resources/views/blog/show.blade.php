@@ -72,84 +72,12 @@
 @section('new_article_single_article')
     @if($new_posts->count())
         <div class="panel panel-info pos-relative">
-            <div class="panel-heading">
-                {!! __('posts.new_posts') !!}
-            </div>
-            <div class="panel-body">
-                @foreach($new_posts as $article)
-                    @if($article->getRouteKey() != $post->getRouteKey())
-                        <div class="media">
-                            <div class="media-left media-top">
-                                @if($article->hasThumbnail())
-                                    <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
-                                       title="{!! $article->title !!}">
-                                        <img data-src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
-                                             src="{!! asset('blog/img/blur.jpg') !!}"
-                                             class="media-object lazyload"
-                                             width="80" alt="{!! $article->title !!}">
-                                    </a>
-                                @else
-                                    <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
-                                       title="{!! $article->title !!}">
-                                        <img data-src="{!! asset('blog/img/samples/sample.jpg') !!}"
-                                             src="{!! asset('blog/img/blur.jpg') !!}"
-                                             class="media-object lazyload"
-                                             width="80" alt="{!! $article->title !!}">
-                                    </a>
-                                @endif
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">
-                                    <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
-                                       title="{!! $article->title !!}">
-                                        {!! $article->excerptTitle(80) !!}
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
+            @include('blog._components.latest-post')
         </div>
     @endif
     @if($most_read->count())
         <div class="panel panel-info pos-relative">
-            <div class="panel-heading">
-                {!! __('posts.most_read') !!}
-            </div>
-            <div class="panel-body">
-                @foreach($most_read as $article)
-                    <div class="media">
-                        <div class="media-left media-top">
-                            @if($article->hasThumbnail())
-                                <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
-                                   title="{!! $article->title !!}">
-                                    <img data-src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
-                                         src="{!! asset('blog/img/blur.jpg') !!}"
-                                         class="media-object lazyload"
-                                         width="80" alt="{!! $article->title !!}">
-                                </a>
-                            @else
-                                <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
-                                   title="{!! $article->title !!}">
-                                    <img data-src="{!! asset('blog/img/samples/sample.jpg') !!}"
-                                         src="{!! asset('blog/img/blur.jpg') !!}"
-                                         class="media-object lazyload"
-                                         width="80" alt="{!! $article->title !!}">
-                                </a>
-                            @endif
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">
-                                <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}"
-                                   title="{!! $article->title !!}">
-                                    {!! $article->excerptTitle(80) !!}
-                                </a>
-                            </h4>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+            @include('blog._components.most-read')
         </div>
     @endif
 @stop
