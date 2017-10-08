@@ -12,7 +12,7 @@
         <div class="logo col-lg-4 col-md-4 col-sm-4">
             <a href="/">
                 <img alt="Merlplus.com" src="{!! asset('blog/img/logo.png') !!}" width="270"
-                     class="lazyload img-responsive"/>
+                     class="lazyload img-responsive logo-top"/>
             </a>
         </div>
         <div class="top-banner col-lg-8 col-md-8 col-sm-8">

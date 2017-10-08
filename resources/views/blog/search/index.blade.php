@@ -13,7 +13,7 @@
         <div class="float-width sec-cont2 label6">
             <h3 class="sec-title label-title label6">
                 <a href="javascript:void (0)">
-                    We found {!! $posts_count !!} article related to your search
+                    យើងបានរកឃើញ {!! $posts_count !!} អត្តបទទាកទង់នឹងការស្វែងរករបស់អ្នក
                 </a>
             </h3>
             @if(count($posts))

@@ -128,7 +128,7 @@
                     <h5>
                         <span><i class="fa fa-user"></i>{!! $post->checkAuthor() !!}</span>
                         <span><i class="fa fa-clock-o"></i>{!! $post->posted_at !!}</span>
-                        <span><i class="fa fa-comment-o"></i>{!! count($post->comments) !!} comments</span>
+                        <span><i class="fa fa-comment-o"></i>{!! count($post->comments) !!} {!! __('app.comment') !!}</span>
                     </h5>
                 </div>
                 @include('layouts.inc.social.horizontal')
@@ -159,7 +159,7 @@
                 <p>{!! __('posts.show.article') !!} {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
             @endif
             <div class="lefty artcl-tags">
-                <h3>TAGS : </h3>
+                <h3>{!! __('app.tag') !!} : </h3>
                 <ul>
                     @if(count($post->tags))
                         @foreach($post->tags as $tag)
@@ -199,7 +199,7 @@
                  data-share="true"></div>
         </div>
         <div class="clearfix"></div>
-        @include('blog.inc.related')
+        @include('blog._components.related')
         @include('layouts.inc.tools.facebook-comments')
     </div>
     <div class="main-right-side">

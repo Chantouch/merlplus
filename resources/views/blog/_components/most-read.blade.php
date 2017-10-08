@@ -7,7 +7,7 @@
  */
 ?>
 <div class="panel-heading">
-    {!! __('posts.most_read') !!}
+    <h4>{!! __('posts.most_read') !!}</h4>
 </div>
 <div class="panel-body">
     @foreach($most_read as $article)

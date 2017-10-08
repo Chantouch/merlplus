@@ -10,7 +10,7 @@
 <div class="col-md-12">
 <div class="artcl-reltd float-width">
     @if($post->tags->count())
-        <h3 class="sec-title">RELATED POSTS</h3>
+        <h3 class="sec-title">{!! __('app.related_posts') !!}</h3>
         @foreach($post->tags->first()->posts->take(4) as $article)
             @if($article->getRouteKey() != $post->getRouteKey())
                 <div class="reltd-sngl">

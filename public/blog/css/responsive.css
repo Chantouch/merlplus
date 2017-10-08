@@ -485,11 +485,15 @@
     }
 
     .reltd-sngl-txt {
-        width: 62.717949%;
+        width: 54.717949%;
     }
 
     .artcl-nxt, .artcl-prev {
         padding: 5px
+    }
+
+    h3.sec-title.label-title > a {
+        font-size: 17px;
     }
 
 }

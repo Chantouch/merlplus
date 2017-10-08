@@ -14,8 +14,8 @@ return [
     "sort_by" => "តម្រៀបតាម",
     "oldest" => "ចាស់បំផុត",
     "newest" => "ថ្មីបំផុត",
-    "related_posts" => "ដែលទាក់ទងទៅនឹងការប្រកាស",
-    "tag" => "ដែលទាក់ទង",
+    "related_posts" => "អត្ថបទទាក់ទង",
+    "tag" => "ពាក្យទាក់ទង",
     "previou_article" => "អត្ថបទមុន",
     "next_article" => "អត្ថបទបន្ទាប់",
     "search_for" => "ស្វែងរកសម្រាប់ ..........",
@@ -51,5 +51,6 @@ return [
 	'article' => [
 		'translator' => 'ប្រែ​សម្រួល៖',
 		'source' => 'ប្រភព៖',
-	]
+	],
+    'search_result'
 ];

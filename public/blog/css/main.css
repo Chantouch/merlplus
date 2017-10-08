@@ -613,7 +613,7 @@ ul.sm {
 
 .sm-menu a {
     padding: 12px 0 !important;
-    color: #b6b5b5;
+    color: #000000;
     font-size: 19px;
     font-weight: 500;
     margin: 0 15px
@@ -1062,7 +1062,7 @@ span.topic-icn {
     right: 0;
     padding: 8px 20px;
     margin: 0;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 600
 }
 
@@ -2611,7 +2611,7 @@ button.cmnt-btn:hover {
 
 .reltd-sngl-txt {
     float: left;
-    width: 68.71794871794871%;
+    width: 64.71794871794871%;
     margin-left: 10px;
 }
 
@@ -2926,7 +2926,7 @@ h3.sec-title.label-title > a {
     right: 0;
     padding: 8px 20px;
     margin: 0;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     color: #fff;
 }
