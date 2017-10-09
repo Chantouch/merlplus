@@ -1,15 +1,30 @@
 <?php
 $fullUrl = Request::url();
 ?>
-        <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<!DOCTYPE html>
+<html amp lang="en">
 <head>
     <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
     <title>{{ MetaTag::get('title') }} | {{ config('settings.app_name', 'Merlplus') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Website",
+        "headline": "Merlplus - Local news in Cambodia | Merlplus.com",
+        "datePublished": "2017-10-10T10:10:7Z",
+        "image": [
+          "https://www.merlplus.com/blog/img/logo.png"
+        ],
+        "author": "Chantouch Sek",
+        "publisher": ["Chantouch Sek"],
+        "dateModified": "2017-10-10T10:10:7Z"
+      }
+    </script>
     <meta name="apple-mobile-web-app-title" content="{{ config('settings.app_name') }}">
     {!! MetaTag::tag('description') !!}
     {!! MetaTag::tag('keywords') !!}
@@ -33,20 +48,13 @@ $fullUrl = Request::url();
     @if (config('settings.alexa_verify_id'))
         <meta name="alexaVerifyID" content="{{ config('settings.alexa_verify_id') }}"/>
     @endif
-    {{--<link rel="stylesheet" href="{!! asset('blog/css/app.css') !!}">--}}
+
     <link rel="stylesheet" href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/bootstrap.min.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/main.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/search.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/responsive.css') !!}">
     <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
     <link rel="stylesheet" href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}">
-    <link rel="stylesheet" href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.theme.default.min.css') !!}">
-    <style>
-        .hm-slider .slides {
-            background-image: url({!! asset('images/loading.gif') !!});
-        }
-    </style>
     <script>
         (function (b, o, i, l, e, r) {
             b.GoogleAnalyticsObject = l;
@@ -144,84 +152,15 @@ $fullUrl = Request::url();
 
 <!-- Scripts -->
 <script src="{{ asset('blog/js/app-383kldle83903.min.js') }}"></script>
+<script src="{!! asset('blog/js/jquery.lazyload.min.js') !!}"></script>
 <script src="{{ asset('blog/js/main.min.js') }}"></script>
-<script type="text/javascript" src="{!! asset('js/vue/vue.js') !!}"></script>
-<script src="{!! asset('js/vue/vue-resource.min.js') !!}"></script>
-{{--<script src="{!! asset('js/vue/vue-axios.min.js') !!}"></script>--}}
+<script type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>
 <script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}"></script>
 <script src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}"></script>
 @yield('plugins')
 
 @yield('scripts')
 <script>
-    new UISearch(document.getElementById('sb-search'));
-    window.addEventListener("load", function (event) {
-        var timeout = setTimeout(function () {
-            lazyload();
-        }, 50);
-    });
-
-    $(document).ready(function () {
-        $('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            responsiveClass: true,
-            lazyLoad: true,
-            lazyContent: true,
-            responsive: {
-                0: {
-                    items: 2,
-                    nav: false,
-                    dots: true,
-                    loop: true,
-                    autoplay: true
-                },
-                600: {
-                    items: 3,
-                    nav: false,
-                    dots: true,
-                    loop: true
-                },
-                1000: {
-                    items: 5,
-                    nav: false,
-                    dots: true,
-                    loop: false
-                }
-            }
-        })
-    });
-
-    var $ = jQuery.noConflict();
-    jQuery(document).ready(function ($) {
-        scrollToTop.init();
-    });
-
-    var scrollToTop =
-        {
-            /**
-             * When the user has scrolled more than 100 pixels then we display the scroll to top button using the fadeIn function
-             * If the scroll position is less than 100 then hide the scroll up button
-             *
-             * On the click event of the scroll to top button scroll the window to the top
-             */
-            init: function () {
-                //Check to see if the window is top if not then display button
-                $(window).scroll(function () {
-                    if ($(this).scrollTop() > 100) {
-                        $('.scrollToTop').fadeIn();
-                    } else {
-                        $('.scrollToTop').fadeOut();
-                    }
-                });
-                // Click event to scroll to top
-                $('.scrollToTop').click(function () {
-                    $('html, body').animate({scrollTop: 0}, 800);
-                    return false;
-                });
-            }
-        };
-
     /* Social Share */
     $('.share').ShareLink({
         title: '{{ addslashes(MetaTag::get('title')) }}',
@@ -230,12 +169,6 @@ $fullUrl = Request::url();
         width: 640,
         height: 480
     });
-
-    $('.counter').ShareCounter({
-        url: '{!! $fullUrl !!}/',
-        increment: true
-    });
-
 </script>
 </body>
 </html>

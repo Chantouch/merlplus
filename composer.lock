@@ -1172,16 +1172,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.28",
+            "version": "v0.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client-services.git",
-                "reference": "209421578d76762806087944cf514f1ede6cf7ad"
+                "reference": "d23e00e38b209d5dc60c1bb71c8f065ee5b6823e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/209421578d76762806087944cf514f1ede6cf7ad",
-                "reference": "209421578d76762806087944cf514f1ede6cf7ad",
+                "url": "https://api.github.com/repos/google/google-api-php-client-services/zipball/d23e00e38b209d5dc60c1bb71c8f065ee5b6823e",
+                "reference": "d23e00e38b209d5dc60c1bb71c8f065ee5b6823e",
                 "shasum": ""
             },
             "require": {
@@ -1205,7 +1205,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2017-09-30T00:22:48+00:00"
+            "time": "2017-10-08T00:22:35+00:00"
         },
         {
             "name": "google/auth",
@@ -3750,16 +3750,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.4.0",
+            "version": "6.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a1bcaca096998de32c29535fdd2dea0c475e8f61"
+                "reference": "b770d8ba7e60295ee91d69d5a5e01ae833cac220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a1bcaca096998de32c29535fdd2dea0c475e8f61",
-                "reference": "a1bcaca096998de32c29535fdd2dea0c475e8f61",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b770d8ba7e60295ee91d69d5a5e01ae833cac220",
+                "reference": "b770d8ba7e60295ee91d69d5a5e01ae833cac220",
                 "shasum": ""
             },
             "require": {
@@ -3830,7 +3830,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-10-06T03:14:57+00:00"
+            "time": "2017-10-07T17:53:53+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3948,16 +3948,16 @@
         },
         {
             "name": "pragmarx/support",
-            "version": "v0.8.2",
+            "version": "v0.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/support.git",
-                "reference": "54d00ca56ef8641e0c5f2f62d397e494bbd957e7"
+                "reference": "08e676614214cb8801228a1c83b30554440433e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/support/zipball/54d00ca56ef8641e0c5f2f62d397e494bbd957e7",
-                "reference": "54d00ca56ef8641e0c5f2f62d397e494bbd957e7",
+                "url": "https://api.github.com/repos/antonioribeiro/support/zipball/08e676614214cb8801228a1c83b30554440433e6",
+                "reference": "08e676614214cb8801228a1c83b30554440433e6",
                 "shasum": ""
             },
             "require": {
@@ -3998,7 +3998,7 @@
                 "laravel",
                 "pragmarx"
             ],
-            "time": "2017-09-12T02:01:23+00:00"
+            "time": "2017-10-07T17:41:15+00:00"
         },
         {
             "name": "pragmarx/tracker",
@@ -5420,20 +5420,19 @@
         },
         {
             "name": "spatie/laravel-sitemap",
-            "version": "3.2.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-sitemap.git",
-                "reference": "8681a0cfb62e8f7a8a9a7c384ec4552d67008bd4"
+                "reference": "520e1123dc1eee1fc027f3c334d4cd02cdf5ece2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/8681a0cfb62e8f7a8a9a7c384ec4552d67008bd4",
-                "reference": "8681a0cfb62e8f7a8a9a7c384ec4552d67008bd4",
+                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/520e1123dc1eee1fc027f3c334d4cd02cdf5ece2",
+                "reference": "520e1123dc1eee1fc027f3c334d4cd02cdf5ece2",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "^6.3",
                 "illuminate/support": "~5.5.0",
                 "nesbot/carbon": "^1.21",
                 "php": "^7.0",
@@ -5477,7 +5476,7 @@
                 "laravel-sitemap",
                 "spatie"
             ],
-            "time": "2017-10-03T07:56:13+00:00"
+            "time": "2017-10-07T17:38:24+00:00"
         },
         {
             "name": "spatie/phpunit-snapshot-assertions",

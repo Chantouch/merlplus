@@ -59,8 +59,8 @@ class BaseController extends Controller
         }
         MetaTag::set('title', 'Merlplus - Local news in Cambodia');
         MetaTag::set('keywords', 'breaking news, cambodia news, local news, breaking news in cambodia, health, cooking, breaking news, entertainment, technology, life, sport, local news in Cambodia');
-        MetaTag::set('description', config('settings.app_slogan', 'Merlplus - Local news in Cambodia, up-to-date in a minute news, breaking news, feature and audio stories. Merlplus provides the trusted local Cambodia news, also the world wide news, to all original area, and regional perspective ,local news in Cambodia. Entertainments, technologies, cook recipes, science, business news....'));
-        MetaTag::set('image', asset('images/logo.png'));
+        MetaTag::set('description', config('settings.app_slogan', 'Up-to-date in a minute news, breaking news, feature and audio stories. Merlplus provides the trusted local Cambodia news, also the world wide news, to all original area, and regional perspective ,local news in Cambodia. Entertainments, technologies, cook recipes, science, business news....'));
+        MetaTag::set('image', asset('blog/img/logo.png'));
         MetaTag::set('robots', 'index,follow');
         view()->share([
             'top_ads' => $top_ads,

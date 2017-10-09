@@ -21,35 +21,43 @@
             </h3>
         </div>
         <ul class="nav" id="side-menu">
-            <li class="user-pro">
-                <a href="#" class="waves-effect">
-                    <img src="{!! asset('images/users/varun.jpg') !!}" alt="user-img" class="img-circle">
-                    <span class="hide-menu"> Steve Gection<span class="fa arrow"></span></span>
-                </a>
-                <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0;">
-                    <li>
-                        <a href="javascript:void(0)"><i class="ti-user"></i>
-                            <span class="hide-menu">My Profile</span></a></li>
-                    <li>
-                        <a href="javascript:void(0)"><i class="ti-wallet"></i>
-                            <span class="hide-menu">My Balance</span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><i class="ti-email"></i>
-                            <span class="hide-menu">Inbox</span></a></li>
-                    <li>
-                        <a href="javascript:void(0)"><i class="ti-settings"></i>
-                            <span class="hide-menu">Account Setting</span></a>
-                    </li>
-                    <li>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+            @if (auth()->check())
+                <li class="user-pro">
+                    <a href="#" class="waves-effect">
+                        @if(auth()->user()->hasThumbnail())
+                            <img src="{!! asset('storage/uploads/user/'.auth()->user()->thumbnail()->filename) !!}"
+                                 width="36" alt="{!! auth()->user()->name !!}" class="img-circle">
+                        @else
+                            <img src="{!! asset('images/users/varun.jpg') !!}" alt="user-img" width="36"
+                                 class="img-circle">
+                        @endif
+                        <span class="hide-menu">{!! auth()->user()->name !!}<span class="fa arrow"></span></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0;">
+                        <li>
+                            <a href="javascript:void(0)"><i class="ti-user"></i>
+                                <span class="hide-menu">My Profile</span></a></li>
+                        <li>
+                            <a href="javascript:void(0)"><i class="ti-wallet"></i>
+                                <span class="hide-menu">My Balance</span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><i class="ti-email"></i>
+                                <span class="hide-menu">Inbox</span></a></li>
+                        <li>
+                            <a href="javascript:void(0)"><i class="ti-settings"></i>
+                                <span class="hide-menu">Account Setting</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            <i class="fa fa-power-off"></i>
-                            <span class="hide-menu">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                                <i class="fa fa-power-off"></i>
+                                <span class="hide-menu">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
             <li>
                 <a href="{!! route('admin.dashboard') !!}"
                    class="waves-effect{!! Request::is('admin/dashboard') ? ' active': '' !!}">

@@ -96,7 +96,7 @@
                     </div>
                     @yield('content')
                 </div>
-                @include('layouts.inc.right-sidebar')
+                {{--@include('layouts.inc.right-sidebar')--}}
             </div>
             <!-- /.container-fluid -->
             @include('layouts.inc.footer')
