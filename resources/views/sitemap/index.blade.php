@@ -7,10 +7,8 @@
  */
 ?>
 @extends('layouts.blog.app')
-@section('css')
-    <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
-@stop
 @section('content')
+    <div class="sitemap">
     <div class="row">
         <h1 class="text-center page-title">Sitemap</h1>
         <hr class="center-block small text-hr">
@@ -33,12 +31,14 @@
                                             <div class="list-group-item">
                                                 <div class="media">
                                                     <div class="media-left">
+                                                        <div class="zoom-img">
                                                         <a href="{!! route('blog.article.show', [$article->getRouteKey()]) !!}">
                                                             <img class="media-object lazyload"
                                                                  data-src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
                                                                  src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg=="
                                                                  alt="{!! $article->title !!}">
                                                         </a>
+                                                        </div>
                                                     </div>
                                                     <div class="media-body">
                                                         <h4 class="media-heading">
@@ -82,5 +82,6 @@
                 <i class="fa fa-linkedin"></i>
             </button>
         </div>
+    </div>
     </div>
 @stop

@@ -30,7 +30,7 @@ class HomeController extends BaseController
 	{
 		$news_sliders = Post::with(['categories', 'comments'])
 			->latest()->take(4)->get();
-		$categories = Category::with('articles')->latest()->get();
+		$categories = Category::with('articles')->orderBy('position_order')->get();
 		$tag = Tag::with('posts')
 			->where('name', 'វីដេអូឃ្លីប')
 			->orWhere('name', 'វីដេអូ')
