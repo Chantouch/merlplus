@@ -233,6 +233,7 @@ return [
 	    'Helper' => \App\Helpers\Helper::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
     ],
 
 ];
