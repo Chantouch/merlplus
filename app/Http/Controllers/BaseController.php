@@ -62,6 +62,21 @@ class BaseController extends Controller
         MetaTag::set('description', config('settings.app_slogan', 'Up-to-date in a minute news, breaking news, feature and audio stories. Merlplus provides the trusted local Cambodia news, also the world wide news, to all original area, and regional perspective ,local news in Cambodia. Entertainments, technologies, cook recipes, science, business news....'));
         MetaTag::set('image', asset('blog/img/logo.png'));
         MetaTag::set('robots', 'index,follow');
+
+        // DNS Prefetch meta tags /============================================================
+        $dnsPrefetch = [
+            '//fonts.googleapis.com',
+            '//graph.facebook.com',
+            '//google.com',
+            '//apis.google.com',
+            '//ajax.googleapis.com',
+            '//www.google-analytics.com',
+            '//pagead2.googlesyndication.com',
+            '//gstatic.com',
+            '//cdn.api.twitter.com',
+            '//oss.maxcdn.com',
+        ];
+
         view()->share([
             'top_ads' => $top_ads,
             'top_right_ads' => $top_right_ads,
@@ -70,7 +85,8 @@ class BaseController extends Controller
             'menus' => $menus,
             'tag_menu' => $tag_menu,
             'pages' => $pages,
-            'socials' => $socials
+            'socials' => $socials,
+            'dnsPrefetch' => $dnsPrefetch
         ]);
     }
 

@@ -6,11 +6,30 @@ $fullUrl = Request::url();
 <head>
     <meta charset="utf-8">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <title>{{ MetaTag::get('title') }} | {{ config('settings.app_name', 'Merlplus') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <meta name="apple-mobile-web-app-title" content="{{ config('settings.app_name') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ \Storage::url('app/default/ico/apple-touch-icon-144-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ \Storage::url('app/default/ico/apple-touch-icon-114-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ \Storage::url('app/default/ico/apple-touch-icon-72-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ \Storage::url('app/default/ico/apple-touch-icon-57-precomposed.png') }}">
+    <link rel="shortcut icon" href="{{ \Storage::url(config('settings.app_favicon')) }}">
+    <title>{{ MetaTag::get('title') }}</title>
+    {!! MetaTag::tag('description') !!}{!! MetaTag::tag('keywords') !!}
+    <link rel="canonical" href="{{ $fullUrl }}"/>
+    {!! MetaTag::tag('image') !!}
+    {!! MetaTag::openGraph() !!}
+    {!! MetaTag::tag('robots') !!}
+    {!! MetaTag::tag('site_name', config('settings.app_name', 'Merlplus')) !!}
+    {!! MetaTag::tag('url', $fullUrl); !!}
+    {!! MetaTag::tag('locale', 'en_EN') !!}
+    @if (count($dnsPrefetch) > 0)
+        @foreach($dnsPrefetch as $dns)
+            <link rel="dns-prefetch" href="{{ $dns }}">
+        @endforeach
+    @endif
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
@@ -25,16 +44,6 @@ $fullUrl = Request::url();
         "dateModified": "2017-10-10T10:10:7Z"
       }
     </script>
-    <meta name="apple-mobile-web-app-title" content="{{ config('settings.app_name') }}">
-    {!! MetaTag::tag('description') !!}
-    {!! MetaTag::tag('keywords') !!}
-    {!! MetaTag::tag('image') !!}
-    {!! MetaTag::openGraph() !!}
-    {!! MetaTag::tag('robots') !!}
-    {!! MetaTag::tag('site_name', config('settings.app_name', 'Merlplus')) !!}
-    {!! MetaTag::tag('url', $fullUrl); !!}
-    {!! MetaTag::tag('locale', 'en_EN') !!}
-    <link rel="canonical" href="{!! $fullUrl !!}"/>
     @if (config('services.facebook.client_id'))
         <meta property="fb:app_id" content="{{ config('services.facebook.client_id') }}"/>
         {!! MetaTag::twitterCard() !!}
@@ -49,12 +58,12 @@ $fullUrl = Request::url();
         <meta name="alexaVerifyID" content="{{ config('settings.alexa_verify_id') }}"/>
     @endif
 
-    <link href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
-    <link href="{!! asset('blog/css/bootstrap.min.css') !!}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
-    <link href="{!! asset('blog/css/main.css') !!}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
-    <link href="{!! asset('blog/css/styles.css') !!}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
-    <link href="{!! asset('blog/css/responsive.css') !!}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
-    <link href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
+    <link href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" media="all">
+    <link href="{!! asset('blog/css/bootstrap.min.css') !!}" rel="stylesheet" media="all">
+    <link href="{!! asset('blog/css/main.css') !!}" rel="stylesheet" media="all">
+    <link href="{!! asset('blog/css/styles.css') !!}" rel="stylesheet" media="all">
+    <link href="{!! asset('blog/css/responsive.css') !!}" rel="stylesheet" media="all">
+    <link href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}" rel="stylesheet" media="all">
     <script type="text/javascript">
         (function (b, o, i, l, e, r) {
             b.GoogleAnalyticsObject = l;
