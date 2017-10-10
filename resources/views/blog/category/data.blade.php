@@ -21,14 +21,14 @@
             @if($post->hasThumbnail())
                 <div class="zoom-img">
                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                        <img alt="{!! $post->title !!}" class="lefty img-responsive" width="271"
-                             src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                        <img alt="{!! $post->title !!}" class="blocky lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
+                             data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                     </a>
                 </div>
             @else
                 <div class="zoom-img">
-                    <img class="lefty" alt="{!! $post->excerptTitle(60) !!}"
-                         src="{!! asset('blog/img/samples/z'.$index.'.jpg') !!}"/>
+                    <img alt="{!! $post->title !!}" class="blocky lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
+                         data-src="{!! asset('blog/img/samples/z'.$index.'.jpg') !!}"/>
                 </div>
             @endif
             <div class="sec-1-big-text lefty">

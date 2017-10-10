@@ -21,6 +21,7 @@
   ExpiresByType video/mp4                 "access plus 1 month"
   ExpiresByType video/webm                "access plus 1 month"
 
+
 # Webfonts
   ExpiresByType application/x-font-ttf    "access plus 1 month"
   ExpiresByType font/opentype             "access plus 1 month"
@@ -31,6 +32,11 @@
 # CSS and JavaScript
   ExpiresByType text/css                  "access plus 1 year"
   ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType application/x-shockwave-flash "access plus 1 year"
+
+  <FilesMatch "\.(gif¦jpe?g¦png¦ico¦css¦js¦swf)$">
+    Header set Cache-Control "public"
+  </FilesMatch>
 
 </IfModule>
 

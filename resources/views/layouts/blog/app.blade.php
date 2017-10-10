@@ -49,13 +49,13 @@ $fullUrl = Request::url();
         <meta name="alexaVerifyID" content="{{ config('settings.alexa_verify_id') }}"/>
     @endif
 
-    <link rel="stylesheet" href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/bootstrap.min.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/main.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/responsive.css') !!}">
-    <link rel="stylesheet" href="{!! asset('blog/css/styles.css') !!}">
-    <link rel="stylesheet" href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}">
-    <script>
+    <link href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
+    <link href="{!! asset('blog/css/bootstrap.min.css') !!}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
+    <link href="{!! asset('blog/css/main.css') !!}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
+    <link href="{!! asset('blog/css/styles.css') !!}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
+    <link href="{!! asset('blog/css/responsive.css') !!}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
+    <link href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
+    <script type="text/javascript">
         (function (b, o, i, l, e, r) {
             b.GoogleAnalyticsObject = l;
             b[l] || (b[l] =
@@ -151,16 +151,15 @@ $fullUrl = Request::url();
 </div>
 
 <!-- Scripts -->
-<script src="{{ asset('blog/js/app-383kldle83903.min.js') }}"></script>
-<script src="{!! asset('blog/js/jquery.lazyload.min.js') !!}"></script>
-<script src="{{ asset('blog/js/main.min.js') }}"></script>
+<script src="{{ asset('blog/js/app-383kldle83903.min.js') }}" type="text/javascript"></script>
+<script src="{!! asset('blog/js/jquery.lazyload.min.js') !!}" type="text/javascript"></script>
+<script src="{{ asset('blog/js/main.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>
-<script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}"></script>
-<script src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}"></script>
+<script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
+<script src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}" type="text/javascript"></script>
 @yield('plugins')
-
 @yield('scripts')
-<script>
+<script type="text/javascript">
     /* Social Share */
     $('.share').ShareLink({
         title: '{{ addslashes(MetaTag::get('title')) }}',

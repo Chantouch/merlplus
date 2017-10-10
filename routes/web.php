@@ -80,7 +80,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')
     });
 
 //-------------Blog Front Route-------------//
-Route::name('blog.')->namespace('Blog')->group(function () {
+Route::name('blog.')->namespace('Blog')->middleware('web')->group(function () {
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/search', 'HomeController@searchArticle')->name('search');
     Route::get('/files/{filename}', 'MediaController@getFile')->name('files');

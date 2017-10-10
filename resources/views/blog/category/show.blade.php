@@ -9,24 +9,7 @@
 @extends('layouts.blog.app')
 
 @section('main_right_ads_bar')
-    @if(isset($single_article_ads))
-        <div class="ads_items text-center">
-            @if(isset($main_right_ads))
-                @if(count($main_right_ads))
-                    @foreach($main_right_ads->take(2) as $index => $ads)
-                        @if($index < 2)
-                            <div class="ad-rt">
-                                <a href="{!! $ads->url !!}" target="_blank">
-                                    <img alt="{!! $ads->provider_name !!}"
-                                         src="{!! asset($ads->banner()->media_url) !!}"/>
-                                </a>
-                            </div>
-                        @endif
-                    @endforeach
-                @endif
-            @endif
-        </div>
-    @endif
+    @include('blog._components.single-ads-bar')
 @stop
 @section('new_article_single_article')
     @if($new_posts->count())

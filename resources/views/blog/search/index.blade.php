@@ -13,7 +13,7 @@
         <div class="float-width sec-cont2 label6">
             <h3 class="sec-title label-title label6">
                 <a href="javascript:void (0)">
-                    យើងបានរកឃើញ {!! $posts_count !!} អត្តបទទាកទង់នឹងការស្វែងរករបស់អ្នក
+                    យើងបានរកឃើញ {!! $posts_count !!} អត្តបទ
                 </a>
             </h3>
             @if(count($posts))
@@ -22,8 +22,10 @@
                         @if($post->hasThumbnail())
                             <div class="zoom-img">
                                 <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                    <img alt="{!! $post->excerptTitle(60) !!}" class="lefty img-responsive" width="271"
-                                         src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                                    <img alt="merlplus, merlplus.com {!! $post->title !!}"
+                                         class="lefty img-responsive lazyload" height="90"
+                                         src="{!! asset('blog/img/blur.jpg') !!}"
+                                         data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                                 </a>
                             </div>
                         @else

@@ -35,13 +35,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active home">
+                <li class="{!! Request::is('/') ? ' active': '' !!} home">
                     <a href="/"><i class="fa fa-home"></i></a>
                 </li>
                 @if(isset($menus))
                     @if(count($menus))
                         @foreach($menus as $index => $menu)
-                            <li class="category" id="{!! $menu->slug !!}">
+                            <li class="{!! isset($post) ? $post->category()->getRouteKey() == $menu->getRouteKey() ? 'active' : '' : Request::segment(2) == $menu->getRouteKey() ? 'active': '' !!}" id="{!! $menu->slug !!}">
                                 <a href="{!! route('blog.topics.show',[$menu->getRouteKey()]) !!}">
                                     {!! $menu->name !!}
                                 </a>

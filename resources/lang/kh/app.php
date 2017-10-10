@@ -52,5 +52,4 @@ return [
 		'translator' => 'ប្រែ​សម្រួល៖',
 		'source' => 'ប្រភព៖',
 	],
-    'search_result'
 ];

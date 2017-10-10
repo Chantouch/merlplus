@@ -7,23 +7,6 @@
  */
 ?>
 @extends('layouts.blog.app')
-@section('css')
-    <style>
-
-        .sponsor_img {
-            /*margin-left: -15px;*/
-            width: 120px;
-            height: 60px;
-        }
-
-        .single .sponsor_by {
-            margin-top: 0;
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-    </style>
-@stop
 @section('post-background')
     <div class="fix-bg">
         @if($post->hasThumbnail())
@@ -40,33 +23,35 @@
 @stop
 @section('main_right_ads_bar')
     @if(isset($main_right_ads))
-        <div class="ads_items text-center pos-relative">
-            @if(count($main_right_ads) > 1)
-                @foreach($main_right_ads->random(2) as $index => $ads)
-                    @if($index < 2)
-                        <div class="ad-rt">
-                            <a href="{!! $ads->url !!}" target="_blank">
-                                <img alt="{!! $ads->provider_name !!}" class="lazyload img-responsive"
-                                     src="{!! asset('blog/img/blur.jpg') !!}"
-                                     data-src="{!! asset($ads->banner()->media_url) !!}"/>
-                            </a>
-                        </div>
-                    @endif
-                @endforeach
-            @else
-                @foreach($main_right_ads->take(1) as $index => $ads)
-                    @if($index < 2)
-                        <div class="ad-rt">
-                            <a href="{!! $ads->url !!}" target="_blank">
-                                <img alt="{!! $ads->provider_name !!}" class="lazyload img-responsive"
-                                     src="{!! asset('blog/img/blur.jpg') !!}"
-                                     data-src="{!! asset($ads->banner()->media_url) !!}"/>
-                            </a>
-                        </div>
-                    @endif
-                @endforeach
-            @endif
-        </div>
+        @if($main_right_ads->count())
+            <div class="ads_items text-center pos-relative">
+                @if(count($main_right_ads) > 1)
+                    @foreach($main_right_ads->random(2) as $index => $ads)
+                        @if($index < 2)
+                            <div class="ad-rt">
+                                <a href="{!! $ads->url !!}" target="_blank">
+                                    <img alt="{!! $ads->provider_name !!}" class="lazyload img-responsive"
+                                         src="{!! asset('blog/img/blur.jpg') !!}"
+                                         data-src="{!! asset($ads->banner()->media_url) !!}"/>
+                                </a>
+                            </div>
+                        @endif
+                    @endforeach
+                @else
+                    @foreach($main_right_ads->take(1) as $index => $ads)
+                        @if($index < 2)
+                            <div class="ad-rt">
+                                <a href="{!! $ads->url !!}" target="_blank">
+                                    <img alt="{!! $ads->provider_name !!}" class="lazyload img-responsive"
+                                         src="{!! asset('blog/img/blur.jpg') !!}"
+                                         data-src="{!! asset($ads->banner()->media_url) !!}"/>
+                                </a>
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
+            </div>
+        @endif
     @endif
 @stop
 @section('new_article_single_article')
@@ -82,7 +67,6 @@
     @endif
 @stop
 @section('content')
-    {{--<div class="row">--}}
     <div class="main-left-side pos-relative">
         @if(isset($button_single_ads))
             @foreach($button_single_ads as $index => $article_ad)
@@ -134,19 +118,12 @@
                 @include('layouts.inc.social.horizontal')
                 <article class="float-width articl-data">
                     <div class="content">
-                        @if($post->hasThumbnail())
-                            <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload img-responsive"
-                                 src="{!! asset('blog/img/blur.jpg') !!}"
-                                 data-src="{!! asset(route('media.posts.path',[$post->id,'medium_'.$post->thumbnail()->filename])) !!}"/>
-                        @endif
                         {!! $post->description !!}
                     </div>
                 </article>
             </div>
         </div>
-        {{--<div class="row">--}}
-        {{--<div class="col-md-12 author">--}}
-    <!-- The Article Social Media Share -->
+        <!-- The Article Social Media Share -->
         <div class="artcl-scl float-width">
             @if(!empty($post->origin_source) && !empty($post->source_title))
                 <p>{!! __('app.article.source') !!}
@@ -174,9 +151,7 @@
             </div>
             @include('layouts.inc.social.horizontal')
         </div>
-        {{--</div>--}}
-        {{--</div>--}}
-    <!-- Ads button of single article -->
+        <!-- Ads button of single article -->
         @if(isset($single_article_ads))
             <div class="ads_items text-center">
                 @foreach($single_article_ads as $index => $article_ad)
@@ -205,11 +180,6 @@
     <div class="main-right-side">
         @include('layouts.blog.main-right-side')
     </div>
-    {{--</div>--}}
-@stop
-
-@section('plugins')
-    <script src="{!! asset('plugins/fancybox/dist/jquery.fancybox.js') !!}"></script>
 @stop
 @section('scripts')
     <script>
@@ -231,7 +201,6 @@
                 fetchComments() {
                     let vm = this;
                     vm.$http.get('/api/v1/posts/{!! $post->id !!}/comments').then(response => {
-                        console.log(response.data);
                         vm.comments = response.data
                     })
                 },
@@ -245,53 +214,7 @@
                 }
             }
         });
-
-        $().fancybox({
-            selector: '[data-fancybox="images"]',
-            thumbs: false,
-            hash: false,
-        });
-
     </script>
-
-    <script type="text/javascript">
-        // the function we call when we click on each img tag
-        function fancyBoxMe(e) {
-            var numElemets = $("#main-single-article img").length;
-            if ((e + 1) == numElemets) {
-                nexT = 0
-            } else {
-                nexT = e + 1
-            }
-            if (e == 0) {
-                preV = (numElemets - 1)
-            } else {
-                preV = e - 1
-            }
-            var tarGet = $('#main-single-article img').eq(e).attr('src');
-            $().fancybox({
-                href: tarGet,
-                helpers: {
-                    title: {
-                        type: 'inside'
-                    }
-                },
-                afterLoad: function () {
-                    this.title = 'Image ' + (e + 1) + ' of ' + numElemets + ' :: <a href="javascript:;" onclick="fancyBoxMe(' + preV + ')">prev</a>&nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="fancyBoxMe(' + nexT + ')">next</a>'
-                }
-            }); // fancybox
-        } // fancyBoxMe
-
-        // bind click to each img tag
-        $(document).ready(function () {
-            $("#main-single-article img").each(function (i) {
-                $(this).bind('click', function () {
-                    fancyBoxMe(i);
-                }); //bind
-            }); //each
-        }); // ready
-    </script>
-
     @if (config('services.facebook.client_id'))
         <script>
             (function (d, s, id) {
@@ -304,5 +227,4 @@
             }(document, 'script', 'facebook-jssdk'));
         </script>
     @endif
-
 @stop

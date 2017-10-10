@@ -68,7 +68,7 @@
                                                     <i class="fa fa-comment-o"></i>{!! $post->comments->count() !!} comments
                                                 </span>
                                             </h6>
-                                            <p>{!! $post->excerpt() !!}</p>
+                                            <p>{!! $post->excerpt(450) !!}</p>
                                         </div>
                                     </div>
                                 </div>
