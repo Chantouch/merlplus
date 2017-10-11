@@ -250,8 +250,18 @@
             <li>
                 <a href="{!! route('admin.settings.index') !!}"
                    class="waves-effect{!! Request::is('admin/settings*') ? ' active': '' !!}">
-                    <i class="mdi mdi-av-timer fa-fw" data-icon="v"></i>
+                    <i class="mdi mdi-settings fa-fw" data-icon="v"></i>
                     <span class="hide-menu"> Settings
+                        <span class="label label-rouded label-inverse pull-right">1</span>
+                    </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/reports" target="blank"
+                   class="waves-effect">
+                    <i class="mdi mdi-trending-up fa-fw" data-icon="v"></i>
+                    <span class="hide-menu"> Reports
                         <span class="label label-rouded label-inverse pull-right">1</span>
                     </span>
                 </a>
