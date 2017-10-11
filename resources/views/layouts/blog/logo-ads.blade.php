@@ -10,10 +10,12 @@
     <div class="row">
         <!-- Website Logo -->
         <div class="logo col-lg-4 col-md-4 col-sm-4">
-            <a href="/">
-                <img alt="Merlplus.com" src="{!! asset('blog/img/logo.png') !!}" width="270"
-                     class="lazyload img-responsive logo-top"/>
-            </a>
+            @if(config('settings.app_logo'))
+                <a href="{!! route('blog.index') !!}">
+                    <img alt="{!! config('settings.app_name') !!}" src="{!! asset(config('settings.app_logo')) !!}" width="270"
+                         class="lazyload img-responsive logo-top"/>
+                </a>
+            @endif
         </div>
         <div class="top-banner col-lg-8 col-md-8 col-sm-8">
             <!-- Top ad banner -->
@@ -27,9 +29,10 @@
                                  height="90" class="lazyload img-responsive"/>
                         </a>
                     @else
-                        <a href="#">
+                        <a href="{!! $ads->url !!}" target="_blank">
                             <img alt="Image blog default page" data-src="{!! asset('blog/img/top-banner.jpg') !!}"
-                                 src="{!! asset('blog/img/blur-ads.jpg') !!}" height="90" class="lazyload img-responsive"/>
+                                 src="{!! asset('blog/img/blur-ads.jpg') !!}" height="90"
+                                 class="lazyload img-responsive"/>
                         </a>
                     @endif
                 @endforeach

@@ -110,11 +110,11 @@ $(window).scroll(function () {
 });
 
 /* Custome js on home page */
-
 new UISearch(document.getElementById('sb-search'));
 window.addEventListener("load", function (event) {
     event.preventDefault();
-   var load =  lazyload();
+   var load = new LazyLoad();
+   load.update();
 });
 
 $(document).ready(function () {

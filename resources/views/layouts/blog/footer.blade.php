@@ -9,10 +9,12 @@
 <!-- Info footer -->
 <div class="info-ftr float-width">
     <div class="mag-info lefty">
-        <a class="ftr-logo" href="#">
-            <img alt="Image blog default page" data-src="{!! asset('blog/img/logo.png') !!}" width="250"
-                 class="lazyload"/>
-        </a>
+        @if(config('settings.app_logo'))
+            <a class="ftr-logo" href="{!! route('blog.index') !!}">
+                <img alt="{!! config('settings.app_name') !!}" src="{!! asset(config('settings.app_logo')) !!}"
+                     data-src="{!! asset(config('settings.app_logo')) !!}" width="250" class="lazyload"/>
+            </a>
+        @endif
         <p>
             ​© រក្សា​សិទ្ធិ​គ្រប់​យ៉ាង​ដោយ​ {!! config('settings.app_name') !!} ឆ្នាំ​២០១៦ <br>
             អាសយដ្ឋាន៖ {!! config('settings.company_address') !!}

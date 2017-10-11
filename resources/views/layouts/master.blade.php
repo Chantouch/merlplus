@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" sizes="16x16" href="{!! asset('favicon.ico') !!}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{!! asset(config('settings.app_favicon')) !!}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('settings.app_name', 'Merlplus.com') }}</title>
@@ -143,7 +143,8 @@
     });
     window.addEventListener("load", function (event) {
         var timeout = setTimeout(function () {
-            lazyload();
+            var load = new LazyLoad();
+            load.update();
         }, 500);
     });
     $(function () {

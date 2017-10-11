@@ -11,11 +11,25 @@ $fullUrl = Request::url();
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta name="apple-mobile-web-app-title" content="{{ config('settings.app_name') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ \Storage::url('app/default/ico/apple-touch-icon-144-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ \Storage::url('app/default/ico/apple-touch-icon-114-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ \Storage::url('app/default/ico/apple-touch-icon-72-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" href="{{ \Storage::url('app/default/ico/apple-touch-icon-57-precomposed.png') }}">
-    <link rel="shortcut icon" href="{{ \Storage::url(config('settings.app_favicon')) }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{!! asset('storage/default/ico/apple-icon-57x57.png') !!}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{!! asset('storage/default/ico/apple-icon-60x60.png') !!}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{!! asset('storage/default/ico/apple-icon-72x72.png') !!}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{!! asset('storage/default/ico/apple-icon-76x76.png') !!}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{!! asset('storage/default/ico/apple-icon-114x114.png') !!}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{!! asset('storage/default/ico/apple-icon-120x120.png') !!}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{!! asset('storage/default/ico/apple-icon-144x144.png') !!}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{!! asset('storage/default/ico/apple-icon-152x152.png') !!}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{!! asset('storage/default/ico/apple-icon-180x180.png') !!}">
+    <link rel="icon" type="image/png" sizes="192x192"
+          href="{!! asset('storage/default/ico/android-icon-192x192.png') !!}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{!! asset('storage/default/ico/favicon-32x32.png') !!}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{!! asset('storage/default/ico/favicon-96x96.png') !!}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{!! asset('storage/default/ico/favicon-16x16.png') !!}">
+    <link rel="manifest" href="{!! asset('storage/default/ico/manifest.json') !!}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{!! asset('storage/default/ico/ms-icon-144x144.png') !!}">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="{{ asset(config('settings.app_favicon')) }}">
     <title>{{ MetaTag::get('title') }}</title>
     {!! MetaTag::tag('description') !!}{!! MetaTag::tag('keywords') !!}
     <link rel="canonical" href="{{ $fullUrl }}"/>
@@ -43,6 +57,7 @@ $fullUrl = Request::url();
         "publisher": ["Chantouch Sek"],
         "dateModified": "2017-10-10T10:10:7Z"
       }
+
     </script>
     @if (config('services.facebook.client_id'))
         <meta property="fb:app_id" content="{{ config('services.facebook.client_id') }}"/>
@@ -63,7 +78,8 @@ $fullUrl = Request::url();
     <link href="{!! asset('blog/css/main.css') !!}" rel="stylesheet" media="all">
     <link href="{!! asset('blog/css/styles.css') !!}" rel="stylesheet" media="all">
     <link href="{!! asset('blog/css/responsive.css') !!}" rel="stylesheet" media="all">
-    <link href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}" rel="stylesheet" media="all">
+    <link href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}" rel="stylesheet"
+          media="all">
     <script type="text/javascript">
         (function (b, o, i, l, e, r) {
             b.GoogleAnalyticsObject = l;
@@ -146,22 +162,22 @@ $fullUrl = Request::url();
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
+                    <li>
+                        <a href="https://www.bookingkh.com">Powered by BookingKh</a>
+                    </li>
                 @endif
-                <li>
-                    <a href="https://www.bookingkh.com">Powered by BookingKh</a>
-                </li>
             </ul>
         </div>
     </div>
     <!-- Main Home Layout Ends -->
-    <a href="javascript:void (0)" class="scrollToTop">
+    <a href="#" class="scrollToTop">
         <i class="fa fa-chevron-up"></i>
     </a>
 </div>
 
 <!-- Scripts -->
-<script src="{{ asset('blog/js/app-383kldle83903.min.js') }}" type="text/javascript"></script>
-<script src="{!! asset('blog/js/jquery.lazyload.min.js') !!}" type="text/javascript"></script>
+<script src="{{ asset('blog/js/app.min.js') }}" type="text/javascript"></script>
+<script async src="{!! asset('blog/js/jquery.lazyload.min.js') !!}" type="text/javascript"></script>
 <script src="{{ asset('blog/js/main.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>
 <script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
@@ -177,6 +193,22 @@ $fullUrl = Request::url();
         width: 640,
         height: 480
     });
+
+    (function () {
+        if (typeof window.CustomEvent === "function") {
+            return false;
+        }
+
+        function CustomEvent(event, params) {
+            params = params || {bubbles: false, cancelable: false, detail: undefined};
+            var evt = document.createEvent("CustomEvent");
+            evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+            return evt;
+        }
+
+        CustomEvent.prototype = window.Event.prototype;
+        window.CustomEvent = CustomEvent;
+    })();
 </script>
 </body>
 </html>

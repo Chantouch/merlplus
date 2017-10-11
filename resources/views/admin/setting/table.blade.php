@@ -16,9 +16,9 @@
                     <th>{!! $loop->index+1 !!}</th>
                     <td>{!! $setting->name !!}</td>
                     <td>
-                        <?php
-                        $json = json_decode($setting->field, true);
-                        ?>
+						<?php
+						$json = json_decode($setting->field, true);
+						?>
                         @if($json['type'] == 'checkbox')
                             <a href="javascript:void (0)" class="ajax-request" data-table="settings" data-field="value"
                                data-line-id="value{!! $setting->id !!}"
@@ -27,6 +27,8 @@
                                    class="fa {!! $setting->value == 1 ? 'fa-check-square-o' : 'fa-square-o' !!}"
                                    aria-hidden="true"></i>
                             </a>
+                        @elseif($json['type'] == 'image')
+                            <img src="{!! asset($setting->value) !!}" alt="{!! $setting->value !!}">
                         @else
                             {!! $setting->value !!}
                         @endif
@@ -44,7 +46,6 @@
             @endforeach
             </tbody>
         </table>
-        {{--{!! $settings->render() !!}--}}
     @else
         <p>There is no data here.</p>
     @endif

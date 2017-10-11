@@ -30,6 +30,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')
         Route::middleware(['auth', 'role:superadministrator|administrator|editor|supporter'])->group(function () {
             //Dashboard and profile
             Route::middleware(['permission:read-dashboard'])->group(function () {
+                Route::get('/', 'HomeController@index')->name('index');
                 Route::get('dashboard', 'HomeController@index')->name('dashboard');
             });
             Route::prefix('profile')->name('profile.')->namespace('Manage')
