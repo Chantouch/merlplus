@@ -1209,16 +1209,16 @@
         },
         {
             "name": "google/auth",
-            "version": "v1.0.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-auth-library-php.git",
-                "reference": "db8e3022a308cb0e988026d38e67b91a42b41622"
+                "reference": "548d27d670f0236dc5258fa4cdde6e7b63464cfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-auth-library-php/zipball/db8e3022a308cb0e988026d38e67b91a42b41622",
-                "reference": "db8e3022a308cb0e988026d38e67b91a42b41622",
+                "url": "https://api.github.com/repos/google/google-auth-library-php/zipball/548d27d670f0236dc5258fa4cdde6e7b63464cfd",
+                "reference": "548d27d670f0236dc5258fa4cdde6e7b63464cfd",
                 "shasum": ""
             },
             "require": {
@@ -1235,9 +1235,6 @@
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "src/"
-                ],
                 "psr-4": {
                     "Google\\Auth\\": "src"
                 }
@@ -1253,7 +1250,7 @@
                 "google",
                 "oauth2"
             ],
-            "time": "2017-07-31T16:34:40+00:00"
+            "time": "2017-10-10T17:01:45+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -5600,16 +5597,16 @@
         },
         {
             "name": "spatie/phpunit-snapshot-assertions",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/phpunit-snapshot-assertions.git",
-                "reference": "8ab4f470bfd424bfd667c8807f45180a51deab99"
+                "reference": "e551d16f0fe4eb4aa24ae1ea46b1d863fa259ac9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/phpunit-snapshot-assertions/zipball/8ab4f470bfd424bfd667c8807f45180a51deab99",
-                "reference": "8ab4f470bfd424bfd667c8807f45180a51deab99",
+                "url": "https://api.github.com/repos/spatie/phpunit-snapshot-assertions/zipball/e551d16f0fe4eb4aa24ae1ea46b1d863fa259ac9",
+                "reference": "e551d16f0fe4eb4aa24ae1ea46b1d863fa259ac9",
                 "shasum": ""
             },
             "require": {
@@ -5644,7 +5641,7 @@
                 "spatie",
                 "testing"
             ],
-            "time": "2017-10-06T22:13:16+00:00"
+            "time": "2017-10-11T08:50:30+00:00"
         },
         {
             "name": "spatie/temporary-directory",
