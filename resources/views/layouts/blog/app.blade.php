@@ -1,7 +1,7 @@
 <?php
 $fullUrl = Request::url();
 ?>
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -44,22 +44,7 @@ $fullUrl = Request::url();
             <link rel="dns-prefetch" href="{{ $dns }}">
         @endforeach
     @endif
-    <script type="application/ld+json">
-      {
-        "@context": "http://schema.org",
-        "@type": "Website",
-        "headline": "Merlplus - Local news in Cambodia | Merlplus.com",
-        "datePublished": "2017-10-10T10:10:7Z",
-        "image": [
-          "https://www.merlplus.com/blog/img/logo.png"
-        ],
-        "author": "Chantouch Sek",
-        "publisher": ["Chantouch Sek"],
-        "dateModified": "2017-10-10T10:10:7Z"
-      }
 
-
-    </script>
     @if (config('services.facebook.client_id'))
         <meta property="fb:app_id" content="{{ config('services.facebook.client_id') }}"/>
         {!! MetaTag::twitterCard() !!}
@@ -73,7 +58,6 @@ $fullUrl = Request::url();
     @if (config('settings.alexa_verify_id'))
         <meta name="alexaVerifyID" content="{{ config('settings.alexa_verify_id') }}"/>
     @endif
-    <!-- Google Tag Manager -->
     <script>
         (function (w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -97,15 +81,6 @@ $fullUrl = Request::url();
     <link href="{!! asset('blog/css/responsive.css') !!}" rel="stylesheet" media="all">
     <link href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}" rel="stylesheet"
           media="all">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107984520-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-107984520-1');
-    </script>
     <script type="text/javascript">
         (function (b, o, i, l, e, r) {
             b.GoogleAnalyticsObject = l;
@@ -119,31 +94,32 @@ $fullUrl = Request::url();
             e.src = '//www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e, r)
         }(window, document, 'script', 'ga'));
-        ga('create', 'UA-107984520-1');
+        ga('create', 'UA-51288724-1');
         ga('send', 'pageview');
     </script>
     @yield('css')
 </head>
 <body>
 <div id="app">
-    <!-- Main Home Layout start -->
-    <!-- Top toolbar -->
-    <div class="top-toolbar">
-        @include('layouts.blog.top-toolbar')
-    </div>
-    <!-- Logo and Ad banner -->
-    <div class="logo-top-ad">
-        @include('layouts.blog.logo-ads')
-    </div>
-    <!-- Main Menu -->
+    @if($agent->isMobile() || $agent->isTablet())
+        <div class="top-toolbar">
+            @include('layouts.blog.top-toolbar')
+        </div>
+    @endif
+    @if($agent->isDesktop())
+        <div class="logo-top-ad">
+            @include('layouts.blog.logo-ads')
+        </div>
+    @endif
+
     <div class="main-menu">
         @include('layouts.blog.menu')
     </div>
-    <!-- Home Slider and Big news blocks -->
-    <div class="container">
-        @yield('main-news-block')
-    </div>
-
+    @if($agent->isDesktop())
+        <div class="container">
+            @yield('main-news-block')
+        </div>
+    @endif
     <div class="container-position">
         @yield('post-background')
         @yield('contact-map')
@@ -217,6 +193,9 @@ $fullUrl = Request::url();
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 <script type="text/javascript">
+    @if($agent->isMobile() || $agent->isTablet())
+    new UISearch(document.getElementById('sb-search'));
+    @endif
     /* Social Share */
     $('.share').ShareLink({
         title: '{{ addslashes(MetaTag::get('title')) }}',

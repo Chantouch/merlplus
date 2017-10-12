@@ -276,7 +276,7 @@ class Post extends Model
         //$thumbnail_name = $thumbnail->store('uploads/posts');
         $image_large = Image::make($thumbnail)->resize(1100, 619);
         $image_medium = Image::make($thumbnail)->resize(970, 546);
-        $image_small = Image::make($thumbnail)->resize(510, 287);
+        $image_small = Image::make($thumbnail)->resize(435, 250);
         $ext = $thumbnail->getClientOriginalExtension();
         $path = storage_path('app/public/uploads/posts/' . $post->id . '/');
         $file_name = str_random(50) . '.' . $ext;

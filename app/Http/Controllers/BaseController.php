@@ -16,6 +16,7 @@ use App\Model\Post;
 use App\Model\Setting;
 use App\Model\Tag;
 use Carbon\Carbon;
+use Jenssegers\Agent\Agent;
 use Torann\LaravelMetaTags\Facades\MetaTag;
 
 class BaseController extends Controller
@@ -75,7 +76,7 @@ class BaseController extends Controller
             '//cdn.api.twitter.com',
             '//oss.maxcdn.com',
         ];
-
+        $agent = new Agent();
         view()->share([
             'top_ads' => $top_ads,
             'top_right_ads' => $top_right_ads,
@@ -85,7 +86,8 @@ class BaseController extends Controller
             'tag_menu' => $tag_menu,
             'pages' => $pages,
             'socials' => $socials,
-            'dnsPrefetch' => $dnsPrefetch
+            'dnsPrefetch' => $dnsPrefetch,
+	        'agent' => $agent
         ]);
     }
 

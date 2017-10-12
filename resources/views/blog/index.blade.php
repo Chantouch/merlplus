@@ -26,7 +26,7 @@
                         <div class="rt-block mid-block-1 col-sm-6 boxgrid2 caption">
                             <a href="{!! $ads->url !!}" target="_blank">
                                 <img alt="{!! $ads->provider_name !!}" class="img lazyload"
-                                     src="{!! asset('blog/img/blur.jpg') !!}"
+                                     src="{!! asset($ads->banner()->media_url) !!}"
                                      data-src="{!! asset($ads->banner()->media_url) !!}"/>
                             </a>
                             <h2 class="cat-label cat-label4">
@@ -54,7 +54,7 @@
                     @foreach($home_top_news_slider->take(3) as $ads)
                         <li>
                             <img alt="{!! $ads->banner()->original_filename !!}" class="lazyload"
-                                 src="{!! asset('blog/img/blur.jpg') !!}"
+                                 src="{!! asset($ads->banner()->media_url) !!}"
                                  data-src="{!! asset($ads->banner()->media_url) !!}"/>
                         </li>
                     @endforeach
