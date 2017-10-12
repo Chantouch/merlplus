@@ -24,7 +24,7 @@
                                         <div class="zoom-img">
                                             <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                                                 <img alt="{!! $post->title !!}" class="blocky lazyload"
-                                                     src="{!! asset('blog/img/blur.jpg') !!}"
+                                                     src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"
                                                      data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                                             </a>
                                         </div>

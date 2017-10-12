@@ -1,7 +1,7 @@
 <?php
 $fullUrl = Request::url();
 ?>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -73,7 +73,7 @@ $fullUrl = Request::url();
     @if (config('settings.alexa_verify_id'))
         <meta name="alexaVerifyID" content="{{ config('settings.alexa_verify_id') }}"/>
     @endif
-<!-- Google Tag Manager -->
+    <!-- Google Tag Manager -->
     <script>
         (function (w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -97,6 +97,15 @@ $fullUrl = Request::url();
     <link href="{!! asset('blog/css/responsive.css') !!}" rel="stylesheet" media="all">
     <link href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}" rel="stylesheet"
           media="all">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107984520-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-107984520-1');
+    </script>
     <script type="text/javascript">
         (function (b, o, i, l, e, r) {
             b.GoogleAnalyticsObject = l;
@@ -110,7 +119,7 @@ $fullUrl = Request::url();
             e.src = '//www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e, r)
         }(window, document, 'script', 'ga'));
-        ga('create', 'UA-51288724-1');
+        ga('create', 'UA-107984520-1');
         ga('send', 'pageview');
     </script>
     @yield('css')

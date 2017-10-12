@@ -20,6 +20,10 @@ class ContactController extends BaseController
      */
     public function index()
     {
+	    MetaTag::set('title', 'Contact us | merlplus');
+	    MetaTag::set('keywords', 'merl,plus, plus merl, merl plus, contact us, us contact, break news, hot news, valuable news, merlplus.com');
+	    MetaTag::set('description', config('settings.app_slogan', 'Up-to-date in a minute news, breaking news, feature and audio stories. Merlplus provides the trusted local Cambodia news, also the world wide news, to all original area, and regional perspective ,local news in Cambodia. Entertainments, technologies, cook recipes, science, business news....'));
+	    MetaTag::set('image', asset('blog/img/logo.png'));
         return view('blog.page.contact');
     }
 
