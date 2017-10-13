@@ -33,23 +33,22 @@
     <div class="col-sm-12">
         <div class="white-box">
             <h3 class="box-title m-b-0">
-                Media
+                {!! __('admin.media') !!}
             </h3>
-            <p class="text-muted m-b-10">Easy to managing your media</p>
-
+            <p class="text-muted m-b-10">{!! __('admin.easy_to_managing_your_media') !!}</p>
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
                     <a href="#media-library" aria-controls="media-library" role="tab" data-toggle="tab"
                        aria-expanded="true" @click.prevent="fetchMediaLibrary">
                         <span class="visible-xs"><i class="ti-home"></i></span>
-                        <span class="hidden-xs"> Media Library</span>
+                        <span class="hidden-xs"> {!! __('admin.media_library') !!}</span>
                     </a>
                 </li>
                 <li role="presentation" class="">
                     <a href="#upload-files" aria-controls="upload-files" role="tab" data-toggle="tab"
                        aria-expanded="false">
                         <span class="visible-xs"><i class="ti-user"></i></span>
-                        <span class="hidden-xs">Upload Files</span>
+                        <span class="hidden-xs">{!! __('admin.upload_file') !!}</span>
                     </a>
                 </li>
             </ul>
@@ -65,9 +64,9 @@
                         <input name="file" type="file" multiple/>
                     </div>
                     {!! Form::close() !!}
-                    <p class="m-t-20">Maximum upload file size: 100 MB.</p>
+                    <p class="m-t-20">{!! __('admin.maximum_upload_file_size') !!}</p>
                     <button type="button" class="btn btn-danger waves-effect waves-light" id="insert-media" disabled>
-                        Insert Media
+                       {!! __('admin.insert_media') !!}
                     </button>
                     <div class="clearfix"></div>
                 </div>

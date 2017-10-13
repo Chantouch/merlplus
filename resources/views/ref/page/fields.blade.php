@@ -1,5 +1,5 @@
 @if(count($pages)>1)
-    {!! Form::label('parent_id', 'Page Level:') !!}
+    {!! Form::label('parent_id', __('admin.level')) !!}
     <div class="form-group">
         <div class="form-line">
             {!! Form::select('parent_id',$pages , null, ['class' => 'form-control show-tick', 'data-live-search' => 'true', 'placeholder' => 'Select page']) !!}
@@ -7,7 +7,7 @@
     </div>
 @endif
 
-{!! Form::label('name', 'Page Name:') !!}
+{!! Form::label('name', __('admin.name')) !!}
 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
     <div class="form-line">
         {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter your page name']) !!}
@@ -19,7 +19,7 @@
     @endif
 </div>
 
-{!! Form::label('slug', 'Page slug:') !!}
+{!! Form::label('slug', __('admin.slug')) !!}
 <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
     <div class="form-line">
         {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Enter your page slug']) !!}
@@ -31,7 +31,7 @@
     @endif
 </div>
 
-{!! Form::label('description', 'Page Description:') !!}
+{!! Form::label('description', __('admin.description')) !!}
 <div class="form-group">
     <div class="form-line">
         {!! Form::textarea('description', null, ['class' => 'form-control summernote', 'placeholder' => 'Enter your page description']) !!}
@@ -45,7 +45,7 @@
 
 
 <div class="form-group tagsinput-area">
-    <label for="tag">Tag:</label>
+    <label for="tag">{!! __('admin.tags') !!}:</label>
     <input type="hidden" name="tags" :value="tags">
     <div class="form-line">
         <select class="form-control" multiple data-placeholder="Choose" id="tag" v-model="tags">
@@ -69,12 +69,12 @@
                 <span class="fileinput-filename"></span>
             </div>
             <span class="input-group-addon btn btn-default btn-file">
-                <span class="fileinput-new">Select file</span>
-                <span class="fileinput-exists">Change</span>
+                <span class="fileinput-new">{!! __('admin.select_image') !!}</span>
+                <span class="fileinput-exists">{!! __('admin.change') !!}</span>
                 <input type="file" name="file" @change.prevent="previewImage" accept="image/*">
             </span>
             <a href="javascript:void (0)" class="input-group-addon btn btn-default fileinput-exists"
-               data-dismiss="fileinput" @click.prevent="removeImage">Remove</a>
+               data-dismiss="fileinput" @click.prevent="removeImage">{!! __('admin.remove') !!}</a>
         </div>
     </div>
     @if ($errors->has('file'))
@@ -90,8 +90,8 @@
 <div class="checkbox checkbox-success">
     {{ Form::hidden('status', '0') }}
     {!! Form::checkbox('status', '1', null, ['id'=> 'status']) !!}
-    <label for="status"> <span>Active</span> </label>
+    <label for="status"> <span>{!! __('admin.active') !!}</span> </label>
 </div>
 
-<button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
-<a href="{!! route('admin.ref.page.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>
+<button class="btn btn-primary m-t-15 waves-effect">{!! __('admin.submit') !!}</button>
+<a href="{!! route('admin.ref.page.index') !!}" class="btn btn-primary m-t-15 waves-effect">{!! __('admin.cancel') !!}</a>

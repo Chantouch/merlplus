@@ -24,8 +24,7 @@
                     @if($ads->hasBanner())
                         <a href="{!! $ads->url !!}" target="_blank">
                             <img alt="{!! $ads->banner()->original_filename !!}"
-                                 src="{!! asset('blog/img/blur-ads.jpg') !!}"
-                                 data-src="{!! asset($ads->banner()->media_url) !!}"
+                                 src="{!! asset($ads->banner()->media_url) !!}"
                                  height="90" class="lazyload img-responsive"/>
                         </a>
                     @else

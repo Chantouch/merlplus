@@ -48,7 +48,16 @@ class CategoryController extends Controller
 		$categories = Category::with('children')
 			->where('status', 1)
 			->orderBy('id')->pluck('name', 'id');
-		return view($this->view . 'create', compact('categories', 'page_title'));
+		$category_color = [
+			'1' => '#7300a6',
+			'2' => '#ffa905',
+			'3' => '#20c1dd',
+			'4' => '#f04a3c',
+			'5' => '#469b9c',
+			'6' => '#67dedf',
+			'7' => '#df62c1',
+		];
+		return view($this->view . 'create', compact('categories', 'page_title','category_color'));
 	}
 
 	/**
@@ -118,7 +127,16 @@ class CategoryController extends Controller
 		$categories = Category::with('children')
 			->where('status', 1)
 			->orderBy('id')->pluck('name', 'id');
-		return view($this->view . 'edit', compact('category', 'categories', 'page_title'));
+		$category_color = [
+			'1' => '#7300a6',
+			'2' => '#ffa905',
+			'3' => '#20c1dd',
+			'4' => '#f04a3c',
+			'5' => '#469b9c',
+			'6' => '#67dedf',
+			'7' => '#df62c1',
+		];
+		return view($this->view . 'edit', compact('category', 'categories', 'page_title','category_color'));
 	}
 
 	/**

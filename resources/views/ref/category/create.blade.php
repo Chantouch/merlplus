@@ -9,8 +9,8 @@
 @section('content')
     <div class="col-sm-12">
         <div class="white-box">
-            <h3 class="box-title m-b-0">{!! __('app.table.category') !!}</h3>
-            <p class="text-muted m-b-30">Easy to managing your category</p>
+            <h3 class="box-title m-b-0">{!! __('admin.category') !!}</h3>
+            <p class="text-muted m-b-30">{!! __('admin.easy_to_managing_your_category') !!}</p>
             {!! Form::open(['route' => ['admin.ref.category.store'], 'method' => 'POST', 'files'=> true]) !!}
             @include('ref.category.fields')
             {!! Form::close() !!}

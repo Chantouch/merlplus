@@ -4,12 +4,12 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th width="120">Thumbnail</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Tags</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th width="120">{!! __('admin.thumbnail') !!}</th>
+                <th>{!! __('admin.name') !!}</th>
+                <th>{!! __('admin.description') !!}</th>
+                <th>{!! __('admin.tags') !!}</th>
+                <th>{!! __('admin.status') !!}</th>
+                <th>{!! __('admin.action') !!}</th>
             </tr>
             </thead>
             <tbody>

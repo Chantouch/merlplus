@@ -39,7 +39,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Media Library</h4></div>
+                <h4 class="modal-title">{!! __('admin.media_library') !!}</h4></div>
             <div class="modal-body">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
@@ -47,14 +47,14 @@
                         <a href="#media-library" aria-controls="media-library" role="tab" data-toggle="tab"
                            aria-expanded="true" @click.prevent="getMediaLibrary">
                             <span class="visible-xs"><i class="ti-home"></i></span>
-                            <span class="hidden-xs"> Media Library</span>
+                            <span class="hidden-xs"> {!! __('admin.media_library') !!}</span>
                         </a>
                     </li>
                     <li role="presentation" class="">
                         <a href="#upload-files" aria-controls="upload-files" role="tab" data-toggle="tab"
                            aria-expanded="false">
                             <span class="visible-xs"><i class="ti-user"></i></span>
-                            <span class="hidden-xs">Upload Files</span>
+                            <span class="hidden-xs">{!! __('admin.upload_file') !!}</span>
                         </a>
                     </li>
                 </ul>
@@ -62,7 +62,7 @@
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="media-library">
                         <div class="col-md-9 col-sm-9">
-                            <h4 class="box-title m-b-0">Media Files Uploaded</h4>
+                            <h4 class="box-title m-b-0">{!! __('admin.media_library') !!}</h4>
                             <p class="text-muted m-b-10"> Select any file to keep to article</p>
                             <div class="row">
                                 <div id="media-library-slim">

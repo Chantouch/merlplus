@@ -1,4 +1,4 @@
-{!! Form::label('name', 'Name:') !!}
+{!! Form::label('name', __('admin.name')) !!}
 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
     <div class="form-line">
         {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter your name']) !!}
@@ -10,7 +10,7 @@
     @endif
 </div>
 
-{!! Form::label('slug', 'Slug:') !!}
+{!! Form::label('slug', __('admin.slug')) !!}
 <div class="form-group">
     <div class="form-line">
         {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Enter your slug']) !!}
@@ -23,7 +23,7 @@
 </div>
 
 <!--Feature image for tag -->
-<label for="feature_image">Feature Image (Size: 1920x760)</label>
+<label for="feature_image">{!! __('admin.thumbnail') !!} (Size: 1920x760)</label>
 <div class="form-group{{ $errors->has('thumbnail') ? ' has-error' : '' }}">
     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
         <div class="form-control" data-trigger="fileinput">
@@ -31,12 +31,12 @@
             <span class="fileinput-filename"></span>
         </div>
         <span class="input-group-addon btn btn-default btn-file">
-            <span class="fileinput-new">Select file</span>
-            <span class="fileinput-exists">Change</span>
+            <span class="fileinput-new">{!! __('admin.select_image') !!}</span>
+            <span class="fileinput-exists">{!! __('admin.change') !!}</span>
             <input type="file" name="thumbnail" accept="image/*">
         </span>
         <a href="javascript:void (0)" class="input-group-addon btn btn-default fileinput-exists"
-           data-dismiss="fileinput">Remove</a>
+           data-dismiss="fileinput">{!! __('admin.remove') !!}</a>
     </div>
     @if ($errors->has('thumbnail'))
         <span class="help-block">
@@ -46,7 +46,7 @@
 </div>
 
 <!--Menu image for tag -->
-<label for="menu_thumbnail">Menu Thumbnail (Size: 112x72)</label>
+<label for="menu_thumbnail">{!! __('admin.menu_thumbnail') !!} (Size: 112x72)</label>
 <div class="form-group{{ $errors->has('menu_thumbnail') ? ' has-error' : '' }}">
     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
         <div class="form-control" data-trigger="fileinput">
@@ -54,12 +54,12 @@
             <span class="fileinput-filename"></span>
         </div>
         <span class="input-group-addon btn btn-default btn-file">
-            <span class="fileinput-new">Select file</span>
-            <span class="fileinput-exists">Change</span>
+            <span class="fileinput-new">{!! __('admin.select_image') !!}</span>
+            <span class="fileinput-exists">{!! __('admin.change') !!}</span>
             <input type="file" name="menu_thumbnail" accept="image/*">
         </span>
         <a href="javascript:void (0)" class="input-group-addon btn btn-default fileinput-exists"
-           data-dismiss="fileinput">Remove</a>
+           data-dismiss="fileinput">{!! __('admin.remove') !!}</a>
     </div>
     @if ($errors->has('menu_thumbnail'))
         <span class="help-block">
@@ -77,8 +77,8 @@
 <div class="checkbox checkbox-success">
     {{ Form::hidden('status', '0') }}
     {!! Form::checkbox('status', '1', null, ['id'=> 'status']) !!}
-    <label for="status"> <span>Active</span> </label>
+    <label for="status"> <span>{!! __('admin.active') !!}</span> </label>
 </div>
 
-<button class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
-<a href="{!! route('admin.ref.tag.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>
+<button class="btn btn-primary m-t-15 waves-effect">{!! __('admin.submit') !!}</button>
+<a href="{!! route('admin.ref.tag.index') !!}" class="btn btn-primary m-t-15 waves-effect">{!! __('admin.cancel') !!}</a>

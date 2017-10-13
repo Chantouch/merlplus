@@ -5,7 +5,7 @@
         :
     </label>
 @else
-    {!! Form::label('name', 'Slug:') !!}
+    {!! Form::label('name', __('admin.slug')) !!}
 @endif
 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
     <div class="form-line">
@@ -18,7 +18,7 @@
     @endif
 </div>
 
-{!! Form::label('display_name', 'Display Name:') !!}
+{!! Form::label('display_name', __('admin.name')) !!}
 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
     <div class="form-line">
         {!! Form::text('display_name', null, ['class' => 'form-control', 'placeholder' => 'Enter your display name']) !!}
@@ -30,7 +30,7 @@
     @endif
 </div>
 
-{!! Form::label('description', 'Description:') !!}
+{!! Form::label('description', __('admin.description')) !!}
 <div class="form-group">
     <div class="form-line">
         {!! Form::textarea('description', null, ['class' => 'form-control no-resize auto-growth', 'placeholder' => 'Enter your description','rows'=>1]) !!}
@@ -44,7 +44,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('permissions', 'Permissions:') !!}<br>
+    {!! Form::label('permissions', __('admin.permission')) !!}<br>
     @foreach($permissions as  $permission)
         {{--{!! Form::checkbox('permissions', $permission->id, null, ['class' => 'filled-in', 'id'=> $permission->id,'v-model'=>'permissionsSelected']) !!}--}}
         <input name="permission" type="checkbox" id="{!! $permission->id !!}" value="{!! $permission->id !!}" class="filled-in chk-col-red"
@@ -59,5 +59,5 @@
 </div>
 
 <br>
-<button class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
-<a href="{!! route('admin.manage.role.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>
+<button class="btn btn-primary m-t-15 waves-effect">{!! __('admin.submit') !!}</button>
+<a href="{!! route('admin.manage.role.index') !!}" class="btn btn-primary m-t-15 waves-effect">{!! __('admin.cancel') !!}</a>

@@ -12,11 +12,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Media Library</h4></div>
+                <h4 class="modal-title">{!! __('admin.media_library') !!}</h4></div>
             <div class="modal-body">
                 <!-- Nav tabs -->
                 <div class="col-md-9 col-sm-9">
-                    <h4 class="box-title m-b-0">Media Files Uploaded</h4>
+                    <h4 class="box-title m-b-0">{!! __('admin.media_library_uploaded') !!}</h4>
                     <p class="text-muted m-b-10"> Select any file to keep to article</p>
                     <div class="row">
                         <div class="thumbnail thumbnail-image">
@@ -25,8 +25,8 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <h4 class="box-title m-b-0">Media Details</h4>
-                    <p class="text-muted m-b-10">Media Deep details insider</p>
+                    <h4 class="box-title m-b-0">{!! __('admin.media_details') !!}</h4>
+                    <p class="text-muted m-b-10">{!! __('admin.media_deep_details_insider') !!}</p>
                     <div class="attachment-info">
                         <div class="details">
                             <div class="filename">File name: @{{ mediaLibraryDetails.limit_name + '.' +

@@ -8,14 +8,14 @@
     <div class="col-sm-12">
         <div class="white-box">
             <div class="col-md-12">
-                <h3 class="box-title m-b-0">Upload Media Files </h3>
-                <p class="text-muted m-b-30"> Drop files anywhere to upload</p>
+                <h3 class="box-title m-b-0">{!! __('admin.media') !!}</h3>
+                <p class="text-muted m-b-30">{!! __('admin.easy_to_managing_your_media') !!}</p>
                 {!! Form::open([ 'route' => [ 'admin.media-library.store' ], 'files' => true, 'class' => 'dropzone', 'id' => 'image-upload' ]) !!}
                 <div class="fallback">
                     <input name="file" type="file" multiple/>
                 </div>
                 {!! Form::close() !!}
-                <p class="m-t-20">Maximum upload file size: 100 MB.</p>
+                <p class="m-t-20">{!! __('admin.maximum_upload_file_size') !!}</p>
             </div>
             <div class="clearfix"></div>
         </div>

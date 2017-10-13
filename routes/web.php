@@ -23,10 +23,27 @@ Route::get('media/news/{id}/{filename}', function ($id, $filename) {
 	return $response;
 })->name('media.posts.path');
 
-Auth::routes();
+Route::namespace('Auth')->group(function () {
+// Auth::routes();
+// Authentication Routes...
+	Route::get('login', 'LoginController@showLoginForm')->name('login');
+	Route::post('login', 'LoginController@login');
+	Route::post('logout', 'LoginController@logout')->name('logout');
+
+// Registration Routes...
+//Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
+//Route::post('register', 'RegisterController@register');
+
+// Password Reset Routes...
+	Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+	Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+	Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+	Route::post('password/reset', 'ResetPasswordController@reset');
+});
+
 Route::prefix('admin')->name('admin.')->namespace('Admin')
 	->group(function () {
-		Route::resource('media-library', 'MediaLibraryController', ['only' => 'show']);
+		Route::resource('media-library', 'MediaLibraryController');
 		Route::middleware(['auth', 'role:superadministrator|administrator|editor|supporter'])->group(function () {
 			//Dashboard and profile
 			Route::middleware(['permission:read-dashboard'])->group(function () {
@@ -76,7 +93,6 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')
 				Route::resource('advertise', 'AdvertiseController');
 				Route::resource('advertise-type', 'AdvertiseTypeController');
 			});
-			Route::resource('media-library', 'MediaLibraryController', ['excerpt' => 'show']);
 			Route::get('/insert-db', 'HomeController@insertPostCategory');
 		});
 	});

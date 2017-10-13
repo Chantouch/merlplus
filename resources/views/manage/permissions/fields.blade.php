@@ -7,7 +7,7 @@
     </div>
 @endif
 <div id="basic_form" v-if="permissionType == 'basic'">
-    {!! Form::label('name', 'Name:') !!}
+    {!! Form::label('name', __('admin.slug')) !!}
     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
         <div class="form-line">
             {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter your name']) !!}
@@ -19,7 +19,7 @@
         @endif
     </div>
 
-    {!! Form::label('display_name', 'Display Name:') !!}
+    {!! Form::label('display_name', __('admin.name')) !!}
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
         <div class="form-line">
             {!! Form::text('display_name', null, ['class' => 'form-control', 'placeholder' => 'Enter your display name']) !!}
@@ -31,7 +31,7 @@
         @endif
     </div>
 
-    {!! Form::label('description', 'Description:') !!}
+    {!! Form::label('description', __('admin.description')) !!}
     <div class="form-group">
         <div class="form-line">
             {!! Form::textarea('description', null, ['class' => 'form-control no-resize auto-growth', 'placeholder' => 'Enter your description','rows'=>1]) !!}
@@ -78,9 +78,9 @@
                 <table class="table" v-if="resource.length >= 3">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Slug</th>
-                        <th>Description</th>
+                        <th>{!! __('admin.name') !!}</th>
+                        <th>{!! __('admin.slug') !!}</th>
+                        <th>{!! __('admin.description') !!}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -96,5 +96,5 @@
     </div>
 @endif
 <br>
-<button class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
-<a href="{!! route('admin.manage.permission.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>
+<button class="btn btn-primary m-t-15 waves-effect">{!! __('admin.submit') !!}</button>
+<a href="{!! route('admin.manage.permission.index') !!}" class="btn btn-primary m-t-15 waves-effect">{!! __('admin.cancel') !!}</a>

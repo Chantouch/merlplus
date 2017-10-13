@@ -6,8 +6,8 @@
 @section('content')
     <div class="col-sm-12">
         <div class="white-box">
-            <h3 class="box-title m-b-0">Advertise</h3>
-            <p class="text-muted m-b-30">Easy to managing your advertise</p>
+            <h3 class="box-title m-b-0">{!! __('admin.advertise') !!}</h3>
+            <p class="text-muted m-b-30">{!! __('admin.easy_to_manage_your_setting') !!}</p>
             {!! Form::model($setting, ['route' => ['admin.settings.update', $setting->id], 'method' => 'patch', 'files'=> true]) !!}
             @include('admin.setting.fields')
             {!! Form::close() !!}

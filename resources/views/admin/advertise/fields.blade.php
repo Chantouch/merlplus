@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6">
-        {!! Form::label('provider_name', 'Provider Name:') !!}
+        {!! Form::label('provider_name', __('admin.provider_name')) !!}
         <div class="form-group{{ $errors->has('provider_name') ? ' has-error' : '' }}">
             <div class="form-line">
                 {!! Form::text('provider_name', null, ['class' => 'form-control', 'placeholder' => 'Enter your provider name']) !!}
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        {!! Form::label('price', 'Price:') !!}
+        {!! Form::label('price', __('admin.price')) !!}
         <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
             <div class="form-line">
                 {!! Form::text('price', null, ['class' => 'form-control', 'placeholder' => 'Enter ads price']) !!}
@@ -28,7 +28,7 @@
 </div>
 <div class="row">
     <div class="col-md-6">
-        {!! Form::label('start_date', 'Start Date:') !!}
+        {!! Form::label('start_date', __('admin.start_date')) !!}
         <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
             <div class="form-line">
                 {!! Form::date('start_date', null, ['class' => 'form-control']) !!}
@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        {!! Form::label('end_date', 'End Date:') !!}
+        {!! Form::label('end_date', __('admin.end_date')) !!}
         <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
             <div class="form-line">
                 {!! Form::date('end_date', null, ['class' => 'form-control']) !!}
@@ -55,7 +55,7 @@
     </div>
 </div>
 
-{!! Form::label('advertise_type_id', 'Ads Type:') !!}
+{!! Form::label('advertise_type_id', __('admin.ads_type')) !!}
 <div class="form-group{{ $errors->has('advertise_type_id') ? ' has-error' : '' }}">
     <div class="form-line">
         <input type="hidden" name="advertise_type_id" :value="advertise.adv_type">
@@ -112,7 +112,7 @@
 
 <div class="row" v-else="">
     <div class="col-md-12">
-        <label for="is_video">Is Video?</label>
+        <label for="is_video">{!! __('admin.is_video') !!}?</label>
         <div class="form-group">
             <input type="hidden" name="is_video" :value="advertise.is_video">
             <input type="checkbox" id="is_video" v-model="advertise.is_video" @change.prevent="isVideo" value="1">
@@ -121,7 +121,7 @@
 
     <div class="col-md-12" v-if="advertise.is_video">
         <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}" v-if="advertise.is_video">
-            {!! Form::label('url', 'Provider URL:') !!}
+            {!! Form::label('url', __('admin.provider_url')) !!}
             {!! Form::textarea('url', null, ['class' => 'form-control summernote', 'placeholder' => 'Enter your url']) !!}
             @if ($errors->has('url'))
                 <span class="help-block">
@@ -134,7 +134,7 @@
     <div class="col-md-12" v-else="">
         <div class="row">
             <div class="col-md-12">
-                {!! Form::label('url', 'Provider URL:') !!}
+                {!! Form::label('url', __('admin.provider_url')) !!}
                 <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
                     <div class="form-line">
                         {!! Form::text('url', null, ['class' => 'form-control', 'placeholder' => 'Enter your provider url']) !!}
@@ -148,7 +148,7 @@
             </div>
             <!--Image of ads-->
             <div class="form-group{{ $errors->has('banner') ? ' has-error' : '' }}">
-                <label class="col-sm-12">Banner Image <span>(Please follow the ads size of image)</span></label>
+                <label class="col-sm-12">{!! __('admin.banner_image') !!} <span>(Please follow the ads size of image)</span></label>
                 <div class="col-sm-12">
                     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                         <div class="form-control" data-trigger="fileinput">
@@ -183,8 +183,8 @@
 <div class="checkbox checkbox-success">
     {{ Form::hidden('active', '0') }}
     {!! Form::checkbox('active', '1', null, ['id'=> 'status']) !!}
-    <label for="status"> <span>Active</span> </label>
+    <label for="status"> <span>{!! __('admin.active') !!}</span> </label>
 </div>
 
-<button class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
-<a href="{!! route('admin.advertise.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>
+<button class="btn btn-primary m-t-15 waves-effect">{!! __('admin.submit') !!}</button>
+<a href="{!! route('admin.advertise.index') !!}" class="btn btn-primary m-t-15 waves-effect">{!! __('admin.cancel') !!}</a>

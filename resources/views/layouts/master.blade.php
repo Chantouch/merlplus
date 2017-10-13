@@ -147,57 +147,38 @@
             load.update();
         }, 500);
     });
+
+    function toastPop($type) {
+        $.toast({
+            heading: {!! __('admin.welcome_to_site').config('setting.app_name') !!},
+            text: {{ Session::get('message') }},
+            position: 'top-right',
+            loaderBg: '#ff6849',
+            icon: $type,
+            hideAfter: 3000,
+            stack: 6
+        });
+    }
+
+    @if(Session::has('message'))
     $(function () {
-                @if(Session::has('message'))
         let type = "{{ Session::get('alert-type', 'info') }}";
         switch (type) {
             case 'info':
-                $.toast({
-                    heading: 'Welcome to my Elite admin',
-                    text: {{ Session::get('message') }},
-                    position: 'top-right',
-                    loaderBg: '#ff6849',
-                    icon: 'info',
-                    hideAfter: 3000,
-                    stack: 6
-                });
+                toastPop('info');
                 break;
             case 'warning':
-                $.toast({
-                    heading: 'Welcome to my Elite admin',
-                    text: {{ Session::get('message') }},
-                    position: 'top-right',
-                    loaderBg: '#ff6849',
-                    icon: 'warning',
-                    hideAfter: 3000,
-                    stack: 6
-                });
+                toastPop('warning');
                 break;
             case 'success':
-                $.toast({
-                    heading: 'Welcome to my Elite admin',
-                    text: {{ Session::get('message') }},
-                    position: 'top-right',
-                    loaderBg: '#ff6849',
-                    icon: 'success',
-                    hideAfter: 3000,
-                    stack: 6
-                });
+                toastPop('success');
                 break;
             case 'error':
-                $.toast({
-                    heading: 'Welcome to my Elite admin',
-                    text: {{ Session::get('message') }},
-                    position: 'top-right',
-                    loaderBg: '#ff6849',
-                    icon: 'error',
-                    hideAfter: 3000,
-                    stack: 6
-                });
+                toastPop('error');
                 break;
         }
-        @endif
-    })
+    });
+    @endif
 </script>
 </body>
 </html>

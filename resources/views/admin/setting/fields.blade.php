@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        {!! Form::label('name', 'Name:') !!}
+        {!! Form::label('name', __('admin.name')) !!}
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
             <div class="form-line">
                 {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter your name']) !!}
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="col-md-12">
-        {!! Form::label('description', 'Description:') !!}
+        {!! Form::label('description', __('admin.description')) !!}
         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
             <div class="form-line">
                 {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Enter description']) !!}
@@ -63,5 +63,5 @@
     </div>
 </div>
 
-<button class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
-<a href="{!! route('admin.settings.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>
+<button class="btn btn-primary m-t-15 waves-effect">{!! __('admin.submit') !!}</button>
+<a href="{!! route('admin.settings.index') !!}" class="btn btn-primary m-t-15 waves-effect">{!! __('admin.cancel') !!}</a>

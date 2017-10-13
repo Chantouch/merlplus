@@ -4,13 +4,13 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Slug</th>
-                <th>Menu Thumbnail</th>
-                <th>Thumbnail</th>
-                <th>Is Menu</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th>{!! __('admin.name') !!}</th>
+                <th>{!! __('admin.slug') !!}</th>
+                <th>{!! __('admin.menu_thumbnail') !!}</th>
+                <th>{!! __('admin.thumbnail') !!}</th>
+                <th>{!! __('admin.is_menu') !!}</th>
+                <th>{!! __('admin.status') !!}</th>
+                <th>{!! __('admin.action') !!}</th>
             </tr>
             </thead>
             <tbody>

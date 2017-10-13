@@ -4,12 +4,12 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Slug</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Ad Type</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th>{!! __('admin.slug') !!}</th>
+                <th>{!! __('admin.name') !!}</th>
+                <th>{!! __('admin.price') !!}</th>
+                <th>{!! __('admin.ads_type') !!}</th>
+                <th>{!! __('admin.status') !!}</th>
+                <th>{!! __('admin.action') !!}</th>
             </tr>
             </thead>
             <tbody>

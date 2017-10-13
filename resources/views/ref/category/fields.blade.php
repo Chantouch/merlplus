@@ -1,29 +1,29 @@
 <div class="row">
     <div class="col-md-6">
         @if(count($categories)>1)
-            {!! Form::label('parent_id', 'Category Level:') !!}
+            {!! Form::label('parent_id', __('admin.level')) !!}
             <div class="form-group">
                 <div class="form-line">
-                    {!! Form::select('parent_id',$categories , null, ['class' => 'form-control show-tick', 'data-live-search' => 'true', 'placeholder' => 'Select category']) !!}
+                    {!! Form::select('parent_id',$categories , null, ['class' => 'form-control show-tick', 'data-live-search' => 'true', 'placeholder' => __('admin.select')]) !!}
                 </div>
             </div>
         @endif
 
-        {!! Form::label('slug', 'Category slug:') !!}
+        {!! Form::label('slug', __('admin.slug')) !!}
         <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
             <div class="form-line">
                 {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Enter your category slug']) !!}
             </div>
             @if ($errors->has('slug'))
                 <span class="help-block">
-                        <strong>{{ $errors->first('slug') }}</strong>
-                    </span>
+                    <strong>{{ $errors->first('slug') }}</strong>
+                </span>
             @endif
         </div>
 
     </div>
     <div class="col-md-6">
-        {!! Form::label('name', 'Category Name:') !!}
+        {!! Form::label('name', __('admin.name')) !!}
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
             <div class="form-line">
                 {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter your category name']) !!}
@@ -35,11 +35,11 @@
             @endif
         </div>
 
-        {!! Form::label('color_id', 'Category Color:') !!}
+        {!! Form::label('color_id', __('admin.color')) !!}
         <div class="form-group{{ $errors->has('color_id') ? ' has-error' : '' }}">
             <div class="input-group">
                 <span class="input-group-addon" id="color-id-category">@</span>
-                {!! Form::text('color_id', null, ['class' => 'form-control', 'placeholder' => 'Enter your category color', 'aria-describedby' => 'color-id-category']) !!}
+                {!! Form::select('color_id',$category_color , null, ['class' => 'form-control show-tick', 'data-live-search' => 'true', 'placeholder' => __('admin.select_category_color')]) !!}
             </div>
             @if ($errors->has('color_id'))
                 <span class="help-block">
@@ -50,7 +50,7 @@
     </div>
 </div>
 
-{!! Form::label('description', 'Category Description:') !!}
+{!! Form::label('description', __('admin.description')) !!}
 <div class="form-group">
     <div class="form-line">
         {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Enter your category description']) !!}
@@ -64,7 +64,7 @@
 
 
 <div class="form-group tagsinput-area">
-    <label for="tag">Tag:</label>
+    <label for="tag">{!! __('admin.tags') !!}:</label>
     <input type="hidden" name="tags" :value="tags">
     <div class="form-line">
         <select class="form-control" multiple data-placeholder="Choose" id="tag" v-model="tags">
@@ -82,7 +82,7 @@
     <div class="col-md-6">
         <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
             <div class="row">
-                <label class="col-sm-12">Image <span>(Please follow the size of image)</span></label>
+                <label class="col-sm-12">{!! __('admin.image') !!} <span>(Please follow the size of image)</span></label>
                 <div class="col-sm-12">
                     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                         <div class="form-control" data-trigger="fileinput">
@@ -113,7 +113,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        {!! Form::label('position_order', 'Category Order:') !!}
+        {!! Form::label('position_order', __('admin.order')) !!}
         <div class="form-group{{ $errors->has('position_order') ? ' has-error' : '' }}">
             <div class="input-group">
                 <span class="input-group-addon" id="color-id-category">@</span>
@@ -131,8 +131,8 @@
 <div class="checkbox checkbox-success">
     {{ Form::hidden('status', '0') }}
     {!! Form::checkbox('status', '1', null, ['id'=> 'status']) !!}
-    <label for="status"> <span>Active</span> </label>
+    <label for="status"> <span>{!! __('admin.active') !!}</span> </label>
 </div>
 
-<button class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
-<a href="{!! route('admin.ref.category.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>
+<button class="btn btn-primary m-t-15 waves-effect">{!! __('admin.submit') !!}</button>
+<a href="{!! route('admin.ref.category.index') !!}" class="btn btn-primary m-t-15 waves-effect">{!! __('admin.cancel') !!}</a>

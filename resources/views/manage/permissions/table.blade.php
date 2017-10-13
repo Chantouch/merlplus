@@ -4,16 +4,16 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Date Created</th>
-                <th>Action</th>
+                <th>{!! __('admin.slug') !!}</th>
+                <th>{!! __('admin.description') !!}</th>
+                <th>{!! __('admin.created_at') !!}</th>
+                <th>{!! __('admin.action') !!}</th>
             </tr>
             </thead>
             <tbody>
             @foreach($permissions as $permission)
                 <tr>
-                    <th scope="row">{!! $permission->id !!}</th>
+                    <th>{!! $permission->id !!}</th>
                     <td>{!! $permission->name !!}</td>
                     <td>{!! $permission->display_name !!}</td>
                     <td>{!! $permission->created_at !!}</td>
@@ -21,11 +21,11 @@
                         <div class="btn-group">
                             <a href="{!! route('admin.manage.permission.show', [$permission->id]) !!}"
                                class='btn btn-info btn-outline btn-1b waves-effect btn-xs'>
-                                View
+                                {!! __('admin.view') !!}
                             </a>
                             <a href="{!! route('admin.manage.permission.edit', [$permission->id]) !!}"
                                class='btn btn-primary btn-outline waves-effect btn-xs'>
-                                Edit
+                                {!! __('admin.edit') !!}
                             </a>
                         </div>
                     </td>

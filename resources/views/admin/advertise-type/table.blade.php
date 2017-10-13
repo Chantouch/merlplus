@@ -4,11 +4,11 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Slug</th>
-                <th>Size</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th>{!! __('admin.name') !!}</th>
+                <th>{!! __('admin.slug') !!}</th>
+                <th>{!! __('admin.size') !!}</th>
+                <th>{!! __('admin.status') !!}</th>
+                <th>{!! __('admin.action') !!}</th>
             </tr>
             </thead>
             <tbody>

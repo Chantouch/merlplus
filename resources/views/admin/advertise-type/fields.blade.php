@@ -1,4 +1,4 @@
-{!! Form::label('name', 'Advertise Type Name:') !!}
+{!! Form::label('name', __('admin.')) !!}
 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
     <div class="form-line">
         {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter your page name']) !!}
@@ -10,7 +10,7 @@
     @endif
 </div>
 
-{!! Form::label('slug', 'Advertise Type slug:') !!}
+{!! Form::label('slug', __('admin.')) !!}
 <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
     <div class="form-line">
         {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Enter your advertise type slug']) !!}
@@ -25,8 +25,8 @@
 <div class="row">
     <div class="col-md-6">
 
-        {!! Form::label('width', 'Advertise Width (Size):') !!}
-        <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
+        {!! Form::label('width', __('admin.width')) !!}
+        <div class="form-group{{ $errors->has('width') ? ' has-error' : '' }}">
             <div class="form-line">
                 {!! Form::text('width', null, ['class' => 'form-control', 'placeholder' => 'Enter your advertise type width']) !!}
             </div>
@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        {!! Form::label('height', 'Advertise Height (Size):') !!}
+        {!! Form::label('height', __('admin.height')) !!}
         <div class="form-group{{ $errors->has('height') ? ' has-error' : '' }}">
             <div class="form-line">
                 {!! Form::text('height', null, ['class' => 'form-control', 'placeholder' => 'Enter your advertise type height']) !!}
@@ -55,8 +55,8 @@
 <div class="checkbox checkbox-success">
     {{ Form::hidden('active', '0') }}
     {!! Form::checkbox('active', '1', null, ['id'=> 'status']) !!}
-    <label for="status"> <span>Active</span> </label>
+    <label for="status"> <span>{!! __('admin.active') !!}</span> </label>
 </div>
 
-<button class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
-<a href="{!! route('admin.advertise-type.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>
+<button class="btn btn-primary m-t-15 waves-effect">{!! __('admin.submit') !!}</button>
+<a href="{!! route('admin.advertise-type.index') !!}" class="btn btn-primary m-t-15 waves-effect">{!! __('admin.cancel') !!}</a>

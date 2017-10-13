@@ -22,7 +22,7 @@
                                 @endif
                                 <div class="cover boxcaption3">
                                     <h3>
-                                        <a href="{!! route('blog.article.show', [$post->id]) !!}">
+                                        <a href="{!! route('blog.article.show', [$post->slug]) !!}">
                                             {!! str_limit($post->title, 50) !!}
                                         </a>
                                     </h3>

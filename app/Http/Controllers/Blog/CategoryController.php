@@ -8,6 +8,7 @@ use App\Model\Category;
 use App\Model\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Torann\LaravelMetaTags\Facades\MetaTag;
 
 class CategoryController extends BaseController
 {
@@ -87,7 +88,11 @@ class CategoryController extends BaseController
             ->where('advertise_type_id', 9)
             ->where('end_date', '>=', Carbon::now())
             ->get();
-        return view($this->view . 'show', compact('category', 'posts', 'new_posts','most_read', 'single_article_ads'));
+	    MetaTag::set('title', $category->name . ' - Merlplus.com');
+	    MetaTag::set('keywords', 'merl, plus, merlplus, breaking news, cambodian news, local news, breaking news in cambodia, health, cooking, breaking news, entertainment, technology, life, sport');
+	    MetaTag::set('description', !empty($category->description) ? $category->description : config('settings.app_slogan'));
+	    MetaTag::set('image', asset($category->hasThumbnail() ? asset('storage/uploads/category/' . $category->thumbnail()->filename) : asset('storage/default/ico/android-icon-192x192.png')));
+        return view($this->view . 'show', compact('category', 'posts', 'new_posts', 'most_read', 'single_article_ads'));
     }
 
     /**

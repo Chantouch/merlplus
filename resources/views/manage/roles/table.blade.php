@@ -4,17 +4,17 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Display Name</th>
-                <th>Description</th>
-                <th>Date Created</th>
-                <th>Action</th>
+                <th>{!! __('admin.slug') !!}</th>
+                <th>{!! __('admin.name') !!}</th>
+                <th>{!! __('admin.description') !!}</th>
+                <th>{!! __('admin.created_at') !!}</th>
+                <th>{!! __('admin.action') !!}</th>
             </tr>
             </thead>
             <tbody>
             @foreach($roles as $role)
                 <tr>
-                    <th scope="row">{!! $role->id !!}</th>
+                    <th>{!! $role->id !!}</th>
                     <td>{!! $role->name !!}</td>
                     <td>{!! $role->display_name !!}</td>
                     <td>{!! $role->description !!}</td>
