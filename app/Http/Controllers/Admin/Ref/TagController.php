@@ -53,7 +53,6 @@ class TagController extends Controller
             if ($validator->fails()) {
                 return back()->withInput()->withErrors($validator);
             }
-            $data['slug'] = $this->slug_utf8($request->name);
             $tag = Tag::with('posts')->create($data);
             if ($request->hasFile('thumbnail')) {
                 $tag->storeAndSetThumbnail($request->file('thumbnail'));
@@ -121,9 +120,6 @@ class TagController extends Controller
             }
             if ($request->hasFile('menu_thumbnail')) {
                 $tag->storeAndSetMenuThumbnail($request->file('menu_thumbnail'));
-            }
-            if (empty($tag->slug)) {
-                $data['slug'] = $this->slug_utf8($request->name);
             }
             $tag->update($data);
             DB::commit();

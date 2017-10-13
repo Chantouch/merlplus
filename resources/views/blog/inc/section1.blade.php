@@ -8,7 +8,7 @@
 ?>
 @if(isset($categories))
     @if($categories->count())
-        @foreach($categories->take(5) as $category)
+        @foreach($categories as $category)
             @if($category->articles->count())
                 <div class="news-sec-1 float-width">
                     <div class="float-width sec-cont2 label{!! $category->color_id !!}">
@@ -24,8 +24,7 @@
                                         <div class="zoom-img">
                                             <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                                                 <img alt="{!! $post->title !!}" class="blocky lazyload"
-                                                     src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"
-                                                     data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
+                                                     src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                                             </a>
                                         </div>
                                     @endif

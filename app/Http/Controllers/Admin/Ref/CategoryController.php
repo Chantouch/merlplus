@@ -66,9 +66,6 @@ class CategoryController extends Controller
 			if ($validator->fails()) {
 				return back()->withInput()->withErrors($validator);
 			}
-			if (empty($request->slug)) {
-				$data['slug'] = $this->slug_utf8($request->name);
-			}
 			if ($request->has('parent_id')) {
 				$data['parent_id'] = $request->parent_id;
 				$category = Category::with('parent')->create($data);
@@ -152,9 +149,6 @@ class CategoryController extends Controller
 			}
 			if ($request->hasFile('file')) {
 				$category->storeAndSetThumbnail($request->file('file'));
-			}
-			if (empty($category->slug)) {
-				$data['slug'] = $this->slug_utf8($request->name);
 			}
 			$update = $category->update($data);
 			if (!$update) {

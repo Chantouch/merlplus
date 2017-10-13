@@ -62,7 +62,6 @@ class TagController extends Controller
                 ];
             }
             $data['name'] = $request->name;
-            $data['slug'] = str_slug($request->name, '-');
             $tag = Tag::with('posts')->create($data);
             DB::commit();
             return response($tag, 200);

@@ -4,6 +4,7 @@ namespace App\Model;
 
 use App\Http\Controllers\Blog\Traits\SlugUtf8;
 use App\Http\Traits\Mediable;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
@@ -16,6 +17,7 @@ class Tag extends Model
 
 	use SlugUtf8;
 	use Mediable;
+	use Sluggable;
 	protected $guarded = [];
 	protected $fillable = [
 		'name', 'slug', 'status', 'menu_thumbnail_id', 'thumbnail_id', 'is_menu'
@@ -198,5 +200,40 @@ class Tag extends Model
 		}
 		return $thumbnail;
 	}
+
+
+    //----------Sluggable---------//
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => ['seo_url', 'seo_url1']
+            ]
+        ];
+    }
+
+    //-------GetAttributes--------//
+
+    /**
+     * @return string
+     */
+    public function getSeoUrlAttribute()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSeoUrl1Attribute()
+    {
+        return uniqid();
+    }
 
 }

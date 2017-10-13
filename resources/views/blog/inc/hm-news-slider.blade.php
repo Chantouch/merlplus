@@ -6,14 +6,12 @@
  * Time: 12:43 PM
  */
 ?>
-
 @if(count($posts))
     @foreach($posts['news_sliders'] as $index => $post)
         <div class="mid-block-1 boxgrid caption item col-sm-6">
             @if($post->hasThumbnail())
                 <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload"
-                     src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"
-                     data-src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                     src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
             @else
                 <img alt="{!! $post->excerptTitle(60) !!}" class="img lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
                      data-src="{!! asset('blog/img/samples/sample.jpg') !!}"/>

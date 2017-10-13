@@ -65,13 +65,11 @@ class CategoryController extends Controller
                 $data['name'] = $request->newcategory;
                 $data['description'] = $request->newcategory;
                 $data['status'] = 1;
-                $data['slug'] = str_slug($request->newcategory, '-');
                 $category = Category::with('parent')->create($data);
             } else {
                 $data['parent_id'] = null;
                 $data['name'] = $request->newcategory;
                 $data['description'] = $request->newcategory;
-                $data['slug'] = str_slug($request->newcategory, '-');
                 $data['status'] = 1;
                 $category = Category::with('children')->create($data);
             }

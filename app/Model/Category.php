@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Http\Traits\Mediable;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
@@ -13,6 +14,7 @@ class Category extends Model
 {
 
 	use Mediable;
+	use Sluggable;
     protected $guarded = [];
     protected $fillable = [
         'name', 'slug', 'description', 'status', 'parent_id', 'color_id', 'position_order', 'thumbnail_id'
@@ -169,5 +171,40 @@ class Category extends Model
 		}
 		return $media;
 	}
+
+
+    //----------Sluggable---------//
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => ['seo_url', 'seo_url1']
+            ]
+        ];
+    }
+
+    //-------GetAttributes--------//
+
+    /**
+     * @return string
+     */
+    public function getSeoUrlAttribute()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSeoUrl1Attribute()
+    {
+        return uniqid();
+    }
 
 }
