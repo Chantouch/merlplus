@@ -16,7 +16,7 @@
                         @if($index < 3)
                             <div class="big-two-1 blocky boxgrid3 caption">
                                 @if($post->hasThumbnail())
-                                    <img alt="{!! $post->excerptTitle(100) !!}" class="img lazyload"
+                                    <img alt="{!! $post->removeSpecialChar($post->title) !!}" class="img lazyload"
                                          src="{!! asset('blog/img/blur.jpg') !!}"
                                          data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                                 @endif
@@ -49,7 +49,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-6 tn-small-1 blocky">
                         <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                             @if($post->hasThumbnail())
-                                <img alt="{!! $post->title !!}" class="lefty lazyload img-responsive" height="85"
+                                <img alt="{!! $post->removeSpecialChar($post->title) !!}" class="lefty lazyload img-responsive" height="85"
                                      width="107" src="{!! asset('blog/img/blur.jpg') !!}"
                                      data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                             @endif

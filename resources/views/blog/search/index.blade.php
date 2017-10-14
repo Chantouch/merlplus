@@ -22,7 +22,7 @@
                         @if($post->hasThumbnail())
                             <div class="zoom-img">
                                 <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                    <img alt="merlplus, merlplus.com {!! $post->title !!}"
+                                    <img alt="merlplus, merlplus.com {!! $post->removeSpecialChar($post->title) !!}"
                                          class="lefty img-responsive lazyload" height="90"
                                          src="{!! asset('blog/img/blur.jpg') !!}"
                                          data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
@@ -30,7 +30,7 @@
                             </div>
                         @else
                             <div class="zoom-img">
-                                <img class="lefty" alt="{!! $post->excerptTitle(60) !!}"
+                                <img class="lefty" alt="{!! $post->removeSpecialChar($post->title) !!}"
                                      src="{!! asset('blog/img/samples/z'.$index.'.jpg') !!}"/>
                             </div>
                         @endif

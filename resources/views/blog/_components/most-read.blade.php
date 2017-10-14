@@ -20,7 +20,7 @@
                             <img data-src="{!! asset(route('media.posts.path',[$article->id,'small_'.$article->thumbnail()->filename])) !!}"
                                  src="{!! asset('blog/img/blur.jpg') !!}"
                                  class="media-object lazyload"
-                                 width="80" alt="{!! $article->title !!}">
+                                 width="80" alt="{!! $article->removeSpecialChar($article->title) !!}">
                         </a>
                     </div>
                 @else
@@ -30,7 +30,7 @@
                             <img data-src="{!! asset('blog/img/samples/sample.jpg') !!}"
                                  src="{!! asset('blog/img/blur.jpg') !!}"
                                  class="media-object lazyload"
-                                 width="80" alt="{!! $article->title !!}">
+                                 width="80" alt="{!! $article->removeSpecialChar($article->title) !!}">
                         </a>
                     </div>
                 @endif

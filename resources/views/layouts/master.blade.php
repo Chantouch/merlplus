@@ -148,6 +148,7 @@
         }, 500);
     });
 
+    @if(Session::has('message'))
     function toastPop($type) {
         $.toast({
             heading: {!! __('admin.welcome_to_site').config('setting.app_name') !!},
@@ -159,8 +160,6 @@
             stack: 6
         });
     }
-
-    @if(Session::has('message'))
     $(function () {
         let type = "{{ Session::get('alert-type', 'info') }}";
         switch (type) {

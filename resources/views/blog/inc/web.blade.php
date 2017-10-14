@@ -3,7 +3,7 @@
         @if($post->hasThumbnail())
             <div class="zoom-img">
                 <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                    <img alt="merlplus, merlplus.com {!! $post->title !!}"
+                    <img alt="{!! $post->removeSpecialChar($post->title) !!}"
                          class="blocky lazyload" height="90"
                          src="{!! asset('blog/img/blur.jpg') !!}"
                          data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
@@ -25,7 +25,7 @@
                     comments
                 </span>
             </h6>
-            <p>{!! $post->excerpt(450) !!}</p>
+            <p>{!! $post->excerpt(350) !!}</p>
         </div>
     </div>
 </div>

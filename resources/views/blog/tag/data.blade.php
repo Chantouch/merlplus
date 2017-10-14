@@ -20,11 +20,11 @@
         <div class="sec-1-big float-width">
             @if($post->hasThumbnail())
                 <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                    <img alt="{!! $post->title !!}" class="lefty img-responsive" width="271"
+                    <img alt="{!! $post->removeSpecialChar($post->title) !!}" class="lefty img-responsive" width="271"
                          src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
                 </a>
             @else
-                <img class="lefty" alt="{!! $post->excerptTitle(60) !!}"
+                <img class="lefty" alt="{!! $post->removeSpecialChar($post->title) !!}"
                      src="{!! asset('blog/img/samples/z'.$index.'.jpg') !!}"/>
             @endif
             <div class="sec-1-big-text lefty">

@@ -23,7 +23,8 @@
                                     @if($post->hasThumbnail())
                                         <div class="zoom-img">
                                             <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                                <img alt="{!! $post->title !!}" class="blocky lazyload"
+                                                <img alt="{!! $post->removeSpecialChar($post->title) !!}"
+                                                     class="blocky lazyload"
                                                      src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                                             </a>
                                         </div>
@@ -40,8 +41,8 @@
                                     </div>
                                 </div>
                             @endif
-                            @if($index > 0)
-                                @if($agent->isDesktop())
+                            @if($agent->isDesktop())
+                                @if($index > 0)
                                     @include('blog.inc.web')
                                 @endif
                             @endif
