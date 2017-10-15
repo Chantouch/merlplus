@@ -8,7 +8,6 @@ $fullUrl = Request::url();
     {{--<script async src="https://cdn.ampproject.org/v0.js"></script>--}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta name="apple-mobile-web-app-title" content="{{ config('settings.app_name') }}">
     <link rel="apple-touch-icon" sizes="57x57" href="{!! asset('storage/default/ico/apple-icon-57x57.png') !!}">
@@ -161,13 +160,15 @@ $fullUrl = Request::url();
     </a>
 </div>
 
+
 <!-- Scripts -->
 <script src="{{ asset('blog/js/app.min.js') }}" type="text/javascript"></script>
-<script async src="{!! asset('blog/js/jquery.lazyload.min.js') !!}" type="text/javascript"></script>
-<script src="{{ asset('blog/js/main.min.js') }}" type="text/javascript"></script>
-<script type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>
+<script async src="{{ asset('blog/js/main.min.js') }}" type="text/javascript"></script>
+<script async type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>
 <script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}" type="text/javascript"></script>
+
+
 @yield('plugins')
 @yield('scripts')
 <script type="text/javascript">

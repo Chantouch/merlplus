@@ -10,10 +10,10 @@
     <thead>
     <tr>
         <th>#</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Joined</th>
-        <th>Action</th>
+        <th>{!! __('admin.name') !!}</th>
+        <th>{!! __('admin.email') !!}</th>
+        <th>{!! __('admin.joined') !!}</th>
+        <th>{!! __('admin.action') !!}</th>
     </tr>
     </thead>
     <tbody>
@@ -30,11 +30,11 @@
                     <div class="btn-group">
                         <a href="{!! route('admin.manage.user.show', [$user->id]) !!}"
                            class='btn btn-info btn-outline btn-1b waves-effect btn-xs'>
-                            View
+                            {!! __('admin.view')  !!}
                         </a>
                         <a href="{!! route('admin.manage.user.edit', [$user->id]) !!}"
                            class='btn btn-primary btn-outline waves-effect btn-xs'>
-                            Edit
+                            {!! __('admin.edit')  !!}
                         </a>
                     </div>
                 </td>

@@ -32,11 +32,19 @@
                                     <div class="sec-1-big-text lefty">
                                         <h3>
                                             <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                                                {!! $post->excerptTitle() !!}
+                                                @if($agent->isDesktop())
+                                                    {!! $post->excerptTitle(50,80) !!}
+                                                @else
+                                                    {!! $post->excerptTitle() !!}
+                                                @endif
                                             </a>
                                         </h3>
                                         <p>
-                                            {!! $post->excerpt() !!}
+                                            @if($agent->isDesktop())
+                                                {!! $post->excerpt(2500) !!}
+                                            @else
+                                                {!! $post->excerpt() !!}
+                                            @endif
                                         </p>
                                     </div>
                                 </div>

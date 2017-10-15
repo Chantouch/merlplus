@@ -385,7 +385,7 @@ class Post extends Model
      * @param int $length_unicode
      * @return string
      */
-    public function excerptTitle($length = 30, $length_unicode = 60): string
+    public function excerptTitle($length = 30, $length_unicode = 50): string
     {
         if (strlen($this->title) != strlen(utf8_decode($this->title))) {
             return str_limit(strip_tags($this->title), $length_unicode);

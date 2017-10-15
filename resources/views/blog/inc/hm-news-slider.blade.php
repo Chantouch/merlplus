@@ -17,18 +17,18 @@
                      data-src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
             @endif
             @if(count($post->categories))
-                <h4 class="cat-label cat-label{!! $post->categories->first()->color_id !!}">
+                <h1 class="cat-label cat-label{!! $post->categories->first()->color_id !!}">
                     <a href="{!! route('blog.topics.show',[$post->categories->first()->getRouteKey()]) !!}"
                        class="font-uppercase">{!! $post->categories->first()->name !!}</a>
-                </h4>
+                </h1>
             @endif
             <div class="cover boxcaption">
-                <h1>
+                <h2>
                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
-                        {!! $post->excerptTitle(90) !!}
+                        {!! $post->excerptTitle(50,80) !!}
                     </a>
                     <span class="topic-icn">{!! $post->posted_at->diffForHumans() !!}</span>
-                </h1>
+                </h2>
                 <p>
                     {!! $post->excerpt(1400) !!}
                 </p>

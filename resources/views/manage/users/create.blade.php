@@ -1,34 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.master')
+@section('page-css')
+    <link href="{!! asset('plugins/multiselect/css/multi-select.css') !!}" rel="stylesheet" type="text/css"/>
+    <link href="{!! asset('plugins/custom-select/custom-select.css') !!}" rel="stylesheet" type="text/css"/>
+@stop
 @section('content')
-    <!-- Vertical Layout -->
-    <div class="row clearfix">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <h2>
-                        ADD LANGUAGE
-                    </h2>
-                    <ul class="header-dropdown m-r--5">
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li><a href="{!! route('admin.security.users.index') !!}">MINISTRY LIST</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="body">
-                    {!! Form::open(['route' => ['admin.security.users.store'], 'method' => 'POST']) !!}
-                    @include('security.users.fields')
-                    {!! Form::close() !!}
-                </div>
-            </div>
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title m-b-0">{!! __('admin.user') !!}</h3>
+            <p class="text-muted m-b-30">{!! __('admin.easy_to_managing_your_users') !!}</p>
+            {!! Form::open(['route' => ['admin.manage.user.store'], 'method' => 'POST']) !!}
+            @include('manage.users.fields')
+            {!! Form::close() !!}
         </div>
     </div>
-    <!-- #END# Vertical Layout -->
+@stop
+@section('plugins')
+    <script type="text/javascript" src="{!! asset('plugins/multiselect/js/jquery.multi-select.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('plugins/custom-select/custom-select.min.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('js/jasny-bootstrap.js') !!}"></script>
 @stop
 @section('scripts')
     <script src="{!! asset('js/script.js') !!}"></script>

@@ -21,20 +21,20 @@
                     <td>{!! $advertise->price !!} $</td>
                     <td>{!! $advertise->ads_type->name !!}</td>
                     <td>
-                        {!! $advertise->active !!}
+                        {!! status($advertise->active) !!}
                     </td>
                     <td>
                         <div class="btn-group">
                             {!! Form::open(['route' => ['admin.advertise.destroy', $advertise->id], 'method' => 'delete']) !!}
                             <a href="{!! route('admin.advertise.show', [$advertise->id]) !!}"
                                class='btn btn-info btn-outline btn-1b waves-effect btn-xs'>
-                                View
+                                {!! __('admin.view') !!}
                             </a>
                             <a href="{!! route('admin.advertise.edit', [$advertise->id]) !!}"
                                class='btn btn-primary btn-outline waves-effect btn-xs'>
-                                Edit
+                                {!! __('admin.edit') !!}
                             </a>
-                            {!! Form::button('Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-outline waves-effect btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            {!! Form::button(__('admin.delete'), ['type' => 'submit', 'class' => 'btn btn-danger btn-outline waves-effect btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                             {!! Form::close() !!}
                         </div>
                     </td>

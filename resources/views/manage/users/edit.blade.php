@@ -6,8 +6,8 @@
 @section('content')
     <div class="col-sm-12">
         <div class="white-box">
-            <h3 class="box-title m-b-0">Default Basic Forms</h3>
-            <p class="text-muted m-b-30 font-13"> All bootstrap element classies </p>
+            <h3 class="box-title m-b-0">{!! __('admin.user') !!}</h3>
+            <p class="text-muted m-b-30">{!! __('admin.easy_to_managing_your_users') !!}</p>
             {!! Form::model($user, ['route' => ['admin.manage.user.update', $user->id], 'method' => 'patch','class'=>'form-horizontal','files' => true]) !!}
             @include('manage.users.fields')
             {!! Form::close() !!}

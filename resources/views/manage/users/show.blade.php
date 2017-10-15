@@ -9,7 +9,7 @@
             <div class="panel-wrapper collapse in">
                 <div class="panel-body">
                     <p>
-                        Email: {!! $user->email !!}
+                        {!! __('admin.email')  !!}: {!! $user->email !!}
                     </p>
                     <ul>
                         {{$user->roles->count() == 0 ? 'This user has not been assigned any roles yet' : ''}}
@@ -20,9 +20,9 @@
                 </div>
                 <div class="panel-footer">
                     <a href="{!! route('admin.manage.user.edit', [$user->id]) !!}"
-                       class="btn btn-primary btn-outline waves-effect waves-effect">EDIT</a>
+                       class="btn btn-primary btn-outline waves-effect waves-effect">{!! __('admin.edit')  !!}</a>
                     <a href="{!! route('admin.manage.user.index') !!}"
-                       class="btn btn-primary btn-outline waves-effect waves-effect">BACK</a>
+                       class="btn btn-primary btn-outline waves-effect waves-effect">{!! __('admin.back')  !!}</a>
                 </div>
             </div>
         </div>

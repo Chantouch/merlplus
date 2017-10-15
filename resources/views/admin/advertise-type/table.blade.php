@@ -19,20 +19,20 @@
                     <td>{!! $advertise_type->slug !!}</td>
                     <td>{!! $advertise_type->width.'x'.$advertise_type->height !!}</td>
                     <td>
-                        <span class="badge badge-primary">{!! $advertise_type->active !!}</span>
+                        {!! status($advertise_type->active) !!}
                     </td>
                     <td>
                         <div class="btn-group">
                             {!! Form::open(['route' => ['admin.advertise-type.destroy', $advertise_type->id], 'method' => 'delete']) !!}
                             <a href="{!! route('admin.advertise-type.show', [$advertise_type->id]) !!}"
                                class='btn btn-info btn-outline btn-1b waves-effect btn-xs'>
-                                View
+                                {!! __('admin.view') !!}
                             </a>
                             <a href="{!! route('admin.advertise-type.edit', [$advertise_type->id]) !!}"
                                class='btn btn-primary btn-outline waves-effect btn-xs'>
-                                Edit
+                                {!! __('admin.edit') !!}
                             </a>
-                            {!! Form::button('Delete', ['type' => 'submit', 'class' => 'btn btn-danger btn-outline waves-effect btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                            {!! Form::button(__('admin.delete'), ['type' => 'submit', 'class' => 'btn btn-danger btn-outline waves-effect btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                             {!! Form::close() !!}
                         </div>
                     </td>

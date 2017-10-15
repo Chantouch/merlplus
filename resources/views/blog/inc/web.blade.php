@@ -22,10 +22,10 @@
                 </span>
                 <span>
                     <i class="fa fa-comment-o"></i>{!! $post->comments->count() !!}
-                    comments
+                    {!! __('app.comment') !!}
                 </span>
             </h6>
-            <p>{!! $post->excerpt(350) !!}</p>
+            <p>{!! $post->excerpt(200) !!}</p>
         </div>
     </div>
 </div>

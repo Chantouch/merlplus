@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-            {!! Form::label('name', 'Name:',['class'=>'col-md-12']) !!}
+            {!! Form::label('name', __('admin.name') ,['class'=>'col-md-12']) !!}
             <div class="col-md-12">
                 {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter your name']) !!}
                 @if ($errors->has('name'))
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        {!! Form::label('email', 'Email:') !!}
+        {!! Form::label('email', __('admin.email') ) !!}
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
             <div class="col-md-12">
                 {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Enter your email']) !!}
@@ -92,7 +92,7 @@
 </div>
 <div class="form-group">
     <div class="col-md-12">
-        {!! Form::label('roles', 'Roles:') !!}<br>
+        {!! Form::label('roles', __('admin.role') ) !!}<br>
         @foreach($roles as  $role)
             {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'filled-in', 'id'=> $role->id]) !!}
             <label for="{!! $role->id !!}">{!! $role->display_name !!}</label><br>
@@ -105,5 +105,5 @@
     </div>
 </div>
 <br>
-<button class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
-<a href="{!! route('admin.manage.user.index') !!}" class="btn btn-primary m-t-15 waves-effect">CANCEL</a>
+<button class="btn btn-primary m-t-15 waves-effect">{!! __('admin.submit')  !!}</button>
+<a href="{!! route('admin.manage.user.index') !!}" class="btn btn-primary m-t-15 waves-effect">{!! __('admin.cancel')  !!}</a>

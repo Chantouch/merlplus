@@ -22,7 +22,7 @@
         </div>
         <ul class="nav" id="side-menu">
             @if (auth()->check())
-                <li class="user-pro">
+                <li class="user-pro{!! Request::is('admin/profile/user*') ? ' active': '' !!}">
                     <a href="#" class="waves-effect">
                         @if(auth()->user()->hasThumbnail())
                             <img src="{!! asset('storage/uploads/user/'.auth()->user()->thumbnail()->filename) !!}"
@@ -33,9 +33,9 @@
                         @endif
                         <span class="hide-menu">{!! auth()->user()->name !!}<span class="fa arrow"></span></span>
                     </a>
-                    <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0;">
+                    <ul class="nav nav-second-level collapse" aria-expanded="false">
                         <li>
-                            <a href="javascript:void(0)"><i class="ti-user"></i>
+                            <a href="{!! route('admin.profile.user.index') !!}"><i class="ti-user"></i>
                                 <span class="hide-menu">{!! __('admin.my_profile') !!}</span></a></li>
                         <li>
                             <a href="javascript:void(0)"><i class="ti-settings"></i>
@@ -180,7 +180,7 @@
                 <a href="javascript:void(0)" class="waves-effect {!! Request::is('admin/manage/*')? 'active' : '' !!}">
                     <i class="mdi mdi-content-copy fa-fw"></i>
                     <span class="hide-menu">{!! __('admin.manage') !!}<span class="fa arrow"></span>
-                        <span class="label label-rouded label-warning pull-right">30</span>
+                        <span class="label label-rouded label-warning pull-right">3</span>
                     </span>
                 </a>
                 <ul class="nav nav-second-level">
