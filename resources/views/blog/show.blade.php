@@ -121,35 +121,35 @@
                         {!! $post->description !!}
                     </div>
                 </article>
-            </div>
-        </div>
-        <!-- The Article Social Media Share -->
-        <div class="artcl-scl float-width">
-            @if(!empty($post->origin_source) && !empty($post->source_title))
-                <p>{!! __('app.article.source') !!}
-                    <a href="{!! $post->origin_source !!}" title="{!! $post->source_title !!}" target="_blank">
-                        {!! $post->source_title !!}
-                    </a>
-                </p>
-                <p>{!! __('app.article.translator') !!} {!! $post->contributor ? $post->contributor : 'Admin' !!} </p>
-            @else
-                <p>{!! __('posts.show.article') !!} {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
-            @endif
-            <div class="lefty artcl-tags">
-                <h3>{!! __('app.tag') !!} : </h3>
-                <ul>
-                    @if(count($post->tags))
-                        @foreach($post->tags as $tag)
-                            <li>
-                                <a href="{!! route('blog.tag.show',[$tag->getRouteKey()]) !!}">
-                                    <span class="label label-info">{!! $tag->name !!}</span>
-                                </a>
-                            </li>
-                        @endforeach
+                <!-- The Article Social Media Share -->
+                <div class="artcl-scl float-width">
+                    @if(!empty($post->origin_source) && !empty($post->source_title))
+                        <p>{!! __('app.article.source') !!}
+                            <a href="{!! $post->origin_source !!}" title="{!! $post->source_title !!}" target="_blank">
+                                {!! $post->source_title !!}
+                            </a>
+                        </p>
+                        <p>{!! __('app.article.translator') !!} {!! $post->contributor ? $post->contributor : 'Admin' !!} </p>
+                    @else
+                        <p>{!! __('posts.show.article') !!} {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
                     @endif
-                </ul>
+                    <div class="lefty artcl-tags tag-info">
+                        <h3>{!! __('app.tag') !!} : </h3>
+                        <ul>
+                            @if(count($post->tags))
+                                @foreach($post->tags as $tag)
+                                    <li>
+                                        <a href="{!! route('blog.tag.show',[$tag->getRouteKey()]) !!}">
+                                            <span class="label label-info">{!! $tag->name !!}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                    @include('layouts.inc.social.horizontal')
+                </div>
             </div>
-            @include('layouts.inc.social.horizontal')
         </div>
         <!-- Ads button of single article -->
         @if(isset($single_article_ads))

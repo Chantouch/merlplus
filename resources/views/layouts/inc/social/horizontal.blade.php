@@ -1,4 +1,4 @@
-<div class="righty artcl-shr">
+<div class="righty artcl-shr tag-info">
     <div class="fb-like" data-href="{!! Request::url() !!}" data-layout="button_count"
          data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
     <button class='btn btn-fb share s_facebook'><i class="fa fa-facebook"></i></button>&nbsp;
