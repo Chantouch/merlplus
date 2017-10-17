@@ -18,7 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::with('images')
+            ->orderBy('position_order', 'ASC')->get();
         $most_used_cat = DB::table("post_categories")
             ->join("categories", "categories.id", "=", "post_categories.category_id")
             ->select(DB::raw("count(post_id) as NumberPost"), "categories.name", "categories.id")

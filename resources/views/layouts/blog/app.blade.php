@@ -165,7 +165,7 @@ $fullUrl = Request::url();
 <!-- Scripts -->
 <script src="{{ asset('blog/js/app.min.js') }}" type="text/javascript"></script>
 <script async src="{{ asset('blog/js/main.min.js') }}" type="text/javascript"></script>
-<script async type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>
 <script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}" type="text/javascript"></script>
 
@@ -175,7 +175,25 @@ $fullUrl = Request::url();
 <script type="text/javascript">
     @if($agent->isMobile() || $agent->isTablet())
     new UISearch(document.getElementById('sb-search'));
+    new Vue({
+        el: '#app',
+        data: {
+            categories: [],
+        },
+        created: function () {
+            //this.categoryList();
+        },
+        methods: {
+            categoryList: function () {
+                let vm = this;
+                vm.$http.get('/api/v1/category').then((response) => {
+                    this.categories = response.data;
+                })
+            }
+        }
+    });
     @endif
+
     /* Social Share */
     $('.share').ShareLink({
         title: '{{ addslashes(MetaTag::get('title')) }}',
@@ -200,6 +218,7 @@ $fullUrl = Request::url();
         CustomEvent.prototype = window.Event.prototype;
         window.CustomEvent = CustomEvent;
     })();
+
 </script>
 </body>
 </html>
