@@ -38,7 +38,7 @@
                         <div class="btn-group">
                             <a href="{!! route('admin.settings.edit', [$setting->id]) !!}"
                                class='btn btn-primary btn-outline waves-effect btn-xs'>
-                                Edit
+                                {!! __('admin.edit') !!}
                             </a>
                         </div>
                     </td>

@@ -94,6 +94,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')
 				Route::resource('advertise-type', 'AdvertiseTypeController');
 			});
 			Route::get('/insert-db', 'HomeController@insertPostCategory');
+			Route::get('clear-cache', 'ConfigController@clearCache')->name('cache.clear');
 		});
 	});
 

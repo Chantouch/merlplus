@@ -36,65 +36,14 @@
             <div class="col-md-8 col-xs-12">
                 <div class="white-box">
                     <ul class="nav nav-tabs tabs customtab">
-                        <li class="active tab">
-                            <a href="#home" data-toggle="tab">
-                                <span class="visible-xs"><i class="fa fa-home"></i></span> <span class="hidden-xs">Activity</span>
-                            </a>
-                        </li>
-                        <li class="tab">
+                        <li class="tab active">
                             <a href="#profile" data-toggle="tab">
                                 <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Profile</span>
                             </a>
                         </li>
-                        <li class="tab">
-                            <a href="#settings" data-toggle="tab" aria-expanded="false">
-                                <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Settings</span>
-                            </a>
-                        </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="home">
-                            <div class="steamline">
-                                <div class="sl-item">
-                                    <div class="sl-left"> <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle" /> </div>
-                                    <div class="sl-right">
-                                        <div class="m-l-40"><a href="#" class="text-info">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                            <p>assign a new task <a href="#"> Design weblayout</a></p>
-                                            <div class="m-t-20 row"><img src="../plugins/images/img1.jpg" alt="user" class="col-md-3 col-xs-12" /> <img src="../plugins/images/img2.jpg" alt="user" class="col-md-3 col-xs-12" /> <img src="../plugins/images/img3.jpg" alt="user" class="col-md-3 col-xs-12" /></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sl-item">
-                                    <div class="sl-left"> <img src="../plugins/images/users/sonu.jpg" alt="user" class="img-circle" /> </div>
-                                    <div class="sl-right">
-                                        <div class="m-l-40"> <a href="#" class="text-info">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                            <div class="m-t-20 row">
-                                                <div class="col-md-2 col-xs-12"><img src="../plugins/images/img1.jpg" alt="user" class="img-responsive" /></div>
-                                                <div class="col-md-9 col-xs-12">
-                                                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa</p> <a href="#" class="btn btn-success"> Design weblayout</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sl-item">
-                                    <div class="sl-left"> <img src="../plugins/images/users/ritesh.jpg" alt="user" class="img-circle" /> </div>
-                                    <div class="sl-right">
-                                        <div class="m-l-40"><a href="#" class="text-info">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                            <p class="m-t-10"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sl-item">
-                                    <div class="sl-left"> <img src="../plugins/images/users/govinda.jpg" alt="user" class="img-circle" /> </div>
-                                    <div class="sl-right">
-                                        <div class="m-l-40"><a href="#" class="text-info">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                            <p>assign a new task <a href="#"> Design weblayout</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="profile">
+                        <div class="tab-pane active" id="profile">
                             <div class="row">
                                 <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
                                     <br>
@@ -135,11 +84,6 @@
                             <div class="progress">
                                 <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%;"> <span class="sr-only">50% Complete</span> </div>
                             </div>
-                        </div>
-                        <div class="tab-pane" id="settings">
-                            {!! Form::model($profile, ['route' => ['admin.profile.user.update', $profile->id], 'method' => 'patch', 'files'=> true,'class' => 'form-horizontal form-material']) !!}
-                            @include('admin.profile.fields')
-                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>

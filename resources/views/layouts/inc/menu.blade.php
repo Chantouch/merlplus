@@ -38,7 +38,8 @@
                             <a href="{!! route('admin.profile.user.index') !!}"><i class="ti-user"></i>
                                 <span class="hide-menu">{!! __('admin.my_profile') !!}</span></a></li>
                         <li>
-                            <a href="javascript:void(0)"><i class="ti-settings"></i>
+                            <a href="{!! route('admin.manage.user.edit', [auth()->id()]) !!}"><i
+                                        class="ti-settings"></i>
                                 <span class="hide-menu">{!! __('admin.account_setting') !!}</span></a>
                         </li>
                         <li>
@@ -255,6 +256,15 @@
                    class="waves-effect">
                     <i class="mdi mdi-trending-up fa-fw" data-icon="v"></i>
                     <span class="hide-menu"> {!! __('admin.report') !!}
+                        <span class="label label-rouded label-inverse pull-right">1</span>
+                    </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{!! route('admin.cache.clear') !!}" class="waves-effect">
+                    <i class="icon-trash fa-fw" data-icon="v"></i>
+                    <span class="hide-menu"> Clear Cache
                         <span class="label label-rouded label-inverse pull-right">1</span>
                     </span>
                 </a>

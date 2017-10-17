@@ -4,7 +4,7 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>{!! __('admin.slug') !!}</th>
+                <th>{!! __('admin.thumbnail') !!}</th>
                 <th>{!! __('admin.name') !!}</th>
                 <th>{!! __('admin.price') !!}</th>
                 <th>{!! __('admin.ads_type') !!}</th>
@@ -16,7 +16,10 @@
             @foreach($advertises as $index => $advertise)
                 <tr>
                     <th>{!! $loop->index+1 !!}</th>
-                    <td>{!! $advertise->slug !!}</td>
+                    <td>
+                        <img alt="{!! $advertise->provider_name !!}" class="img lazyload"
+                             src="{!! asset($advertise->banner()->media_url) !!}" width="30"/>
+                    </td>
                     <td>{!! $advertise->provider_name !!}</td>
                     <td>{!! $advertise->price !!} $</td>
                     <td>{!! $advertise->ads_type->name !!}</td>

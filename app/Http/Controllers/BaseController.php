@@ -58,7 +58,7 @@ class BaseController extends Controller
                 ->firstOrFail()->child()
                 ->where('value', '!=', '')->get();
         }
-        MetaTag::set('title', 'Merlplus.com - Advertising site');
+        MetaTag::set('title', 'Merlplus News');
         MetaTag::set('keywords', 'merl, plus, merlplus, breaking news, cambodian news, local news, breaking news in cambodia, health, cooking, breaking news, entertainment, technology, life, sport');
         MetaTag::set('description', config('settings.app_slogan'));
         MetaTag::set('robots', 'index,follow');

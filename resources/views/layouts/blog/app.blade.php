@@ -38,12 +38,13 @@ $fullUrl = Request::url();
     {!! MetaTag::tag('site_name', config('settings.app_name', 'Merlplus')) !!}
     {!! MetaTag::tag('url', $fullUrl); !!}
     {!! MetaTag::tag('locale', 'en_EN') !!}
-    @if (count($dnsPrefetch) > 0)
-        @foreach($dnsPrefetch as $dns)
-            <link rel="dns-prefetch" href="{{ $dns }}">
-        @endforeach
+    @if(isset($dnsPrefetch))
+        @if (count($dnsPrefetch) > 0)
+            @foreach($dnsPrefetch as $dns)
+                <link rel="dns-prefetch" href="{{ $dns }}">
+            @endforeach
+        @endif
     @endif
-
     @if (config('services.facebook.client_id'))
         <meta property="fb:app_id" content="{{ config('services.facebook.client_id') }}"/>
         {!! MetaTag::twitterCard() !!}
