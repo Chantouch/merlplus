@@ -79,6 +79,12 @@ $fullUrl = Request::url();
         ga('create', 'UA-51288724-1');
         ga('send', 'pageview');
     </script>
+    <style>
+        .search-label {
+            display: block;
+            margin-bottom: 0;
+        }
+    </style>
     @yield('css')
 </head>
 <body>
@@ -139,15 +145,15 @@ $fullUrl = Request::url();
                 </li>
                 @if(config('settings.social_activated'))
                     <li>
-                        <a href="https://www.facebook.com/chantouch.sek" target="_blank" title="Chantouch Sek">
+                        <a href="https://www.facebook.com/chantouch.sek" target="_blank" title="Chantouch Sek" rel="noreferrer">
                             <i class="fa fa-facebook"></i>
                         </a>
-                        <a href="https://twitter.com/DevidCs83" target="_blank" title="Chantouch Sek">
+                        <a href="https://twitter.com/DevidCs83" target="_blank" title="Chantouch Sek" rel="noreferrer">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.bookingkh.com">Powered by BookingKh</a>
+                        <a href="https://www.bookingkh.com" target="_blank" rel="noreferrer">Powered by BookingKh</a>
                     </li>
                 @endif
             </ul>
@@ -173,23 +179,6 @@ $fullUrl = Request::url();
 <script type="text/javascript">
     @if($agent->isMobile() || $agent->isTablet())
     new UISearch(document.getElementById('sb-search'));
-    new Vue({
-        el: '#app',
-        data: {
-            categories: [],
-        },
-        created: function () {
-            //this.categoryList();
-        },
-        methods: {
-            categoryList: function () {
-                let vm = this;
-                vm.$http.get('/api/v1/category').then((response) => {
-                    this.categories = response.data;
-                })
-            }
-        }
-    });
     @endif
 
     /* Social Share */
@@ -218,5 +207,6 @@ $fullUrl = Request::url();
     })();
 
 </script>
+<noscript>Your browser does not support JavaScript!</noscript>
 </body>
 </html>

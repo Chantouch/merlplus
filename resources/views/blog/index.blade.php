@@ -17,7 +17,7 @@
                 @foreach($top_right_ads as $ads)
                     @if($ads->hasBanner())
                         <div class="rt-block mid-block-1 col-sm-6 boxgrid2 caption">
-                            <a href="{!! $ads->url !!}" target="_blank">
+                            <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">
                                 <img alt="{!! $ads->provider_name !!}" class="img lazyload"
                                      src="{!! asset($ads->banner()->media_url) !!}"/>
                             </a>
@@ -29,7 +29,7 @@
                         <div class="rt-block mid-block-1 boxgrid2 caption item">
                             {!! $ads->url !!}
                             <h2 class="cat-label cat-label4">
-                                <a href="{!! $ads->url !!}">{!! $ads->provider_name !!}</a>
+                                <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">{!! $ads->provider_name !!}</a>
                             </h2>
                         </div>
                     @endif

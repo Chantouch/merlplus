@@ -29,7 +29,7 @@
                     @foreach($main_right_ads->random(2) as $index => $ads)
                         @if($index < 2)
                             <div class="ad-rt">
-                                <a href="{!! $ads->url !!}" target="_blank">
+                                <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">
                                     <img alt="{!! $ads->provider_name !!}" class="lazyload img-responsive"
                                          src="{!! asset('blog/img/blur.jpg') !!}"
                                          data-src="{!! asset($ads->banner()->media_url) !!}"/>
@@ -41,7 +41,7 @@
                     @foreach($main_right_ads->take(1) as $index => $ads)
                         @if($index < 2)
                             <div class="ad-rt">
-                                <a href="{!! $ads->url !!}" target="_blank">
+                                <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">
                                     <img alt="{!! $ads->provider_name !!}" class="lazyload img-responsive"
                                          src="{!! asset('blog/img/blur.jpg') !!}"
                                          data-src="{!! asset($ads->banner()->media_url) !!}"/>
