@@ -58,13 +58,12 @@ $fullUrl = Request::url();
     @if (config('settings.alexa_verify_id'))
         <meta name="alexaVerifyID" content="{{ config('settings.alexa_verify_id') }}"/>
     @endif
-    <link href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" media="all">
-    <link href="{!! asset('blog/css/bootstrap.min.css') !!}" rel="stylesheet" media="all">
-    <link href="{!! asset('blog/css/main.css') !!}" rel="stylesheet" media="all">
-    <link href="{!! asset('blog/css/styles.css') !!}" rel="stylesheet" media="all">
-    <link href="{!! asset('blog/css/responsive.css') !!}" rel="stylesheet" media="all">
-    <link href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}" rel="stylesheet"
-          media="all">
+    <link href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <link href="{!! asset('blog/css/bootstrap.min.css') !!}" rel="preload" media="all">
+    <link href="{!! asset('blog/css/main.css') !!}" rel="preload" media="all">
+    <link href="{!! asset('blog/css/styles.css') !!}" rel="preload" media="all">
+    <link href="{!! asset('blog/css/responsive.css') !!}" rel="preload" media="all">
+    <link href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}" rel="preload">
     <script type="text/javascript">
         (function (b, o, i, l, e, r) {
             b.GoogleAnalyticsObject = l;
@@ -168,7 +167,7 @@ $fullUrl = Request::url();
 <script type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>
 <script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}" type="text/javascript"></script>
-
+<script async src="{!! asset('blog/js/loadCSS.js') !!}" type="text/javascript"></script>
 
 @yield('plugins')
 @yield('scripts')

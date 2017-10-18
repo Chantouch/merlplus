@@ -108,6 +108,7 @@ class Advertise extends Model
         return $media;
     }
 
+
     //----------Sluggable---------//
 
     /**
@@ -119,7 +120,7 @@ class Advertise extends Model
     {
         return [
             'slug' => [
-                'source' => 'seo_url'
+                'source' => ['seo_url', 'seo_url1']
             ]
         ];
     }
@@ -131,6 +132,15 @@ class Advertise extends Model
      */
     public function getSeoUrlAttribute()
     {
-        return $this->provider_name;
+        return $this->title;
     }
+
+    /**
+     * @return string
+     */
+    public function getSeoUrl1Attribute()
+    {
+        return uniqid();
+    }
+
 }
