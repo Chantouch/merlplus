@@ -149,25 +149,14 @@ $fullUrl = Request::url();
 <!-- Scripts -->
 <script src="{{ asset('blog/js/app.min.js') }}" type="text/javascript"></script>
 <script async src="{{ asset('blog/js/main.min.js') }}" type="text/javascript"></script>
-<script type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>
-<script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
-<script src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}" type="text/javascript"></script>
+{{--<script type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>--}}
+@if($agent->isMobile() || $agent->isTablet())
+    <script src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}" type="text/javascript"></script>
+    <script type="text/javascript" src="{!! asset('blog/js/uisearch.js') !!}"></script>
+@endif
 @yield('plugins')
 @yield('scripts')
 <script type="text/javascript">
-    @if($agent->isMobile() || $agent->isTablet())
-    new UISearch(document.getElementById('sb-search'));
-    @endif
-
-    /* Social Share */
-    $('.share').ShareLink({
-        title: '{{ addslashes(MetaTag::get('title')) }}',
-        text: '{!! addslashes(MetaTag::get('title')) !!}',
-        url: '{!! $fullUrl !!}',
-        width: 640,
-        height: 480
-    });
-
     (function () {
         if (typeof window.CustomEvent === "function") {
             return false;
@@ -183,7 +172,23 @@ $fullUrl = Request::url();
         CustomEvent.prototype = window.Event.prototype;
         window.CustomEvent = CustomEvent;
     })();
-
+    @if($agent->isMobile() || $agent->isTablet())
+    new UISearch(document.getElementById('sb-search'));
+    $(document).ready(function () {
+        $(".owl-carousel").owlCarousel({
+            loop: !0,
+            margin: 10,
+            responsiveClass: !0,
+            lazyLoad: !0,
+            lazyContent: !0,
+            responsive: {
+                0: {items: 2, nav: !1, dots: !0, loop: !0, autoplay: !0},
+                600: {items: 3, nav: !1, dots: !0, loop: !0},
+                1000: {items: 5, nav: !1, dots: !0, loop: !1}
+            }
+        })
+    });
+    @endif
 </script>
 <noscript>Your browser does not support JavaScript!</noscript>
 </body>
