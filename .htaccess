@@ -1,12 +1,14 @@
-<IfModule mod_headers.c>
-Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure
-# lower versions:
-Header set Set-Cookie HttpOnly;Secure
-Header always set X-FRAME-OPTIONS "DENY"
-Header always set X-XSS-Protection "1; mode=block"
-Header always set X-Content-Type-Options "nosniff"
-Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
-</IfModule>
+#Keep Alive Header
+<ifModule mod_headers.c>
+    Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure
+    # lower versions:
+    Header set Set-Cookie HttpOnly;Secure
+    Header always set X-FRAME-OPTIONS "DENY"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+    Header set Connection keep-alive
+</ifModule>
 
 <IfModule mod_expires.c>
   ExpiresActive on
@@ -48,6 +50,16 @@ Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains
     Header set Cache-Control "public"
   </FilesMatch>
 
+  <FilesMatch "\.css$">
+  AddHandler application/x-httpd-php .css
+  Header set Content-type "text/css"
+</FilesMatch>
+
+<FilesMatch "\.js$">
+  AddHandler application/x-httpd-php .js
+  Header set Content-type "application/javascript"
+</FilesMatch>
+
 </IfModule>
 
 <IfModule mod_rewrite.c>
@@ -71,11 +83,6 @@ Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains
    # Remove public folder form URL
    RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
-
-#Keep Alive Header
-<ifModule mod_headers.c>
- Header set Connection keep-alive
-</ifModule>
 
 # ----------------------------------------------------------------------
 # Expires headers (for better cache control)

@@ -59,7 +59,7 @@ class BaseController extends Controller
                 ->where('value', '!=', '')->get();
         }
         MetaTag::set('title', 'Merlplus News');
-        MetaTag::set('keywords', 'merl, plus, merlplus, breaking news, cambodian news, local news, breaking news in cambodia, health, cooking, breaking news, entertainment, technology, life, sport');
+        MetaTag::set('keywords', 'Merlplus News - ' . config('settings.app_name') . ', breaking news, cambodian news, local news, breaking news in cambodia, health, cooking, breaking news, entertainment, technology, life, sport');
         MetaTag::set('description', config('settings.app_slogan'));
         MetaTag::set('robots', 'index,follow');
 
@@ -87,7 +87,7 @@ class BaseController extends Controller
             'pages' => $pages,
             'socials' => $socials,
             'dnsPrefetch' => $dnsPrefetch,
-	        'agent' => $agent
+            'agent' => $agent
         ]);
     }
 

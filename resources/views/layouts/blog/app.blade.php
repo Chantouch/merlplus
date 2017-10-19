@@ -1,7 +1,7 @@
 <?php
 $fullUrl = Request::url();
 ?>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -10,26 +10,8 @@ $fullUrl = Request::url();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta name="apple-mobile-web-app-title" content="{{ config('settings.app_name') }}">
-    <link rel="apple-touch-icon" sizes="57x57" href="{!! asset('storage/default/ico/apple-icon-57x57.png') !!}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{!! asset('storage/default/ico/apple-icon-60x60.png') !!}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{!! asset('storage/default/ico/apple-icon-72x72.png') !!}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{!! asset('storage/default/ico/apple-icon-76x76.png') !!}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{!! asset('storage/default/ico/apple-icon-114x114.png') !!}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{!! asset('storage/default/ico/apple-icon-120x120.png') !!}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{!! asset('storage/default/ico/apple-icon-144x144.png') !!}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{!! asset('storage/default/ico/apple-icon-152x152.png') !!}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{!! asset('storage/default/ico/apple-icon-180x180.png') !!}">
-    <link rel="icon" type="image/png" sizes="192x192"
-          href="{!! asset('storage/default/ico/android-icon-192x192.png') !!}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{!! asset('storage/default/ico/favicon-32x32.png') !!}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{!! asset('storage/default/ico/favicon-96x96.png') !!}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{!! asset('storage/default/ico/favicon-16x16.png') !!}">
-    <link rel="manifest" href="{!! asset('storage/default/ico/manifest.json') !!}">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{!! asset('storage/default/ico/ms-icon-144x144.png') !!}">
-    <meta name="theme-color" content="#ffffff">
     <link rel="shortcut icon" href="{{ asset(config('settings.app_favicon')) }}">
-    <title>{{ MetaTag::get('title') }}</title>
+    <title>{{ MetaTag::get('title') }} - {!! config('settings.app_name') !!}</title>
     {!! MetaTag::tag('description') !!}{!! MetaTag::tag('keywords') !!}
     <link rel="canonical" href="{{ $fullUrl }}"/>
     {!! MetaTag::tag('image') !!}
@@ -164,16 +146,12 @@ $fullUrl = Request::url();
         <i class="fa fa-chevron-up"></i>
     </a>
 </div>
-
-
 <!-- Scripts -->
 <script src="{{ asset('blog/js/app.min.js') }}" type="text/javascript"></script>
 <script async src="{{ asset('blog/js/main.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>
 <script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}" type="text/javascript"></script>
-
-
 @yield('plugins')
 @yield('scripts')
 <script type="text/javascript">

@@ -7,6 +7,7 @@ use App\Model\Advertise;
 use App\Model\Post;
 use App\Model\Tag;
 use Illuminate\Http\Request;
+use Torann\LaravelMetaTags\Facades\MetaTag;
 
 class TagController extends BaseController
 {
@@ -85,9 +86,9 @@ class TagController extends BaseController
 		    ->latest()->take(config('settings.new_posts_number', '6'))->get();
         $single_article_ads = Advertise::with('ads_type')
             ->where('advertise_type_id', 9)->get();
-	    MetaTag::set('title', $category->title);
+	    MetaTag::set('title', $category->name);
 	    MetaTag::set('keywords', 'top news, reliable news, content, number news site');
-	    MetaTag::set('description', $category->title);
+	    MetaTag::set('description', $category->description);
         return view($this->view . 'show', compact('category', 'posts', 'most_read', 'new_posts', 'single_article_ads'));
     }
 
