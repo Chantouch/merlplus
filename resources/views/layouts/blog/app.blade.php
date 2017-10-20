@@ -43,8 +43,10 @@ $fullUrl = Request::url();
     <link href="{!! asset('blog/fonts/font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet" media="all">
     <link href="{!! asset('blog/css/bootstrap.min.css') !!}" rel="stylesheet" media="all">
     <link href="{!! asset('blog/css/main.css') !!}" rel="stylesheet" media="all">
+    @if($agent->isMobile() || $agent->isTablet())
     <link href="{!! asset('plugins/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css') !!}" rel="stylesheet"
           media="all">
+    @endif
     <script type="text/javascript">
         (function (b, o, i, l, e, r) {
             b.GoogleAnalyticsObject = l;

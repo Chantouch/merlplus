@@ -24,7 +24,7 @@
                                         <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                                             <img alt="{!! $post->removeSpecialChar($post->title) !!}"
                                                  class="blocky lazyload"
-                                                 src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
+                                                 src="{!! asset('/media/news/'.$post->id.'/medium_'.$post->thumbnail()->filename) !!}"/>
                                         </a>
                                     </div>
                                 @endif

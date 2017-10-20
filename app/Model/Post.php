@@ -274,9 +274,9 @@ class Post extends Model
     public function storeAndSetThumbnail(UploadedFile $thumbnail, Post $post)
     {
         //$thumbnail_name = $thumbnail->store('uploads/posts');
-        $image_large = Image::make($thumbnail)->resize(1100, 619);
-        $image_medium = Image::make($thumbnail)->resize(970, 546);
-        $image_small = Image::make($thumbnail)->resize(435, 250);
+        $image_large = Image::make($thumbnail)->fit(1200, 700);
+        $image_medium = Image::make($thumbnail)->fit(435, 250);
+        $image_small = Image::make($thumbnail)->fit(140, 90);
         $ext = $thumbnail->getClientOriginalExtension();
         $path = storage_path('app/public/uploads/posts/' . $post->id . '/');
         $file_name = str_random(50) . '.' . $ext;
@@ -290,8 +290,8 @@ class Post extends Model
                 'mime_type' => $thumbnail->getMimeType()
             ]);
             $image_large->save($path . 'large_' . $file_name, 100);
-            $image_medium->save($path . 'medium_' . $file_name, 100);
-            $image_small->save($path . 'small_' . $file_name, 50);
+            $image_medium->save($path . 'medium_' . $file_name, 70);
+            $image_small->save($path . 'small_' . $file_name, 70);
             $this->update(['thumbnail_id' => $media->id]);
         } else {
             $name = $this->media()->first()->filename;
@@ -309,8 +309,8 @@ class Post extends Model
                 'mime_type' => $thumbnail->getMimeType()
             ]);
             $image_large->save($path . 'large_' . $file_name, 100);
-            $image_medium->save($path . 'medium_' . $file_name, 100);
-            $image_small->save($path . 'small_' . $file_name, 50);
+            $image_medium->save($path . 'medium_' . $file_name, 70);
+            $image_small->save($path . 'small_' . $file_name, 70);
         }
         return $thumbnail;
     }

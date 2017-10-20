@@ -11,7 +11,7 @@
         <div class="mid-block-1 boxgrid caption item col-sm-6">
             @if($post->hasThumbnail())
                 <img alt="{!! $post->removeSpecialChar($post->title) !!}" class="img lazyload"
-                     src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                     src="{!! asset(route('media.posts.path',[$post->id,'medium_'.$post->thumbnail()->filename])) !!}"/>
             @else
                 <img alt="{!! $post->removeSpecialChar($post->title) !!}" class="img lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
                      data-src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
