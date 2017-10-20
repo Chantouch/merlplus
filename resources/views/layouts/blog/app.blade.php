@@ -152,6 +152,7 @@ $fullUrl = Request::url();
 {{--<script type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>--}}
 @if($agent->isMobile() || $agent->isTablet())
     <script src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}" type="text/javascript"></script>
+    <script type="text/javascript" src="{!! asset('blog/js/classie.js') !!}"></script>
     <script type="text/javascript" src="{!! asset('blog/js/uisearch.js') !!}"></script>
 @endif
 @yield('plugins')
