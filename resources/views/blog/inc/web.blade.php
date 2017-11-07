@@ -5,7 +5,7 @@
                 <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                     <img alt="{!! $post->removeSpecialChar($post->title) !!}"
                          class="blocky lazyload" height="90"
-                         src="{!! asset('blog/img/blur.jpg') !!}"
+                         src="{!! asset('blog/img/blur.png') !!}"
                          data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                 </a>
             </div>

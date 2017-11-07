@@ -253,7 +253,7 @@ class Post extends Model
      */
     public function thumbnail()
     {
-        return $this->media()->where('id', $this->thumbnail_id)->first();
+        return $this->media->where('id', $this->thumbnail_id)->first();
     }
 
     /**
@@ -284,7 +284,7 @@ class Post extends Model
             mkdir($path, 0777, true);
         }
         if (!$this->hasThumbnail()) {
-            $media = $this->media()->create([
+            $media = $this->media->create([
                 'filename' => $file_name,
                 'original_filename' => $thumbnail->getClientOriginalName(),
                 'mime_type' => $thumbnail->getMimeType()
@@ -294,7 +294,7 @@ class Post extends Model
             $image_small->save($path . 'small_' . $file_name, 70);
             $this->update(['thumbnail_id' => $media->id]);
         } else {
-            $name = $this->media()->first()->filename;
+            $name = $this->media->first()->filename;
             $old_path = [
                 'public/uploads/posts/' . $post->id . '/' . 'large_' . $name,
                 'public/uploads/posts/' . $post->id . '/' . 'medium_' . $name,
@@ -303,7 +303,7 @@ class Post extends Model
             if (File::exists(storage_path('app/public/uploads/posts'))) {
                 Storage::delete($old_path);
             }
-            $this->media()->first()->update([
+            $this->media->first()->update([
                 'filename' => $file_name,
                 'original_filename' => $thumbnail->getClientOriginalName(),
                 'mime_type' => $thumbnail->getMimeType()

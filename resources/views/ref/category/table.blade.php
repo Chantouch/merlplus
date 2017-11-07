@@ -32,7 +32,7 @@
                     </td>
                     <td>{!! $category->position_order !!}</td>
                     <td>
-                        <span class="badge badge-primary">{!! $category->status !!}</span>
+                        {!! status($category->status) !!}
                     </td>
                     <td>
                         <div class="btn-group">

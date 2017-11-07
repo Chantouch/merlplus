@@ -123,6 +123,7 @@
                 </article>
                 <!-- The Article Social Media Share -->
                 <div class="artcl-scl float-width">
+                    <div class="lefty artcl-tags tag-info">
                     @if(!empty($post->origin_source) && !empty($post->source_title))
                         <p>{!! __('app.article.source') !!}
                             <a href="{!! $post->origin_source !!}" title="{!! $post->source_title !!}" target="_blank">
@@ -133,6 +134,7 @@
                     @else
                         <p>{!! __('posts.show.article') !!} {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
                     @endif
+                    </div>
                     <div class="lefty artcl-tags tag-info">
                         <h3>{!! __('app.tag') !!} : </h3>
                         <ul>
@@ -181,19 +183,42 @@
         @include('layouts.blog.main-right-side')
     </div>
 @stop
-@section('plugins')
-    <script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
-    @stop
 @section('scripts')
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                comments: {},
+                newComment: {
+                    body: '',
+                    user_id: '',
+                    parent_id: ''
+                },
+                formErrors: {}
+            },
+            created: function () {
+                this.fetchComments()
+            },
+            methods: {
+                fetchComments() {
+                    let vm = this;
+                    vm.$http.get('/api/v1/posts/{!! $post->id !!}/comments').then(response => {
+                        vm.comments = response.data
+                    })
+                },
+                createComment() {
+                    let vm = this;
+                    let input = this.newComment;
+                    vm.$http.post('/api/v1/posts/{!! $post->id !!}/comments', input).then(response => {
+                        alert('Comment added');
+                    });
+                    this.fetchComments();
+                }
+            }
+        });
+    </script>
     @if (config('services.facebook.client_id'))
         <script>
-            $('.share').ShareLink({
-                title: '{{ addslashes(MetaTag::get('title')) }}',
-                text: '{!! addslashes(MetaTag::get('title')) !!}',
-                url: '{!! Request::url() !!}',
-                width: 640,
-                height: 480
-            });
             (function (d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id)) return;
@@ -204,4 +229,13 @@
             }(document, 'script', 'facebook-jssdk'));
         </script>
     @endif
+    <script>
+        $(document).ready(function () {
+            $('.content p').each(function () {
+                if ($(this).find('img').length) {
+                    $(this).find("img").unwrap();
+                }
+            });
+        });
+    </script>
 @stop

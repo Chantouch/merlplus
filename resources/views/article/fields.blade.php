@@ -137,21 +137,25 @@
         <div class="panel-wrapper collapse in">
             <div class="panel-body">
                 <div class="row m-b-20">
-                    <div class="col-md-6 col-sm-6">
-                        @if(!isset($post))
-                            <button class="btn btn-outline btn-default waves-effect waves-light pull-left"
-                                    name="submit" value="draft">
-                                <span>Save as @{{ article.status }}</span>
-                            </button>
-                        @endif
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group text-center pull-right">
+                            @if(!isset($post))
+                                <button class="btn btn-outline btn-default waves-effect waves-light pull-left"
+                                        name="submit" value="draft">
+                                    <span>Save as @{{ article.status }}</span>
+                                </button>
+                            @endif
+                        </div>
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                        @if(isset($post))
-                            <a href="{!! route('blog.article.show',[$post->getRouteKey()]) !!}" target="_blank"
-                               class="btn btn-info waves-effect waves-light pull-right" style="margin-right: 0">
-                                <span>{!! __('admin.preview') !!}</span> <i class="fa fa-eye m-l-5"></i>
-                            </a>
-                        @endif
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group text-center pull-right">
+                            @if(isset($post))
+                                <a href="{!! route('blog.article.show',[$post->getRouteKey()]) !!}" target="_blank"
+                                   class="btn btn-info waves-effect waves-light pull-right" style="margin-right: 0">
+                                    <span>{!! __('admin.preview') !!}</span> <i class="fa fa-eye m-l-5"></i>
+                                </a>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <!--Comment first-->
@@ -178,7 +182,8 @@
                     <a href="javascript:void (0)">Edit</a>
                 </p>
                 <p>Publish@: @{{ posted_at.now_label }}
-                    <a href="javascript:void (0)" @click.prevent="schedulePost" v-if="posted_at.edit">{!! __('admin.edit') !!}</a>
+                    <a href="javascript:void (0)" @click.prevent="schedulePost"
+                       v-if="posted_at.edit">{!! __('admin.edit') !!}</a>
                 </p>
                 <div class="form-group" v-if="posted_at.schedule">
                     <label class="col-sm-12" for="status"></label>
@@ -203,16 +208,21 @@
             </div>
             <div class="panel-footer">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6">
-                        <a href="{!! route('admin.article.index') !!}"
-                           class="fcbtn btn btn-danger btn-outline btn-1d pull-left">
-                            {!! __('admin.move_to_draft') !!}
-                        </a>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group text-center pull-right">
+                            <a href="{!! route('admin.article.index') !!}"
+                               class="fcbtn btn btn-danger btn-outline btn-1d pull-left">
+                                {!! __('admin.move_to_draft') !!}
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                        <button class="fcbtn btn btn-info btn-outline btn-1e pull-right" name="submit" value="publish">
-                            <span>{!! __('admin.publish') !!}</span> <i class="fa fa-save m-l-5"></i>
-                        </button>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group text-center pull-right">
+                            <button class="fcbtn btn btn-info btn-outline btn-1e pull-right" name="submit"
+                                    value="publish">
+                                <span>{!! __('admin.publish') !!}</span> <i class="fa fa-save m-l-5"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -298,9 +308,9 @@
                     <label class="screen-reader-text" for="newcategory"></label>
                     <input type="text" name="newcategory" id="newcategory" class="form-control"
                            v-model="newCat.newcategory"
-                           placeholder="Add New Category" aria-required="true">
+                           placeholder="{!! __('posts.name') !!}" aria-required="true">
                     <span class="help-block" v-if="formErrors['newcategory']" style="color: red">
-                        <small>The name field is required</small>
+                        <small>{!! __('posts.the_name_field_is_required') !!}</small>
                     </span>
                     <br>
                     <label class="screen-reader-text" for="new_category_parent">
@@ -308,7 +318,7 @@
                     <select name="parent_cat" id="new_category_parent" class="form-control m-b-10"
                             v-model="newCat.parent_cat">
                         <option value="">— {!! __('admin.parent_category') !!} —</option>
-                        <option v-for="category in categories" :value="category.id">
+                        <option v-for="category in categories.categories" :value="category.id">
                             @{{ category.name }}
                         </option>
                     </select>
@@ -322,7 +332,7 @@
 
     <!--Tag-->
     <div class="panel panel-default">
-        <div class="panel-heading">Tag
+        <div class="panel-heading">{!! __('posts.tag') !!}
             <div class="panel-action">
                 <a href="javascript:void (0);" data-perform="panel-collapse">
                     <i class="ti-minus"></i>
@@ -351,7 +361,7 @@
                 </div>
 
                 <div class="input-group m-b-10" :class="{ 'has-error': formErrors['name'] }">
-                    <input id="tag-input" class="form-control" placeholder="Tag" v-model="newTag.name">
+                    <input id="tag-input" class="form-control" placeholder="{!! __('posts.name') !!}" v-model="newTag.name">
                     <span class="input-group-btn">
                       <button type="button" class="btn waves-effect waves-light btn-info" @click.prevent="newTags()">
                           {!! __('admin.add') !!}
@@ -386,8 +396,8 @@
                                 <span class="fileinput-filename"></span>
                             </div>
                             <span class="input-group-addon btn btn-default btn-file">
-                                <span class="fileinput-new">Select file</span>
-                                <span class="fileinput-exists">Change</span>
+                                <span class="fileinput-new">{!! __('posts.select_file') !!}</span>
+                                <span class="fileinput-exists">{!! __('posts.change') !!}</span>
                                 <input type="file" name="thumbnail" @change.prevent="previewImage" accept="image/*">
                             </span>
                             <a href="javascript:void (0)" class="input-group-addon btn btn-default fileinput-exists"
@@ -426,15 +436,21 @@
         <div class="panel-wrapper collapse in">
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6">
-                        <button class="fcbtn btn btn-primary btn-outline btn-1d pull-left" name="submit" value="draft">
-                            <span>{!! __('admin.save_as_draft') !!}</span>
-                        </button>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group text-center pull-right">
+                            <button class="fcbtn btn btn-primary btn-outline btn-1d pull-left" name="submit"
+                                    value="draft">
+                                <span>{!! __('admin.save_as_draft') !!}</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                        <button class="fcbtn btn btn-info btn-outline btn-1e pull-right" name="submit" value="publish">
-                            <span>{!! __('admin.publish') !!}</span> <i class="fa fa-save m-l-5"></i>
-                        </button>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group text-center pull-right">
+                            <button class="fcbtn btn btn-info btn-outline btn-1e pull-right" name="submit"
+                                    value="publish">
+                                <span>{!! __('admin.publish') !!}</span> <i class="fa fa-save m-l-5"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -443,7 +459,7 @@
     <!-- Resource of article-->
     <div class="panel panel-default">
         <div class="panel-heading">
-            Resource and Contributor
+            {!! __('posts.resource_Contributor') !!}
             <div class="panel-action">
                 <a href="javascript:void (0);" data-perform="panel-collapse">
                     <i class="ti-minus"></i>
@@ -456,9 +472,9 @@
                     <div class="col-md-12 col-sm-12">
                         <!--Source -->
                         <div class="form-group{{ $errors->has('origin_source') ? ' has-error' : '' }}">
-                            {!! Form::label('origin_source', 'Origin Source:', ['class'=>'col-md-12']) !!}
+                            {!! Form::label('origin_source', __('posts.origin_source'), ['class'=>'col-md-12']) !!}
                             <div class="col-sm-12">
-                                {!! Form::text('origin_source', null, ['class' => 'form-control', 'placeholder' => 'Enter your article origin source form']) !!}
+                                {!! Form::text('origin_source', null, ['class' => 'form-control', 'placeholder' => __('posts.enter_your_article_origin_source_form')]) !!}
                                 @if ($errors->has('origin_source'))
                                     <span class="help-block">
                                         <small>{{ $errors->first('origin_source') }}</small>
@@ -467,9 +483,9 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('source_title') ? ' has-error' : '' }}">
-                            {!! Form::label('source_title', 'Source Title:', ['class'=>'col-md-12']) !!}
+                            {!! Form::label('source_title', __('posts.source_title'), ['class'=>'col-md-12']) !!}
                             <div class="col-sm-12">
-                                {!! Form::text('source_title', null, ['class' => 'form-control', 'placeholder' => 'Enter your article origin source title']) !!}
+                                {!! Form::text('source_title', null, ['class' => 'form-control', 'placeholder' => __('posts.enter_your_article_origin_source_title')]) !!}
                                 @if ($errors->has('source_title'))
                                     <span class="help-block">
                                         <small>{{ $errors->first('source_title') }}</small>
@@ -479,9 +495,9 @@
                         </div>
                         <!--Contributor-->
                         <div class="form-group{{ $errors->has('contributor') ? ' has-error' : '' }}">
-                            {!! Form::label('contributor', 'Contributor:', ['class'=>'col-md-12']) !!}
+                            {!! Form::label('contributor', __('posts.contributor'), ['class'=>'col-md-12']) !!}
                             <div class="col-sm-12">
-                                {!! Form::text('contributor', null, ['class' => 'form-control', 'placeholder' => 'Enter your article contributor']) !!}
+                                {!! Form::text('contributor', null, ['class' => 'form-control', 'placeholder' => __('posts.enter_your_article_contributor')]) !!}
                                 @if ($errors->has('contributor'))
                                     <span class="help-block">
                                         <small>{{ $errors->first('contributor') }}</small>

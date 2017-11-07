@@ -47,10 +47,6 @@
                     <td>
                         <div class="btn-group" style="white-space: nowrap">
                             {!! Form::open(['route' => ['admin.article.destroy', $article->id], 'method' => 'delete']) !!}
-                            <a href="{!! route('admin.article.show', [$article->id]) !!}"
-                               class='btn btn-info btn-outline btn-1b waves-effect btn-xs'>
-                                {!! __('admin.view') !!}
-                            </a>
                             <a href="{!! route('admin.article.edit', [$article->id]) !!}"
                                class='btn btn-primary btn-outline waves-effect btn-xs'>
                                 {!! __('admin.edit') !!}

@@ -32,3 +32,11 @@ function status($value)
         return $string = '<span class="label label-danger">មិនបង្ហាញ</span>';
     }
 }
+
+function is_menu($menu){
+    if ($menu == 1) {
+        return $string = '<span class="label label-info">បាទ/ចាស</span>';
+    } else {
+        return $string = '<span class="label label-warning">មិនមែន</span>';
+    }
+}

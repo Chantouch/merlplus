@@ -12,7 +12,8 @@
         <div class="logo col-lg-4 col-md-4 col-sm-4">
             @if(config('settings.app_logo'))
                 <a href="{!! route('blog.index') !!}">
-                    <img alt="{!! config('settings.app_name') !!}" src="{!! asset(config('settings.app_logo')) !!}" width="270"
+                    <img alt="{!! config('settings.app_name') !!}" src="{!! asset(config('settings.app_logo')) !!}"
+                         width="270"
                          class="lazyload img-responsive logo-top"/>
                 </a>
             @endif
@@ -24,17 +25,18 @@
                     @if($ads->hasBanner())
                         <a href="{!! $ads->url !!}" target="_blank">
                             <img alt="{!! $ads->banner()->original_filename !!}"
-                                 src="{!! asset('blog/img/blur-ads.jpg') !!}" data-src="{!! asset($ads->banner()->media_url) !!}"
+                                 src="{!! asset('blog/img/blur-ads.jpg') !!}"
+                                 data-src="{!! asset($ads->banner()->media_url) !!}"
                                  height="90" class="lazyload img-responsive"/>
-                        </a>
-                    @else
-                        <a href="{!! $ads->url !!}" target="_blank">
-                            <img alt="Image blog default page" data-src="{!! asset('blog/img/top-banner.jpg') !!}"
-                                 src="{!! asset('blog/img/blur-ads.jpg') !!}" height="90"
-                                 class="lazyload img-responsive"/>
                         </a>
                     @endif
                 @endforeach
+            @else
+                <a href="{!! route('blog.contact.index') !!}" target="_blank">
+                    <img alt="Image blog default page" data-src="{!! asset('images/ads-728x90.png') !!}"
+                         src="{!! asset('blog/img/blur-ads.jpg') !!}" height="90"
+                         class="lazyload img-responsive"/>
+                </a>
             @endif
         </div>
     </div>

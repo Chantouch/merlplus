@@ -31,8 +31,8 @@
                                  alt="{!! $tag->name !!}" class="img-thumbnail">
                         @endif
                     </td>
-                    <td>{!! $tag->is_menu !!}</td>
-                    <td>{!! $tag->status !!}</td>
+                    <td>{!! is_menu($tag->is_menu) !!}</td>
+                    <td>{!! status($tag->status) !!}</td>
                     <td>
                         <div class="btn-group">
                             {!! Form::open(['route' => ['admin.ref.tag.destroy', $tag->id], 'method' => 'delete']) !!}

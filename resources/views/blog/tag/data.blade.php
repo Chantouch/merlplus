@@ -21,7 +21,7 @@
             @if($post->hasThumbnail())
                 <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                     <img alt="{!! $post->removeSpecialChar($post->title) !!}" class="lefty img-responsive" width="271"
-                         src="{!! asset(route('media.posts.path',[$post->id,'small_'.$post->thumbnail()->filename])) !!}"/>
+                         src="{!! asset(route('media.posts.path',[$post->id,'medium_'.$post->thumbnail()->filename])) !!}"/>
                 </a>
             @else
                 <img class="lefty" alt="{!! $post->removeSpecialChar($post->title) !!}"

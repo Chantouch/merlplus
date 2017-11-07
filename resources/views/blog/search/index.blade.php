@@ -25,7 +25,7 @@
                                     <img alt="merlplus, merlplus.com {!! $post->removeSpecialChar($post->title) !!}"
                                          class="lefty img-responsive lazyload" height="90"
                                          src="{!! asset('blog/img/blur.jpg') !!}"
-                                         data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
+                                         data-src="{!! asset('/media/news/'.$post->id.'/medium_'.$post->thumbnail()->filename) !!}"/>
                                 </a>
                             </div>
                         @else

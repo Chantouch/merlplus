@@ -9,8 +9,7 @@
 @extends('layouts.blog.app')
 @section('contact-map')
     <div class="contact-maps float-width">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12679.021280862107!2d-121.89079389021241!3d37.39561832456384!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcea7e190e829%3A0xf812f1635c1b7ec5!2sSilicon+Valley+University!5e0!3m2!1sen!2s!4v1393959144037"
-                width="100%" height="350" frameborder="0" style="border:0"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3909.4696385396746!2d104.9309791323575!3d11.518130327955129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDMxJzA1LjUiTiAxMDTCsDU1JzU0LjciRQ!5e0!3m2!1sen!2s!4v1509290239822" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
 @stop
 @section('content')
@@ -50,7 +49,7 @@
                         @endif
                     </div>
                     <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                        {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => 'Your phone number']) !!}
+                        {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => 'Your phone number here']) !!}
                         @if ($errors->has('phone'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('phone') }}</strong>
@@ -58,7 +57,7 @@
                         @endif
                     </div>
                     <div class="form-group magalla-slctr{{ $errors->has('subject') ? ' has-error' : '' }}">
-                        {!! Form::select('subject', ['Some other subject 1' => 'Some other subject 1', 'Some other subject 2' => 'Some other subject 2'], null, ['class' => 'form-control']) !!}
+                        {!! Form::text('subject', null, ['class' => 'form-control', 'placeholder' => 'Your subject here']) !!}
                         @if ($errors->has('subject'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('subject') }}</strong>
@@ -66,7 +65,7 @@
                         @endif
                     </div>
                     <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                        {!! Form::textarea('message', null, array('class'=>'form-control', 'placeholder'=>'Your message')) !!}
+                        {!! Form::textarea('message', null, array('class'=>'form-control', 'placeholder'=>'Your message here')) !!}
                         @if ($errors->has('message'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('message') }}</strong>

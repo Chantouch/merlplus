@@ -14,49 +14,47 @@
         </div>
         <div class="rt-bk-cont">
             @if(count($top_right_ads))
-                @foreach($top_right_ads as $ads)
+                @foreach($top_right_ads as $index => $ads)
                     @if($ads->hasBanner())
                         <div class="rt-block mid-block-1 col-sm-6 boxgrid2 caption">
                             <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">
                                 <img alt="{!! $ads->provider_name !!}" class="img lazyload"
-                                     src="{!! asset('blog/img/blur.jpg') !!}" data-src="{!! asset($ads->banner()->media_url) !!}"/>
+                                     src="{!! asset('blog/img/blur.png') !!}"
+                                     data-src="{!! asset($ads->banner()->media_url) !!}"/>
                             </a>
                             <h2 class="cat-label cat-label4">
                                 <a href="{!! $ads->url !!}">{!! $ads->provider_name !!}</a>
                             </h2>
                         </div>
-                    @else
-                        <div class="rt-block mid-block-1 boxgrid2 caption item">
-                            {!! $ads->url !!}
+                    @endif
+                    @if($index < 2)
+                        <div class="rt-block mid-block-1 col-sm-6 boxgrid2 caption">
+                            <a href="{!! route('blog.contact.index') !!}">
+                                <img alt="Place your ads here" class="img lazyload"
+                                     src="{!! asset('blog/img/blur.png') !!}"
+                                     data-src="{!! asset('images/ads-300x250.png') !!}"/>
+                            </a>
                             <h2 class="cat-label cat-label4">
-                                <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">{!! $ads->provider_name !!}</a>
+                                <a href="{!! route('blog.contact.index') !!}">Contact Us</a>
                             </h2>
                         </div>
                     @endif
                 @endforeach
+            @else
+                @for($x = 0; $x <= 1; $x++)
+                    <div class="rt-block mid-block-1 col-sm-6 boxgrid2 caption">
+                        <a href="{!! route('blog.contact.index') !!}">
+                            <img alt="Place your ads here" class="img lazyload"
+                                 src="{!! asset('blog/img/blur.png') !!}"
+                                 data-src="{!! asset('images/ads-300x250.png') !!}"/>
+                        </a>
+                        <h2 class="cat-label cat-label4">
+                            <a href="{!! route('blog.contact.index') !!}">Contact Us</a>
+                        </h2>
+                    </div>
+                @endfor
             @endif
         </div>
-    </div>
-@stop
-@section('main_right_ads_bar')
-    <div class="flexslider sm-sldr">
-        <ul class="slides">
-            @if(isset($home_top_news_slider))
-                @if(count($home_top_news_slider))
-                    @foreach($home_top_news_slider->take(3) as $ads)
-                        <li>
-                            <img alt="{!! $ads->banner()->original_filename !!}" class="lazyload"
-                                 src="{!! asset('blog/img/blur.jpg') !!}" data-src="{!! asset($ads->banner()->media_url) !!}"/>
-                        </li>
-                    @endforeach
-                @else
-                    <li>
-                        <img alt="No image" class="lazyload" src="{!! asset('blog/img/blur.jpg') !!}"
-                             data-src="{!! asset('blog/img/samples/z2.jpg') !!}"/>
-                    </li>
-                @endif
-            @endif
-        </ul>
     </div>
 @stop
 @section('content')

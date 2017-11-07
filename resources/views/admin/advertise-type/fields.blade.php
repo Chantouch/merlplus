@@ -1,4 +1,4 @@
-{!! Form::label('name', __('admin.')) !!}
+{!! Form::label('name', __('admin.name')) !!}
 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
     <div class="form-line">
         {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter your page name']) !!}
@@ -10,7 +10,7 @@
     @endif
 </div>
 
-{!! Form::label('slug', __('admin.')) !!}
+{!! Form::label('slug', __('admin.slug')) !!}
 <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
     <div class="form-line">
         {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Enter your advertise type slug']) !!}

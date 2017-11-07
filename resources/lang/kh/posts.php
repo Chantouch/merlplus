@@ -31,5 +31,17 @@ return [
     ],
     'show.article' => 'អត្តបទ',
     'btn_read_more' => 'អានបន្ត',
-    'video' => 'វីដីអូ'
+    'video' => 'វីដីអូ',
+    'the_name_field_is_required' => 'សូមបំពេញចន្លោះទំនេរ។',
+    'name' => 'ឈ្មោះ',
+    'tag' => 'ពាក្យទាក់ទង',
+    'select_file' => 'ជ្រើសរើសរូបភាព',
+    'change' => 'ផ្លាស់ប្តូរ',
+    'resource_Contributor' => 'ធនធាននិងអ្នកចូលរួម',
+    'origin_source' => 'ប្រភពដើម',
+    'source_title' => 'ឈ្មោះប្រភព',
+    'contributor' => 'អ្នកចូលរួម',
+    'enter_your_article_origin_source_form' => 'សូមបញ្ចូលប្រភពដើមនៃអត្ថបទពី?',
+    'enter_your_article_origin_source_title' => 'សូមបញ្ចូលឈ្មោះប្រភពដើមនៃអត្ថបទ',
+    'enter_your_article_contributor' => 'សូមបញ្ចូលបឈ្មោះអ្នកបកប្រែ',
 ];

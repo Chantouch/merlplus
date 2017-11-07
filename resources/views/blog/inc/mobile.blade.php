@@ -13,7 +13,7 @@
                 @if($index > 0)
                     <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                         <img alt="{!! $post->removeSpecialChar($post->title) !!}" class="blocky lazyload"
-                             src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
+                             data-src="{!! asset('/media/news/'.$post->id.'/small_'.$post->thumbnail()->filename) !!}"/>
                         <h5 class="mobile-title">{!! $post->title !!}</h5>
                     </a>
                 @endif

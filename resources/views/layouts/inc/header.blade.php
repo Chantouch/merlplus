@@ -49,8 +49,8 @@
                                 @endif
                             </div>
                             <div class="u-text">
-                                <h4>{!! auth()->user()->name !!}</h4>
-                                <p class="text-muted">{!! auth()->user()->email !!}</p>
+                                <h4>{!! str_limit(auth()->user()->name,15) !!}</h4>
+                                <p class="text-muted">{!! str_limit(auth()->user()->email,20) !!}</p>
                                 <a href="{!! route('admin.manage.user.edit', [auth()->id()]) !!}" class="btn btn-rounded btn-danger btn-sm">
                                     View Profile
                                 </a>

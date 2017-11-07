@@ -66,7 +66,7 @@
                     {!! Form::close() !!}
                     <p class="m-t-20">{!! __('admin.maximum_upload_file_size') !!}</p>
                     <button type="button" class="btn btn-danger waves-effect waves-light" id="insert-media" disabled>
-                       {!! __('admin.insert_media') !!}
+                        {!! __('admin.insert_media') !!}
                     </button>
                     <div class="clearfix"></div>
                 </div>
@@ -97,15 +97,19 @@
                     limit_name: '',
                     mime_type: '',
                     url: ''
-                }
+                },
+                loading: false,
+                error: null
             },
-            created: function () {
+            created() {
                 this.fetchMediaLibrary();
             },
             methods: {
                 fetchMediaLibrary() {
                     let vm = this;
+                    vm.loading = true;
                     vm.$http.get('/api/v1/media-library').then(response => {
+                        this.loading = false;
                         vm.mediaLibrary = response.data;
                     })
                 },
@@ -171,7 +175,9 @@
                     });
                 }
             },
-            watch: {}
+            watch: {
+                '$route': 'fetchMediaLibrary'
+            }
         });
 
     </script>
