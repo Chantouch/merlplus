@@ -42,6 +42,10 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
 
 Route::prefix('v2')->name('api.v2.')->group(function () {
     Route::namespace('API\V2')->group(function () {
-        Route::resource('posts', 'PostController', ['only' => ['index']]);
+
+        Route::get('latest', 'PostController@latest');
+
+        Route::get('most-read', 'PostController@mostRead');
+
     });
 });

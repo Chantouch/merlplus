@@ -29,7 +29,7 @@ class Post extends Resource
             'posted_at' => $this->posted_at->toIso8601String(),
             'author_id' => $this->user_id,
             'has_thumbnail' => $this->hasThumbnail(),
-            'thumbnail_url' => optional($this->thumbnail())->url,
+            'thumbnail_url' => asset('/media/news/'.$this->id.'/medium_'.$this->thumbnail()->filename),
             'url' => route('blog.article.show', [$this->slug])
         ];
     }

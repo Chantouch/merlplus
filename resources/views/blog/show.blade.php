@@ -55,16 +55,14 @@
     @endif
 @stop
 @section('new_article_single_article')
-    @if($new_posts->count())
-        <div class="panel panel-info pos-relative">
-            @include('blog._components.latest-post')
-        </div>
-    @endif
-    @if($most_read->count())
-        <div class="panel panel-info pos-relative">
-            @include('blog._components.most-read')
-        </div>
-    @endif
+    <div class="panel panel-info pos-relative">
+        @include('blog._components.latest-post')
+    </div>
+
+    <div class="panel panel-info pos-relative">
+        @include('blog._components.most-read')
+    </div>
+
 @stop
 @section('content')
     <div class="main-left-side pos-relative">
@@ -124,16 +122,17 @@
                 <!-- The Article Social Media Share -->
                 <div class="artcl-scl float-width">
                     <div class="lefty artcl-tags tag-info">
-                    @if(!empty($post->origin_source) && !empty($post->source_title))
-                        <p>{!! __('app.article.source') !!}
-                            <a href="{!! $post->origin_source !!}" title="{!! $post->source_title !!}" target="_blank">
-                                {!! $post->source_title !!}
-                            </a>
-                        </p>
-                        <p>{!! __('app.article.translator') !!} {!! $post->contributor ? $post->contributor : 'Admin' !!} </p>
-                    @else
-                        <p>{!! __('posts.show.article') !!} {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
-                    @endif
+                        @if(!empty($post->origin_source) && !empty($post->source_title))
+                            <p>{!! __('app.article.source') !!}
+                                <a href="{!! $post->origin_source !!}" title="{!! $post->source_title !!}"
+                                   target="_blank">
+                                    {!! $post->source_title !!}
+                                </a>
+                            </p>
+                            <p>{!! __('app.article.translator') !!} {!! $post->contributor ? $post->contributor : 'Admin' !!} </p>
+                        @else
+                            <p>{!! __('posts.show.article') !!} {!! $post->checkAuthor()? $post-> author->name : 'Admin' !!} </p>
+                        @endif
                     </div>
                     <div class="lefty artcl-tags tag-info">
                         <h3>{!! __('app.tag') !!} : </h3>
@@ -194,10 +193,19 @@
                     user_id: '',
                     parent_id: ''
                 },
-                formErrors: {}
+                formErrors: {},
+                latest_posts: [],
+                most_read_posts: [],
+                options: {
+                    isLoading: false,
+                    imgUrl: ''
+                },
+                endpoint: '/api/v2/'
             },
             created: function () {
-                this.fetchComments()
+                this.fetchComments();
+                this.getLatestPost();
+                this.getMostReadPost();
             },
             methods: {
                 fetchComments() {
@@ -213,6 +221,23 @@
                         alert('Comment added');
                     });
                     this.fetchComments();
+                },
+                getLatestPost() {
+                    let vm = this;
+                    this.options.isLoading = true;
+                    vm.$http.get(this.endpoint + 'latest').then(response => {
+                        console.log(response.data.data);
+                        this.options.isLoading = false;
+                        vm.latest_posts = response.data.data
+                    })
+                },
+                getMostReadPost() {
+                    let vm = this;
+                    this.options.isLoading = true;
+                    vm.$http.get(this.endpoint + 'most-read').then(response => {
+                        this.options.isLoading = false;
+                        vm.most_read_posts = response.data.data
+                    })
                 }
             }
         });

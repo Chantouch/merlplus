@@ -88,16 +88,9 @@ class PostsController extends BaseController
         if ($button_single_ads->count() > 1) {
             $button_single_ads = $button_single_ads->random(1);
         }
-        $most_read = Post::with('media')
-            ->where('active', 1)
-            ->where('most_read', '>=', config('settings.most_read', 50))
-            ->take(config('settings.most_read_posts_number', '6'))->get();
-        $new_posts = Post::with('media')
-            ->where('active', 1)
-            ->latest()->take(config('settings.new_posts_number', '6'))->get();
         return view($this->view . 'show', compact(
             'post', 'comments', 'previousPost', 'nextPost', 'single_article_ads',
-            'button_single_ads', 'most_read', 'new_posts'
+            'button_single_ads'
         ));
     }
 }
