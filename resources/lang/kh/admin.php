@@ -153,5 +153,6 @@ return [
     'width' => 'ទំហំរូបភាព',
     'height' => 'រូបភាព',
     'welcome_to_site' => 'សូមស្វាគមមកកាន់ ',
-    'back' => 'ត្រលប់'
+    'back' => 'ត្រលប់',
+    'preview' => 'Preview'
 ];

@@ -136,93 +136,16 @@
         </div>
         <div class="panel-wrapper collapse in">
             <div class="panel-body">
-                <div class="row m-b-20">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="form-group text-center pull-right">
-                            @if(!isset($post))
-                                <button class="btn btn-outline btn-default waves-effect waves-light pull-left"
-                                        name="submit" value="draft">
-                                    <span>Save as @{{ article.status }}</span>
-                                </button>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12">
-                        <div class="form-group text-center pull-right">
-                            @if(isset($post))
-                                <a href="{!! route('blog.article.show',[$post->getRouteKey()]) !!}" target="_blank"
-                                   class="btn btn-info waves-effect waves-light pull-right" style="margin-right: 0">
-                                    <span>{!! __('admin.preview') !!}</span> <i class="fa fa-eye m-l-5"></i>
-                                </a>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <!--Comment first-->
-                <p>Status: @{{ article.status }}
-                    <a href="javascript:void (0)" @click.prevent="showStatus()" v-if="edit">{!! __('admin.edit') !!}</a>
-                </p>
-                <div class="form-group" v-if="status">
-                    <label class="col-sm-12" for="status"></label>
-                    <input type="hidden" name="status" id="hidden_post_status" :value="article.status">
-                    <div class="col-md-7 col-sm-7">
-                        <select class="form-control" id="status" v-model="article.status">
-                            <option value="pending">Pending Review</option>
-                            <option selected value="draft">Draft</option>
-                        </select>
-                    </div>
-                    <div class="col-md-5 col-sm-5">
-                        <div class="row">
-                            <a href="javascript:void (0)" class="btn" @click.prevent="changeStatus()">OK</a>
-                            <a href="javascript:void (0)" @click.prevent="cancelStatus()">Cancel</a>
-                        </div>
-                    </div>
-                </div>
-                <p>Visibility:
-                    <a href="javascript:void (0)">Edit</a>
-                </p>
-                <p>Publish@: @{{ posted_at.now_label }}
-                    <a href="javascript:void (0)" @click.prevent="schedulePost"
-                       v-if="posted_at.edit">{!! __('admin.edit') !!}</a>
-                </p>
-                <div class="form-group" v-if="posted_at.schedule">
-                    <label class="col-sm-12" for="status"></label>
-                    <input type="hidden" name="posted_at" id="hidden_posted_at" :value="posted_at.now">
-                    <div class="col-sm-12">
-                        <div class="input-group">
-                            <input type="date" class="form-control" v-model="posted_at.date">
-                            <span class="input-group-addon"><i class="icon-calender"></i></span>
-                        </div>
-                    </div>
-                    <div class="col-md-7 m-t-15">
-                        <div class="input-group">
-                            <input type="time" class="form-control" :value="posted_at.time">
-                            <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
-                        </div>
-                    </div>
-                    <div class="col-md-5 m-t-15">
-                        <a href="javascript:void (0)" class="btn" @click.prevent="changeStatus()">OK</a>
-                        <a href="javascript:void (0)" @click.prevent="cancelStatus()">Cancel</a>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
-                        <div class="form-group text-center pull-right">
-                            <a href="{!! route('admin.article.index') !!}"
-                               class="fcbtn btn btn-danger btn-outline btn-1d pull-left">
-                                {!! __('admin.move_to_draft') !!}
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12">
-                        <div class="form-group text-center pull-right">
-                            <button class="fcbtn btn btn-info btn-outline btn-1e pull-right" name="submit"
-                                    value="publish">
-                                <span>{!! __('admin.publish') !!}</span> <i class="fa fa-save m-l-5"></i>
-                            </button>
-                        </div>
+                        <a href="{!! route('admin.article.index') !!}"
+                           class="fcbtn btn btn-danger btn-outline btn-1d pull-left">
+                            {!! __('admin.move_to_draft') !!}
+                        </a>
+                        <button class="fcbtn btn btn-info btn-outline btn-1e pull-right" name="submit"
+                                value="publish">
+                            <span>{!! __('admin.publish') !!}</span> <i class="fa fa-save m-l-5"></i>
+                        </button>
                     </div>
                 </div>
             </div>

@@ -60,13 +60,8 @@ class PostsController extends BaseController
      */
     public function show($idOrSlug)
     {
-        if (ctype_digit($idOrSlug)) {
-            $post = Post::with(['comments', 'categories.articles', 'tags'])
-                ->where('id', $idOrSlug)->firstOrFail();
-        } else {
-            $post = Post::with(['comments', 'categories.articles', 'tags'])
-                ->where('slug', $idOrSlug)->firstOrFail();
-        }
+        $post = Post::with(['comments', 'categories.articles', 'tags'])
+            ->where('slug', $idOrSlug)->firstOrFail();
         $post->increment('most_read');
         $comments = $post->comments()->with('author')->latest()->paginate(50);
         $previousPost = Post::with('comments')
