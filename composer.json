@@ -1,9 +1,12 @@
 {
   "name": "laravel/laravel",
-  "description": "The Laravel Framework.",
+  "description": "Merlplus",
   "keywords": [
-    "framework",
-    "laravel"
+    "local",
+    "news",
+    "social",
+    "technology",
+    "sport"
   ],
   "license": "MIT",
   "type": "project",
