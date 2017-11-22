@@ -1,7 +1,7 @@
 <?php
 $fullUrl = Request::url();
 ?>
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -66,6 +66,25 @@ $fullUrl = Request::url();
             display: block;
             margin-bottom: 0;
         }
+
+        @media (max-width: 767px) {
+            #ads-close {
+                margin: 0 auto;
+                padding: 5px;
+                width: 20px;
+                background: #710101;
+                color: #FFF;
+                height: 20px;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #ads-close, .app .sponsor {
+                position: absolute;
+                right: 0;
+            }
+        }
     </style>
     @yield('css')
 </head>
@@ -127,7 +146,8 @@ $fullUrl = Request::url();
                 </li>
                 @if(config('settings.social_activated'))
                     <li>
-                        <a href="https://www.facebook.com/chantouch.sek" target="_blank" title="Chantouch Sek" rel="noreferrer">
+                        <a href="https://www.facebook.com/chantouch.sek" target="_blank" title="Chantouch Sek"
+                           rel="noreferrer">
                             <i class="fa fa-facebook"></i>
                         </a>
                         <a href="https://twitter.com/DevidCs83" target="_blank" title="Chantouch Sek" rel="noreferrer">
@@ -141,17 +161,25 @@ $fullUrl = Request::url();
             </ul>
         </div>
     </div>
-    <!-- Main Home Layout Ends -->
     <a href="#" class="scrollToTop">
         <i class="fa fa-chevron-up"></i>
     </a>
+    <div class="navbar navbar-default navbar-fixed-bottom hidden-lg hidden-md visible-xs" id="banner-top-hide">
+        <div class="container">
+            @include('blog.shared._top_banner')
+        </div>
+        <a href="javascript:void (0);" title="Close" id="ads-close">
+            <span style="display:none;">បិទ &nbsp;</span>
+            <span><img class="img-responsive center-block" src="{!! asset('images/dialog-close.png') !!}"></span>
+        </a>
+    </div>
 </div>
 <!-- Scripts -->
-<script src="{{ asset('blog/js/app.min.js') }}" type="text/javascript"></script>
-<script async src="{{ asset('blog/js/main.min.js') }}" type="text/javascript"></script>
-<script type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>
-<script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
-<script src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}" type="text/javascript"></script>
+<script rel="preload" src="{{ asset('blog/js/app.min.js') }}" type="text/javascript"></script>
+<script rel="preload" async src="{{ asset('blog/js/main.min.js') }}" type="text/javascript"></script>
+<script rel="preload" type="text/javascript" src="{!! asset('blog/js/vue.js') !!}"></script>
+<script rel="preload" src="{!! asset('plugins/OwlCarousel2-2.2.1/dist/owl.carousel.min.js') !!}"
+        type="text/javascript"></script>
 @yield('plugins')
 @yield('scripts')
 <script type="text/javascript">
@@ -159,15 +187,11 @@ $fullUrl = Request::url();
     new UISearch(document.getElementById('sb-search'));
     @endif
 
-    /* Social Share */
-    $('.share').ShareLink({
-        title: '{{ addslashes(MetaTag::get('title')) }}',
-        text: '{!! addslashes(MetaTag::get('title')) !!}',
-        url: '{!! $fullUrl !!}',
-        width: 640,
-        height: 480
-    });
-
+    $(function () {
+        $("#ads-close").click(function () {
+            $('#banner-top-hide').slideToggle().toggleClass().hide("slow");
+        });
+    })
 </script>
 <noscript>Your browser does not support JavaScript!</noscript>
 </body>

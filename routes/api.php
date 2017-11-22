@@ -47,5 +47,7 @@ Route::prefix('v2')->name('api.v2.')->group(function () {
 
         Route::get('most-read', 'PostController@mostRead');
 
+        Route::get('categories', 'CategoryPostController@index');
+
     });
 });

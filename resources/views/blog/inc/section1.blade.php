@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Chantouch
- * Date: 8/26/2017
- * Time: 12:53 PM
- */
-?>
 @if(isset($categories))
     @if($categories->count())
         @foreach($categories as $category)
@@ -24,8 +16,8 @@
                                         <div class="zoom-img">
                                             <a href="{!! route('blog.article.show', [$post->getRouteKey()]) !!}">
                                                 <img alt="{!! $post->removeSpecialChar($post->title) !!}"
-                                                     class="blocky lazyload"
-                                                     src="{!! asset('/media/news/'.$post->id.'/medium_'.$post->thumbnail()->filename) !!}"/>
+                                                     class="blocky lazyload" src="{!! asset('images/loading-preloader.gif') !!}"
+                                                     data-src="{!! asset('/media/news/'.$post->id.'/medium_'.$post->thumbnail()->filename) !!}"/>
                                             </a>
                                         </div>
                                     @endif
@@ -51,12 +43,12 @@
                             @endif
                             @if($agent->isDesktop())
                                 @if($index > 0)
-                                    @include('blog.inc.web')
+                                    @include('blog/inc/web')
                                 @endif
                             @endif
                         @endforeach
                         @if($agent->isMobile())
-                            @include('blog.inc.mobile')
+                            @include('blog/inc/mobile')
                         @endif
                     </div>
                 </div>

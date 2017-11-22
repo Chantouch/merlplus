@@ -28,7 +28,7 @@
                                    aria-hidden="true"></i>
                             </a>
                         @elseif($json['type'] == 'image')
-                            <img src="{!! asset($setting->value) !!}" alt="{!! $setting->value !!}">
+                            <img src="{!! asset($setting->value) !!}" alt="{!! $setting->value !!}" width="50">
                         @else
                             {!! $setting->value !!}
                         @endif
