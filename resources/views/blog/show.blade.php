@@ -238,7 +238,7 @@
     </div>
 @stop
 @section('scripts')
-    <script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
+    <script rel="preload" src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
     @if (config('services.facebook.client_id'))
         <script>
             (function (d, s, id) {
@@ -252,20 +252,55 @@
         </script>
     @endif
     <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                latest_posts: [],
+                most_read_posts: [],
+                options: {
+                    isLoading: false,
+                    imgUrl: ''
+                },
+                endpoint: '/api/v2/'
+            },
+            created: function () {
+                this.getLatestPost();
+                this.getMostReadPost();
+            },
+            methods: {
+                getLatestPost() {
+                    let vm = this;
+                    this.options.isLoading = true;
+                    vm.$http.get(this.endpoint + 'latest').then(response => {
+                        this.options.isLoading = false;
+                        vm.latest_posts = response.data.data
+                    })
+                },
+                getMostReadPost() {
+                    let vm = this;
+                    this.options.isLoading = true;
+                    vm.$http.get(this.endpoint + 'most-read').then(response => {
+                        this.options.isLoading = false;
+                        vm.most_read_posts = response.data.data
+                    })
+                }
+            }
+        });
         $(document).ready(function () {
             $('.content p').each(function () {
                 if ($(this).find('img').length) {
                     $(this).find("img").unwrap();
                 }
             });
-        });
-        /* Social Share */
-        $('.share').ShareLink({
-            title: '{{ addslashes(MetaTag::get('title')) }}',
-            text: '{!! addslashes(MetaTag::get('title')) !!}',
-            url: '{!! Request::url() !!}',
-            width: 640,
-            height: 480
+
+            /* Social Share */
+            $('.share').ShareLink({
+                title: '{{ addslashes(MetaTag::get('title')) }}',
+                text: '{!! addslashes(MetaTag::get('title')) !!}',
+                url: '{!! Request::url() !!}',
+                width: 640,
+                height: 480
+            });
         });
     </script>
 @stop

@@ -30,4 +30,3 @@
         </div>
     </div>
 </div>
-@include('blog.shared._script')
