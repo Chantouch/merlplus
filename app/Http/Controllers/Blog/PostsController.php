@@ -81,6 +81,9 @@ class PostsController extends BaseController
             ->where('advertise_type_id', 9)->get();
         $button_single_ads = Advertise::with('ads_type')
             ->where('end_date', '>=', Carbon::now())
+            ->where('advertise_type_id', 5)->get();
+        $top_single_ads = Advertise::with('ads_type')
+            ->where('end_date', '>=', Carbon::now())
             ->where('advertise_type_id', 12)->get();
         if ($single_article_ads->count() > 1) {
             $single_article_ads = $single_article_ads->random(1);
@@ -88,9 +91,12 @@ class PostsController extends BaseController
         if ($button_single_ads->count() > 1) {
             $button_single_ads = $button_single_ads->random(1);
         }
+        if ($top_single_ads->count() > 1) {
+            $top_single_ads = $top_single_ads->random(1);
+        }
         return view($this->view . 'show', compact(
             'post', 'comments', 'previousPost', 'nextPost', 'single_article_ads',
-            'button_single_ads'
+            'button_single_ads','top_single_ads'
         ));
     }
 }

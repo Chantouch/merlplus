@@ -13,8 +13,15 @@
 @section('content')
     <div class="col-sm-12">
         <div class="white-box">
-            <h3 class="box-title m-b-0">{!! __('admin.user') !!}</h3>
-            <p class="text-muted m-b-30">{!! __('admin.easy_to_managing_your_users') !!}</p>
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="box-title m-b-0">{!! __('admin.user') !!}</h3>
+                    <p class="text-muted m-b-30">{!! __('admin.easy_to_managing_your_users') !!}</p>
+                </div>
+                <div class="col-md-4">
+                    <a href="{!! url('admin/manage/user/create') !!}" class="btn btn-outline btn-primary pull-right">@lang('users.new_users')</a>
+                </div>
+            </div>
             @include('manage.users.table')
         </div>
     </div>

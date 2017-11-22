@@ -10,7 +10,7 @@ class PostObserver
     /**
      * Listen to the Post creating event.
      *
-     * @param  Post  $post
+     * @param  Post $post
      * @return void
      */
     public function creating(Post $post)
@@ -30,6 +30,20 @@ class PostObserver
      */
     public function saving(Post $post)
     {
-        $post->user_id = auth()->id();
+        if (empty($post->user_id)) {
+            $post->user_id = auth()->id();
+        }
+    }
+
+    /**
+     * Listen to the Post saving event.
+     *
+     * @param  Post $post
+     * @return void
+     */
+    public function deleting(Post $post)
+    {
+        $post->categories()->detach();
+        $post->tags()->detach();
     }
 }

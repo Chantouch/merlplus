@@ -11,7 +11,7 @@
         @endforeach
     @else
         <a href="{!! route('blog.contact.index') !!}" target="_blank">
-            <img alt="Please your ads here" data-src="{!! asset('images/ads-728x90.png') !!}" height="90"
+            <img alt="Please your ads here" src="{!! asset('images/ads-728x90.png') !!}" height="90"
                  class="img-responsive center-block"/>
         </a>
     @endif

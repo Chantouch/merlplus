@@ -103,8 +103,7 @@
                             <div class="sponsor_img">
                                 @if($article_ad->hasBanner())
                                     <img data-src="{!! asset($article_ad->banner()->media_url) !!}" width="728"
-                                         height="90"
-                                         src="{!! asset('blog/img/blur.jpg') !!}"
+                                         height="90" src="{!! asset('blog/img/blur.jpg') !!}"
                                          class="lazyload img-responsive center-block"
                                          alt="{!! $article_ad->provider_name !!}">
                                 @endif
@@ -135,10 +134,22 @@
             <!--Ads on single post top-->
             <div class="artcl-body float-width ads_side_single">
                 <ins class="text-center">
-                    <a href="{!! url('contact') !!}" target="_blank">
-                        <img src="{!! asset('images/right-bar-ads-2.jpg') !!}"
-                             width="300" height="250" alt="" class="img-responsive center-block">
-                    </a>
+                    @if($top_single_ads->count())
+                        @foreach($top_single_ads as $ad)
+                            <a href="{!! $ad->url !!}" target="_blank">
+                                @if($ad->hasBanner())
+                                    <img src="{!! asset($ad->banner()->media_url) !!}" width="728"
+                                         height="90" class="lazyload img-responsive center-block"
+                                         alt="{!! $ad->provider_name !!}">
+                                @endif
+                            </a>
+                        @endforeach
+                    @else
+                        <a href="{!! url('contact') !!}" target="_blank">
+                            <img src="{!! asset('images/right-bar-ads-2.jpg') !!}"
+                                 width="300" height="250" alt="" class="img-responsive center-block">
+                        </a>
+                    @endif
                 </ins>
             </div>
 
@@ -213,7 +224,7 @@
         <div class="clearfix"></div>
         <div class="jumbotron color5bc0de">
             <div class="title">ភ្ជាប់ទំនាក់ទំនងជាមួយ <span> MerlPlus</span></div>
-            <div class="fb-like" data-href="https://www.facebook.com/pg/merlplusOfficial/"
+            <div class="fb-like" data-href="https://www.facebook.com/pg/merlplusOfficial"
                  data-layout="button_count" data-action="like" data-size="large" data-show-faces="false"
                  data-share="true"></div>
         </div>
@@ -227,65 +238,7 @@
     </div>
 @stop
 @section('scripts')
-    <script rel="preload" src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
-    <script>
-        let app = new Vue({
-            el: '#app',
-            data: {
-                comments: {},
-                newComment: {
-                    body: '',
-                    user_id: '',
-                    parent_id: ''
-                },
-                formErrors: {},
-                latest_posts: [],
-                most_read_posts: [],
-                options: {
-                    isLoading: false,
-                    imgUrl: ''
-                },
-                endpoint: '/api/v2/'
-            },
-            created: function () {
-                this.fetchComments();
-                this.getLatestPost();
-                this.getMostReadPost();
-            },
-            methods: {
-                fetchComments() {
-                    let vm = this;
-                    vm.$http.get('/api/v1/posts/{!! $post->id !!}/comments').then(response => {
-                        vm.comments = response.data
-                    })
-                },
-                createComment() {
-                    let vm = this;
-                    let input = this.newComment;
-                    vm.$http.post('/api/v1/posts/{!! $post->id !!}/comments', input).then(response => {
-                        alert('Comment added');
-                    });
-                    this.fetchComments();
-                },
-                getLatestPost() {
-                    let vm = this;
-                    this.options.isLoading = true;
-                    vm.$http.get(this.endpoint + 'latest').then(response => {
-                        this.options.isLoading = false;
-                        vm.latest_posts = response.data.data
-                    })
-                },
-                getMostReadPost() {
-                    let vm = this;
-                    this.options.isLoading = true;
-                    vm.$http.get(this.endpoint + 'most-read').then(response => {
-                        this.options.isLoading = false;
-                        vm.most_read_posts = response.data.data
-                    })
-                }
-            }
-        });
-    </script>
+    <script src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
     @if (config('services.facebook.client_id'))
         <script>
             (function (d, s, id) {
@@ -305,15 +258,14 @@
                     $(this).find("img").unwrap();
                 }
             });
-
-            /* Social Share */
-            $('.share').ShareLink({
-                title: '{{ addslashes(MetaTag::get('title')) }}',
-                text: '{!! addslashes(MetaTag::get('title')) !!}',
-                url: '{!! Request::url() !!}',
-                width: 640,
-                height: 480
-            });
+        });
+        /* Social Share */
+        $('.share').ShareLink({
+            title: '{{ addslashes(MetaTag::get('title')) }}',
+            text: '{!! addslashes(MetaTag::get('title')) !!}',
+            url: '{!! Request::url() !!}',
+            width: 640,
+            height: 480
         });
     </script>
 @stop

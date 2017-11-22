@@ -172,7 +172,6 @@ class ArticleController extends Controller
                 $post->storeAndSetThumbnail($request->file('thumbnail'), $post);
             }
             $post->storeAndSetAuthor();
-            //$data['description'] = clean($request->description);
             $dom = new DOMDocument();
             libxml_use_internal_errors(true);
             $dom->loadHtml(mb_convert_encoding($data['description'], 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);

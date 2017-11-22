@@ -8,8 +8,8 @@
 ?>
 @if(isset($single_article_ads))
     @if(isset($main_right_ads))
-        @if(count($main_right_ads))
-            <div class="ads_items text-center">
+        <div class="ads_items text-center">
+            @if(count($main_right_ads))
                 @foreach($main_right_ads->take(2) as $index => $ads)
                     @if($index < 2)
                         <div class="ad-rt">
@@ -20,7 +20,15 @@
                         </div>
                     @endif
                 @endforeach
-            </div>
-        @endif
+            @else
+                @for($x=1;$x<=2;$x++)
+                    <div class="ad-rt">
+                        <img src="{!! asset('images/loading-preloader.gif') !!}" alt="Place your ads here!"
+                             data-src="{!! asset('images/right-bar-ads-'.$x.'.jpg') !!}"
+                             class="lazyload img-responsive center-block"/>
+                    </div>
+                @endfor
+            @endif
+        </div>
     @endif
 @endif

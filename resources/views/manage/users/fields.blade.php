@@ -3,7 +3,7 @@
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
             {!! Form::label('name', __('admin.name') ,['class'=>'col-md-12']) !!}
             <div class="col-md-12">
-                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Enter your name']) !!}
+                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => __('users.placeholder.name')]) !!}
                 @if ($errors->has('name'))
                     <span class="help-block">
                         <strong>{{ $errors->first('name') }}</strong>
@@ -16,7 +16,7 @@
         {!! Form::label('email', __('admin.email') ) !!}
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
             <div class="col-md-12">
-                {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Enter your email']) !!}
+                {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => __('users.placeholder.email')]) !!}
             </div>
             @if ($errors->has('email'))
                 <span class="help-block">

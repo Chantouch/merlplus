@@ -9,17 +9,17 @@
 @extends('layouts.blog.app')
 
 @section('main_right_ads_bar')
-    @include('blog._components.single-ads-bar')
+    @include('blog/_components/single-ads-bar')
 @stop
 @section('new_article_single_article')
     @if($new_posts->count())
         <div class="panel panel-info pos-relative">
-            @include('blog._components.latest-post')
+            @include('blog/_components/latest-post')
         </div>
     @endif
     @if($most_read->count())
         <div class="panel panel-info pos-relative">
-            @include('blog._components.most-read')
+            @include('blog/_components/most-read')
         </div>
     @endif
 @stop
@@ -34,7 +34,7 @@
                         </a>
                     </h3>
                     <div id="post-data">
-                        @include('blog.category.data')
+                        @include('blog/category/data')
                     </div>
                 </div>
                 <hr>
@@ -45,6 +45,6 @@
         @endif
     </div>
     <div class="main-right-side">
-        @include('layouts.blog.main-right-side')
+        @include('layouts/blog/main-right-side')
     </div>
 @stop
