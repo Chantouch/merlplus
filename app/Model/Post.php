@@ -284,7 +284,7 @@ class Post extends Model
             mkdir($path, 0777, true);
         }
         if (!$this->hasThumbnail()) {
-            $media = $this->media->create([
+            $media = $this->media()->create([
                 'filename' => $file_name,
                 'original_filename' => $thumbnail->getClientOriginalName(),
                 'mime_type' => $thumbnail->getMimeType()
