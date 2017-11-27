@@ -50,9 +50,7 @@
                         @if($index < 2)
                             <div class="ad-rt">
                                 <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">
-                                    <img alt="{!! $ads->provider_name !!}" class="lazyload img-responsive center-block"
-                                         src="{!! asset('blog/img/blur.jpg') !!}"
-                                         data-src="{!! asset($ads->banner()->media_url) !!}"/>
+                                    <img alt="{!! $ads->provider_name !!}" class="lazyload img-responsive center-block" src="{!! asset($ads->banner()->media_url) !!}"/>
                                 </a>
                             </div>
                         @endif
@@ -62,9 +60,7 @@
                         @if($index < 2)
                             <div class="ad-rt">
                                 <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">
-                                    <img alt="{!! $ads->provider_name !!}" class="lazyload img-responsive center-block"
-                                         src="{!! asset('blog/img/blur.jpg') !!}"
-                                         data-src="{!! asset($ads->banner()->media_url) !!}"/>
+                                    <img alt="{!! $ads->provider_name !!}" class="lazyload img-responsive center-block" src="{!! asset($ads->banner()->media_url) !!}"/>
                                 </a>
                             </div>
                         @endif
@@ -73,8 +69,7 @@
             @else
                 @for($x=1;$x<=2;$x++)
                     <div class="ad-rt">
-                        <img src="{!! asset('images/loading-preloader.gif') !!}" alt="Place your ads here!"
-                             data-src="{!! asset('images/right-bar-ads-'.$x.'.jpg') !!}"
+                        <img src="{!! asset('images/right-bar-ads-'.$x.'.jpg') !!}"
                              class="lazyload img-responsive center-block"/>
                     </div>
                 @endfor

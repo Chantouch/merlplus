@@ -73,8 +73,7 @@
                         @foreach($popup_720x300 as $ads)
                             <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">
                                 <img alt="{!! $ads->provider_name !!}" class="img-responsive center-block"
-                                     src="{!! asset('blog/img/blur.jpg') !!}"
-                                     data-src="{!! asset($ads->banner()->media_url) !!}"/>
+                                     src="{!! asset($ads->banner()->media_url) !!}"/>
                             </a>
                         @endforeach
                     @else

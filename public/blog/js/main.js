@@ -112,8 +112,10 @@ $(window).scroll(function () {
 /* Custome js on home page */
 window.addEventListener("load", function (event) {
     event.preventDefault();
-   var load = new LazyLoad();
-   load.update();
+    setTimeout(function () {
+        var load = new LazyLoad();
+        load.update();
+    }, 500);
 });
 
 $(document).ready(function () {
