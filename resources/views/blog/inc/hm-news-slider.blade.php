@@ -7,7 +7,7 @@
  */
 ?>
 @if(count($posts))
-    @foreach($posts['news_sliders'] as $index => $post)
+    @foreach($posts as $index => $post)
         <div class="mid-block-1 boxgrid caption item col-sm-6">
             @if($post->hasThumbnail())
                 <img alt="{!! $post->removeSpecialChar($post->title) !!}" class="img lazyload" src="{!! asset('images/loading-preloader.gif') !!}"

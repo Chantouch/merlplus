@@ -121,7 +121,7 @@ class ArticleController extends Controller
                 $post->setAndStoreMetaTag($request->meta_title, $request->meta_keywords, $request->meta_description);
             }
             DB::commit();
-            return redirect()->route($this->route . 'index')->with('success', 'Post created successfully');
+            return redirect()->route($this->route . 'edit', [$post])->with('success', 'Post created successfully');
         } catch (ModelNotFoundException $exception) {
             throw new ModelNotFoundException();
         }

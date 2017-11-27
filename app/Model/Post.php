@@ -277,6 +277,7 @@ class Post extends Model
         $image_large = Image::make($thumbnail)->fit(1200, 700);
         $image_medium = Image::make($thumbnail)->fit(435, 250);
         $image_small = Image::make($thumbnail)->fit(140, 90);
+        $fb_feature = Image::make($thumbnail)->fit(200, 200);
         $ext = $thumbnail->getClientOriginalExtension();
         $path = storage_path('app/public/uploads/posts/' . $post->id . '/');
         $file_name = str_random(50) . '.' . $ext;
@@ -289,16 +290,18 @@ class Post extends Model
                 'original_filename' => $thumbnail->getClientOriginalName(),
                 'mime_type' => $thumbnail->getMimeType()
             ]);
-            $image_large->save($path . 'large_' . $file_name, 100);
-            $image_medium->save($path . 'medium_' . $file_name, 70);
-            $image_small->save($path . 'small_' . $file_name, 70);
+            $image_large->save($path . 'large_' . $file_name, 50);
+            $image_medium->save($path . 'medium_' . $file_name, 50);
+            $image_small->save($path . 'small_' . $file_name, 50);
+            $fb_feature->save($path . 'feature_' . $file_name, 100);
             $this->update(['thumbnail_id' => $media->id]);
         } else {
             $name = $this->media->first()->filename;
             $old_path = [
                 'public/uploads/posts/' . $post->id . '/' . 'large_' . $name,
                 'public/uploads/posts/' . $post->id . '/' . 'medium_' . $name,
-                'public/uploads/posts/' . $post->id . '/' . 'small_' . $name
+                'public/uploads/posts/' . $post->id . '/' . 'small_' . $name,
+                'public/uploads/posts/' . $post->id . '/' . 'feature_' . $name
             ];
             if (File::exists(storage_path('app/public/uploads/posts'))) {
                 Storage::delete($old_path);
@@ -308,9 +311,10 @@ class Post extends Model
                 'original_filename' => $thumbnail->getClientOriginalName(),
                 'mime_type' => $thumbnail->getMimeType()
             ]);
-            $image_large->save($path . 'large_' . $file_name, 100);
-            $image_medium->save($path . 'medium_' . $file_name, 70);
-            $image_small->save($path . 'small_' . $file_name, 70);
+            $image_large->save($path . 'large_' . $file_name, 50);
+            $image_medium->save($path . 'medium_' . $file_name, 50);
+            $image_small->save($path . 'small_' . $file_name, 50);
+            $fb_feature->save($path . 'feature_' . $file_name, 100);
         }
         return $thumbnail;
     }

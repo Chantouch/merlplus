@@ -170,7 +170,7 @@
                     @endif
                     @if(isset($advertise))
                         @if($advertise->hasBanner())
-                            <img src="" alt="{!! $advertise->provider_name !!}" class="img-responsive">
+                            <img src="{!! asset($advertise->banner()->media_url) !!}" alt="{!! $advertise->provider_name !!}" class="img-responsive">
                         @endif
                     @endif
                 </div>

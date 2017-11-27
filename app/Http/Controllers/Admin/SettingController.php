@@ -84,7 +84,7 @@ class SettingController extends Controller
         if (!$update) {
             return back()->with('error', 'Unsuccessed');
         }
-        return redirect()->route($this->route . 'index')->with('success', 'Settings updated');
+        return redirect()->route($this->route . 'edit', [$setting->id])->with('success', 'Settings updated');
     }
 
     /**

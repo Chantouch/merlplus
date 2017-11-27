@@ -75,16 +75,22 @@ class PostsController extends BaseController
         //---------Set meta tag to header----------//
         MetaTag::set('title', $post->title);
         MetaTag::set('description', strip_tags($post->description));
-        MetaTag::set('image', asset($post->hasThumbnail() ? route('media.posts.path', [$post->id, 'medium_' . $post->thumbnail()->filename]) : ''));
-        $single_article_ads = Advertise::with('ads_type')
-            ->where('end_date', '>=', Carbon::now())
-            ->where('advertise_type_id', 9)->get();
-        $button_single_ads = Advertise::with('ads_type')
-            ->where('end_date', '>=', Carbon::now())
-            ->where('advertise_type_id', 5)->get();
-        $top_single_ads = Advertise::with('ads_type')
-            ->where('end_date', '>=', Carbon::now())
-            ->where('advertise_type_id', 12)->get();
+        MetaTag::set('image', asset($post->hasThumbnail() ? route('media.posts.path', [$post->id, 'feature_' . $post->thumbnail()->filename]) : ''));
+        $single_article_ads = Cache::remember('single_article_ads', 2, function () {
+            return Advertise::with('ads_type')
+                ->where('end_date', '>=', Carbon::now())
+                ->where('advertise_type_id', 9)->get();
+        });
+        $button_single_ads = Cache::remember('button_single_ads', 2, function () {
+            return Advertise::with('ads_type')
+                ->where('end_date', '>=', Carbon::now())
+                ->where('advertise_type_id', 5)->get();
+        });
+        $top_single_ads = Cache::remember('top_single_ads', 2, function () {
+            return Advertise::with('ads_type')
+                ->where('end_date', '>=', Carbon::now())
+                ->where('advertise_type_id', 12)->get();
+        });
         if ($single_article_ads->count() > 1) {
             $single_article_ads = $single_article_ads->random(1);
         }
@@ -96,7 +102,7 @@ class PostsController extends BaseController
         }
         return view($this->view . 'show', compact(
             'post', 'comments', 'previousPost', 'nextPost', 'single_article_ads',
-            'button_single_ads','top_single_ads'
+            'button_single_ads', 'top_single_ads'
         ));
     }
 }

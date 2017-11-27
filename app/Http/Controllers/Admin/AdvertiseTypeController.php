@@ -57,7 +57,7 @@ class AdvertiseTypeController extends Controller
                 return redirect()->back()->with('error', 'Can not insert your data requirement');
             }
             DB::commit();
-            return redirect()->route($this->route . 'index')->with('success', 'Advertise type created successfully');
+            return redirect()->route($this->route . 'edit',[$advertise->id])->with('success', 'Advertise type created successfully');
         } catch (ModelNotFoundException $exception) {
             throw new ModelNotFoundException();
         }
@@ -110,7 +110,7 @@ class AdvertiseTypeController extends Controller
                 return redirect()->back()->with('error', 'Can not insert your data requirement');
             }
             DB::commit();
-            return redirect()->route($this->route . 'index')->with('success', 'Advertise type updated successfully');
+            return redirect()->route($this->route . 'edit',[$advertiseType->id])->with('success', 'Advertise type updated successfully');
         } catch (ModelNotFoundException $exception) {
             throw new ModelNotFoundException();
         }

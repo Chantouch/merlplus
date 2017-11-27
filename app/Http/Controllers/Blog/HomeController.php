@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\BaseController;
+use App\Model\Advertise;
 use App\Model\Category;
 use App\Model\Post;
 use App\Model\Tag;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
@@ -24,24 +26,59 @@ class HomeController extends BaseController
     public $view = 'blog.';
 
     /**
-     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index()
     {
-        $news_sliders = Post::with(['categories', 'comments'])
-            ->latest()->take(4)->get();
-        $categories = Category::with('articles')->orderBy('position_order')->paginate(5);
-        $tag = Tag::with('posts')
-            ->where('name', 'វីដេអូឃ្លីប')
-            ->orWhere('name', 'វីដេអូ')
-            ->orWhere('name', 'Video')
-            ->orWhere('name', 'Videos')
-            ->first();
-        $posts = [
-            'news_sliders' => $news_sliders,
-        ];
-        return view($this->view . 'index', compact('posts', 'categories', 'tag'));
+        $posts = Cache::remember('news_sliders', 2, function () {
+            return Post::with(['categories', 'comments'])
+                ->latest()->take(4)->where('active', 1)->get();
+        });
+        $categories = Cache::remember('categories', 2, function () {
+            return Category::with('articles')
+                ->orderBy('position_order')
+                ->paginate(5);
+        });
+        $tag = Cache::remember('tag', 2, function () {
+            return Tag::with('posts')
+                ->where('name', 'វីដេអូឃ្លីប')
+                ->orWhere('name', 'វីដេអូ')
+                ->orWhere('name', 'Video')
+                ->orWhere('name', 'Videos')
+                ->first();
+        });
+        $popup_720x300 = Cache::remember('popup_720x300', 60, function () {
+            return Advertise::with('ads_type')
+                ->where('end_date', '>=', Carbon::now())
+                ->where('advertise_type_id', 12)->get();
+        });
+        $popup_468x60 = Cache::remember('popup_468x60', 60, function () {
+            return Advertise::with('ads_type')
+                ->where('end_date', '>=', Carbon::now())
+                ->where('advertise_type_id', 13)->get();
+        });
+        $popup_234x60 = Cache::remember('popup_234x60', 60, function () {
+            return Advertise::with('ads_type')
+                ->where('end_date', '>=', Carbon::now())
+                ->where('advertise_type_id', 14)->get();
+        });
+        if ($popup_720x300->count() > 1) {
+            $popup_720x300 = $popup_720x300->random(1);
+        }
+        if ($popup_468x60->count() > 1) {
+            $popup_468x60 = $popup_468x60->random(1);
+        }
+        if ($popup_234x60->count() > 1) {
+            $popup_234x60 = $popup_234x60->random(1);
+        }
+        return view($this->view . 'index', [
+            'posts' => $posts,
+            'categories' => $categories,
+            'tag' => $tag,
+            'popup_720x300' => $popup_720x300,
+            'popup_468x60' => $popup_468x60,
+            'popup_234x60' => $popup_234x60,
+        ]);
     }
 
     /**

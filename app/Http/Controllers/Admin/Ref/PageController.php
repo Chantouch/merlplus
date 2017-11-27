@@ -114,7 +114,7 @@ class PageController extends Controller
                 }
             }
             DB::commit();
-            return redirect()->route($this->route . 'index')->with('success', 'Page added successfully.');
+            return redirect()->route($this->route . 'edit',[$page->id])->with('success', 'Page added successfully.');
         } catch (ModelNotFoundException $exception) {
             DB::rollback();
             return back()->with('error', 'Your page can not add to our system right now. Plz try again later.');
@@ -217,7 +217,7 @@ class PageController extends Controller
                 return back()->with('error', 'Your page can not add to your system right now. Plz try again later.');
             }
             DB::commit();
-            return redirect()->route($this->route . 'index')->with('success', 'Page added successfully.');
+            return redirect()->route($this->route . 'edit',[$page->id])->with('success', 'Page added successfully.');
         } catch (ModelNotFoundException $exception) {
             return back()->with('error', 'Your page can not add to your system right now. Plz try again later.');
         }

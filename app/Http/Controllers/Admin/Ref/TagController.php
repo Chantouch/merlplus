@@ -61,7 +61,7 @@ class TagController extends Controller
                 $tag->storeAndSetMenuThumbnail($request->file('menu_thumbnail'));
             }
             DB::commit();
-            return redirect()->route($this->route . 'index')->with('success', 'Tag added successfully.');
+            return redirect()->route($this->route . 'edit', [$tag->id])->with('success', 'Tag added successfully.');
         } catch (ModelNotFoundException $exception) {
             DB::rollback();
             return back()->with('error', 'Your category can not add to our system right now. Plz try again later.');

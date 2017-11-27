@@ -62,7 +62,7 @@ class AdvertiseController extends Controller
 				return redirect()->back()->with('error', 'Can not insert your data requirement');
 			}
 			DB::commit();
-			return redirect()->route($this->route . 'index')->with('success', 'Advertise created successfully');
+			return redirect()->route($this->route . 'edit',[$advertise->id])->with('success', 'Advertise created successfully');
 		} catch (ModelNotFoundException $exception) {
 			throw new ModelNotFoundException();
 		}

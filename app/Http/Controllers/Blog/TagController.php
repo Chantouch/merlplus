@@ -7,6 +7,7 @@ use App\Model\Advertise;
 use App\Model\Post;
 use App\Model\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Torann\LaravelMetaTags\Facades\MetaTag;
 
 class TagController extends BaseController
@@ -77,18 +78,24 @@ class TagController extends BaseController
                 return response()->json(['html' => $view]);
             }
         }
-	    $most_read = Post::with('media')
-		    ->where('active', 1)
-		    ->where('most_read', '>=', config('settings.most_read', 50))
-		    ->take(config('settings.most_read_posts_number', '6'))->get();
-	    $new_posts = Post::with('media')
-		    ->where('active', 1)
-		    ->latest()->take(config('settings.new_posts_number', '6'))->get();
-        $single_article_ads = Advertise::with('ads_type')
-            ->where('advertise_type_id', 9)->get();
-	    MetaTag::set('title', $category->name);
-	    MetaTag::set('keywords', 'top news, reliable news, content, number news site');
-	    MetaTag::set('description', $category->description);
+        $most_read = Cache::remember('most_read', 2, function () {
+            return Post::with('media')
+                ->where('active', 1)
+                ->where('most_read', '>=', config('settings.most_read', 50))
+                ->take(config('settings.most_read_posts_number', '6'))->get();
+        });
+        $new_posts = Cache::remember('new_posts', 2, function () {
+            return Post::with('media')
+                ->where('active', 1)
+                ->latest()->take(config('settings.new_posts_number', '6'))->get();
+        });
+        $single_article_ads = Cache::remember('single_article_ads', 2, function () {
+            return Advertise::with('ads_type')
+                ->where('advertise_type_id', 9)->get();
+        });
+        MetaTag::set('title', $category->name);
+        MetaTag::set('keywords', 'top news, reliable news, content, number news site');
+        MetaTag::set('description', $category->description);
         return view($this->view . 'show', compact('category', 'posts', 'most_read', 'new_posts', 'single_article_ads'));
     }
 

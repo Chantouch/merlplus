@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Storage;
 class Category extends Model
 {
 
-	use Mediable;
-	use Sluggable;
+    use Mediable;
+    use Sluggable;
     protected $guarded = [];
     protected $fillable = [
         'name', 'slug', 'description', 'status', 'parent_id', 'color_id', 'position_order', 'thumbnail_id'
@@ -95,7 +95,9 @@ class Category extends Model
      */
     public function articles()
     {
-        return $this->belongsToMany(Post::class, 'post_categories', 'category_id', 'post_id')->withPivot('category_id', 'post_id')->latest()->withTimestamps();
+        return $this->belongsToMany(Post::class, 'post_categories', 'category_id', 'post_id')
+            ->withPivot('category_id', 'post_id')->latest()
+            ->where('posts.active', 1)->withTimestamps();
     }
 
 
@@ -113,64 +115,64 @@ class Category extends Model
     }
 
 
-	/**
-	 * Check if the post has a valid thumbnail
-	 *
-	 * @return boolean
-	 */
-	public function hasThumbnail(): bool
-	{
-		return $this->hasMedia($this->thumbnail_id);
-	}
+    /**
+     * Check if the post has a valid thumbnail
+     *
+     * @return boolean
+     */
+    public function hasThumbnail(): bool
+    {
+        return $this->hasMedia($this->thumbnail_id);
+    }
 
-	/**
-	 * Retrieve the post's thumbnail
-	 *
-	 * @return mixed
-	 */
-	public function thumbnail()
-	{
-		return $this->media()->where('id', $this->thumbnail_id)->first();
-	}
+    /**
+     * Retrieve the post's thumbnail
+     *
+     * @return mixed
+     */
+    public function thumbnail()
+    {
+        return $this->media()->where('id', $this->thumbnail_id)->first();
+    }
 
 
-	/**
-	 * Store and set the post's thumbnail
-	 *
-	 * @param UploadedFile $media
-	 * @return UploadedFile
-	 */
-	public function storeAndSetThumbnail(UploadedFile $media)
-	{
-		$path = storage_path('app/public/uploads/category');
-		if (!file_exists($path)) {
-			mkdir($path, 0777, true);
-		}
-		if ($this->hasThumbnail()) {
-			$banner_name = $this->thumbnail()->filename;
-			$media_name = $media->store('public/uploads/category');
-			$old_path = [
-				'public/uploads/category/' . $banner_name
-			];
-			if (File::exists($path)) {
-				Storage::delete($old_path);
-			}
-			$this->thumbnail()->update([
-				'filename' => str_replace('public/uploads/category/', '', $media_name),
-				'original_filename' => $media->getClientOriginalName(),
-				'mime_type' => $media->getMimeType()
-			]);
-		} else {
-			$media_name = $media->store('public/uploads/category');
-			$media = $this->media()->create([
-				'filename' => str_replace('public/uploads/category/', '', $media_name),
-				'original_filename' => $media->getClientOriginalName(),
-				'mime_type' => $media->getMimeType()
-			]);
-			$this->update(['thumbnail_id' => $media->id]);
-		}
-		return $media;
-	}
+    /**
+     * Store and set the post's thumbnail
+     *
+     * @param UploadedFile $media
+     * @return UploadedFile
+     */
+    public function storeAndSetThumbnail(UploadedFile $media)
+    {
+        $path = storage_path('app/public/uploads/category');
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+        if ($this->hasThumbnail()) {
+            $banner_name = $this->thumbnail()->filename;
+            $media_name = $media->store('public/uploads/category');
+            $old_path = [
+                'public/uploads/category/' . $banner_name
+            ];
+            if (File::exists($path)) {
+                Storage::delete($old_path);
+            }
+            $this->thumbnail()->update([
+                'filename' => str_replace('public/uploads/category/', '', $media_name),
+                'original_filename' => $media->getClientOriginalName(),
+                'mime_type' => $media->getMimeType()
+            ]);
+        } else {
+            $media_name = $media->store('public/uploads/category');
+            $media = $this->media()->create([
+                'filename' => str_replace('public/uploads/category/', '', $media_name),
+                'original_filename' => $media->getClientOriginalName(),
+                'mime_type' => $media->getMimeType()
+            ]);
+            $this->update(['thumbnail_id' => $media->id]);
+        }
+        return $media;
+    }
 
 
     //----------Sluggable---------//

@@ -58,38 +58,76 @@
     @include('blog/inc/section1')
     @include('blog/inc/top-news')
 
-    <div class="modal fade" id="mySmallModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+    <div class="modal fade" id="myPopupAds" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="time-closed-modal">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="time-closed-modal">
+                        &times;
+                    </button>
                     <h4 class="modal-title" id="mySmallModalLabel">Advertisement</h4>
                 </div>
                 <div class="modal-body">
-                    <img src="{!! asset('images/Banner-Advertising-720x300.png') !!}" alt="Place your ads here!" class="img-responsive center-block">
+                    @if($popup_720x300->count())
+                        @foreach($popup_720x300 as $ads)
+                            <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">
+                                <img alt="{!! $ads->provider_name !!}" class="img-responsive center-block"
+                                     src="{!! asset('blog/img/blur.jpg') !!}"
+                                     data-src="{!! asset($ads->banner()->media_url) !!}"/>
+                            </a>
+                        @endforeach
+                    @else
+                        <a href="{!! url('contact') !!}" title="Contact us now">
+                            <img src="{!! asset('images/Banner-Advertising-720x300.png') !!}"
+                                 alt="Place your ads here!" class="img-responsive center-block">
+                        </a>
+                    @endif
                 </div>
                 <div class="modal-footer">
-                    <img src="{!! asset('images/468x60-banner.png') !!}" alt="Place your ads here!">
-                    <img src="{!! asset('images/234x60-banner.png') !!}" alt="Place your ads here!">
+
+                    @if($popup_468x60->count())
+                        @foreach($popup_468x60 as $ads)
+                            <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">
+                                <img alt="{!! $ads->provider_name !!}" src="{!! asset($ads->banner()->media_url) !!}"/>
+                            </a>
+                        @endforeach
+                    @else
+                        <a href="{!! url('contact') !!}" title="Contact us now">
+                            <img src="{!! asset('images/468x60-banner.png') !!}" alt="Place your ads here!">
+                        </a>
+                    @endif
+
+                    @if($popup_234x60->count())
+                        @foreach($popup_234x60 as $ads)
+                            <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">
+                                <img alt="{!! $ads->provider_name !!}" src="{!! asset($ads->banner()->media_url) !!}"/>
+                            </a>
+                        @endforeach
+                    @else
+                        <a href="{!! url('contact') !!}" title="Contact us now">
+                            <img src="{!! asset('images/234x60-banner.png') !!}" alt="Place your ads here!">
+                        </a>
+                    @endif
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
 @stop
 @section('scripts')
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             var cookie = getCookie('hidden');
             console.log(cookie);
-            if(!cookie){
-                setTimeout(function() {
-                    $('#mySmallModal').modal();
-                }, 5000);
+            if (!cookie) {
+                setTimeout(function () {
+                    $('#myPopupAds').modal();
+                }, 500);
             }
 
             $("#time-closed-modal").click(function () {
-                setCookie("hidden", "mySmallModal", 10)
+                setCookie("hidden", "myPopupAds", 5)
             });
         });
     </script>
