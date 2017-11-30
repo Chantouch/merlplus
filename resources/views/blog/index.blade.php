@@ -10,40 +10,39 @@
 @section('css')
     <style>
         .modal-dialog {
-            position: absolute;
-            top: 50% !important;
-            transform: translate(0, -50%) !important;
-            -ms-transform: translate(0, -50%) !important;
-            -webkit-transform: translate(0, -50%) !important;
-            margin: auto 30%;
             width: 762px;
-            height: 480px;
         }
 
-        .modal-content {
-            min-height: 100%;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
+        .modal-footer a:first-child {
+            float: left;
+            margin-right: 10px;
+            margin-bottom: 2px;
         }
 
-        .modal-body {
-            position: absolute;
-            top: 45px;
-            left: 0;
-            right: 0;
-            overflow-y: auto;
+        .modal-footer a:last-child {
+            float: left;
         }
 
-        .modal-footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #e5e5e5;
+        @media screen and (max-width: 768px) {
+            .modal-dialog {
+                width: auto;
+            }
+
+            .modal-footer a:first-child {
+                float: none;
+                margin-right: 0;
+                margin-bottom: 0;
+            }
+            .modal-footer a:first-child img {
+                margin-bottom: 5px;
+            }
+
+            .modal-footer a:last-child {
+                float: none;
+            }
+
         }
+
     </style>
 @stop
 @section('main-news-block')
@@ -60,7 +59,7 @@
 
     <div class="modal fade" id="myPopupAds" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="time-closed-modal">
@@ -88,24 +87,28 @@
                     @if($popup_468x60->count())
                         @foreach($popup_468x60 as $ads)
                             <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">
-                                <img alt="{!! $ads->provider_name !!}" src="{!! asset($ads->banner()->media_url) !!}"/>
+                                <img alt="{!! $ads->provider_name !!}" src="{!! asset($ads->banner()->media_url) !!}"
+                                     class="img-responsive"/>
                             </a>
                         @endforeach
                     @else
                         <a href="{!! url('contact') !!}" title="Contact us now">
-                            <img src="{!! asset('images/468x60-banner.png') !!}" alt="Place your ads here!">
+                            <img src="{!! asset('images/468x60-banner.png') !!}" alt="Place your ads here!"
+                                 class="img-responsive center-block">
                         </a>
                     @endif
 
                     @if($popup_234x60->count())
                         @foreach($popup_234x60 as $ads)
                             <a href="{!! $ads->url !!}" target="_blank" rel="nofollow">
-                                <img alt="{!! $ads->provider_name !!}" src="{!! asset($ads->banner()->media_url) !!}"/>
+                                <img alt="{!! $ads->provider_name !!}" src="{!! asset($ads->banner()->media_url) !!}"
+                                     class="img-responsive"/>
                             </a>
                         @endforeach
                     @else
                         <a href="{!! url('contact') !!}" title="Contact us now">
-                            <img src="{!! asset('images/234x60-banner.png') !!}" alt="Place your ads here!">
+                            <img src="{!! asset('images/234x60-banner.png') !!}" alt="Place your ads here!"
+                                 class="img-responsive center-block">
                         </a>
                     @endif
                 </div>
@@ -118,7 +121,6 @@
     <script>
         $(document).ready(function () {
             var cookie = getCookie('hidden');
-            console.log(cookie);
             if (!cookie) {
                 setTimeout(function () {
                     $('#myPopupAds').modal();

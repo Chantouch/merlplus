@@ -26,7 +26,11 @@
                                  src="{!! asset('blog/img/blur.jpg') !!}" class="img-thumbnail lazyload">
                         @endif
                     </td>
-                    <td>{!! $article->excerptTitle(100) !!}</td>
+                    <td>
+                        <a href="{!! route('admin.article.edit', [$article->id]) !!}">
+                            {!! $article->excerptTitle(100) !!}
+                        </a>
+                    </td>
                     <td>
                         @if($article->categories->count())
                             @foreach($article->categories as $category)

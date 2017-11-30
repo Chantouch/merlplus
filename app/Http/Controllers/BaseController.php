@@ -31,6 +31,7 @@ class BaseController extends Controller
     {
         $top_ads = Cache::remember('top_ads', 10, function () {
             return Advertise::with('ads_type')
+                ->where('active', 1)
                 ->where('end_date', '>=', Carbon::now())
                 ->where('advertise_type_id', 1)->get();
         });
@@ -39,6 +40,7 @@ class BaseController extends Controller
         }
         $top_right_ads = Cache::remember('top_right_ads', 10, function () {
             return Advertise::with('ads_type')
+                ->where('active', 1)
                 ->where('end_date', '>=', Carbon::now())
                 ->where('advertise_type_id', 3)->get();
         });
@@ -47,28 +49,32 @@ class BaseController extends Controller
         }
         $home_top_news_slider = Cache::remember('home_top_news_slider', 10, function () {
             return Advertise::with('ads_type')
+                ->where('active', 1)
                 ->where('end_date', '>=', Carbon::now())
                 ->where('advertise_type_id', 10)->get();
         });
         $main_right_ads = Cache::remember('main_right_ads', 10, function () {
             return Advertise::with('ads_type')
+                ->where('active', 1)
                 ->where('end_date', '>=', Carbon::now())
                 ->where('advertise_type_id', 11)->get();
         });
-        $menus = Cache::remember('menus', 2, function () {
+        $menus = Cache::remember('menus', 24 * 60, function () {
             return Category::with('images')
+                ->where('status', 1)
                 ->where('parent_id', null)->take(5)
                 ->orderBy('position_order', 'ASC')->get();
         });
-        $tag_menu = Cache::remember('tag_menu', 2, function () {
-            return Tag::with('posts')->where('is_menu', 1)->get();
+        $tag_menu = Cache::remember('tag_menu', 10, function () {
+            return Tag::with('posts')
+                ->where('status', 1)
+                ->where('is_menu', 1)->get();
         });
-        $pages = Cache::remember('pages', 2, function () {
+        $pages = Cache::remember('pages', 60, function () {
             return Page::where('status', 1)->orderBy('order', 'ASC')->get();
         });
-        $socials = '';
         if (config('settings.social_activated')) {
-            $socials = Cache::remember('socials', 2, function () {
+            $socials = Cache::remember('socials', 24*60, function () {
                 return Setting::with('child')
                     ->where('key', 'social_activated')
                     ->firstOrFail()->child()

@@ -26,7 +26,7 @@ function is_png($bufferImg, $recursive = true)
  */
 function status($value)
 {
-    if ($value === 1) {
+    if ($value == 1) {
         return $string = '<span class="label label-success">បង្ហាញ</span>';
     } else {
         return $string = '<span class="label label-danger">មិនបង្ហាញ</span>';

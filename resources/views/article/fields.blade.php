@@ -137,11 +137,13 @@
         <div class="panel-wrapper collapse in">
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <a href="{!! route('admin.article.index') !!}"
-                           class="fcbtn btn btn-danger btn-outline btn-1d pull-left">
-                            {!! __('admin.move_to_draft') !!}
-                        </a>
+                    <div class="col-md-6 col-sm-12 col-lg-6">
+                        <button class="fcbtn btn btn-danger btn-outline btn-1d pull-left" name="submit"
+                                value="draft">
+                            <span>{!! __('admin.move_to_draft') !!}</span>
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-lg-6">
                         <button class="fcbtn btn btn-info btn-outline btn-1e pull-right" name="submit"
                                 value="publish">
                             <span>{!! __('admin.publish') !!}</span> <i class="fa fa-save m-l-5"></i>
@@ -284,7 +286,8 @@
                 </div>
 
                 <div class="input-group m-b-10" :class="{ 'has-error': formErrors['name'] }">
-                    <input id="tag-input" class="form-control" placeholder="{!! __('posts.name') !!}" v-model="newTag.name">
+                    <input id="tag-input" class="form-control" placeholder="{!! __('posts.name') !!}"
+                           v-model="newTag.name">
                     <span class="input-group-btn">
                       <button type="button" class="btn waves-effect waves-light btn-info" @click.prevent="newTags()">
                           {!! __('admin.add') !!}
@@ -359,21 +362,17 @@
         <div class="panel-wrapper collapse in">
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="form-group text-center pull-right">
-                            <button class="fcbtn btn btn-primary btn-outline btn-1d pull-left" name="submit"
-                                    value="draft">
-                                <span>{!! __('admin.save_as_draft') !!}</span>
-                            </button>
-                        </div>
+                    <div class="col-md-6 col-sm-12 col-lg-6">
+                        <button class="fcbtn btn btn-danger btn-outline btn-1d pull-left" name="submit"
+                                value="draft">
+                            <span>{!! __('admin.move_to_draft') !!}</span>
+                        </button>
                     </div>
-                    <div class="col-md-12 col-sm-12">
-                        <div class="form-group text-center pull-right">
-                            <button class="fcbtn btn btn-info btn-outline btn-1e pull-right" name="submit"
-                                    value="publish">
-                                <span>{!! __('admin.publish') !!}</span> <i class="fa fa-save m-l-5"></i>
-                            </button>
-                        </div>
+                    <div class="col-md-6 col-sm-12 col-lg-6">
+                        <button class="fcbtn btn btn-info btn-outline btn-1e pull-right" name="submit"
+                                value="publish">
+                            <span>{!! __('admin.publish') !!}</span> <i class="fa fa-save m-l-5"></i>
+                        </button>
                     </div>
                 </div>
             </div>

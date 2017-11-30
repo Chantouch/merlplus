@@ -81,7 +81,7 @@ return [
 	/*
 	 * Log artisan commands?
 	 */
-	'console_log_enabled' => true,
+	'console_log_enabled' => false,
 
 	/*
 	 * Log SQL queries?
@@ -170,7 +170,7 @@ return [
 	 *     sudo apt-get purge php5-geoip
 	 *
 	 */
-	'log_geoip' => true,
+	'log_geoip' => false,
 
 	/*
 	 * Do you wish to log the user agent?
@@ -190,7 +190,7 @@ return [
 	/*
 	 * Do you wish to log languages?
 	 */
-	'log_languages' => true,
+	'log_languages' => false,
 
 	/*
 	 * Do you wish to log HTTP referers?
@@ -205,12 +205,12 @@ return [
 	/*
 	 * Do you wish to log url queries and query arguments?
 	 */
-	'log_queries' => true,
+	'log_queries' => false,
 
 	/*
 	 * Do you wish to log routes and route parameters?
 	 */
-	'log_routes' => true,
+	'log_routes' => false,
 
 	/*
 	 * Log errors and exceptions?

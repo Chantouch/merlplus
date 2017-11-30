@@ -36,6 +36,7 @@ class HomeController extends BaseController
         });
         $categories = Cache::remember('categories', 2, function () {
             return Category::with('articles')
+                ->where('status', 1)
                 ->orderBy('position_order')
                 ->paginate(5);
         });

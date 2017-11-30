@@ -1,17 +1,9 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Chantouch
- * Date: 9/2/2017
- * Time: 3:58 PM
- */
-?>
 <div class="row">
     @if(count($latest_posts))
         @foreach($latest_posts as $latest_post)
             <div class="col-md-6 col-lg-3 col-xs-12 col-sm-6">
                 <img class="img-responsive" alt="{!! $latest_post->title !!}"
-                     src="{!! asset(route('media.posts.path',[$latest_post->id,'small_'.$latest_post->thumbnail()->filename])) !!}">
+                     src="{!! asset(route('media.posts.path',[$latest_post->id,'medium_'.$latest_post->thumbnail()->filename])) !!}">
                 <div class="white-box">
                     <div class="text-muted">
                         <span class="m-r-10">

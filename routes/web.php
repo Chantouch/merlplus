@@ -95,6 +95,8 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')
 			});
 			Route::get('/insert-db', 'HomeController@insertPostCategory');
 			Route::get('clear-cache', 'ConfigController@clearCache')->name('cache.clear');
+			Route::get('config-clear', 'ConfigController@configClear')->name('config.clear');
+			Route::get('config-cache', 'ConfigController@configCache')->name('config.cache');
 		});
 	});
 

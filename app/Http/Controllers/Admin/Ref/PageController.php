@@ -62,42 +62,46 @@ class PageController extends Controller
         try {
             DB::beginTransaction();
             $data = $request->all();
-	        $storage_path = storage_path("app/public/uploads/media/library/");
+            $storage_path = storage_path("app/public/uploads/media/library/");
             $validator = Validator::make($data, Page::rules(), Page::messages());
             if ($validator->fails()) {
                 return back()->withInput()->withErrors($validator);
             }
-	        $dom = new DOMDocument();
-	        libxml_use_internal_errors(true);
-	        $dom->loadHtml(mb_convert_encoding($data['description'], 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-	        $images = $dom->getElementsByTagName('img');
-	        // foreach <img> in the submitted message
-	        foreach ($images as $img) {
-		        $src = $img->getAttribute('src');
-		        // if the img source is 'data-url'
-		        if (preg_match('/data:image/', $src)) {
-			        // get the mimetype
-			        preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-			        $mimetype = $groups['mime'];
-			        // Generating a random filename
-			        $filename = uniqid() . str_random(60);
-			        $filename_mime = $filename . '.' . $mimetype;
-			        $filepath = "/admin/media-library/$filename_mime";
-			        // @see http://image.intervention.io/api/
-			        $image = Image::make($src)// resize if required	/* ->resize(300, 200) */
-			        ->encode($mimetype, 100)// encode file to the specified mimetype
-			        ->save($storage_path . $filename_mime);
-			        $medialibrary = new MediaLibrary();
-			        $medialibrary->storeMediaLibraryByPost($filename_mime, $mimetype, $filename_mime, $filename_mime);
-			        $new_src = asset($filepath);
-			        $img->removeAttribute('src');
-			        $img->setAttribute('src', $new_src);
-		        } // <!--endif -->
-	        } // <!--Check-->
-	        libxml_clear_errors();
-	        //<!--Save the description content to db-->
-	        $data['description'] = $dom->saveHTML();
-            $data['slug'] = $this->slug_utf8($request->name);
+            $dom = new DOMDocument();
+            libxml_use_internal_errors(true);
+            $dom->loadHtml(mb_convert_encoding($data['description'], 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $images = $dom->getElementsByTagName('img');
+            // foreach <img> in the submitted message
+            foreach ($images as $img) {
+                $src = $img->getAttribute('src');
+                // if the img source is 'data-url'
+                if (preg_match('/data:image/', $src)) {
+                    // get the mimetype
+                    preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                    $mimetype = $groups['mime'];
+                    // Generating a random filename
+                    $filename = uniqid() . str_random(60);
+                    $filename_mime = $filename . '.' . $mimetype;
+                    $filepath = "/admin/media-library/$filename_mime";
+                    // @see http://image.intervention.io/api/
+                    $image = Image::make($src)// resize if required	/* ->resize(300, 200) */
+                    ->encode($mimetype, 100)// encode file to the specified mimetype
+                    ->save($storage_path . $filename_mime);
+                    $medialibrary = new MediaLibrary();
+                    $medialibrary->storeMediaLibraryByPost($filename_mime, $mimetype, $filename_mime, $filename_mime);
+                    $new_src = asset($filepath);
+                    $img->removeAttribute('src');
+                    $img->setAttribute('src', $new_src);
+                } // <!--endif -->
+            } // <!--Check-->
+            libxml_clear_errors();
+            //<!--Save the description content to db-->
+            $data['description'] = $dom->saveHTML();
+            if (empty($request->slug)) {
+                $data['slug'] = $this->slug_utf8($request->name);
+            } else {
+                $data['slug'] = str_slug($request->slug);
+            }
             if ($request->has('parent_id')) {
                 $data['parent_id'] = $request->parent_id;
                 $page = Page::with('parent')->create($data);
@@ -114,7 +118,7 @@ class PageController extends Controller
                 }
             }
             DB::commit();
-            return redirect()->route($this->route . 'edit',[$page->id])->with('success', 'Page added successfully.');
+            return redirect()->route($this->route . 'edit', [$page->id])->with('success', 'Page added successfully.');
         } catch (ModelNotFoundException $exception) {
             DB::rollback();
             return back()->with('error', 'Your page can not add to our system right now. Plz try again later.');
@@ -161,7 +165,7 @@ class PageController extends Controller
         try {
             DB::beginTransaction();
             $data = $request->all();
-	        $storage_path = storage_path("app/public/uploads/media/library/");
+            $storage_path = storage_path("app/public/uploads/media/library/");
             if ($page === null) {
                 return redirect()->route($this->route . 'index')->with('error', 'We can not find page with that id, please try the other');
             }
@@ -176,48 +180,50 @@ class PageController extends Controller
                 $this->attachTag($page, 'App\Model\Page', $request->tags);
             }
             if ($request->hasFile('file')) {
-	            $page->storeAndSetThumbnail($request->file('file'));
+                $page->storeAndSetThumbnail($request->file('file'));
             }
-            if (empty($page->slug)) {
+            if (empty($request->slug)) {
                 $data['slug'] = $this->slug_utf8($request->name);
+            } else {
+                $data['slug'] = str_slug($request->slug);
             }
-	        $dom = new DOMDocument();
-	        libxml_use_internal_errors(true);
-	        $dom->loadHtml(mb_convert_encoding($data['description'], 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-	        $images = $dom->getElementsByTagName('img');
-	        // foreach <img> in the submitted message
-	        foreach ($images as $img) {
-		        $src = $img->getAttribute('src');
-		        // if the img source is 'data-url'
-		        if (preg_match('/data:image/', $src)) {
-			        // get the mimetype
-			        preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-			        $mimetype = $groups['mime'];
-			        // Generating a random filename
-			        $filename = uniqid() . str_random(60);
-			        $filename_mime = $filename . '.' . $mimetype;
-			        $filepath = "/admin/media-library/$filename_mime";
-			        // @see http://image.intervention.io/api/
-			        $image = Image::make($src)// resize if required	/* ->resize(300, 200) */
-			        ->encode($mimetype, 100)// encode file to the specified mimetype
-			        ->save($storage_path . $filename_mime);
-			        $medialibrary = new MediaLibrary();
-			        $medialibrary->storeMediaLibraryByPost($filename_mime, $mimetype, $filename_mime, $filename_mime);
-			        $new_src = asset($filepath);
-			        $img->removeAttribute('src');
-			        $img->setAttribute('src', $new_src);
-		        } // <!--endif -->
-	        } // <!--Check-->
-	        //<!--Save the description content to db-->
-	        libxml_clear_errors();
-	        $data['description'] = $dom->saveHTML();
+            $dom = new DOMDocument();
+            libxml_use_internal_errors(true);
+            $dom->loadHtml(mb_convert_encoding($data['description'], 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $images = $dom->getElementsByTagName('img');
+            // foreach <img> in the submitted message
+            foreach ($images as $img) {
+                $src = $img->getAttribute('src');
+                // if the img source is 'data-url'
+                if (preg_match('/data:image/', $src)) {
+                    // get the mimetype
+                    preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                    $mimetype = $groups['mime'];
+                    // Generating a random filename
+                    $filename = uniqid() . str_random(60);
+                    $filename_mime = $filename . '.' . $mimetype;
+                    $filepath = "/admin/media-library/$filename_mime";
+                    // @see http://image.intervention.io/api/
+                    $image = Image::make($src)// resize if required	/* ->resize(300, 200) */
+                    ->encode($mimetype, 100)// encode file to the specified mimetype
+                    ->save($storage_path . $filename_mime);
+                    $medialibrary = new MediaLibrary();
+                    $medialibrary->storeMediaLibraryByPost($filename_mime, $mimetype, $filename_mime, $filename_mime);
+                    $new_src = asset($filepath);
+                    $img->removeAttribute('src');
+                    $img->setAttribute('src', $new_src);
+                } // <!--endif -->
+            } // <!--Check-->
+            //<!--Save the description content to db-->
+            libxml_clear_errors();
+            $data['description'] = $dom->saveHTML();
             $update = $page->update($data);
             if (!$update) {
                 DB::rollBack();
                 return back()->with('error', 'Your page can not add to your system right now. Plz try again later.');
             }
             DB::commit();
-            return redirect()->route($this->route . 'edit',[$page->id])->with('success', 'Page added successfully.');
+            return redirect()->route($this->route . 'edit', [$page->id])->with('success', 'Page added successfully.');
         } catch (ModelNotFoundException $exception) {
             return back()->with('error', 'Your page can not add to your system right now. Plz try again later.');
         }
@@ -231,16 +237,16 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-	    $path = storage_path('app/public/uploads/page');
-	    if ($page->hasThumbnail()) {
-		    $page_name = $page->thumbnail()->filename;
-		    $old_path = [
-			    'public/uploads/page/' . $page_name
-		    ];
-		    if (File::exists($path)) {
-			    Storage::delete($old_path);
-		    }
-	    }
+        $path = storage_path('app/public/uploads/page');
+        if ($page->hasThumbnail()) {
+            $page_name = $page->thumbnail()->filename;
+            $old_path = [
+                'public/uploads/page/' . $page_name
+            ];
+            if (File::exists($path)) {
+                Storage::delete($old_path);
+            }
+        }
         $delete = $page->delete();
         if (!$delete) {
             return back()->with('error', 'Your page can not delete from your system right now. Plz try again later.');

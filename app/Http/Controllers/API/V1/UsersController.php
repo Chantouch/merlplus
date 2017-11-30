@@ -101,11 +101,11 @@ class UsersController extends ApiController
 
 	/**
 	 * Update the specified resource in storage.
-	 * @param UsersRequest $request
+	 * @param Request $request
 	 * @param User $user
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(UsersRequest $request, User $user)
+	public function update(Request $request, User $user)
 	{
 		//$this->authorize('update', $user);
 		//$user->update($request->intersect(['name', 'email', 'password']));

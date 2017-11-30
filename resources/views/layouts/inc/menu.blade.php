@@ -252,7 +252,7 @@
             </li>
 
             <li>
-                <a href="/reports" target="blank"
+                <a href="{!! url('reports') !!}" target="blank"
                    class="waves-effect">
                     <i class="mdi mdi-trending-up fa-fw" data-icon="v"></i>
                     <span class="hide-menu"> {!! __('admin.report') !!}
@@ -262,12 +262,32 @@
             </li>
 
             <li>
-                <a href="{!! route('admin.cache.clear') !!}" class="waves-effect">
-                    <i class="icon-trash fa-fw" data-icon="v"></i>
-                    <span class="hide-menu"> Clear Cache
-                        <span class="label label-rouded label-inverse pull-right">1</span>
+                <a href="#" class="waves-effect">
+                    <i class="ti-clipboard fa-fw" data-icon="v"></i>
+                    <span class="hide-menu"> {!! __('admin.cache.setting') !!} <span class="fa arrow"></span>
+                        <span class="label label-rouded label-info pull-right">3</span>
                     </span>
                 </a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{!! route('admin.cache.clear') !!}">
+                            <i class="fa-fw">1</i>
+                            <span class="hide-menu">{!! __('admin.cache.clear') !!}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{!! route('admin.config.clear') !!}">
+                            <i class="fa-fw">2</i>
+                            <span class="hide-menu">{!! __('admin.config.clear') !!}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{!! route('admin.config.cache') !!}">
+                            <i class="fa-fw">3</i>
+                            <span class="hide-menu">{!! __('admin.config.cache') !!}</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="devider"></li>

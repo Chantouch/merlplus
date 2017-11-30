@@ -25,22 +25,22 @@
                             <h4>{!! ucfirst($profile->roles->first()->name) !!}</h4>
                         @endif
                         <a href="{!! route('admin.profile.edit') !!}" class="btn btn-rounded btn-success">
-                            <i class="ti-pencil m-r-5"></i> EDIT
+                            <i class="ti-pencil m-r-5"></i> @lang('users.edit')
                         </a>
                     </div>
                 </div>
                 <div class="row text-center m-t-30">
                     <div class="col-xs-4 b-r">
                         <h2>{!! $profile->posts->count() !!}</h2>
-                        <h4>POSTS</h4>
+                        <h4>@lang('dashboard.posts')</h4>
                     </div>
                     <div class="col-xs-4 b-r">
                         <h2>{!! $profile->mediasLibrary->count() !!}</h2>
-                        <h4>MEDIA</h4>
+                        <h4>@lang('dashboard.media')</h4>
                     </div>
                     <div class="col-xs-4">
                         <h2>{!! $profile->comments->count() !!}</h2>
-                        <h4>COMMENTS</h4>
+                        <h4>@lang('comments.comment')</h4>
                     </div>
                 </div>
             </div>
@@ -63,17 +63,17 @@
     </div>
     <div class="col-md-6 col-lg-8 col-sm-12">
         <div class="panel">
-            <div class="panel-heading">MANAGE USERS</div>
+            <div class="panel-heading">@lang('users.manage_user')</div>
             <div class="table-responsive">
                 <table class="table table-hover manage-u-table">
                     <thead>
                     <tr>
                         <th style="width: 70px;" class="text-center">#</th>
-                        <th>NAME</th>
-                        <th>OCCUPATION</th>
-                        <th>EMAIL</th>
-                        <th>JOINED@</th>
-                        <th>MANAGE</th>
+                        <th>@lang('users.attributes.name')</th>
+                        <th>@lang('users.attributes.position')</th>
+                        <th>@lang('users.attributes.email')</th>
+                        <th>@lang('users.attributes.joined_at')@</th>
+                        <th>@lang('users.attributes.action')</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -81,11 +81,11 @@
                         <td class="text-center">@{{ index + 1 }}</td>
                         <td>
                             <span class="font-medium" v-text="user.name"></span>
-                            <br/><span class="text-muted">Texas, Unitedd states</span>
+                            <br/><span class="text-muted">Phnom Penh, Cambodia</span>
                         </td>
                         <td>
                             <span v-for="role in user.roles" v-text="role.display_name"></span>
-                            <br/><span class="text-muted">Past : teacher</span>
+                            <br/><span class="text-muted">Past : Poster</span>
                         </td>
                         <td>
                             @{{ user.email }}

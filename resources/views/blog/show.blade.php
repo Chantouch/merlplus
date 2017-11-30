@@ -33,10 +33,10 @@
     <div class="fix-bg">
         @if($post->hasThumbnail())
             <img alt="{!! $post->removeSpecialChar($post->title) !!}" class="img"
-                 src="{!! asset(route('media.posts.path',[$post->id,'large_'.$post->thumbnail()->filename])) !!}"/>
+                 data-src="{!! asset(route('media.posts.path',[$post->id,'large_'.$post->thumbnail()->filename])) !!}"/>
         @else
             <img alt="{!! $post->removeSpecialChar($post->title) !!}" class="img"
-                 src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
+                 data-src="{!! asset('blog/img/samples/sample.jpg') !!}"/>
         @endif
         <div class="inside"></div>
     </div>
@@ -258,7 +258,7 @@
                 },
                 endpoint: '/api/v2/'
             },
-            created: function () {
+            mounted: function () {
                 this.getLatestPost();
                 this.getMostReadPost();
             },
@@ -295,6 +295,13 @@
                 url: '{!! Request::url() !!}',
                 width: 640,
                 height: 480
+            });
+        });
+
+        $(function(){
+            $(".content img").each(function () {
+                var img = $(this);
+                img.attr("data-src",img.attr("src"));
             });
         });
     </script>

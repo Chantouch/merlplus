@@ -9,7 +9,8 @@
             @if($index > 1)
                 <div class="ad-rt">
                     <a href="{!! $ads->url !!}" target="_blank">
-                        <img src="{!! asset('images/loading-preloader.gif') !!}" alt="{!! $ads->provider_name !!}" data-src="{!! asset($ads->banner()->media_url) !!}"
+                        <img src="{!! asset('images/loading-preloader.gif') !!}" alt="{!! $ads->provider_name !!}"
+                             data-src="{!! asset($ads->banner()->media_url) !!}"
                              class="lazyload img-responsive center-block"/>
                     </a>
                 </div>
@@ -18,7 +19,7 @@
     @else
         @for($x=1;$x<=3;$x++)
             <div class="ad-rt">
-                <img src="{!! asset('images/loading-preloader.gif') !!}" alt="Place your ads here!" data-src="{!! asset('images/right-bar-ads-'.$x.'.jpg') !!}"
+                <img src="{!! asset('images/right-bar-ads-'.$x.'.jpg') !!}"
                      class="lazyload img-responsive center-block"/>
             </div>
         @endfor

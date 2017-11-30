@@ -137,7 +137,7 @@ class UserController extends Controller
                 DB::rollBack();
                 return redirect()->back()->with('error', 'You can not update user role, Please contact admin');
             }
-            return redirect()->route($this->route . 'show', $id);
+            return redirect()->route($this->route . 'show', $id)->with('success', trans('users.message.success'));
         } catch (ModelNotFoundException $exception) {
             throw  new ModelNotFoundException();
         }

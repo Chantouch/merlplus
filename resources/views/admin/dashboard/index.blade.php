@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                 <div class="white-box">
-                    <h3 class="box-title">Articles daily posted</h3>
+                    <h3 class="box-title">@lang('dashboard.article_daily_posted')</h3>
                     <ul class="list-inline text-right">
                         <li>
                             <h5><i class="fa fa-circle m-r-5 text-info"></i>Active</h5>
@@ -30,7 +30,7 @@
                             <h5><i class="fa fa-circle m-r-5 text-danger"></i>InActive</h5>
                         </li>
                         <li>
-                            <h5><i class="fa fa-circle m-r-5 text-warning"></i>InActive</h5>
+                            <h5><i class="fa fa-circle m-r-5 text-warning"></i>Draft</h5>
                         </li>
                     </ul>
                     <div id="article-daily-posted" style="height: 285px;"></div>
@@ -39,7 +39,7 @@
         </div>
         {{--@include('admin.dashboard.wallet-user-widgets')--}}
         @include('admin.dashboard.profile-inbox-widgets')
-        {{--@include('admin.dashboard.calendar-todo-widgets')--}}
+        {{--@include('admin.dashboard.c alendar-todo-widgets')--}}
         @include('admin.dashboard.blog-component-widgets')
         {{--@include('admin.dashboard.chats-message-widgets')--}}
     </div>

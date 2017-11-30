@@ -32,3 +32,18 @@
         </div>
     </div>
 @stop
+
+@section('scripts')
+    <script rel="preload" src="{!! asset('plugins/SocialShare/SocialShare.min.js') !!}" type="text/javascript"></script>
+    <script>
+        /* Social Share */
+        $('.share').ShareLink({
+            title: '{{ addslashes(MetaTag::get('title')) }}',
+            text: '{!! addslashes(MetaTag::get('title')) !!}',
+            url: '{!! Request::url() !!}',
+            width: 640,
+            height: 480
+        });
+    </script>
+
+@endsection

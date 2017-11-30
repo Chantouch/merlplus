@@ -68,7 +68,7 @@ return [
     "publish" => "ផ្សាយចេញ",
     "save_as_draft" => "រក្សារទុកដូចជាសៀវភៅព្រៀង",
     "immediately" => "ភ្លាមៗ",
-    "move_to_draft" => "ប្តូរទៅជាការព្រៀងទុក",
+    "move_to_draft" => "ព្រៀងទុក",
     "most_used" => "ប្រើច្រើន",
     "categories" => "ប្រភេទ",
     "all_categories" => "ប្រភេទទាំងអស់",
@@ -154,5 +154,13 @@ return [
     'height' => 'រូបភាព',
     'welcome_to_site' => 'សូមស្វាគមមកកាន់ ',
     'back' => 'ត្រលប់',
-    'preview' => 'Preview'
+    'preview' => 'មើល',
+    'cache' => [
+        'setting' => 'Cache',
+        'clear' => 'Cache Clear'
+    ],
+    'config' => [
+        'clear' => 'Config Clear',
+        'cache' => 'Config Cache'
+    ]
 ];
